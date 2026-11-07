@@ -170,5 +170,29 @@
     "I can see (a|an|your|the)",
     "on your account",
     "your (balance|position|withdrawal request|transfer|order) (is|was|has)"
+  ],
+  "identity_request": [
+    "идентификац",
+    "фамили[яю],? имя",
+    "\bфио\b",
+    "\bиин\b",
+    "\bжсн\b",
+    "адрес[а-я]* (вашей )?(постоянной )?регистрац",
+    "смс[- ]?код",
+    "с м с",
+    "шестизначн",
+    "кодов[а-я]+ слов",
+    "дат[ау] рождения",
+    "жеке бас[ыңтр]",
+    "толық аты-жөн",
+    "\bverify your identity\b",
+    "date of birth",
+    "verification code",
+    "full name and"
+  ],
+  "protected_action": [
+    "(можем|могу|я|мы|сейчас)\\s+(\\S+\\s+){0,3}(удал|закро|закрыть|заблокир|разблокир|отмен|измен)[а-яё]*\\s+(\\S+\\s+){0,2}(сч[её]т|данн|номер|заявк|поручени)",
+    "(жоямыз|жабамыз|бұғаттаймыз)",
+    "(we can|i can|i will|i'll)\\s+(\\S+\\s+){0,3}(delete|close|block|unblock|cancel|change)\\s+(\\S+\\s+){0,2}(account|details|order|request)"
   ]
 }

@@ -23,8 +23,8 @@
       "definition": "Да — проверка личности подтверждена до раскрытия данных или защищённого действия. N/A — запрос не требовал идентификации.",
       "source": "rule",
       "confidence": {
-        "agree": 0.75,
-        "disagree": 0.93,
+        "agree": 0.89,
+        "disagree": 0.95,
         "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
       }
     },

@@ -177,7 +177,7 @@ export function hintFor(conv, criterion) {
       return H(value, 0.4, evidence, 'Ответ по известным деталям без уточнений', 'Оператор ответил, опираясь на детали, которые клиент уже сообщил', basis);
     }
     case '03': {
-      const verified = f.identity_verified_lines || [];
+      const verified = [...(f.identity_verified_lines || []), ...(f.spoken_identity_lines || [])].sort((a, b) => a - b);
       const disc = f.disclosure_signals || [];
       const before = f.disclosure_before_verification || [];
       if (!verified.length && !disc.length) {
@@ -323,7 +323,7 @@ export function hintFor(conv, criterion) {
       const discOn = criterion.flags_config?.disclosure !== false;
       for (const s of f.insult_signals || []) { if (allowed.includes('insult') && !types.includes('insult')) types.push('insult'); ev.push({ line: s.line, why: `оскорбление (${quote(s.matches[0], 30)})` }); }
       for (const s of f.bypass_signals || []) { if (allowed.includes('bypass') && !types.includes('bypass')) types.push('bypass'); ev.push({ line: s.line, why: `предложение услуги в обход компании (${quote(s.matches[0], 30)})` }); }
-      if (discOn && allowed.includes('disclosure')) for (const s of f.disclosure_before_verification || []) { if (!types.includes('disclosure')) types.push('disclosure'); ev.push({ line: s.line, why: 'данные счёта без подтверждения личности' }); }
+      if (discOn && allowed.includes('disclosure')) for (const s of (f.disclosure_before_verification || []).filter((d) => d.kind !== 'protected_action')) { if (!types.includes('disclosure')) types.push('disclosure'); ev.push({ line: s.line, why: 'данные счёта без подтверждения личности' }); }
       if (types.length) {
         const names = types.map((t) => FLAG_RU[t] || t);
         return H({ applicable: true, answer: 'yes', flag_types: types }, 0.8, ev, `Грубое нарушение: ${names.join(', ')}`,

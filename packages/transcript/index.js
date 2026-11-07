@@ -140,8 +140,14 @@ export function extractFacts(conv, lex) {
     const regs = compile(signals[key]);
     return arr.map((l) => ({ line: l.n, matches: hits(l.text, regs) })).filter((x) => x.matches.length);
   };
-  const disclosure = scan(ops, 'disclosure');
-  const firstVerified = verified[0] ?? null;
+  // spoken identification (calls): the operator asks for identification data (ФИО / ИИН / адрес регистрации / SMS-код)
+  // and the client answers within the next few lines
+  const idReq = conv.channel !== 'voice call' ? [] : scan(ops, 'identity_request').map((h) => h.line)
+    .filter((n) => L.slice(n, n + 6).some((x) => x.speaker === 'client'));
+  const protectedActions = scan(ops, 'protected_action');
+  const disclosure = [...scan(ops, 'disclosure'), ...protectedActions.map((p) => ({ ...p, kind: 'protected_action' }))].sort((a, b) => a.line - b.line);
+  const verifiedAll = [...verified, ...idReq].sort((a, b) => a - b);
+  const firstVerified = verifiedAll[0] ?? null;
   const disclosureBeforeVerification = disclosure.filter((d) => firstVerified == null || d.line < firstVerified);
 
   // mid-dialog waits: client line -> next operator line gap (after the first operator line)
@@ -193,6 +199,8 @@ export function extractFacts(conv, lex) {
     duration_seconds: duration,
     escalation_lines: escalation,
     identity_verified_lines: verified,
+    spoken_identity_lines: idReq,
+    protected_action_signals: protectedActions,
     operator_closed_lines: opClosed,
     client_left_lines: clientLeft,
     end_event: endEvent,
