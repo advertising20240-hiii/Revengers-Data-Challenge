@@ -63,7 +63,7 @@ export function providerInfo(opts = {}) {
   let st = providerStatus(provider);
   if ((provider === 'openai' || provider === 'ollama') && probed) st = { ...st, available: probed.available, reason: probed.reason, probed_at: probed.at };
   return {
-    provider, model, verifier_model, kz_model: kzModelFor(provider), available: !!st.available, reason: st.reason, roles: st.roles,
+    provider, model, verifier_model, kz_model: kzModelFor(provider), available: !!st.available, reason: st.reason, roles: st.roles, quota: st.quota && Object.keys(st.quota).length ? st.quota : undefined,
     local: LOCAL_PROVIDERS.includes(provider), cloud_allowed: cloudAllowed(), prompt_version: PROMPT_VERSION, policy_hash: POLICY_HASH,
     cost_note: provider === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model || 'модель не задана'})` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
   };

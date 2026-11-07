@@ -458,7 +458,7 @@
   "ins.hold_total": "Удержание всего",
   "ins.hold_avg": "Удержание на звонок",
   "ins.consults": "Консультаций",
-  "ins.doom_title": "Агенты Дума",
+  "ins.doom_title": "Грубые нарушения",
   "ins.doom_sub": "грубые ошибки: {n} диалогов",
   "ins.doom_empty": "Грубых ошибок не обнаружено",
   "ins.gross_type": "Тип",
