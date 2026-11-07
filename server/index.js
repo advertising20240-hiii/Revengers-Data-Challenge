@@ -9,6 +9,9 @@ loadEnv(join(ROOT, '.env'));
 const log = (m) => console.log(`[cqa] ${m}`);
 const app = await createApp({ log });
 const addr = await app.listen();
+if (typeof app.engine.evaluator?.probeProvider === 'function') {
+  await Promise.race([app.engine.evaluator.probeProvider().catch(() => null), new Promise((r) => setTimeout(r, 3000))]);
+}
 const p = app.engine.providerInfo();
 log(`listening on http://localhost:${addr.port}  (data: ${app.config.dataDir})`);
 log(`conversations: ${app.db.conversations.size}, evaluations: ${app.db.evaluations.size}, checklists: ${app.db.checklists.size}`);
