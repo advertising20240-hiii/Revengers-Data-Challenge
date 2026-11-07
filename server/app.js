@@ -14,6 +14,7 @@ import { AppealService } from './services/appeals.js';
 import { computeStats, exportCsv } from './services/stats.js';
 import { evaluationSummary } from './services/evaluations.js';
 import { hashJson } from './lib/hash.js';
+import { buildResultsFile, validateResultsFile } from './services/results.js';
 
 export async function createApp({ evaluator = undefined, dataDir = undefined, config: configOverrides = {}, fetchImpl = undefined, log = () => {} } = {}) {
   const config = getConfig(process.env, { ...(dataDir ? { dataDir } : {}), ...configOverrides });
@@ -115,6 +116,14 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
     for (;;) { const { done, value } = await reader.read(); if (done) break; if (!res.write(Buffer.from(value))) await new Promise((r) => res.once('drain', r)); }
     res.end();
     return null;
+  });
+
+  // ---------- organizers' results file (JSON 1.0) ----------
+  router.get('/api/results.json', ({ url }) => {
+    const groupId = q(url, 'group_id') || 'DEV';
+    const rows = data.rows(groupId).map((r) => ({ conversation_id: r.conversation_id, evaluations: engine.evaluationsFor(r.group_id, r.conversation_id) }));
+    const file = buildResultsFile({ teamName: process.env.CQA_TEAM_NAME || 'Revengers', rows });
+    return { ...file, _validation: validateResultsFile(file) };
   });
 
   // ---------- checklists ----------

@@ -1,5 +1,5 @@
 {
- "created_at": "2026-11-07T13:07:37.310Z",
+ "created_at": "2026-11-07T13:19:03.471Z",
  "model": "qwen3-8",
  "provider": "alem",
  "verifier_model": null,
@@ -201,19 +201,19 @@
    "title": "Выявление потребности",
    "kind": "binary",
    "n": 65,
-   "accuracy": 0.892,
+   "accuracy": 0.954,
    "accuracy_ci": [
-    0.794,
-    0.947
+    0.873,
+    0.984
    ],
-   "strict_accuracy": 0.892,
-   "kappa": 0.773,
+   "strict_accuracy": 0.938,
+   "kappa": 0.888,
    "kappa_ci": [
-    0.611,
-    0.912
+    0.777,
+    0.973
    ],
-   "kappa_observed_agreement": 0.892,
-   "kappa_expected_agreement": 0.525,
+   "kappa_observed_agreement": 0.938,
+   "kappa_expected_agreement": 0.451,
    "gold_distribution": {
     "NA": 41,
     "Y": 17,
@@ -231,19 +231,19 @@
     ],
     "matrix": [
      [
-      4,
+      7,
+      0,
+      0
+     ],
+     [
       3,
+      38,
       0
      ],
      [
+      1,
       0,
-      41,
-      0
-     ],
-     [
-      0,
-      4,
-      13
+      16
      ]
     ],
     "note": "строки — эталон (человек), столбцы — модель"
@@ -251,28 +251,28 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.886
+     "accuracy": 0.914
     },
     "KZ": {
      "n": 15,
-     "accuracy": 0.933
+     "accuracy": 1
     },
     "EN": {
      "n": 15,
-     "accuracy": 0.867
+     "accuracy": 1
     }
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.867,
+    "accuracy": 0.956,
     "accuracy_ci": [
-     0.738,
-     0.937
+     0.852,
+     0.988
     ],
-    "kappa": 0.742,
+    "kappa": 0.923,
     "kappa_ci": [
-     0.522,
-     0.905
+     0.805,
+     1
     ]
    },
    "holdout": {
@@ -282,9 +282,9 @@
      0.764,
      0.991
     ],
-    "kappa": 0.864,
+    "kappa": 0.785,
     "kappa_ci": [
-     0.437,
+     0.444,
      1
     ],
     "confusion": {
@@ -300,14 +300,14 @@
        0
       ],
       [
-       0,
-       15,
+       2,
+       13,
        0
       ],
       [
        0,
-       1,
-       3
+       0,
+       4
       ]
      ],
      "note": "строки — эталон (человек), столбцы — модель"
@@ -320,11 +320,11 @@
     "by_language": {
      "RU": {
       "n": 10,
-      "accuracy": 1
+      "accuracy": 0.9
      },
      "KZ": {
       "n": 5,
-      "accuracy": 0.8
+      "accuracy": 1
      },
      "EN": {
       "n": 5,
@@ -477,20 +477,20 @@
    "title": "Корректная и полная консультация",
    "kind": "scale",
    "n": 65,
-   "accuracy": 0.846,
+   "accuracy": 0.877,
    "accuracy_ci": [
-    0.739,
-    0.914
+    0.775,
+    0.936
    ],
-   "strict_accuracy": 0.738,
-   "within_one_step": 0.954,
-   "kappa": 0.415,
+   "strict_accuracy": 0.785,
+   "within_one_step": 0.969,
+   "kappa": 0.5,
    "kappa_ci": [
-    0.187,
-    0.608
+    0.288,
+    0.677
    ],
-   "kappa_observed_agreement": 0.738,
-   "kappa_expected_agreement": 0.553,
+   "kappa_observed_agreement": 0.785,
+   "kappa_expected_agreement": 0.569,
    "gold_distribution": {
     "0": 3,
     "5": 3,
@@ -514,17 +514,9 @@
     ],
     "matrix": [
      [
-      2,
-      1,
+      3,
       0,
       0,
-      0,
-      0
-     ],
-     [
-      1,
-      0,
-      2,
       0,
       0,
       0
@@ -540,25 +532,33 @@
      [
       0,
       0,
+      3,
       0,
-      2,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1,
+      1,
       6,
       0
      ],
      [
+      1,
       0,
-      0,
-      2,
-      4,
-      41,
+      1,
+      1,
+      44,
       0
      ],
      [
-      0,
-      0,
-      0,
-      0,
       1,
+      0,
+      0,
+      0,
+      0,
       0
      ]
     ],
@@ -567,15 +567,15 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.886
+     "accuracy": 0.857
     },
     "KZ": {
      "n": 15,
-     "accuracy": 0.8
+     "accuracy": 0.933
     },
     "EN": {
      "n": 15,
-     "accuracy": 0.8
+     "accuracy": 0.867
     }
    },
    "tune": {
@@ -585,26 +585,26 @@
      0.738,
      0.937
     ],
-    "kappa": 0.381,
+    "kappa": 0.344,
     "kappa_ci": [
-     0.09,
-     0.655
+     0.124,
+     0.578
     ],
     "within_one_step": 0.956
    },
    "holdout": {
     "n": 20,
-    "accuracy": 0.8,
+    "accuracy": 0.9,
     "accuracy_ci": [
-     0.584,
-     0.919
+     0.699,
+     0.972
     ],
-    "kappa": 0.45,
+    "kappa": 0.724,
     "kappa_ci": [
-     0.095,
-     0.74
+     0.412,
+     1
     ],
-    "within_one_step": 0.95,
+    "within_one_step": 1,
     "confusion": {
      "labels": [
       "0",
@@ -615,8 +615,8 @@
      ],
      "matrix": [
       [
-       1,
-       1,
+       2,
+       0,
        0,
        0,
        0
@@ -639,15 +639,15 @@
        0,
        0,
        0,
-       0,
-       2
+       1,
+       1
       ],
       [
        0,
        0,
        1,
-       1,
-       11
+       0,
+       12
       ]
      ],
      "note": "строки — эталон (человек), столбцы — модель"
@@ -666,11 +666,11 @@
      },
      "KZ": {
       "n": 5,
-      "accuracy": 0.8
+      "accuracy": 1
      },
      "EN": {
       "n": 5,
-      "accuracy": 0.6
+      "accuracy": 0.8
      }
     }
    }
@@ -681,19 +681,19 @@
    "title": "Эмпатия и клиентоориентированность",
    "kind": "binary",
    "n": 65,
-   "accuracy": 0.969,
+   "accuracy": 0.954,
    "accuracy_ci": [
-    0.895,
-    0.992
+    0.873,
+    0.984
    ],
-   "strict_accuracy": 0.923,
-   "kappa": 0.625,
+   "strict_accuracy": 0.908,
+   "kappa": 0.524,
    "kappa_ci": [
-    0.228,
-    0.891
+    0.089,
+    0.816
    ],
-   "kappa_observed_agreement": 0.923,
-   "kappa_expected_agreement": 0.795,
+   "kappa_observed_agreement": 0.908,
+   "kappa_expected_agreement": 0.806,
    "gold_distribution": {
     "Y": 56,
     "N": 9
@@ -709,8 +709,8 @@
     ],
     "matrix": [
      [
-      5,
-      4
+      4,
+      5
      ],
      [
       1,
@@ -722,7 +722,7 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.971
+     "accuracy": 0.943
     },
     "KZ": {
      "n": 15,
@@ -735,15 +735,15 @@
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.978,
+    "accuracy": 0.956,
     "accuracy_ci": [
-     0.884,
-     0.996
+     0.852,
+     0.988
     ],
-    "kappa": 0.552,
+    "kappa": 0.39,
     "kappa_ci": [
-     -0.031,
-     0.877
+     -0.063,
+     0.776
     ]
    },
    "holdout": {
@@ -801,20 +801,20 @@
    "title": "Управление диалогом, скорость и грамотность",
    "kind": "scale",
    "n": 65,
-   "accuracy": 0.754,
+   "accuracy": 0.677,
    "accuracy_ci": [
-    0.637,
-    0.842
+    0.556,
+    0.778
    ],
-   "strict_accuracy": 0.646,
-   "within_one_step": 0.985,
-   "kappa": 0.234,
+   "strict_accuracy": 0.6,
+   "within_one_step": 0.923,
+   "kappa": 0.009,
    "kappa_ci": [
-    0.07,
-    0.398
+    -0.125,
+    0.179
    ],
-   "kappa_observed_agreement": 0.646,
-   "kappa_expected_agreement": 0.538,
+   "kappa_observed_agreement": 0.6,
+   "kappa_expected_agreement": 0.596,
    "gold_distribution": {
     "0": 1,
     "4": 10,
@@ -836,26 +836,26 @@
      [
       0,
       0,
-      1,
-      0
-     ],
-     [
-      1,
-      1,
-      6,
-      2
+      0,
+      1
      ],
      [
       0,
-      1,
-      2,
+      0,
+      3,
       7
      ],
      [
       0,
       0,
-      5,
-      39
+      1,
+      9
+     ],
+     [
+      0,
+      0,
+      6,
+      38
      ]
     ],
     "note": "строки — эталон (человек), столбцы — модель"
@@ -863,47 +863,46 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.771
+     "accuracy": 0.714
     },
     "KZ": {
      "n": 15,
-     "accuracy": 0.8
+     "accuracy": 0.733
     },
     "EN": {
      "n": 15,
-     "accuracy": 0.667
+     "accuracy": 0.533
     }
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.778,
+    "accuracy": 0.711,
     "accuracy_ci": [
-     0.637,
-     0.875
+     0.566,
+     0.823
     ],
-    "kappa": 0.266,
+    "kappa": 0.041,
     "kappa_ci": [
-     0.072,
-     0.455
+     -0.136,
+     0.26
     ],
-    "within_one_step": 1
+    "within_one_step": 0.933
    },
    "holdout": {
     "n": 20,
-    "accuracy": 0.7,
+    "accuracy": 0.6,
     "accuracy_ci": [
-     0.481,
-     0.855
+     0.387,
+     0.781
     ],
-    "kappa": 0.167,
+    "kappa": -0.059,
     "kappa_ci": [
-     -0.176,
-     0.47
+     -0.25,
+     0.146
     ],
-    "within_one_step": 0.95,
+    "within_one_step": 0.9,
     "confusion": {
      "labels": [
-      "0",
       "4",
       "7",
       "10"
@@ -911,24 +910,15 @@
      "matrix": [
       [
        0,
-       0,
-       0,
-       0
+       1,
+       3
       ],
       [
-       1,
-       1,
-       1,
-       1
-      ],
-      [
-       0,
        0,
        0,
        3
       ],
       [
-       0,
        0,
        2,
        11
@@ -944,7 +934,7 @@
     "by_language": {
      "RU": {
       "n": 10,
-      "accuracy": 0.8
+      "accuracy": 0.7
      },
      "KZ": {
       "n": 5,
@@ -952,7 +942,7 @@
      },
      "EN": {
       "n": 5,
-      "accuracy": 0.6
+      "accuracy": 0.4
      }
     }
    }
@@ -1101,19 +1091,19 @@
    "title": "Грубые ошибки",
    "kind": "binary",
    "n": 65,
-   "accuracy": 0.985,
+   "accuracy": 1,
    "accuracy_ci": [
-    0.918,
-    0.997
-   ],
-   "strict_accuracy": 0.985,
-   "kappa": 0.932,
-   "kappa_ci": [
-    0.745,
+    0.944,
     1
    ],
-   "kappa_observed_agreement": 0.985,
-   "kappa_expected_agreement": 0.773,
+   "strict_accuracy": 1,
+   "kappa": 1,
+   "kappa_ci": [
+    1,
+    1
+   ],
+   "kappa_observed_agreement": 1,
+   "kappa_expected_agreement": 0.784,
    "gold_distribution": {
     "N": 57,
     "Y": 8
@@ -1129,8 +1119,8 @@
     ],
     "matrix": [
      [
-      56,
-      1
+      57,
+      0
      ],
      [
       0,
@@ -1142,7 +1132,7 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.971
+     "accuracy": 1
     },
     "KZ": {
      "n": 15,
@@ -1155,14 +1145,14 @@
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.978,
+    "accuracy": 1,
     "accuracy_ci": [
-     0.884,
-     0.996
+     0.921,
+     1
     ],
-    "kappa": 0.897,
+    "kappa": 1,
     "kappa_ci": [
-     0.622,
+     1,
      1
     ]
    },
@@ -1218,17 +1208,17 @@
  ],
  "totals": {
   "n": 65,
-  "exact_match_rate": 0.523,
-  "mae": 6.25,
-  "within_5pts": 0.569,
-  "all_labels_match": 32,
+  "exact_match_rate": 0.538,
+  "mae": 7.41,
+  "within_5pts": 0.631,
+  "all_labels_match": 35,
   "engine_consistent_when_labels_match": true
  },
  "gross": {
   "recall": 1,
-  "precision": 0.889,
+  "precision": 1,
   "tp": 8,
-  "fp": 1,
+  "fp": 0,
   "fn": 0,
   "by_type": {
    "insult": {
@@ -1247,10 +1237,10 @@
    },
    "disclosure": {
     "tp": 3,
-    "fp": 1,
+    "fp": 0,
     "fn": 0,
     "recall": 1,
-    "precision": 0.75
+    "precision": 1
    }
   }
  },
@@ -1271,7 +1261,7 @@
     4
    ],
    "confidence": 1,
-   "ai_explanation": "Ответы оператора ясные, логичные, клиенту не приходилось переспрашивать из-за непонимания формулировок. Пауз с нарушением регламента не выявлено.",
+   "ai_explanation": "Ответы оператора были ясными, связными, без противоречий. Пауз более 90 секунд в середине диалога не было (максимальная пауза между #13 и #14 — 33 сек, между #14 и #15 — 35 сек).",
    "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary)."
   },
   {
@@ -1283,22 +1273,9 @@
    "accepted": [
     4
    ],
-   "confidence": 0.95,
-   "ai_explanation": "Была одна заметная пауза (91 сек) в середине чата без предупреждения об ожидании, что соответствует оценке 7. Клиенту не пришлось переспрашивать из-за формулировок, но пауза была заметной.",
+   "confidence": 0.9,
+   "ai_explanation": "Между репликами #10 и #12 была пауза более 90 секунд, оператор не предупредил клиента об ожидании («сейчас проверю»), что является одним заметным сбоем в управлении диалогом.",
    "note": "#12 is garbled ('Там же где перевод, не в отчете, сверху вниз в меню'); client must re-ask (#13) -> 06=4; apology #14 keeps 05=Y; summary+farewell #16."
-  },
-  {
-   "conversation_id": "p1-ru-006",
-   "criterion_id": "c02",
-   "language": "RU",
-   "ai": "NA",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «Уже отправила. Хочу",
-   "note": "Identity verified (#12) before account action; empathy #10; follow-up channel stated #15."
   },
   {
    "conversation_id": "p1-ru-007",
@@ -1312,8 +1289,23 @@
     4
    ],
    "confidence": 1,
-   "ai_explanation": "Ответы оператора ясные и связные, клиент не вынужден был переспрашивать из-за непонимания формулировок, паузы в середине диалога не превышали допустимых норм или были объявлены (в данном случае пауза ",
+   "ai_explanation": "Реплики оператора ясные, логичные, без длинных пауз или противоречий. Ожидание до первой реплики не штрафуется.",
    "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
+  },
+  {
+   "conversation_id": "p1-ru-009",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 10,
+   "human": 4,
+   "accepted": [
+    4,
+    4,
+    7
+   ],
+   "confidence": 1,
+   "ai_explanation": "Ответы оператора ясные, связные, логичный порядок соблюдён, длительных пауз без предупреждения в середине диалога не выявлено.",
+   "note": "Account restriction disclosed at #12 with no identification; client objects #13, operator brushes it off #14 -> 03=N, 05=N; reason never explained -> 04=5; '08' flagged as confidential disclosure (policy-dependent)."
   },
   {
    "conversation_id": "p1-ru-009",
@@ -1324,7 +1316,7 @@
    "accepted": [
     "N"
    ],
-   "confidence": 0.82,
+   "confidence": 0.91,
    "ai_explanation": "Завершение — Да. Оператор завершил диалог прощанием и итогом по вопросу; открытых вопросов клиента после этого нет. Основание — последняя реплика оператора #16 «Передам вопрос на проверку. До свидания",
    "note": "Account restriction disclosed at #12 with no identification; client objects #13, operator brushes it off #14 -> 03=N, 05=N; reason never explained -> 04=5; '08' flagged as confidential disclosure (policy-dependent)."
   },
@@ -1338,7 +1330,7 @@
     10
    ],
    "confidence": 0.9,
-   "ai_explanation": "Ответы ясные и связные, но были заметные паузы более 90 секунд в середине чата без объявления ожидания, что снижает оценку до 7.",
+   "ai_explanation": "Диалог был ясным и связным, однако оператор не предупредил клиента об ожидании во время нескольких пауз более 90 секунд, что является заметным сбоем в управлении диалогом.",
    "note": "Long multi-question chat handled fully; ID before escalation."
   },
   {
@@ -1353,8 +1345,23 @@
     4
    ],
    "confidence": 1,
-   "ai_explanation": "Диалог проходил ясно и связно, задержек в ответах оператора не было, клиенту не пришлось переспрашивать из-за неясности формулировок.",
+   "ai_explanation": "Ответы оператора ясные и связные. Пауз дольше 90 секунд в середине диалога не было (интервалы между репликами оператора: 26с, 50с). Клиенту не пришлось переспрашивать из-за непонимания формулировок.",
    "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-015",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 10,
+   "human": 20,
+   "accepted": [
+    20,
+    20,
+    15
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Основная проблема решена (рекомендация выбрать другой логин), но прямой вопрос клиента о необходимости ожидания остался без явного подтверждения, что соответствует уровню 10 (часть закрыта, существенн",
+   "note": ""
   },
   {
    "conversation_id": "p1-ru-015",
@@ -1365,22 +1372,9 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.82,
+   "confidence": 0.91,
    "ai_explanation": "Завершение — Нет. Клиент задал вопрос (#11 «То есть ждать, пока освободится, не надо?»), а оператор завершил диалог прощанием, не ответив на него. Основание — сообщение клиента #11 и последняя реплика",
    "note": ""
-  },
-  {
-   "conversation_id": "p1-ru-016",
-   "criterion_id": "c02",
-   "language": "RU",
-   "ai": "NA",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «Подключите человека",
-   "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
   },
   {
    "conversation_id": "p1-ru-016",
@@ -1394,20 +1388,20 @@
     10
    ],
    "confidence": 1,
-   "ai_explanation": "Основной вопрос клиента о том, где находится вход в личный кабинет, был решён корректно и полностью.",
+   "ai_explanation": "Основной вопрос клиента о том, где находится кнопка входа, был решён корректным указанием на нужный сайт. Клиент подтвердил закрытие вопроса.",
    "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
   },
   {
    "conversation_id": "p1-ru-016",
    "criterion_id": "c06",
    "language": "RU",
-   "ai": 7,
+   "ai": 10,
    "human": 4,
    "accepted": [
     4
    ],
-   "confidence": 0.9,
-   "ai_explanation": "Один заметный сбой: оператор не уточнил платформу, что потребовало от клиента дополнительного уточнения, но диалог продолжился логично.",
+   "confidence": 1,
+   "ai_explanation": "Реплики оператора ясные, логичные, без противоречий. Пауз, требующих объявления ожидания, в середине диалога не было (максимальная пауза ~24 сек).",
    "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
   },
   {
@@ -1419,28 +1413,28 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.94,
+   "confidence": 0.91,
    "ai_explanation": "Завершение — Нет. Оператор только попрощался, не подведя итог и не предложив дальнейшую помощь. Основание — последняя реплика оператора #16 «Пожалуйста, до свидания.».",
    "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
   },
   {
    "conversation_id": "p1-ru-018",
-   "criterion_id": "c02",
+   "criterion_id": "c05",
    "language": "RU",
-   "ai": "NA",
+   "ai": "Y",
    "human": "N",
    "accepted": [
     "N"
    ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «В уведомлении прост",
+   "confidence": 0.95,
+   "ai_explanation": "Оператор сохранял вежливый тон, грубости или отмахивания не было, хотя качество консультации было низким.",
    "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N."
   },
   {
    "conversation_id": "p1-ru-018",
    "criterion_id": "c06",
    "language": "RU",
-   "ai": 7,
+   "ai": 10,
    "human": 0,
    "accepted": [
     0,
@@ -1448,20 +1442,61 @@
     4
    ],
    "confidence": 0.9,
-   "ai_explanation": "Диалог был понятен, но допущен один заметный сбой (неверное утверждение без данных), из-за которого клиенту пришлось реагировать.",
+   "ai_explanation": "Ответы оператора были ясными и связными, задержки в середине диалога не требовали предупреждения об ожидании.",
    "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-022",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 10,
+   "human": 4,
+   "accepted": [
+    4,
+    4,
+    0
+   ],
+   "confidence": 1,
+   "ai_explanation": "Реплики оператора ясны и связны, задержки в ответах не превышают допустимых норм.",
+   "note": "GROSS: 'Скиньте деньги мне на карту' (#10) + 'через компанию оформлять не надо' (#12) = paid service bypassing the company. 04=0, 05=N, 07=N (closed without farewell)."
+  },
+  {
+   "conversation_id": "p1-ru-023",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор не уточнил известные детали, а повторил инструкцию, которую клиент уже получил от бота.",
+   "note": "GROSS: asks for personal number for a paid private consultation (#12). Score can still be 100 — gross errors are tracked separately (demo point)."
+  },
+  {
+   "conversation_id": "p1-ru-023",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 15,
+   "human": 20,
+   "accepted": [
+    20
+   ],
+   "confidence": 1,
+   "ai_explanation": "Основной вопрос клиента (как найти облигации) решён, но оператор не уточнил, как действовать дальше, если клиенту понадобится помощь.",
+   "note": "GROSS: asks for personal number for a paid private consultation (#12). Score can still be 100 — gross errors are tracked separately (demo point)."
   },
   {
    "conversation_id": "p1-ru-025",
    "criterion_id": "c04",
    "language": "RU",
-   "ai": 20,
+   "ai": 0,
    "human": "NA",
    "accepted": [
     "NA"
    ],
-   "confidence": 0.95,
-   "ai_explanation": "Клиент не сформулировал конкретный вопрос до подключения оператора (реплики #1, #5, #7 содержат только просьбу о соединении). Оператор корректно инициировала диалог, представившись и спросив о сути об",
+   "confidence": 0.9,
+   "ai_explanation": "Ответ по существу не был дан, так как диалог прервался на этапе установления контакта и выяснения проблемы. Ключевая рекомендация отсутствует.",
    "note": "Client left before stating a request (#11): 04 N/A (exact checklist condition), 07 N/A (chat broke off), 03 N/A. Demo example for N/A."
   },
   {
@@ -1474,7 +1509,7 @@
     "N"
    ],
    "confidence": 1,
-   "ai_explanation": "Оператор сохранял вежливый тон, грубости или игнорирования жалобы не выявлено.",
+   "ai_explanation": "Оператор сохранял вежливый тон, грубости или отмахивания не зафиксировано.",
    "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
   },
   {
@@ -1488,22 +1523,24 @@
     4,
     0
    ],
-   "confidence": 0.9,
-   "ai_explanation": "Ответы оператора ясны и связны, задержек в середине диалога не было, клиент не переспрашивал из-за неясности формулировок (переспрос был связан с содержанием, а не с грамматикой/порядком).",
+   "confidence": 1,
+   "ai_explanation": "Реплики оператора ясны и связны, задержки в середине диалога не превышают 90 секунд.",
    "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
   },
   {
-   "conversation_id": "p1-kz-003",
-   "criterion_id": "c02",
-   "language": "KZ",
-   "ai": "NA",
-   "human": "Y",
+   "conversation_id": "p1-ru-029",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 10,
+   "human": 15,
    "accepted": [
-    "Y"
+    15,
+    15,
+    20
    ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #10 «Банк жағында аудар",
-   "note": "ID (#13) before case escalation; empathy #11."
+   "confidence": 0.9,
+   "ai_explanation": "Основной технический вопрос (как войти) решён, но существенный вопрос клиента о тоне общения проигнорирован, что снижает качество консультации.",
+   "note": "GROSS: insult 'Вы вообще читать умеете?' (#10). Answer itself correct (#12). Complaint #13 ignored -> 05=N; 'До свидания.' alone -> 07=N."
   },
   {
    "conversation_id": "p1-kz-003",
@@ -1515,7 +1552,7 @@
     10
    ],
    "confidence": 0.9,
-   "ai_explanation": "Наблюдается одна заметная пауза более 90 секунд без предупреждения ('Сейчас проверю' и т.п.), что снижает оценку до 7 баллов, хотя диалог в целом был связным.",
+   "ai_explanation": "Между репликами #19 и #22 прошла пауза более 90 секунд (110 секунд), в течение которой оператор не предупредил клиента об ожидании («сейчас проверю» и т.п.). Это один заметный сбой в управлении диалог",
    "note": "ID (#13) before case escalation; empathy #11."
   },
   {
@@ -1527,35 +1564,24 @@
    "accepted": [
     4
    ],
-   "confidence": 1,
-   "ai_explanation": "Между репликами 10 и 12 была пауза более 90 секунд (91 с), оператор не предупредил клиента об ожидании, что является одним заметным сбоем в ведении диалога.",
+   "confidence": 0.9,
+   "ai_explanation": "Между репликами 10 и 12 была пауза более 90 секунд, оператор не предупредил клиента об ожидании («сейчас проверю»), что является одним заметным сбоем в управлении диалогом.",
    "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N."
   },
   {
-   "conversation_id": "p1-kz-012",
-   "criterion_id": "c04",
+   "conversation_id": "p1-kz-008",
+   "criterion_id": "c06",
    "language": "KZ",
    "ai": 10,
-   "human": 20,
+   "human": 7,
    "accepted": [
-    20
+    7,
+    7,
+    4
    ],
-   "confidence": 0.7,
-   "ai_explanation": "Основной вопрос (почему заявка отклонена) не решён, так как клиент не предоставил необходимые данные. Оператор корректно определил следующий шаг, но существенный вопрос остался открытым до завершения ",
-   "note": "Correct next step given even though client postponed."
-  },
-  {
-   "conversation_id": "p1-kz-013",
-   "criterion_id": "c04",
-   "language": "KZ",
-   "ai": 10,
-   "human": 20,
-   "accepted": [
-    20
-   ],
-   "confidence": 0.7,
-   "ai_explanation": "Основной вопрос о поиске закрыт, но существенный вопрос о том, как совершить первую покупку (учитывая, что клиент новичок), остался открытым. Оператор предложил платную консультацию, что не является к",
-   "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14)."
+   "confidence": 1,
+   "ai_explanation": "Ответы оператора были ясными, логичными, без длительных необъявленных пауз.",
+   "note": "'Сәлем. Қай сайтқа кірдіңіз?' — no name, re-asks known info; no operator closing at all (chat ends on client #13)."
   },
   {
    "conversation_id": "p1-kz-015",
@@ -1568,8 +1594,8 @@
     5,
     0
    ],
-   "confidence": 0.7,
-   "ai_explanation": "Основной вопрос клиента о причине блокировки остался без ответа. Оператор предложил эскалацию, что является корректным следующим шагом, но часть запроса (получение информации) осталась открытой в теку",
+   "confidence": 0.9,
+   "ai_explanation": "Основной вопрос клиента о причине ограничения остался без прямого ответа (10 баллов). Хотя эскалация — это следующий шаг, игнорирование прямого вопроса «почему» снижает оценку с 20 до 10, так как суще",
    "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12)."
   },
   {
@@ -1582,7 +1608,7 @@
     "N"
    ],
    "confidence": 1,
-   "ai_explanation": "Оператор сохранял вежливый тон и реагировал на реплики клиента, грубости или игнорирования не выявлено.",
+   "ai_explanation": "Оператор сохранял вежливый тон на протяжении всего диалога, не проявлял грубости или сарказма, корректно отреагировал на замечание клиента.",
    "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12)."
   },
   {
@@ -1597,7 +1623,7 @@
     7
    ],
    "confidence": 1,
-   "ai_explanation": "Ответы оператора ясны, порядок диалога логичен, задержек без предупреждения в середине чата не зафиксировано.",
+   "ai_explanation": "Ответы оператора ясные, связные, без противоречий. Паузы между репликами (до 48 сек) не требуют обязательного предупреждения об ожидании в рамках данного чек-листа (порог ~90 сек), клиент не переспраш",
    "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12)."
   },
   {
@@ -1610,20 +1636,7 @@
     10
    ],
    "confidence": 1,
-   "ai_explanation": "Между репликами #10 и #12 была пауза более 90 секунд, оператор не предупредил клиента об ожидании, что является одним заметным сбоем в ведении диалога.",
-   "note": ""
-  },
-  {
-   "conversation_id": "p1-en-006",
-   "criterion_id": "c02",
-   "language": "EN",
-   "ai": "NA",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #10 «The bank app says ",
+   "ai_explanation": "Между репликами 10 и 12 была пауза более 90 секунд (91 с), оператор не предупредил клиента об ожидании («Сейчас проверю» и т.п.).",
    "note": ""
   },
   {
@@ -1635,8 +1648,8 @@
    "accepted": [
     10
    ],
-   "confidence": 0.9,
-   "ai_explanation": "Ответы ясные и связные, но была пауза более 90 секунд (109 с) между репликами #23 и #26 без объявления ожидания, что является одним заметным сбоем.",
+   "confidence": 0.95,
+   "ai_explanation": "Ответы ясные и связные, но была заметная пауза более 90 секунд (между строками 23 и 26) без предупреждения клиента об ожидании.",
    "note": ""
   },
   {
@@ -1651,21 +1664,8 @@
     4
    ],
    "confidence": 1,
-   "ai_explanation": "Ответы ясные и связные, задержек в середине диалога не было, клиент не переспрашивал из-за непонимания формулировок.",
+   "ai_explanation": "Реплики оператора ясны, логичны, паузы не превышают допустимых норм, необходимость предупреждать об ожидании отсутствовала.",
    "note": "Mirror of p1-ru-007: retry question (#5,#11) ignored at #12."
-  },
-  {
-   "conversation_id": "p1-en-008",
-   "criterion_id": "c04",
-   "language": "EN",
-   "ai": 15,
-   "human": 20,
-   "accepted": [
-    20
-   ],
-   "confidence": 0.9,
-   "ai_explanation": "Основной вопрос (как найти акцию и настроить ордер) решён, но пропущена второстепенная деталь: оператор не ответил на вопрос клиента о влиянии настройки на уже имеющуюся позицию, а лишь указал, что эт",
-   "note": ""
   },
   {
    "conversation_id": "p1-en-008",
@@ -1676,21 +1676,34 @@
    "accepted": [
     10
    ],
-   "confidence": 0.8,
-   "ai_explanation": "Ответы ясные и связные, клиент не переспрашивал. Паузы между репликами клиента и оператора не превышают порог, требующий предупреждения (максимальная пауза от клиента до ответа оператора ~47 сек).",
+   "confidence": 0.95,
+   "ai_explanation": "Между репликами #13 и #16 была пауза 91 секунда, оператор не предупредил клиента об ожидании (например, 'Сейчас проверю'). Это один заметный сбой в управлении диалогом.",
    "note": ""
   },
   {
    "conversation_id": "p1-en-013",
    "criterion_id": "c04",
    "language": "EN",
-   "ai": 15,
+   "ai": 0,
    "human": 20,
    "accepted": [
     20
    ],
-   "confidence": 0.8,
-   "ai_explanation": "Основной вопрос клиента (как найти облигации) был решён, но оператор проигнорировал отказ клиента от платных услуг и предложил неуместную услугу, что является пропущенной второстепенной деталью в конт",
+   "confidence": 0.9,
+   "ai_explanation": "Хотя оператор дал базовую инструкцию в #10, его последующее действие (#12) — предложение платных услуг вне компании — является ошибочным и некорректным шагом, который портит качество консультации и на",
+   "note": "GROSS: paid private advice (#12); agent closed chat (#14)."
+  },
+  {
+   "conversation_id": "p1-en-013",
+   "criterion_id": "c06",
+   "language": "EN",
+   "ai": 7,
+   "human": 10,
+   "accepted": [
+    10
+   ],
+   "confidence": 0.85,
+   "ai_explanation": "Первая реплика была ясной, но вторая (#12) содержала неуместное предложение, которое нарушает логику поддержки и требует от клиента реакции на нежелательное предложение. Это один заметный сбой в диало",
    "note": "GROSS: paid private advice (#12); agent closed chat (#14)."
   },
   {
@@ -1704,48 +1717,37 @@
     5,
     0
    ],
-   "confidence": 0.9,
-   "ai_explanation": "Основной вопрос (причина блокировки) передан на эскалацию, но существенный вопрос клиента о канале обратной связи остался без ответа.",
+   "confidence": 0.95,
+   "ai_explanation": "Основной вопрос (причина блокировки) передан на эскалацию, но существенный вопрос клиента о том, где он получит ответ, остался открытым.",
    "note": "Restriction disclosed (#11) with no ID; 'We can skip that' (#13); 'Will I hear back here?' (#14) unanswered; 'Goodbye.' only."
   },
   {
-   "conversation_id": "p1-en-015",
-   "criterion_id": "c02",
+   "conversation_id": "p1-en-014",
+   "criterion_id": "c06",
    "language": "EN",
-   "ai": "NA",
-   "human": "N",
+   "ai": 10,
+   "human": 4,
    "accepted": [
-    "N"
+    4,
+    4,
+    7
    ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «I'd rather speak wi",
-   "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only."
+   "confidence": 0.7,
+   "ai_explanation": "Реплики оператора ясные, связные и логичные. Пауз дольше 90 секунд в середине диалога не зафиксировано, предупреждений об ожидании не требовалось. Ошибки в формулировках, заставляющие клиента переспра",
+   "note": "Restriction disclosed (#11) with no ID; 'We can skip that' (#13); 'Will I hear back here?' (#14) unanswered; 'Goodbye.' only."
   },
   {
    "conversation_id": "p1-en-015",
    "criterion_id": "c06",
    "language": "EN",
-   "ai": 7,
+   "ai": 10,
    "human": 4,
    "accepted": [
     4
    ],
-   "confidence": 0.9,
-   "ai_explanation": "Один заметный сбой: оператор дал некорректную/неясную инструкцию в начале, из-за чего клиенту пришлось переспрашивать, но диалог продолжился и был понятен.",
+   "confidence": 1,
+   "ai_explanation": "Диалог проходил связно, ответы были понятны, задержки в пределах нормы.",
    "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only."
-  },
-  {
-   "conversation_id": "p4-ru-003",
-   "criterion_id": "c08",
-   "language": "RU",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.95,
-   "ai_explanation": "Выявлено раскрытие конфиденциальной информации (данные счёта) до завершения идентификации.",
-   "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76)."
   },
   {
    "conversation_id": "p4-ru-002",
@@ -1757,20 +1759,20 @@
     "Y"
    ],
    "confidence": 0.95,
-   "ai_explanation": "В первой реплике оператора отсутствует приветствие на языке клиента, хотя представление по имени присутствует. По правилу 01 это оценивается как 'Нет'.",
+   "ai_explanation": "В первой реплике оператора есть представление, но нет приветствия на языке клиента, что не соответствует требованию «приветствие И представление».",
    "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
   },
   {
    "conversation_id": "p4-ru-002",
    "criterion_id": "c02",
    "language": "RU",
-   "ai": "NA",
+   "ai": "N",
    "human": "Y",
    "accepted": [
     "Y"
    ],
-   "confidence": 0.81,
-   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #2 «Алло.» и первая реп",
+   "confidence": 0.85,
+   "ai_explanation": "Оператор не уточнил конкретную ценную бумагу до начала консультации, хотя клиент не предоставил эту информацию в начале звонка, что привело к необходимости последующих проверок.",
    "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
   },
   {
@@ -1782,37 +1784,24 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.95,
+   "confidence": 0.5,
    "ai_explanation": "Идентификация — N/A. Запрос не требовал идентификации: оператор дал общую информацию (навигация, продукты, процессы), данные конкретного счёта не раскрыл и защищённых действий не обещал. Основание — р",
    "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
   },
   {
    "conversation_id": "p4-ru-001",
-   "criterion_id": "c04",
+   "criterion_id": "c02",
    "language": "RU",
-   "ai": 20,
-   "human": 15,
+   "ai": "N",
+   "human": "NA",
    "accepted": [
-    15,
-    15,
-    10
+    "NA",
+    "NA",
+    "Y"
    ],
-   "confidence": 0.95,
-   "ai_explanation": "Оператор корректно ответил на основной вопрос клиента о роли поддержки, разъяснив разницу между технической помощью и инвестиционными консультациями, что закрыло суть запроса.",
+   "confidence": 0.9,
+   "ai_explanation": "Оператор не уточнил суть запроса клиента (который касался смены брокера и ожиданий по консультациям), а сразу дал шаблонный ответ о функциях техподдержки, что привело к недопониманию.",
    "note": "General question about what support does; correct boundaries explained (#26-31) but no concrete next step (how to get advice) -> 04=15. Client's hurt feelings (#41-42) acknowledged only partly (#43). Client hung up mid-sentence -> 07 N/A."
-  },
-  {
-   "conversation_id": "p4-ru-005",
-   "criterion_id": "c04",
-   "language": "RU",
-   "ai": 15,
-   "human": 20,
-   "accepted": [
-    20
-   ],
-   "confidence": 0.85,
-   "ai_explanation": "Основные вопросы клиента (как удалить счёт, как правильно заполнить данные при повторной регистрации) решены. Пропущена второстепенная деталь: оператор не дал точного времени готовности счёта к удален",
-   "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20."
   },
   {
    "conversation_id": "p4-ru-005",
@@ -1823,7 +1812,7 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.82,
+   "confidence": 0.91,
    "ai_explanation": "Завершение — N/A. Чат оборвался до того, как оператор мог его завершить: клиент покинул диалог или связь прервалась, прощания оператор дать не успел. Основание — последняя реплика оператора #75 «Да, в",
    "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20."
   }
@@ -1878,28 +1867,28 @@
   "RU": {
    "dialogs": 35,
    "labels": 280,
-   "accuracy": 0.914,
+   "accuracy": 0.907,
    "accuracy_ci": [
-    0.876,
-    0.942
+    0.867,
+    0.936
    ]
   },
   "KZ": {
    "dialogs": 15,
    "labels": 120,
-   "accuracy": 0.933,
+   "accuracy": 0.95,
    "accuracy_ci": [
-    0.874,
-    0.966
+    0.895,
+    0.977
    ]
   },
   "EN": {
    "dialogs": 15,
    "labels": 120,
-   "accuracy": 0.917,
+   "accuracy": 0.925,
    "accuracy_ci": [
-    0.853,
-    0.954
+    0.864,
+    0.96
    ]
   }
  },
@@ -1946,18 +1935,15 @@
    },
    {
     "code": "02",
-    "source": "rule+model_no",
-    "confidence": {
-     "agree": 0.92,
-     "disagree": 0.81
-    }
+    "source": "llm",
+    "confidence": null
    },
    {
     "code": "03",
     "source": "rule",
     "confidence": {
-     "agree": 0.89,
-     "disagree": 0.95
+     "agree": 0.98,
+     "disagree": 0.5
     }
    },
    {
@@ -1979,8 +1965,8 @@
     "code": "07",
     "source": "rule",
     "confidence": {
-     "agree": 0.94,
-     "disagree": 0.82
+     "agree": 0.91,
+     "disagree": 0.67
     }
    },
    {
@@ -2647,18 +2633,18 @@
        "code": "02",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.467,
+       "accuracy": 0.956,
        "accuracy_ci": [
-        0.329,
-        0.609
+        0.852,
+        0.988
        ],
-       "strict_accuracy": 0.422,
-       "kappa": 0.225,
+       "strict_accuracy": 0.956,
+       "kappa": 0.923,
        "kappa_ci": [
-        0.109,
-        0.35
+        0.805,
+        1
        ],
-       "kappa_expected_agreement": 0.254,
+       "kappa_expected_agreement": 0.422,
        "gold_distribution": {
         "NA": 26,
         "Y": 13,
@@ -2677,14 +2663,14 @@
           0
          ],
          [
-          4,
-          0,
-          22
+          1,
+          25,
+          0
          ],
          [
+          1,
           0,
-          0,
-          13
+          12
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -2692,15 +2678,15 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.6
+         "accuracy": 0.92
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.4
+         "accuracy": 1
         },
         "EN": {
          "n": 10,
-         "accuracy": 0.2
+         "accuracy": 1
         }
        }
       },
@@ -2708,18 +2694,18 @@
        "code": "03",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.178,
+       "accuracy": 0.956,
        "accuracy_ci": [
-        0.093,
-        0.313
+        0.852,
+        0.988
        ],
-       "strict_accuracy": 0.178,
-       "kappa": 0.112,
+       "strict_accuracy": 0.956,
+       "kappa": 0.875,
        "kappa_ci": [
-        0.027,
-        0.2
+        0.68,
+        1
        ],
-       "kappa_expected_agreement": 0.074,
+       "kappa_expected_agreement": 0.644,
        "gold_distribution": {
         "NA": 36,
         "Y": 6,
@@ -2738,8 +2724,8 @@
           0
          ],
          [
-          36,
-          0,
+          1,
+          35,
           0
          ],
          [
@@ -2753,15 +2739,15 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.24
+         "accuracy": 0.92
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.1
+         "accuracy": 1
         },
         "EN": {
          "n": 10,
-         "accuracy": 0.1
+         "accuracy": 1
         }
        }
       },
@@ -2776,12 +2762,12 @@
        ],
        "strict_accuracy": 0.756,
        "within_one_step": 0.956,
-       "kappa": 0.381,
+       "kappa": 0.344,
        "kappa_ci": [
-        0.09,
-        0.655
+        0.124,
+        0.578
        ],
-       "kappa_expected_agreement": 0.605,
+       "kappa_expected_agreement": 0.628,
        "gold_distribution": {
         "0": 1,
         "5": 2,
@@ -2809,43 +2795,43 @@
           0
          ],
          [
-          1,
-          0,
-          1,
-          0,
-          0,
-          0
-         ],
-         [
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-         ],
-         [
-          0,
           0,
           0,
           2,
-          4,
+          0,
+          0,
           0
          ],
          [
           0,
           0,
           1,
-          3,
-          30,
+          0,
+          0,
           0
          ],
          [
           0,
           0,
+          1,
+          0,
+          5,
+          0
+         ],
+         [
+          1,
           0,
           0,
           1,
+          32,
+          0
+         ],
+         [
+          1,
+          0,
+          0,
+          0,
+          0,
           0
          ]
         ],
@@ -2854,11 +2840,11 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.88
+         "accuracy": 0.84
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.8
+         "accuracy": 0.9
         },
         "EN": {
          "n": 10,
@@ -2870,18 +2856,18 @@
        "code": "05",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.978,
+       "accuracy": 0.956,
        "accuracy_ci": [
-        0.884,
-        0.996
+        0.852,
+        0.988
        ],
-       "strict_accuracy": 0.911,
-       "kappa": 0.552,
+       "strict_accuracy": 0.889,
+       "kappa": 0.39,
        "kappa_ci": [
-        -0.031,
-        0.877
+        -0.063,
+        0.776
        ],
-       "kappa_expected_agreement": 0.801,
+       "kappa_expected_agreement": 0.818,
        "gold_distribution": {
         "Y": 39,
         "N": 6
@@ -2893,8 +2879,8 @@
         ],
         "matrix": [
          [
-          3,
-          3
+          2,
+          4
          ],
          [
           1,
@@ -2906,7 +2892,7 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 1
+         "accuracy": 0.96
         },
         "KZ": {
          "n": 10,
@@ -2922,19 +2908,19 @@
        "code": "06",
        "kind": "scale",
        "n": 45,
-       "accuracy": 0.778,
+       "accuracy": 0.711,
        "accuracy_ci": [
-        0.637,
-        0.875
+        0.566,
+        0.823
        ],
-       "strict_accuracy": 0.667,
-       "within_one_step": 1,
-       "kappa": 0.266,
+       "strict_accuracy": 0.622,
+       "within_one_step": 0.933,
+       "kappa": 0.041,
        "kappa_ci": [
-        0.072,
-        0.455
+        -0.136,
+        0.26
        ],
-       "kappa_expected_agreement": 0.546,
+       "kappa_expected_agreement": 0.606,
        "gold_distribution": {
         "0": 1,
         "4": 6,
@@ -2952,26 +2938,26 @@
          [
           0,
           0,
-          1,
-          0
-         ],
-         [
           0,
-          0,
-          5,
           1
          ],
          [
           0,
-          1,
+          0,
           2,
           4
          ],
          [
           0,
           0,
-          3,
-          28
+          1,
+          6
+         ],
+         [
+          0,
+          0,
+          4,
+          27
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -2979,15 +2965,15 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.76
+         "accuracy": 0.72
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.9
+         "accuracy": 0.8
         },
         "EN": {
          "n": 10,
-         "accuracy": 0.7
+         "accuracy": 0.6
         }
        }
       },
@@ -2995,18 +2981,18 @@
        "code": "07",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.733,
+       "accuracy": 0.911,
        "accuracy_ci": [
-        0.59,
-        0.84
+        0.793,
+        0.965
        ],
-       "strict_accuracy": 0.689,
-       "kappa": 0.384,
+       "strict_accuracy": 0.867,
+       "kappa": 0.71,
        "kappa_ci": [
-        0.173,
-        0.601
+        0.494,
+        0.906
        ],
-       "kappa_expected_agreement": 0.495,
+       "kappa_expected_agreement": 0.54,
        "gold_distribution": {
         "Y": 32,
         "N": 9,
@@ -3025,14 +3011,14 @@
           2
          ],
          [
-          4,
-          0,
+          1,
+          3,
           0
          ],
          [
-          8,
-          0,
-          24
+          1,
+          2,
+          29
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -3040,15 +3026,15 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.68
+         "accuracy": 0.84
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.7
+         "accuracy": 1
         },
         "EN": {
          "n": 10,
-         "accuracy": 0.9
+         "accuracy": 1
         }
        }
       },
@@ -3056,18 +3042,18 @@
        "code": "08",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.978,
+       "accuracy": 1,
        "accuracy_ci": [
-        0.884,
-        0.996
-       ],
-       "strict_accuracy": 0.978,
-       "kappa": 0.897,
-       "kappa_ci": [
-        0.622,
+        0.921,
         1
        ],
-       "kappa_expected_agreement": 0.785,
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.802,
        "gold_distribution": {
         "N": 40,
         "Y": 5
@@ -3079,8 +3065,8 @@
         ],
         "matrix": [
          [
-          39,
-          1
+          40,
+          0
          ],
          [
           0,
@@ -3092,7 +3078,7 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.96
+         "accuracy": 1
         },
         "KZ": {
          "n": 10,
@@ -3107,17 +3093,17 @@
      ],
      "totals": {
       "n": 45,
-      "exact_match_rate": 0.022,
-      "mae": 18.53,
-      "within_5pts": 0.111,
-      "all_labels_match": 1,
+      "exact_match_rate": 0.556,
+      "mae": 8.42,
+      "within_5pts": 0.667,
+      "all_labels_match": 25,
       "engine_consistent_when_labels_match": true
      },
      "gross": {
       "recall": 1,
-      "precision": 0.833,
+      "precision": 1,
       "tp": 5,
-      "fp": 1,
+      "fp": 0,
       "fn": 0,
       "by_type": {
        "insult": {
@@ -3136,10 +3122,10 @@
        },
        "disclosure": {
         "tp": 2,
-        "fp": 1,
+        "fp": 0,
         "fn": 0,
         "recall": 1,
-        "precision": 0.667
+        "precision": 1
        }
       }
      },
@@ -3147,28 +3133,28 @@
       "RU": {
        "dialogs": 25,
        "labels": 200,
-       "accuracy": 0.76,
+       "accuracy": 0.895,
        "accuracy_ci": [
-        0.696,
-        0.814
+        0.845,
+        0.93
        ]
       },
       "KZ": {
        "dialogs": 10,
        "labels": 80,
-       "accuracy": 0.725,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.619,
-        0.811
+        0.878,
+        0.98
        ]
       },
       "EN": {
        "dialogs": 10,
        "labels": 80,
-       "accuracy": 0.725,
+       "accuracy": 0.938,
        "accuracy_ci": [
-        0.619,
-        0.811
+        0.862,
+        0.973
        ]
       }
      }
@@ -3232,18 +3218,18 @@
        "code": "02",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.867,
+       "accuracy": 0.956,
        "accuracy_ci": [
-        0.738,
-        0.937
+        0.852,
+        0.988
        ],
-       "strict_accuracy": 0.867,
-       "kappa": 0.742,
+       "strict_accuracy": 0.956,
+       "kappa": 0.923,
        "kappa_ci": [
-        0.522,
-        0.905
+        0.805,
+        1
        ],
-       "kappa_expected_agreement": 0.484,
+       "kappa_expected_agreement": 0.422,
        "gold_distribution": {
         "NA": 26,
         "Y": 13,
@@ -3257,19 +3243,19 @@
         ],
         "matrix": [
          [
-          3,
-          3,
+          6,
+          0,
           0
          ],
          [
-          0,
-          26,
+          1,
+          25,
           0
          ],
          [
+          1,
           0,
-          3,
-          10
+          12
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -3277,7 +3263,7 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.84
+         "accuracy": 0.92
         },
         "KZ": {
          "n": 10,
@@ -3285,7 +3271,7 @@
         },
         "EN": {
          "n": 10,
-         "accuracy": 0.8
+         "accuracy": 1
         }
        }
       },
@@ -3361,12 +3347,12 @@
        ],
        "strict_accuracy": 0.756,
        "within_one_step": 0.956,
-       "kappa": 0.381,
+       "kappa": 0.344,
        "kappa_ci": [
-        0.09,
-        0.655
+        0.124,
+        0.578
        ],
-       "kappa_expected_agreement": 0.605,
+       "kappa_expected_agreement": 0.628,
        "gold_distribution": {
         "0": 1,
         "5": 2,
@@ -3394,43 +3380,43 @@
           0
          ],
          [
-          1,
-          0,
-          1,
-          0,
-          0,
-          0
-         ],
-         [
-          0,
-          0,
-          1,
-          0,
-          0,
-          0
-         ],
-         [
-          0,
           0,
           0,
           2,
-          4,
+          0,
+          0,
           0
          ],
          [
           0,
           0,
           1,
-          3,
-          30,
+          0,
+          0,
           0
          ],
          [
           0,
           0,
+          1,
+          0,
+          5,
+          0
+         ],
+         [
+          1,
           0,
           0,
           1,
+          32,
+          0
+         ],
+         [
+          1,
+          0,
+          0,
+          0,
+          0,
           0
          ]
         ],
@@ -3439,11 +3425,11 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.88
+         "accuracy": 0.84
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.8
+         "accuracy": 0.9
         },
         "EN": {
          "n": 10,
@@ -3455,18 +3441,18 @@
        "code": "05",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.978,
+       "accuracy": 0.956,
        "accuracy_ci": [
-        0.884,
-        0.996
+        0.852,
+        0.988
        ],
-       "strict_accuracy": 0.911,
-       "kappa": 0.552,
+       "strict_accuracy": 0.889,
+       "kappa": 0.39,
        "kappa_ci": [
-        -0.031,
-        0.877
+        -0.063,
+        0.776
        ],
-       "kappa_expected_agreement": 0.801,
+       "kappa_expected_agreement": 0.818,
        "gold_distribution": {
         "Y": 39,
         "N": 6
@@ -3478,8 +3464,8 @@
         ],
         "matrix": [
          [
-          3,
-          3
+          2,
+          4
          ],
          [
           1,
@@ -3491,7 +3477,7 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 1
+         "accuracy": 0.96
         },
         "KZ": {
          "n": 10,
@@ -3507,19 +3493,19 @@
        "code": "06",
        "kind": "scale",
        "n": 45,
-       "accuracy": 0.778,
+       "accuracy": 0.711,
        "accuracy_ci": [
-        0.637,
-        0.875
+        0.566,
+        0.823
        ],
-       "strict_accuracy": 0.667,
-       "within_one_step": 1,
-       "kappa": 0.266,
+       "strict_accuracy": 0.622,
+       "within_one_step": 0.933,
+       "kappa": 0.041,
        "kappa_ci": [
-        0.072,
-        0.455
+        -0.136,
+        0.26
        ],
-       "kappa_expected_agreement": 0.546,
+       "kappa_expected_agreement": 0.606,
        "gold_distribution": {
         "0": 1,
         "4": 6,
@@ -3537,26 +3523,26 @@
          [
           0,
           0,
-          1,
-          0
-         ],
-         [
           0,
-          0,
-          5,
           1
          ],
          [
           0,
-          1,
+          0,
           2,
           4
          ],
          [
           0,
           0,
-          3,
-          28
+          1,
+          6
+         ],
+         [
+          0,
+          0,
+          4,
+          27
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -3564,15 +3550,15 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.76
+         "accuracy": 0.72
         },
         "KZ": {
          "n": 10,
-         "accuracy": 0.9
+         "accuracy": 0.8
         },
         "EN": {
          "n": 10,
-         "accuracy": 0.7
+         "accuracy": 0.6
         }
        }
       },
@@ -3641,18 +3627,18 @@
        "code": "08",
        "kind": "binary",
        "n": 45,
-       "accuracy": 0.978,
+       "accuracy": 1,
        "accuracy_ci": [
-        0.884,
-        0.996
-       ],
-       "strict_accuracy": 0.978,
-       "kappa": 0.897,
-       "kappa_ci": [
-        0.622,
+        0.921,
         1
        ],
-       "kappa_expected_agreement": 0.785,
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.802,
        "gold_distribution": {
         "N": 40,
         "Y": 5
@@ -3664,8 +3650,8 @@
         ],
         "matrix": [
          [
-          39,
-          1
+          40,
+          0
          ],
          [
           0,
@@ -3677,7 +3663,7 @@
        "by_language": {
         "RU": {
          "n": 25,
-         "accuracy": 0.96
+         "accuracy": 1
         },
         "KZ": {
          "n": 10,
@@ -3693,16 +3679,16 @@
      "totals": {
       "n": 45,
       "exact_match_rate": 0.556,
-      "mae": 5.94,
-      "within_5pts": 0.622,
-      "all_labels_match": 23,
+      "mae": 7.89,
+      "within_5pts": 0.667,
+      "all_labels_match": 25,
       "engine_consistent_when_labels_match": true
      },
      "gross": {
       "recall": 1,
-      "precision": 0.833,
+      "precision": 1,
       "tp": 5,
-      "fp": 1,
+      "fp": 0,
       "fn": 0,
       "by_type": {
        "insult": {
@@ -3721,10 +3707,10 @@
        },
        "disclosure": {
         "tp": 2,
-        "fp": 1,
+        "fp": 0,
         "fn": 0,
         "recall": 1,
-        "precision": 0.667
+        "precision": 1
        }
       }
      },
@@ -3750,10 +3736,10 @@
       "EN": {
        "dialogs": 10,
        "labels": 80,
-       "accuracy": 0.925,
+       "accuracy": 0.938,
        "accuracy_ci": [
-        0.846,
-        0.965
+        0.862,
+        0.973
        ]
       }
      }
@@ -4365,18 +4351,18 @@
        "code": "02",
        "kind": "binary",
        "n": 20,
-       "accuracy": 0.45,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.258,
-        0.658
+        0.764,
+        0.991
        ],
-       "strict_accuracy": 0.25,
-       "kappa": 0.104,
+       "strict_accuracy": 0.9,
+       "kappa": 0.785,
        "kappa_ci": [
-        0.016,
-        0.239
+        0.444,
+        1
        ],
-       "kappa_expected_agreement": 0.163,
+       "kappa_expected_agreement": 0.535,
        "gold_distribution": {
         "Y": 4,
         "NA": 15,
@@ -4395,9 +4381,9 @@
           0
          ],
          [
-          4,
-          0,
-          11
+          2,
+          13,
+          0
          ],
          [
           0,
@@ -4410,15 +4396,15 @@
        "by_language": {
         "RU": {
          "n": 10,
-         "accuracy": 0.6
+         "accuracy": 0.9
         },
         "KZ": {
          "n": 5,
-         "accuracy": 0.2
+         "accuracy": 1
         },
         "EN": {
          "n": 5,
-         "accuracy": 0.4
+         "accuracy": 1
         }
        }
       },
@@ -4426,18 +4412,18 @@
        "code": "03",
        "kind": "binary",
        "n": 20,
-       "accuracy": 0.1,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.028,
-        0.301
+        0.764,
+        0.991
        ],
-       "strict_accuracy": 0.1,
-       "kappa": 0.053,
+       "strict_accuracy": 0.95,
+       "kappa": 0.78,
        "kappa_ci": [
         0,
-        0.16
+        1
        ],
-       "kappa_expected_agreement": 0.05,
+       "kappa_expected_agreement": 0.773,
        "gold_distribution": {
         "NA": 18,
         "Y": 1,
@@ -4456,8 +4442,8 @@
           0
          ],
          [
-          18,
-          0,
+          1,
+          17,
           0
          ],
          [
@@ -4471,15 +4457,15 @@
        "by_language": {
         "RU": {
          "n": 10,
-         "accuracy": 0
+         "accuracy": 0.9
         },
         "KZ": {
          "n": 5,
-         "accuracy": 0.2
+         "accuracy": 1
         },
         "EN": {
          "n": 5,
-         "accuracy": 0.2
+         "accuracy": 1
         }
        }
       },
@@ -4487,19 +4473,19 @@
        "code": "04",
        "kind": "scale",
        "n": 20,
-       "accuracy": 0.8,
+       "accuracy": 0.9,
        "accuracy_ci": [
-        0.584,
-        0.919
+        0.699,
+        0.972
        ],
-       "strict_accuracy": 0.7,
-       "within_one_step": 0.95,
-       "kappa": 0.45,
+       "strict_accuracy": 0.85,
+       "within_one_step": 1,
+       "kappa": 0.724,
        "kappa_ci": [
-        0.095,
-        0.74
+        0.412,
+        1
        ],
-       "kappa_expected_agreement": 0.455,
+       "kappa_expected_agreement": 0.458,
        "gold_distribution": {
         "0": 2,
         "5": 1,
@@ -4517,8 +4503,8 @@
         ],
         "matrix": [
          [
-          1,
-          1,
+          2,
+          0,
           0,
           0,
           0
@@ -4541,15 +4527,15 @@
           0,
           0,
           0,
-          0,
-          2
+          1,
+          1
          ],
          [
           0,
           0,
           1,
-          1,
-          11
+          0,
+          12
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -4561,11 +4547,11 @@
         },
         "KZ": {
          "n": 5,
-         "accuracy": 0.8
+         "accuracy": 1
         },
         "EN": {
          "n": 5,
-         "accuracy": 0.6
+         "accuracy": 0.8
         }
        }
       },
@@ -4625,19 +4611,19 @@
        "code": "06",
        "kind": "scale",
        "n": 20,
-       "accuracy": 0.7,
+       "accuracy": 0.6,
        "accuracy_ci": [
-        0.481,
-        0.855
+        0.387,
+        0.781
        ],
-       "strict_accuracy": 0.6,
-       "within_one_step": 0.95,
-       "kappa": 0.167,
+       "strict_accuracy": 0.55,
+       "within_one_step": 0.9,
+       "kappa": -0.059,
        "kappa_ci": [
-        -0.176,
-        0.47
+        -0.25,
+        0.146
        ],
-       "kappa_expected_agreement": 0.52,
+       "kappa_expected_agreement": 0.575,
        "gold_distribution": {
         "4": 4,
         "7": 3,
@@ -4645,7 +4631,6 @@
        },
        "confusion": {
         "labels": [
-         "0",
          "4",
          "7",
          "10"
@@ -4653,24 +4638,15 @@
         "matrix": [
          [
           0,
-          0,
-          0,
-          0
+          1,
+          3
          ],
          [
-          1,
-          1,
-          1,
-          1
-         ],
-         [
-          0,
           0,
           0,
           3
          ],
          [
-          0,
           0,
           2,
           11
@@ -4681,7 +4657,7 @@
        "by_language": {
         "RU": {
          "n": 10,
-         "accuracy": 0.8
+         "accuracy": 0.7
         },
         "KZ": {
          "n": 5,
@@ -4689,7 +4665,7 @@
         },
         "EN": {
          "n": 5,
-         "accuracy": 0.6
+         "accuracy": 0.4
         }
        }
       },
@@ -4697,18 +4673,18 @@
        "code": "07",
        "kind": "binary",
        "n": 20,
-       "accuracy": 0.85,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.64,
-        0.948
+        0.764,
+        0.991
        ],
-       "strict_accuracy": 0.75,
-       "kappa": 0.528,
+       "strict_accuracy": 0.9,
+       "kappa": 0.822,
        "kappa_ci": [
-        0.184,
-        0.857
+        0.573,
+        1
        ],
-       "kappa_expected_agreement": 0.47,
+       "kappa_expected_agreement": 0.438,
        "gold_distribution": {
         "Y": 11,
         "N": 7,
@@ -4722,13 +4698,13 @@
         ],
         "matrix": [
          [
-          5,
+          7,
           0,
-          2
+          0
          ],
          [
-          2,
-          0,
+          1,
+          1,
           0
          ],
          [
@@ -4746,7 +4722,7 @@
         },
         "KZ": {
          "n": 5,
-         "accuracy": 0.6
+         "accuracy": 1
         },
         "EN": {
          "n": 5,
@@ -4809,10 +4785,10 @@
      ],
      "totals": {
       "n": 20,
-      "exact_match_rate": 0,
-      "mae": 17.58,
-      "within_5pts": 0.15,
-      "all_labels_match": 0,
+      "exact_match_rate": 0.5,
+      "mae": 7.26,
+      "within_5pts": 0.55,
+      "all_labels_match": 10,
       "engine_consistent_when_labels_match": true
      },
      "gross": {
@@ -4849,28 +4825,28 @@
       "RU": {
        "dialogs": 10,
        "labels": 80,
-       "accuracy": 0.763,
+       "accuracy": 0.9,
        "accuracy_ci": [
-        0.659,
-        0.842
+        0.815,
+        0.948
        ]
       },
       "KZ": {
        "dialogs": 5,
        "labels": 40,
-       "accuracy": 0.675,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.52,
-        0.799
+        0.835,
+        0.986
        ]
       },
       "EN": {
        "dialogs": 5,
        "labels": 40,
-       "accuracy": 0.725,
+       "accuracy": 0.9,
        "accuracy_ci": [
-        0.572,
-        0.839
+        0.769,
+        0.96
        ]
       }
      }
@@ -4932,13 +4908,13 @@
         0.764,
         0.991
        ],
-       "strict_accuracy": 0.95,
-       "kappa": 0.864,
+       "strict_accuracy": 0.9,
+       "kappa": 0.785,
        "kappa_ci": [
-        0.437,
+        0.444,
         1
        ],
-       "kappa_expected_agreement": 0.633,
+       "kappa_expected_agreement": 0.535,
        "gold_distribution": {
         "Y": 4,
         "NA": 15,
@@ -4957,14 +4933,14 @@
           0
          ],
          [
-          0,
-          15,
+          2,
+          13,
           0
          ],
          [
           0,
-          1,
-          3
+          0,
+          4
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -4972,11 +4948,11 @@
        "by_language": {
         "RU": {
          "n": 10,
-         "accuracy": 1
+         "accuracy": 0.9
         },
         "KZ": {
          "n": 5,
-         "accuracy": 0.8
+         "accuracy": 1
         },
         "EN": {
          "n": 5,
@@ -5049,19 +5025,19 @@
        "code": "04",
        "kind": "scale",
        "n": 20,
-       "accuracy": 0.8,
+       "accuracy": 0.9,
        "accuracy_ci": [
-        0.584,
-        0.919
+        0.699,
+        0.972
        ],
-       "strict_accuracy": 0.7,
-       "within_one_step": 0.95,
-       "kappa": 0.45,
+       "strict_accuracy": 0.85,
+       "within_one_step": 1,
+       "kappa": 0.724,
        "kappa_ci": [
-        0.095,
-        0.74
+        0.412,
+        1
        ],
-       "kappa_expected_agreement": 0.455,
+       "kappa_expected_agreement": 0.458,
        "gold_distribution": {
         "0": 2,
         "5": 1,
@@ -5079,8 +5055,8 @@
         ],
         "matrix": [
          [
-          1,
-          1,
+          2,
+          0,
           0,
           0,
           0
@@ -5103,15 +5079,15 @@
           0,
           0,
           0,
-          0,
-          2
+          1,
+          1
          ],
          [
           0,
           0,
           1,
-          1,
-          11
+          0,
+          12
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -5123,11 +5099,11 @@
         },
         "KZ": {
          "n": 5,
-         "accuracy": 0.8
+         "accuracy": 1
         },
         "EN": {
          "n": 5,
-         "accuracy": 0.6
+         "accuracy": 0.8
         }
        }
       },
@@ -5187,19 +5163,19 @@
        "code": "06",
        "kind": "scale",
        "n": 20,
-       "accuracy": 0.7,
+       "accuracy": 0.6,
        "accuracy_ci": [
-        0.481,
-        0.855
+        0.387,
+        0.781
        ],
-       "strict_accuracy": 0.6,
-       "within_one_step": 0.95,
-       "kappa": 0.167,
+       "strict_accuracy": 0.55,
+       "within_one_step": 0.9,
+       "kappa": -0.059,
        "kappa_ci": [
-        -0.176,
-        0.47
+        -0.25,
+        0.146
        ],
-       "kappa_expected_agreement": 0.52,
+       "kappa_expected_agreement": 0.575,
        "gold_distribution": {
         "4": 4,
         "7": 3,
@@ -5207,7 +5183,6 @@
        },
        "confusion": {
         "labels": [
-         "0",
          "4",
          "7",
          "10"
@@ -5215,24 +5190,15 @@
         "matrix": [
          [
           0,
-          0,
-          0,
-          0
+          1,
+          3
          ],
          [
-          1,
-          1,
-          1,
-          1
-         ],
-         [
-          0,
           0,
           0,
           3
          ],
          [
-          0,
           0,
           2,
           11
@@ -5243,7 +5209,7 @@
        "by_language": {
         "RU": {
          "n": 10,
-         "accuracy": 0.8
+         "accuracy": 0.7
         },
         "KZ": {
          "n": 5,
@@ -5251,7 +5217,7 @@
         },
         "EN": {
          "n": 5,
-         "accuracy": 0.6
+         "accuracy": 0.4
         }
        }
       },
@@ -5371,10 +5337,10 @@
      ],
      "totals": {
       "n": 20,
-      "exact_match_rate": 0.45,
-      "mae": 6.93,
-      "within_5pts": 0.45,
-      "all_labels_match": 9,
+      "exact_match_rate": 0.5,
+      "mae": 6.34,
+      "within_5pts": 0.55,
+      "all_labels_match": 10,
       "engine_consistent_when_labels_match": true
      },
      "gross": {
@@ -5411,19 +5377,19 @@
       "RU": {
        "dialogs": 10,
        "labels": 80,
-       "accuracy": 0.938,
+       "accuracy": 0.913,
        "accuracy_ci": [
-        0.862,
-        0.973
+        0.83,
+        0.957
        ]
       },
       "KZ": {
        "dialogs": 5,
        "labels": 40,
-       "accuracy": 0.9,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.769,
-        0.96
+        0.835,
+        0.986
        ]
       },
       "EN": {
@@ -6084,18 +6050,18 @@
        "code": "02",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.462,
+       "accuracy": 0.954,
        "accuracy_ci": [
-        0.346,
-        0.581
+        0.873,
+        0.984
        ],
-       "strict_accuracy": 0.369,
-       "kappa": 0.185,
+       "strict_accuracy": 0.938,
+       "kappa": 0.888,
        "kappa_ci": [
-        0.093,
-        0.288
+        0.777,
+        0.973
        ],
-       "kappa_expected_agreement": 0.226,
+       "kappa_expected_agreement": 0.451,
        "gold_distribution": {
         "NA": 41,
         "Y": 17,
@@ -6114,14 +6080,14 @@
           0
          ],
          [
-          8,
-          0,
-          33
+          3,
+          38,
+          0
          ],
          [
+          1,
           0,
-          0,
-          17
+          16
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -6129,15 +6095,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.6
+         "accuracy": 0.914
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.333
+         "accuracy": 1
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.267
+         "accuracy": 1
         }
        }
       },
@@ -6145,18 +6111,18 @@
        "code": "03",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.154,
+       "accuracy": 0.954,
        "accuracy_ci": [
-        0.086,
-        0.261
+        0.873,
+        0.984
        ],
-       "strict_accuracy": 0.154,
-       "kappa": 0.094,
+       "strict_accuracy": 0.954,
+       "kappa": 0.855,
        "kappa_ci": [
-        0.033,
-        0.158
+        0.664,
+        1
        ],
-       "kappa_expected_agreement": 0.066,
+       "kappa_expected_agreement": 0.681,
        "gold_distribution": {
         "NA": 54,
         "Y": 7,
@@ -6175,8 +6141,8 @@
           0
          ],
          [
-          54,
-          0,
+          2,
+          52,
           0
          ],
          [
@@ -6190,15 +6156,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.171
+         "accuracy": 0.914
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.133
+         "accuracy": 1
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.133
+         "accuracy": 1
         }
        }
       },
@@ -6206,19 +6172,19 @@
        "code": "04",
        "kind": "scale",
        "n": 65,
-       "accuracy": 0.846,
+       "accuracy": 0.877,
        "accuracy_ci": [
-        0.739,
-        0.914
+        0.775,
+        0.936
        ],
-       "strict_accuracy": 0.738,
-       "within_one_step": 0.954,
-       "kappa": 0.415,
+       "strict_accuracy": 0.785,
+       "within_one_step": 0.969,
+       "kappa": 0.5,
        "kappa_ci": [
-        0.187,
-        0.608
+        0.288,
+        0.677
        ],
-       "kappa_expected_agreement": 0.553,
+       "kappa_expected_agreement": 0.569,
        "gold_distribution": {
         "0": 3,
         "5": 3,
@@ -6238,17 +6204,9 @@
         ],
         "matrix": [
          [
-          2,
-          1,
+          3,
           0,
           0,
-          0,
-          0
-         ],
-         [
-          1,
-          0,
-          2,
           0,
           0,
           0
@@ -6264,25 +6222,33 @@
          [
           0,
           0,
+          3,
           0,
-          2,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          1,
           6,
           0
          ],
          [
+          1,
           0,
-          0,
-          2,
-          4,
-          41,
+          1,
+          1,
+          44,
           0
          ],
          [
-          0,
-          0,
-          0,
-          0,
           1,
+          0,
+          0,
+          0,
+          0,
           0
          ]
         ],
@@ -6291,15 +6257,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.886
+         "accuracy": 0.857
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.8
+         "accuracy": 0.933
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.8
+         "accuracy": 0.867
         }
        }
       },
@@ -6307,18 +6273,18 @@
        "code": "05",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.969,
+       "accuracy": 0.954,
        "accuracy_ci": [
-        0.895,
-        0.992
+        0.873,
+        0.984
        ],
-       "strict_accuracy": 0.923,
-       "kappa": 0.625,
+       "strict_accuracy": 0.908,
+       "kappa": 0.524,
        "kappa_ci": [
-        0.228,
-        0.891
+        0.089,
+        0.816
        ],
-       "kappa_expected_agreement": 0.795,
+       "kappa_expected_agreement": 0.806,
        "gold_distribution": {
         "Y": 56,
         "N": 9
@@ -6330,8 +6296,8 @@
         ],
         "matrix": [
          [
-          5,
-          4
+          4,
+          5
          ],
          [
           1,
@@ -6343,7 +6309,7 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.971
+         "accuracy": 0.943
         },
         "KZ": {
          "n": 15,
@@ -6359,19 +6325,19 @@
        "code": "06",
        "kind": "scale",
        "n": 65,
-       "accuracy": 0.754,
+       "accuracy": 0.677,
        "accuracy_ci": [
-        0.637,
-        0.842
+        0.556,
+        0.778
        ],
-       "strict_accuracy": 0.646,
-       "within_one_step": 0.985,
-       "kappa": 0.234,
+       "strict_accuracy": 0.6,
+       "within_one_step": 0.923,
+       "kappa": 0.009,
        "kappa_ci": [
-        0.07,
-        0.398
+        -0.125,
+        0.179
        ],
-       "kappa_expected_agreement": 0.538,
+       "kappa_expected_agreement": 0.596,
        "gold_distribution": {
         "0": 1,
         "4": 10,
@@ -6389,26 +6355,26 @@
          [
           0,
           0,
-          1,
-          0
-         ],
-         [
-          1,
-          1,
-          6,
-          2
+          0,
+          1
          ],
          [
           0,
-          1,
-          2,
+          0,
+          3,
           7
          ],
          [
           0,
           0,
-          5,
-          39
+          1,
+          9
+         ],
+         [
+          0,
+          0,
+          6,
+          38
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -6416,15 +6382,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.771
+         "accuracy": 0.714
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.8
+         "accuracy": 0.733
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.667
+         "accuracy": 0.533
         }
        }
       },
@@ -6432,18 +6398,18 @@
        "code": "07",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.769,
+       "accuracy": 0.923,
        "accuracy_ci": [
-        0.654,
-        0.855
+        0.832,
+        0.967
        ],
-       "strict_accuracy": 0.708,
-       "kappa": 0.428,
+       "strict_accuracy": 0.877,
+       "kappa": 0.757,
        "kappa_ci": [
-        0.238,
-        0.615
+        0.59,
+        0.902
        ],
-       "kappa_expected_agreement": 0.489,
+       "kappa_expected_agreement": 0.494,
        "gold_distribution": {
         "Y": 43,
         "N": 16,
@@ -6457,19 +6423,19 @@
         ],
         "matrix": [
          [
-          12,
+          14,
           0,
-          4
+          2
          ],
          [
-          6,
-          0,
+          2,
+          4,
           0
          ],
          [
-          9,
-          0,
-          34
+          2,
+          2,
+          39
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -6477,15 +6443,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.743
+         "accuracy": 0.857
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.667
+         "accuracy": 1
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.933
+         "accuracy": 1
         }
        }
       },
@@ -6493,18 +6459,18 @@
        "code": "08",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.985,
+       "accuracy": 1,
        "accuracy_ci": [
-        0.918,
-        0.997
-       ],
-       "strict_accuracy": 0.985,
-       "kappa": 0.932,
-       "kappa_ci": [
-        0.745,
+        0.944,
         1
        ],
-       "kappa_expected_agreement": 0.773,
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.784,
        "gold_distribution": {
         "N": 57,
         "Y": 8
@@ -6516,8 +6482,8 @@
         ],
         "matrix": [
          [
-          56,
-          1
+          57,
+          0
          ],
          [
           0,
@@ -6529,7 +6495,7 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.971
+         "accuracy": 1
         },
         "KZ": {
          "n": 15,
@@ -6544,17 +6510,17 @@
      ],
      "totals": {
       "n": 65,
-      "exact_match_rate": 0.015,
-      "mae": 18.24,
-      "within_5pts": 0.123,
-      "all_labels_match": 1,
+      "exact_match_rate": 0.538,
+      "mae": 8.07,
+      "within_5pts": 0.631,
+      "all_labels_match": 35,
       "engine_consistent_when_labels_match": true
      },
      "gross": {
       "recall": 1,
-      "precision": 0.889,
+      "precision": 1,
       "tp": 8,
-      "fp": 1,
+      "fp": 0,
       "fn": 0,
       "by_type": {
        "insult": {
@@ -6573,10 +6539,10 @@
        },
        "disclosure": {
         "tp": 3,
-        "fp": 1,
+        "fp": 0,
         "fn": 0,
         "recall": 1,
-        "precision": 0.75
+        "precision": 1
        }
       }
      },
@@ -6584,28 +6550,28 @@
       "RU": {
        "dialogs": 35,
        "labels": 280,
-       "accuracy": 0.761,
+       "accuracy": 0.896,
        "accuracy_ci": [
-        0.707,
-        0.807
+        0.855,
+        0.927
        ]
       },
       "KZ": {
        "dialogs": 15,
        "labels": 120,
-       "accuracy": 0.708,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.622,
-        0.782
+        0.895,
+        0.977
        ]
       },
       "EN": {
        "dialogs": 15,
        "labels": 120,
-       "accuracy": 0.725,
+       "accuracy": 0.925,
        "accuracy_ci": [
-        0.639,
-        0.797
+        0.864,
+        0.96
        ]
       }
      }
@@ -6669,18 +6635,18 @@
        "code": "02",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.892,
+       "accuracy": 0.954,
        "accuracy_ci": [
-        0.794,
-        0.947
+        0.873,
+        0.984
        ],
-       "strict_accuracy": 0.892,
-       "kappa": 0.773,
+       "strict_accuracy": 0.938,
+       "kappa": 0.888,
        "kappa_ci": [
-        0.611,
-        0.912
+        0.777,
+        0.973
        ],
-       "kappa_expected_agreement": 0.525,
+       "kappa_expected_agreement": 0.451,
        "gold_distribution": {
         "NA": 41,
         "Y": 17,
@@ -6694,19 +6660,19 @@
         ],
         "matrix": [
          [
-          4,
+          7,
+          0,
+          0
+         ],
+         [
           3,
+          38,
           0
          ],
          [
+          1,
           0,
-          41,
-          0
-         ],
-         [
-          0,
-          4,
-          13
+          16
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -6714,15 +6680,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.886
+         "accuracy": 0.914
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.933
+         "accuracy": 1
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.867
+         "accuracy": 1
         }
        }
       },
@@ -6791,19 +6757,19 @@
        "code": "04",
        "kind": "scale",
        "n": 65,
-       "accuracy": 0.846,
+       "accuracy": 0.877,
        "accuracy_ci": [
-        0.739,
-        0.914
+        0.775,
+        0.936
        ],
-       "strict_accuracy": 0.738,
-       "within_one_step": 0.954,
-       "kappa": 0.415,
+       "strict_accuracy": 0.785,
+       "within_one_step": 0.969,
+       "kappa": 0.5,
        "kappa_ci": [
-        0.187,
-        0.608
+        0.288,
+        0.677
        ],
-       "kappa_expected_agreement": 0.553,
+       "kappa_expected_agreement": 0.569,
        "gold_distribution": {
         "0": 3,
         "5": 3,
@@ -6823,17 +6789,9 @@
         ],
         "matrix": [
          [
-          2,
-          1,
+          3,
           0,
           0,
-          0,
-          0
-         ],
-         [
-          1,
-          0,
-          2,
           0,
           0,
           0
@@ -6849,25 +6807,33 @@
          [
           0,
           0,
+          3,
           0,
-          2,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          1,
           6,
           0
          ],
          [
+          1,
           0,
-          0,
-          2,
-          4,
-          41,
+          1,
+          1,
+          44,
           0
          ],
          [
-          0,
-          0,
-          0,
-          0,
           1,
+          0,
+          0,
+          0,
+          0,
           0
          ]
         ],
@@ -6876,15 +6842,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.886
+         "accuracy": 0.857
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.8
+         "accuracy": 0.933
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.8
+         "accuracy": 0.867
         }
        }
       },
@@ -6892,18 +6858,18 @@
        "code": "05",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.969,
+       "accuracy": 0.954,
        "accuracy_ci": [
-        0.895,
-        0.992
+        0.873,
+        0.984
        ],
-       "strict_accuracy": 0.923,
-       "kappa": 0.625,
+       "strict_accuracy": 0.908,
+       "kappa": 0.524,
        "kappa_ci": [
-        0.228,
-        0.891
+        0.089,
+        0.816
        ],
-       "kappa_expected_agreement": 0.795,
+       "kappa_expected_agreement": 0.806,
        "gold_distribution": {
         "Y": 56,
         "N": 9
@@ -6915,8 +6881,8 @@
         ],
         "matrix": [
          [
-          5,
-          4
+          4,
+          5
          ],
          [
           1,
@@ -6928,7 +6894,7 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.971
+         "accuracy": 0.943
         },
         "KZ": {
          "n": 15,
@@ -6944,19 +6910,19 @@
        "code": "06",
        "kind": "scale",
        "n": 65,
-       "accuracy": 0.754,
+       "accuracy": 0.677,
        "accuracy_ci": [
-        0.637,
-        0.842
+        0.556,
+        0.778
        ],
-       "strict_accuracy": 0.646,
-       "within_one_step": 0.985,
-       "kappa": 0.234,
+       "strict_accuracy": 0.6,
+       "within_one_step": 0.923,
+       "kappa": 0.009,
        "kappa_ci": [
-        0.07,
-        0.398
+        -0.125,
+        0.179
        ],
-       "kappa_expected_agreement": 0.538,
+       "kappa_expected_agreement": 0.596,
        "gold_distribution": {
         "0": 1,
         "4": 10,
@@ -6974,26 +6940,26 @@
          [
           0,
           0,
-          1,
-          0
-         ],
-         [
-          1,
-          1,
-          6,
-          2
+          0,
+          1
          ],
          [
           0,
-          1,
-          2,
+          0,
+          3,
           7
          ],
          [
           0,
           0,
-          5,
-          39
+          1,
+          9
+         ],
+         [
+          0,
+          0,
+          6,
+          38
          ]
         ],
         "note": "строки — эталон (человек), столбцы — модель"
@@ -7001,15 +6967,15 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.771
+         "accuracy": 0.714
         },
         "KZ": {
          "n": 15,
-         "accuracy": 0.8
+         "accuracy": 0.733
         },
         "EN": {
          "n": 15,
-         "accuracy": 0.667
+         "accuracy": 0.533
         }
        }
       },
@@ -7078,18 +7044,18 @@
        "code": "08",
        "kind": "binary",
        "n": 65,
-       "accuracy": 0.985,
+       "accuracy": 1,
        "accuracy_ci": [
-        0.918,
-        0.997
-       ],
-       "strict_accuracy": 0.985,
-       "kappa": 0.932,
-       "kappa_ci": [
-        0.745,
+        0.944,
         1
        ],
-       "kappa_expected_agreement": 0.773,
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.784,
        "gold_distribution": {
         "N": 57,
         "Y": 8
@@ -7101,8 +7067,8 @@
         ],
         "matrix": [
          [
-          56,
-          1
+          57,
+          0
          ],
          [
           0,
@@ -7114,7 +7080,7 @@
        "by_language": {
         "RU": {
          "n": 35,
-         "accuracy": 0.971
+         "accuracy": 1
         },
         "KZ": {
          "n": 15,
@@ -7129,17 +7095,17 @@
      ],
      "totals": {
       "n": 65,
-      "exact_match_rate": 0.523,
-      "mae": 6.25,
-      "within_5pts": 0.569,
-      "all_labels_match": 32,
+      "exact_match_rate": 0.538,
+      "mae": 7.41,
+      "within_5pts": 0.631,
+      "all_labels_match": 35,
       "engine_consistent_when_labels_match": true
      },
      "gross": {
       "recall": 1,
-      "precision": 0.889,
+      "precision": 1,
       "tp": 8,
-      "fp": 1,
+      "fp": 0,
       "fn": 0,
       "by_type": {
        "insult": {
@@ -7158,10 +7124,10 @@
        },
        "disclosure": {
         "tp": 3,
-        "fp": 1,
+        "fp": 0,
         "fn": 0,
         "recall": 1,
-        "precision": 0.75
+        "precision": 1
        }
       }
      },
@@ -7169,28 +7135,28 @@
       "RU": {
        "dialogs": 35,
        "labels": 280,
-       "accuracy": 0.914,
+       "accuracy": 0.907,
        "accuracy_ci": [
-        0.876,
-        0.942
+        0.867,
+        0.936
        ]
       },
       "KZ": {
        "dialogs": 15,
        "labels": 120,
-       "accuracy": 0.933,
+       "accuracy": 0.95,
        "accuracy_ci": [
-        0.874,
-        0.966
+        0.895,
+        0.977
        ]
       },
       "EN": {
        "dialogs": 15,
        "labels": 120,
-       "accuracy": 0.917,
+       "accuracy": 0.925,
        "accuracy_ci": [
-        0.853,
-        0.954
+        0.864,
+        0.96
        ]
       }
      }
@@ -7213,23 +7179,36 @@
    "injection_checked": false
   },
   {
+   "file": "reports/runs/alem_qwen3-8_v2.json",
+   "provider": "alem",
+   "model": "qwen3-8",
+   "created_at": "2026-11-07T13:18:12.621Z",
+   "n": 65,
+   "split_used": "all",
+   "calls": 82,
+   "cache_hits": 0,
+   "cache_misses": 520,
+   "retest_n": 0,
+   "injection_checked": false
+  },
+  {
    "file": "reports/runs/heuristic_baseline_all.json",
    "provider": "heuristic",
    "model": "heuristic-v1",
-   "created_at": "2026-11-07T11:33:40.581Z",
+   "created_at": "2026-11-07T13:19:00.926Z",
    "n": 65,
    "split_used": "all",
    "calls": 0,
-   "cache_hits": 520,
-   "cache_misses": 40,
-   "retest_n": 5,
-   "injection_checked": true
+   "cache_hits": 0,
+   "cache_misses": 520,
+   "retest_n": 0,
+   "injection_checked": false
   },
   {
    "file": "reports/runs/hybrid_qwen3-8.json",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T13:04:47.342Z",
+   "created_at": "2026-11-07T13:18:59.424Z",
    "n": 65,
    "split_used": "all",
    "calls": 0,

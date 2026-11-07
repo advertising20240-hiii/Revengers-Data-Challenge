@@ -1,7 +1,7 @@
 {
   "_comment": "Per-criterion decision source chosen by measured accuracy on the TUNE split (45 dialogs) of the human-labelled DEV set; holdout (20) is reported separately in reports/calibration.md. llm = model label; rule = deterministic check (model label kept as second opinion); rule+model_no = deterministic check, but a model «Нет» overrides a rule «Да». Applies only while the criterion definition is unchanged; new or edited criteria are always judged by the model.",
   "model": "qwen3-8",
-  "measured_at": "2026-11-07",
+  "measured_at": "2026-11-07 (rerun after N/A-normalisation fix)",
   "criteria": [
     {
       "code": "01",
@@ -11,20 +11,15 @@
     {
       "code": "02",
       "definition": "Да — оператор учёл известные детали и уточнил недостающее до ответа. N/A — данных для ответа хватало с самого начала.",
-      "source": "rule+model_no",
-      "confidence": {
-        "agree": 0.92,
-        "disagree": 0.81,
-        "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
-      }
+      "source": "llm"
     },
     {
       "code": "03",
       "definition": "Да — проверка личности подтверждена до раскрытия данных или защищённого действия. N/A — запрос не требовал идентификации.",
       "source": "rule",
       "confidence": {
-        "agree": 0.89,
-        "disagree": 0.95,
+        "agree": 0.98,
+        "disagree": 0.5,
         "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
       }
     },
@@ -48,8 +43,8 @@
       "definition": "Да — оператор подвёл итог или предложил дальнейшую помощь и попрощался. N/A — чат оборвался до возможности его завершить.",
       "source": "rule",
       "confidence": {
-        "agree": 0.94,
-        "disagree": 0.82,
+        "agree": 0.91,
+        "disagree": 0.67,
         "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
       }
     },
