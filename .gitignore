@@ -4,31 +4,17 @@
 !.env.example
 *.pem
 *.key
-# deps & caches
+# dependencies & caches
 node_modules/
 .cache/
 coverage/
 *.log
-# runtime data (raw fetches and the local database are regenerated)
+# runtime data (regenerated locally)
 data/raw/
 data/db/
-# generated artifacts
+# generated screenshots
 reports/jury/*.png
-# editor / tooling folders that never belong in the product repo
-.claude/
-.claude*
-CLAUDE.md
-AGENTS.md
-.agents/
-.mcp.json
-mcp*.json
-agents/
-skills/
-SKILL.md
-.cursor/
-.codex/
-.aider*
-memory/
+# editor / OS
 .vscode/
 .idea/
 .DS_Store
