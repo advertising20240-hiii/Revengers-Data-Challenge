@@ -1,5 +1,5 @@
 {
- "created_at": "2026-11-07T12:34:05.961Z",
+ "created_at": "2026-11-07T13:07:37.310Z",
  "model": "qwen3-8",
  "provider": "alem",
  "verifier_model": null,
@@ -93,11 +93,22 @@
     0.918,
     0.997
    ],
+   "strict_accuracy": 0.985,
    "kappa": 0.881,
    "kappa_ci": [
     0.488,
     1
    ],
+   "kappa_observed_agreement": 0.985,
+   "kappa_expected_agreement": 0.871,
+   "gold_distribution": {
+    "Y": 61,
+    "N": 4
+   },
+   "gold_majority": {
+    "label": "Y",
+    "share": 0.938
+   },
    "confusion": {
     "labels": [
      "N",
@@ -132,7 +143,15 @@
    "tune": {
     "n": 45,
     "accuracy": 0.978,
-    "kappa": 0.877
+    "accuracy_ci": [
+     0.884,
+     0.996
+    ],
+    "kappa": 0.877,
+    "kappa_ci": [
+     0.483,
+     1
+    ]
    },
    "holdout": {
     "n": 20,
@@ -146,6 +165,20 @@
      1,
      1
     ],
+    "confusion": {
+     "labels": [
+      "Y"
+     ],
+     "matrix": [
+      [
+       20
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "Y": 20
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -173,11 +206,23 @@
     0.794,
     0.947
    ],
+   "strict_accuracy": 0.892,
    "kappa": 0.773,
    "kappa_ci": [
     0.611,
     0.912
    ],
+   "kappa_observed_agreement": 0.892,
+   "kappa_expected_agreement": 0.525,
+   "gold_distribution": {
+    "NA": 41,
+    "Y": 17,
+    "N": 7
+   },
+   "gold_majority": {
+    "label": "NA",
+    "share": 0.631
+   },
    "confusion": {
     "labels": [
      "N",
@@ -220,7 +265,15 @@
    "tune": {
     "n": 45,
     "accuracy": 0.867,
-    "kappa": 0.742
+    "accuracy_ci": [
+     0.738,
+     0.937
+    ],
+    "kappa": 0.742,
+    "kappa_ci": [
+     0.522,
+     0.905
+    ]
    },
    "holdout": {
     "n": 20,
@@ -234,6 +287,36 @@
      0.437,
      1
     ],
+    "confusion": {
+     "labels": [
+      "N",
+      "NA",
+      "Y"
+     ],
+     "matrix": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       0,
+       15,
+       0
+      ],
+      [
+       0,
+       1,
+       3
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "Y": 4,
+     "NA": 15,
+     "N": 1
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -256,16 +339,28 @@
    "title": "Идентификация",
    "kind": "binary",
    "n": 65,
-   "accuracy": 0.954,
+   "accuracy": 0.985,
    "accuracy_ci": [
-    0.873,
-    0.984
+    0.918,
+    0.997
    ],
-   "kappa": 0.764,
+   "strict_accuracy": 0.985,
+   "kappa": 0.946,
    "kappa_ci": [
-    0.509,
-    0.935
+    0.819,
+    1
    ],
+   "kappa_observed_agreement": 0.985,
+   "kappa_expected_agreement": 0.717,
+   "gold_distribution": {
+    "NA": 54,
+    "Y": 7,
+    "N": 4
+   },
+   "gold_majority": {
+    "label": "NA",
+    "share": 0.831
+   },
    "confusion": {
     "labels": [
      "N",
@@ -274,8 +369,8 @@
     ],
     "matrix": [
      [
-      3,
-      1,
+      4,
+      0,
       0
      ],
      [
@@ -284,9 +379,9 @@
       0
      ],
      [
+      0,
       1,
-      2,
-      4
+      6
      ]
     ],
     "note": "строки — эталон (человек), столбцы — модель"
@@ -294,7 +389,7 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.914
+     "accuracy": 0.971
     },
     "KZ": {
      "n": 15,
@@ -307,8 +402,16 @@
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.933,
-    "kappa": 0.697
+    "accuracy": 0.978,
+    "accuracy_ci": [
+     0.884,
+     0.996
+    ],
+    "kappa": 0.931,
+    "kappa_ci": [
+     0.771,
+     1
+    ]
    },
    "holdout": {
     "n": 20,
@@ -322,6 +425,36 @@
      1,
      1
     ],
+    "confusion": {
+     "labels": [
+      "N",
+      "NA",
+      "Y"
+     ],
+     "matrix": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       0,
+       18,
+       0
+      ],
+      [
+       0,
+       0,
+       1
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "NA": 18,
+     "Y": 1,
+     "N": 1
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -349,12 +482,27 @@
     0.739,
     0.914
    ],
+   "strict_accuracy": 0.738,
    "within_one_step": 0.954,
    "kappa": 0.415,
    "kappa_ci": [
     0.187,
     0.608
    ],
+   "kappa_observed_agreement": 0.738,
+   "kappa_expected_agreement": 0.553,
+   "gold_distribution": {
+    "0": 3,
+    "5": 3,
+    "10": 3,
+    "15": 8,
+    "20": 47,
+    "NA": 1
+   },
+   "gold_majority": {
+    "label": "20",
+    "share": 0.723
+   },
    "confusion": {
     "labels": [
      "0",
@@ -433,7 +581,16 @@
    "tune": {
     "n": 45,
     "accuracy": 0.867,
-    "kappa": 0.381
+    "accuracy_ci": [
+     0.738,
+     0.937
+    ],
+    "kappa": 0.381,
+    "kappa_ci": [
+     0.09,
+     0.655
+    ],
+    "within_one_step": 0.956
    },
    "holdout": {
     "n": 20,
@@ -448,6 +605,60 @@
      0.74
     ],
     "within_one_step": 0.95,
+    "confusion": {
+     "labels": [
+      "0",
+      "5",
+      "10",
+      "15",
+      "20"
+     ],
+     "matrix": [
+      [
+       1,
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       0,
+       0,
+       1,
+       0,
+       0
+      ],
+      [
+       0,
+       0,
+       2,
+       0,
+       0
+      ],
+      [
+       0,
+       0,
+       0,
+       0,
+       2
+      ],
+      [
+       0,
+       0,
+       1,
+       1,
+       11
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "0": 2,
+     "5": 1,
+     "10": 2,
+     "15": 2,
+     "20": 13
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -475,11 +686,22 @@
     0.895,
     0.992
    ],
+   "strict_accuracy": 0.923,
    "kappa": 0.625,
    "kappa_ci": [
     0.228,
     0.891
    ],
+   "kappa_observed_agreement": 0.923,
+   "kappa_expected_agreement": 0.795,
+   "gold_distribution": {
+    "Y": 56,
+    "N": 9
+   },
+   "gold_majority": {
+    "label": "Y",
+    "share": 0.862
+   },
    "confusion": {
     "labels": [
      "N",
@@ -514,7 +736,15 @@
    "tune": {
     "n": 45,
     "accuracy": 0.978,
-    "kappa": 0.552
+    "accuracy_ci": [
+     0.884,
+     0.996
+    ],
+    "kappa": 0.552,
+    "kappa_ci": [
+     -0.031,
+     0.877
+    ]
    },
    "holdout": {
     "n": 20,
@@ -528,6 +758,27 @@
      0,
      1
     ],
+    "confusion": {
+     "labels": [
+      "N",
+      "Y"
+     ],
+     "matrix": [
+      [
+       2,
+       1
+      ],
+      [
+       0,
+       17
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "Y": 17,
+     "N": 3
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -555,12 +806,25 @@
     0.637,
     0.842
    ],
+   "strict_accuracy": 0.646,
    "within_one_step": 0.985,
    "kappa": 0.234,
    "kappa_ci": [
     0.07,
     0.398
    ],
+   "kappa_observed_agreement": 0.646,
+   "kappa_expected_agreement": 0.538,
+   "gold_distribution": {
+    "0": 1,
+    "4": 10,
+    "7": 10,
+    "10": 44
+   },
+   "gold_majority": {
+    "label": "10",
+    "share": 0.677
+   },
    "confusion": {
     "labels": [
      "0",
@@ -613,7 +877,16 @@
    "tune": {
     "n": 45,
     "accuracy": 0.778,
-    "kappa": 0.266
+    "accuracy_ci": [
+     0.637,
+     0.875
+    ],
+    "kappa": 0.266,
+    "kappa_ci": [
+     0.072,
+     0.455
+    ],
+    "within_one_step": 1
    },
    "holdout": {
     "n": 20,
@@ -628,6 +901,46 @@
      0.47
     ],
     "within_one_step": 0.95,
+    "confusion": {
+     "labels": [
+      "0",
+      "4",
+      "7",
+      "10"
+     ],
+     "matrix": [
+      [
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       1,
+       1,
+       1,
+       1
+      ],
+      [
+       0,
+       0,
+       0,
+       3
+      ],
+      [
+       0,
+       0,
+       2,
+       11
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "4": 4,
+     "7": 3,
+     "10": 13
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -655,11 +968,23 @@
     0.852,
     0.976
    ],
+   "strict_accuracy": 0.908,
    "kappa": 0.819,
    "kappa_ci": [
     0.67,
     0.942
    ],
+   "kappa_observed_agreement": 0.908,
+   "kappa_expected_agreement": 0.489,
+   "gold_distribution": {
+    "Y": 43,
+    "N": 16,
+    "NA": 6
+   },
+   "gold_majority": {
+    "label": "Y",
+    "share": 0.662
+   },
    "confusion": {
     "labels": [
      "N",
@@ -702,7 +1027,15 @@
    "tune": {
     "n": 45,
     "accuracy": 0.933,
-    "kappa": 0.76
+    "accuracy_ci": [
+     0.821,
+     0.977
+    ],
+    "kappa": 0.76,
+    "kappa_ci": [
+     0.541,
+     0.949
+    ]
    },
    "holdout": {
     "n": 20,
@@ -716,6 +1049,36 @@
      0.706,
      1
     ],
+    "confusion": {
+     "labels": [
+      "N",
+      "NA",
+      "Y"
+     ],
+     "matrix": [
+      [
+       7,
+       0,
+       0
+      ],
+      [
+       0,
+       2,
+       0
+      ],
+      [
+       1,
+       0,
+       10
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "Y": 11,
+     "N": 7,
+     "NA": 2
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -743,11 +1106,22 @@
     0.918,
     0.997
    ],
+   "strict_accuracy": 0.985,
    "kappa": 0.932,
    "kappa_ci": [
     0.745,
     1
    ],
+   "kappa_observed_agreement": 0.985,
+   "kappa_expected_agreement": 0.773,
+   "gold_distribution": {
+    "N": 57,
+    "Y": 8
+   },
+   "gold_majority": {
+    "label": "N",
+    "share": 0.877
+   },
    "confusion": {
     "labels": [
      "N",
@@ -782,7 +1156,15 @@
    "tune": {
     "n": 45,
     "accuracy": 0.978,
-    "kappa": 0.897
+    "accuracy_ci": [
+     0.884,
+     0.996
+    ],
+    "kappa": 0.897,
+    "kappa_ci": [
+     0.622,
+     1
+    ]
    },
    "holdout": {
     "n": 20,
@@ -796,6 +1178,27 @@
      1,
      1
     ],
+    "confusion": {
+     "labels": [
+      "N",
+      "Y"
+     ],
+     "matrix": [
+      [
+       17,
+       0
+      ],
+      [
+       0,
+       3
+      ]
+     ],
+     "note": "строки — эталон (человек), столбцы — модель"
+    },
+    "gold_distribution": {
+     "N": 17,
+     "Y": 3
+    },
     "by_language": {
      "RU": {
       "n": 10,
@@ -816,8 +1219,8 @@
  "totals": {
   "n": 65,
   "exact_match_rate": 0.523,
-  "mae": 6.41,
-  "within_5pts": 0.554,
+  "mae": 6.25,
+  "within_5pts": 0.569,
   "all_labels_match": 32,
   "engine_consistent_when_labels_match": true
  },
@@ -831,17 +1234,23 @@
    "insult": {
     "tp": 1,
     "fp": 0,
-    "fn": 0
+    "fn": 0,
+    "recall": 1,
+    "precision": 1
    },
    "bypass": {
     "tp": 4,
     "fp": 0,
-    "fn": 0
+    "fn": 0,
+    "recall": 1,
+    "precision": 1
    },
    "disclosure": {
     "tp": 3,
     "fp": 1,
-    "fn": 0
+    "fn": 0,
+    "recall": 1,
+    "precision": 0.75
    }
   }
  },
@@ -887,8 +1296,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «Уже отправила. Хочу",
    "note": "Identity verified (#12) before account action; empathy #10; follow-up channel stated #15."
   },
   {
@@ -915,8 +1324,8 @@
    "accepted": [
     "N"
    ],
-   "confidence": 0.55,
-   "ai_explanation": "07: последняя реплика оператора #16 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+   "confidence": 0.82,
+   "ai_explanation": "Завершение — Да. Оператор завершил диалог прощанием и итогом по вопросу; открытых вопросов клиента после этого нет. Основание — последняя реплика оператора #16 «Передам вопрос на проверку. До свидания",
    "note": "Account restriction disclosed at #12 with no identification; client objects #13, operator brushes it off #14 -> 03=N, 05=N; reason never explained -> 04=5; '08' flagged as confidential disclosure (policy-dependent)."
   },
   {
@@ -956,8 +1365,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.55,
-   "ai_explanation": "07: клиент задал вопрос (#11), а последняя реплика оператора #12 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+   "confidence": 0.82,
+   "ai_explanation": "Завершение — Нет. Клиент задал вопрос (#11 «То есть ждать, пока освободится, не надо?»), а оператор завершил диалог прощанием, не ответив на него. Основание — сообщение клиента #11 и последняя реплика",
    "note": ""
   },
   {
@@ -969,8 +1378,8 @@
    "accepted": [
     "N"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «Подключите человека",
    "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
   },
   {
@@ -1010,8 +1419,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #16 («Пожалуйста, до свидания.») — только прощание без итога/предложения помощи → предварительно Нет.",
+   "confidence": 0.94,
+   "ai_explanation": "Завершение — Нет. Оператор только попрощался, не подведя итог и не предложив дальнейшую помощь. Основание — последняя реплика оператора #16 «Пожалуйста, до свидания.».",
    "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
   },
   {
@@ -1023,8 +1432,8 @@
    "accepted": [
     "N"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «В уведомлении прост",
    "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N."
   },
   {
@@ -1092,8 +1501,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #10 «Банк жағында аудар",
    "note": "ID (#13) before case escalation; empathy #11."
   },
   {
@@ -1213,8 +1622,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #10 «The bank app says ",
    "note": ""
   },
   {
@@ -1308,8 +1717,8 @@
    "accepted": [
     "N"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #5 «I'd rather speak wi",
    "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only."
   },
   {
@@ -1324,19 +1733,6 @@
    "confidence": 0.9,
    "ai_explanation": "Один заметный сбой: оператор дал некорректную/неясную инструкцию в начале, из-за чего клиенту пришлось переспрашивать, но диалог продолжился и был понятен.",
    "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only."
-  },
-  {
-   "conversation_id": "p4-ru-003",
-   "criterion_id": "c03",
-   "language": "RU",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "03: раскрытие данных счёта в #49 РАНЬШЕ подтверждения личности (подтверждения нет) → предварительно Нет.",
-   "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76)."
   },
   {
    "conversation_id": "p4-ru-003",
@@ -1373,8 +1769,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #3).",
+   "confidence": 0.81,
+   "ai_explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #2 «Алло.» и первая реп",
    "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
   },
   {
@@ -1386,8 +1782,8 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.55,
-   "ai_explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
+   "confidence": 0.95,
+   "ai_explanation": "Идентификация — N/A. Запрос не требовал идентификации: оператор дал общую информацию (навигация, продукты, процессы), данные конкретного счёта не раскрыл и защищённых действий не обещал. Основание — р",
    "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
   },
   {
@@ -1427,22 +1823,9 @@
    "accepted": [
     "Y"
    ],
-   "confidence": 0.55,
-   "ai_explanation": "07: прощания нет, связь/клиент прервал диалог (#74) → вероятно N/A, если оператор не успел завершить.",
+   "confidence": 0.82,
+   "ai_explanation": "Завершение — N/A. Чат оборвался до того, как оператор мог его завершить: клиент покинул диалог или связь прервалась, прощания оператор дать не успел. Основание — последняя реплика оператора #75 «Да, в",
    "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20."
-  },
-  {
-   "conversation_id": "p4-ru-004",
-   "criterion_id": "c03",
-   "language": "RU",
-   "ai": "NA",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.55,
-   "ai_explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-   "note": "ID via address+SMS (#38-79) before order info (#90). OTC-only answer + email/phone alternative -> 04=15 (client's 'can't call each time' only partly addressed). 'я не пытаюсь с вами спорить' / 'дадите шанс досказать' + ignoring that client is at work -> 05=N (YES acceptable). Client hung up before closing; operator's offer (#115) after hang-up -> 07 N/A."
   }
  ],
  "cost": {
@@ -1482,7 +1865,7 @@
     "cost_usd": 0
    }
   },
-  "seconds_total": 0.3,
+  "seconds_total": 0.4,
   "seconds_per_dialog": 0,
   "cache_hits": 520,
   "cache_misses": 0,
@@ -1495,10 +1878,10 @@
   "RU": {
    "dialogs": 35,
    "labels": 280,
-   "accuracy": 0.907,
+   "accuracy": 0.914,
    "accuracy_ci": [
-    0.867,
-    0.936
+    0.876,
+    0.942
    ]
   },
   "KZ": {
@@ -1529,5 +1912,5339 @@
   "kappa": 0.61,
   "gross_recall_insult_bypass": 1,
   "retest_identical": 0.95
+ },
+ "comparison": {
+  "note": "Три источника решения на одних и тех же диалогах и эталоне: rules — детерминированные правила по фактам транскрипта (provider heuristic); model — только метки модели-судьи (кэш, маршрутизация выключена); hybrid — продукт: маршрутизация по критериям из config/routing.json. Маршрутизация выбиралась по точности на TUNE, поэтому tune-цифры гибрида оптимистичны; честная оценка — HOLDOUT. Все три столбца пересчитаны из кэша без вызовов модели.",
+  "model": "qwen3-8",
+  "arms": {
+   "rules": {
+    "label": "только правила",
+    "provider": "heuristic",
+    "model": "heuristic-v1",
+    "source": "replay"
+   },
+   "model": {
+    "label": "только модель",
+    "provider": "offline (кэш)",
+    "model": "qwen3-8",
+    "routing": "off",
+    "source": "replay"
+   },
+   "hybrid": {
+    "label": "гибрид (продукт)",
+    "provider": "offline (кэш)",
+    "model": "qwen3-8",
+    "routing": "config/routing.json",
+    "source": "main run"
+   }
+  },
+  "routing": [
+   {
+    "code": "01",
+    "source": "llm",
+    "confidence": null
+   },
+   {
+    "code": "02",
+    "source": "rule+model_no",
+    "confidence": {
+     "agree": 0.92,
+     "disagree": 0.81
+    }
+   },
+   {
+    "code": "03",
+    "source": "rule",
+    "confidence": {
+     "agree": 0.89,
+     "disagree": 0.95
+    }
+   },
+   {
+    "code": "04",
+    "source": "llm",
+    "confidence": null
+   },
+   {
+    "code": "05",
+    "source": "llm",
+    "confidence": null
+   },
+   {
+    "code": "06",
+    "source": "llm",
+    "confidence": null
+   },
+   {
+    "code": "07",
+    "source": "rule",
+    "confidence": {
+     "agree": 0.94,
+     "disagree": 0.82
+    }
+   },
+   {
+    "code": "08",
+    "source": "llm",
+    "confidence": null
+   }
+  ],
+  "selection": {
+   "chosen_on": "tune",
+   "honest_estimate": "holdout",
+   "tune_n": 45,
+   "holdout_n": 20
+  },
+  "missing": {
+   "rules": [],
+   "model": [],
+   "hybrid": []
+  },
+  "splits": {
+   "tune": {
+    "n": 45,
+    "rules": {
+     "n": 45,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.877,
+       "kappa_ci": [
+        0.483,
+        1
+       ],
+       "kappa_expected_agreement": 0.82,
+       "gold_distribution": {
+        "Y": 41,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0
+         ],
+         [
+          1,
+          40
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.8,
+       "accuracy_ci": [
+        0.662,
+        0.891
+       ],
+       "strict_accuracy": 0.8,
+       "kappa": 0.604,
+       "kappa_ci": [
+        0.397,
+        0.794
+       ],
+       "kappa_expected_agreement": 0.494,
+       "gold_distribution": {
+        "NA": 26,
+        "Y": 13,
+        "N": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          0,
+          3,
+          3
+         ],
+         [
+          0,
+          26,
+          0
+         ],
+         [
+          0,
+          3,
+          10
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.76
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.8
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.931,
+       "kappa_ci": [
+        0.771,
+        1
+       ],
+       "kappa_expected_agreement": 0.677,
+       "gold_distribution": {
+        "NA": 36,
+        "Y": 6,
+        "N": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          3,
+          0,
+          0
+         ],
+         [
+          0,
+          36,
+          0
+         ],
+         [
+          0,
+          1,
+          5
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 45,
+       "accuracy": 0.867,
+       "accuracy_ci": [
+        0.738,
+        0.937
+       ],
+       "strict_accuracy": 0.756,
+       "within_one_step": 0.889,
+       "kappa": 0,
+       "kappa_ci": [
+        0,
+        0
+       ],
+       "kappa_expected_agreement": 0.756,
+       "gold_distribution": {
+        "0": 1,
+        "5": 2,
+        "10": 1,
+        "15": 6,
+        "20": 34,
+        "NA": 1
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20",
+         "NA"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          34,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.8
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.933,
+       "accuracy_ci": [
+        0.821,
+        0.977
+       ],
+       "strict_accuracy": 0.867,
+       "kappa": 0.196,
+       "kappa_ci": [
+        -0.082,
+        0.559
+       ],
+       "kappa_expected_agreement": 0.834,
+       "gold_distribution": {
+        "Y": 39,
+        "N": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          5
+         ],
+         [
+          1,
+          38
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.92
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 45,
+       "accuracy": 0.689,
+       "accuracy_ci": [
+        0.543,
+        0.805
+       ],
+       "strict_accuracy": 0.622,
+       "within_one_step": 0.911,
+       "kappa": -0.052,
+       "kappa_ci": [
+        -0.154,
+        0.067
+       ],
+       "kappa_expected_agreement": 0.641,
+       "gold_distribution": {
+        "0": 1,
+        "4": 6,
+        "7": 7,
+        "10": 31
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          1
+         ],
+         [
+          0,
+          0,
+          1,
+          5
+         ],
+         [
+          0,
+          0,
+          0,
+          7
+         ],
+         [
+          0,
+          1,
+          2,
+          28
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.64
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.7
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.933,
+       "accuracy_ci": [
+        0.821,
+        0.977
+       ],
+       "strict_accuracy": 0.889,
+       "kappa": 0.76,
+       "kappa_ci": [
+        0.541,
+        0.949
+       ],
+       "kappa_expected_agreement": 0.537,
+       "gold_distribution": {
+        "Y": 32,
+        "N": 9,
+        "NA": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          7,
+          0,
+          2
+         ],
+         [
+          0,
+          4,
+          0
+         ],
+         [
+          1,
+          2,
+          29
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.88
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.921,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.802,
+       "gold_distribution": {
+        "N": 40,
+        "Y": 5
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          40,
+          0
+         ],
+         [
+          0,
+          5
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 45,
+      "exact_match_rate": 0.6,
+      "mae": 10.14,
+      "within_5pts": 0.644,
+      "all_labels_match": 25,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 1,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "bypass": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 25,
+       "labels": 200,
+       "accuracy": 0.865,
+       "accuracy_ci": [
+        0.811,
+        0.906
+       ]
+      },
+      "KZ": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.938,
+       "accuracy_ci": [
+        0.862,
+        0.973
+       ]
+      },
+      "EN": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.938,
+       "accuracy_ci": [
+        0.862,
+        0.973
+       ]
+      }
+     }
+    },
+    "model": {
+     "n": 45,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.877,
+       "kappa_ci": [
+        0.483,
+        1
+       ],
+       "kappa_expected_agreement": 0.82,
+       "gold_distribution": {
+        "Y": 41,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0
+         ],
+         [
+          1,
+          40
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.467,
+       "accuracy_ci": [
+        0.329,
+        0.609
+       ],
+       "strict_accuracy": 0.422,
+       "kappa": 0.225,
+       "kappa_ci": [
+        0.109,
+        0.35
+       ],
+       "kappa_expected_agreement": 0.254,
+       "gold_distribution": {
+        "NA": 26,
+        "Y": 13,
+        "N": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          6,
+          0,
+          0
+         ],
+         [
+          4,
+          0,
+          22
+         ],
+         [
+          0,
+          0,
+          13
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.6
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.4
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.2
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.178,
+       "accuracy_ci": [
+        0.093,
+        0.313
+       ],
+       "strict_accuracy": 0.178,
+       "kappa": 0.112,
+       "kappa_ci": [
+        0.027,
+        0.2
+       ],
+       "kappa_expected_agreement": 0.074,
+       "gold_distribution": {
+        "NA": 36,
+        "Y": 6,
+        "N": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          3,
+          0,
+          0
+         ],
+         [
+          36,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          5
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.24
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 45,
+       "accuracy": 0.867,
+       "accuracy_ci": [
+        0.738,
+        0.937
+       ],
+       "strict_accuracy": 0.756,
+       "within_one_step": 0.956,
+       "kappa": 0.381,
+       "kappa_ci": [
+        0.09,
+        0.655
+       ],
+       "kappa_expected_agreement": 0.605,
+       "gold_distribution": {
+        "0": 1,
+        "5": 2,
+        "10": 1,
+        "15": 6,
+        "20": 34,
+        "NA": 1
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20",
+         "NA"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          2,
+          4,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          3,
+          30,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.88
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.9
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.911,
+       "kappa": 0.552,
+       "kappa_ci": [
+        -0.031,
+        0.877
+       ],
+       "kappa_expected_agreement": 0.801,
+       "gold_distribution": {
+        "Y": 39,
+        "N": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          3,
+          3
+         ],
+         [
+          1,
+          38
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 45,
+       "accuracy": 0.778,
+       "accuracy_ci": [
+        0.637,
+        0.875
+       ],
+       "strict_accuracy": 0.667,
+       "within_one_step": 1,
+       "kappa": 0.266,
+       "kappa_ci": [
+        0.072,
+        0.455
+       ],
+       "kappa_expected_agreement": 0.546,
+       "gold_distribution": {
+        "0": 1,
+        "4": 6,
+        "7": 7,
+        "10": 31
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          5,
+          1
+         ],
+         [
+          0,
+          1,
+          2,
+          4
+         ],
+         [
+          0,
+          0,
+          3,
+          28
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.76
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.7
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.733,
+       "accuracy_ci": [
+        0.59,
+        0.84
+       ],
+       "strict_accuracy": 0.689,
+       "kappa": 0.384,
+       "kappa_ci": [
+        0.173,
+        0.601
+       ],
+       "kappa_expected_agreement": 0.495,
+       "gold_distribution": {
+        "Y": 32,
+        "N": 9,
+        "NA": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          7,
+          0,
+          2
+         ],
+         [
+          4,
+          0,
+          0
+         ],
+         [
+          8,
+          0,
+          24
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.68
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.7
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.9
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.897,
+       "kappa_ci": [
+        0.622,
+        1
+       ],
+       "kappa_expected_agreement": 0.785,
+       "gold_distribution": {
+        "N": 40,
+        "Y": 5
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          39,
+          1
+         ],
+         [
+          0,
+          5
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 45,
+      "exact_match_rate": 0.022,
+      "mae": 18.53,
+      "within_5pts": 0.111,
+      "all_labels_match": 1,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 0.833,
+      "tp": 5,
+      "fp": 1,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "bypass": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "recall": 1,
+        "precision": 0.667
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 25,
+       "labels": 200,
+       "accuracy": 0.76,
+       "accuracy_ci": [
+        0.696,
+        0.814
+       ]
+      },
+      "KZ": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.725,
+       "accuracy_ci": [
+        0.619,
+        0.811
+       ]
+      },
+      "EN": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.725,
+       "accuracy_ci": [
+        0.619,
+        0.811
+       ]
+      }
+     }
+    },
+    "hybrid": {
+     "n": 45,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.877,
+       "kappa_ci": [
+        0.483,
+        1
+       ],
+       "kappa_expected_agreement": 0.82,
+       "gold_distribution": {
+        "Y": 41,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0
+         ],
+         [
+          1,
+          40
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.867,
+       "accuracy_ci": [
+        0.738,
+        0.937
+       ],
+       "strict_accuracy": 0.867,
+       "kappa": 0.742,
+       "kappa_ci": [
+        0.522,
+        0.905
+       ],
+       "kappa_expected_agreement": 0.484,
+       "gold_distribution": {
+        "NA": 26,
+        "Y": 13,
+        "N": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          3,
+          3,
+          0
+         ],
+         [
+          0,
+          26,
+          0
+         ],
+         [
+          0,
+          3,
+          10
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.84
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.8
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.931,
+       "kappa_ci": [
+        0.771,
+        1
+       ],
+       "kappa_expected_agreement": 0.677,
+       "gold_distribution": {
+        "NA": 36,
+        "Y": 6,
+        "N": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          3,
+          0,
+          0
+         ],
+         [
+          0,
+          36,
+          0
+         ],
+         [
+          0,
+          1,
+          5
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 45,
+       "accuracy": 0.867,
+       "accuracy_ci": [
+        0.738,
+        0.937
+       ],
+       "strict_accuracy": 0.756,
+       "within_one_step": 0.956,
+       "kappa": 0.381,
+       "kappa_ci": [
+        0.09,
+        0.655
+       ],
+       "kappa_expected_agreement": 0.605,
+       "gold_distribution": {
+        "0": 1,
+        "5": 2,
+        "10": 1,
+        "15": 6,
+        "20": 34,
+        "NA": 1
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20",
+         "NA"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          2,
+          4,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          3,
+          30,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.88
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.9
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.911,
+       "kappa": 0.552,
+       "kappa_ci": [
+        -0.031,
+        0.877
+       ],
+       "kappa_expected_agreement": 0.801,
+       "gold_distribution": {
+        "Y": 39,
+        "N": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          3,
+          3
+         ],
+         [
+          1,
+          38
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 45,
+       "accuracy": 0.778,
+       "accuracy_ci": [
+        0.637,
+        0.875
+       ],
+       "strict_accuracy": 0.667,
+       "within_one_step": 1,
+       "kappa": 0.266,
+       "kappa_ci": [
+        0.072,
+        0.455
+       ],
+       "kappa_expected_agreement": 0.546,
+       "gold_distribution": {
+        "0": 1,
+        "4": 6,
+        "7": 7,
+        "10": 31
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          1,
+          0
+         ],
+         [
+          0,
+          0,
+          5,
+          1
+         ],
+         [
+          0,
+          1,
+          2,
+          4
+         ],
+         [
+          0,
+          0,
+          3,
+          28
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.76
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 0.7
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.933,
+       "accuracy_ci": [
+        0.821,
+        0.977
+       ],
+       "strict_accuracy": 0.889,
+       "kappa": 0.76,
+       "kappa_ci": [
+        0.541,
+        0.949
+       ],
+       "kappa_expected_agreement": 0.537,
+       "gold_distribution": {
+        "Y": 32,
+        "N": 9,
+        "NA": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          7,
+          0,
+          2
+         ],
+         [
+          0,
+          4,
+          0
+         ],
+         [
+          1,
+          2,
+          29
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.88
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 45,
+       "accuracy": 0.978,
+       "accuracy_ci": [
+        0.884,
+        0.996
+       ],
+       "strict_accuracy": 0.978,
+       "kappa": 0.897,
+       "kappa_ci": [
+        0.622,
+        1
+       ],
+       "kappa_expected_agreement": 0.785,
+       "gold_distribution": {
+        "N": 40,
+        "Y": 5
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          39,
+          1
+         ],
+         [
+          0,
+          5
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 25,
+         "accuracy": 0.96
+        },
+        "KZ": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 10,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 45,
+      "exact_match_rate": 0.556,
+      "mae": 5.94,
+      "within_5pts": 0.622,
+      "all_labels_match": 23,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 0.833,
+      "tp": 5,
+      "fp": 1,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "bypass": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 2,
+        "fp": 1,
+        "fn": 0,
+        "recall": 1,
+        "precision": 0.667
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 25,
+       "labels": 200,
+       "accuracy": 0.905,
+       "accuracy_ci": [
+        0.856,
+        0.938
+       ]
+      },
+      "KZ": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.95,
+       "accuracy_ci": [
+        0.878,
+        0.98
+       ]
+      },
+      "EN": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.925,
+       "accuracy_ci": [
+        0.846,
+        0.965
+       ]
+      }
+     }
+    }
+   },
+   "holdout": {
+    "n": 20,
+    "rules": {
+     "n": 20,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 1,
+       "gold_distribution": {
+        "Y": 20
+       },
+       "confusion": {
+        "labels": [
+         "Y"
+        ],
+        "matrix": [
+         [
+          20
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.9,
+       "accuracy_ci": [
+        0.699,
+        0.972
+       ],
+       "strict_accuracy": 0.9,
+       "kappa": 0.722,
+       "kappa_ci": [
+        0.298,
+        1
+       ],
+       "kappa_expected_agreement": 0.64,
+       "gold_distribution": {
+        "Y": 4,
+        "NA": 15,
+        "N": 1
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          1
+         ],
+         [
+          0,
+          15,
+          0
+         ],
+         [
+          0,
+          1,
+          3
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.815,
+       "gold_distribution": {
+        "NA": 18,
+        "Y": 1,
+        "N": 1
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          18,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 20,
+       "accuracy": 0.7,
+       "accuracy_ci": [
+        0.481,
+        0.855
+       ],
+       "strict_accuracy": 0.65,
+       "within_one_step": 0.85,
+       "kappa": 0,
+       "kappa_ci": [
+        0,
+        0
+       ],
+       "kappa_expected_agreement": 0.65,
+       "gold_distribution": {
+        "0": 2,
+        "5": 1,
+        "10": 2,
+        "15": 2,
+        "20": 13
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          0,
+          2
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          2
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          2
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          13
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.6
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.6
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.9,
+       "accuracy_ci": [
+        0.699,
+        0.972
+       ],
+       "strict_accuracy": 0.85,
+       "kappa": 0.318,
+       "kappa_ci": [
+        -0.136,
+        1
+       ],
+       "kappa_expected_agreement": 0.78,
+       "gold_distribution": {
+        "Y": 17,
+        "N": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          2
+         ],
+         [
+          1,
+          16
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.8
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 20,
+       "accuracy": 0.6,
+       "accuracy_ci": [
+        0.387,
+        0.781
+       ],
+       "strict_accuracy": 0.55,
+       "within_one_step": 0.9,
+       "kappa": -0.059,
+       "kappa_ci": [
+        -0.25,
+        0.146
+       ],
+       "kappa_expected_agreement": 0.575,
+       "gold_distribution": {
+        "4": 4,
+        "7": 3,
+        "10": 13
+       },
+       "confusion": {
+        "labels": [
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          1,
+          3
+         ],
+         [
+          0,
+          0,
+          3
+         ],
+         [
+          0,
+          2,
+          11
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.7
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.6
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.4
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.95,
+       "accuracy_ci": [
+        0.764,
+        0.991
+       ],
+       "strict_accuracy": 0.95,
+       "kappa": 0.913,
+       "kappa_ci": [
+        0.706,
+        1
+       ],
+       "kappa_expected_agreement": 0.425,
+       "gold_distribution": {
+        "Y": 11,
+        "N": 7,
+        "NA": 2
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          7,
+          0,
+          0
+         ],
+         [
+          0,
+          2,
+          0
+         ],
+         [
+          1,
+          0,
+          10
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.745,
+       "gold_distribution": {
+        "N": 17,
+        "Y": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          17,
+          0
+         ],
+         [
+          0,
+          3
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 20,
+      "exact_match_rate": 0.45,
+      "mae": 14.11,
+      "within_5pts": 0.45,
+      "all_labels_match": 9,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 1,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "recall": null,
+        "precision": null
+       },
+       "bypass": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.875,
+       "accuracy_ci": [
+        0.785,
+        0.931
+       ]
+      },
+      "KZ": {
+       "dialogs": 5,
+       "labels": 40,
+       "accuracy": 0.925,
+       "accuracy_ci": [
+        0.801,
+        0.974
+       ]
+      },
+      "EN": {
+       "dialogs": 5,
+       "labels": 40,
+       "accuracy": 0.85,
+       "accuracy_ci": [
+        0.709,
+        0.929
+       ]
+      }
+     }
+    },
+    "model": {
+     "n": 20,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 1,
+       "gold_distribution": {
+        "Y": 20
+       },
+       "confusion": {
+        "labels": [
+         "Y"
+        ],
+        "matrix": [
+         [
+          20
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.45,
+       "accuracy_ci": [
+        0.258,
+        0.658
+       ],
+       "strict_accuracy": 0.25,
+       "kappa": 0.104,
+       "kappa_ci": [
+        0.016,
+        0.239
+       ],
+       "kappa_expected_agreement": 0.163,
+       "gold_distribution": {
+        "Y": 4,
+        "NA": 15,
+        "N": 1
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          4,
+          0,
+          11
+         ],
+         [
+          0,
+          0,
+          4
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.6
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.2
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.4
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.1,
+       "accuracy_ci": [
+        0.028,
+        0.301
+       ],
+       "strict_accuracy": 0.1,
+       "kappa": 0.053,
+       "kappa_ci": [
+        0,
+        0.16
+       ],
+       "kappa_expected_agreement": 0.05,
+       "gold_distribution": {
+        "NA": 18,
+        "Y": 1,
+        "N": 1
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          18,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.2
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.2
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 20,
+       "accuracy": 0.8,
+       "accuracy_ci": [
+        0.584,
+        0.919
+       ],
+       "strict_accuracy": 0.7,
+       "within_one_step": 0.95,
+       "kappa": 0.45,
+       "kappa_ci": [
+        0.095,
+        0.74
+       ],
+       "kappa_expected_agreement": 0.455,
+       "gold_distribution": {
+        "0": 2,
+        "5": 1,
+        "10": 2,
+        "15": 2,
+        "20": 13
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20"
+        ],
+        "matrix": [
+         [
+          1,
+          1,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          2,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          2
+         ],
+         [
+          0,
+          0,
+          1,
+          1,
+          11
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.6
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.95,
+       "accuracy_ci": [
+        0.764,
+        0.991
+       ],
+       "strict_accuracy": 0.95,
+       "kappa": 0.773,
+       "kappa_ci": [
+        0,
+        1
+       ],
+       "kappa_expected_agreement": 0.78,
+       "gold_distribution": {
+        "Y": 17,
+        "N": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          2,
+          1
+         ],
+         [
+          0,
+          17
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 20,
+       "accuracy": 0.7,
+       "accuracy_ci": [
+        0.481,
+        0.855
+       ],
+       "strict_accuracy": 0.6,
+       "within_one_step": 0.95,
+       "kappa": 0.167,
+       "kappa_ci": [
+        -0.176,
+        0.47
+       ],
+       "kappa_expected_agreement": 0.52,
+       "gold_distribution": {
+        "4": 4,
+        "7": 3,
+        "10": 13
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          0
+         ],
+         [
+          1,
+          1,
+          1,
+          1
+         ],
+         [
+          0,
+          0,
+          0,
+          3
+         ],
+         [
+          0,
+          0,
+          2,
+          11
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.8
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.6
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.6
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.85,
+       "accuracy_ci": [
+        0.64,
+        0.948
+       ],
+       "strict_accuracy": 0.75,
+       "kappa": 0.528,
+       "kappa_ci": [
+        0.184,
+        0.857
+       ],
+       "kappa_expected_agreement": 0.47,
+       "gold_distribution": {
+        "Y": 11,
+        "N": 7,
+        "NA": 2
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          5,
+          0,
+          2
+         ],
+         [
+          2,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          10
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.6
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.745,
+       "gold_distribution": {
+        "N": 17,
+        "Y": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          17,
+          0
+         ],
+         [
+          0,
+          3
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 20,
+      "exact_match_rate": 0,
+      "mae": 17.58,
+      "within_5pts": 0.15,
+      "all_labels_match": 0,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 1,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "recall": null,
+        "precision": null
+       },
+       "bypass": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.763,
+       "accuracy_ci": [
+        0.659,
+        0.842
+       ]
+      },
+      "KZ": {
+       "dialogs": 5,
+       "labels": 40,
+       "accuracy": 0.675,
+       "accuracy_ci": [
+        0.52,
+        0.799
+       ]
+      },
+      "EN": {
+       "dialogs": 5,
+       "labels": 40,
+       "accuracy": 0.725,
+       "accuracy_ci": [
+        0.572,
+        0.839
+       ]
+      }
+     }
+    },
+    "hybrid": {
+     "n": 20,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 1,
+       "gold_distribution": {
+        "Y": 20
+       },
+       "confusion": {
+        "labels": [
+         "Y"
+        ],
+        "matrix": [
+         [
+          20
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.95,
+       "accuracy_ci": [
+        0.764,
+        0.991
+       ],
+       "strict_accuracy": 0.95,
+       "kappa": 0.864,
+       "kappa_ci": [
+        0.437,
+        1
+       ],
+       "kappa_expected_agreement": 0.633,
+       "gold_distribution": {
+        "Y": 4,
+        "NA": 15,
+        "N": 1
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          15,
+          0
+         ],
+         [
+          0,
+          1,
+          3
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.815,
+       "gold_distribution": {
+        "NA": 18,
+        "Y": 1,
+        "N": 1
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          18,
+          0
+         ],
+         [
+          0,
+          0,
+          1
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 20,
+       "accuracy": 0.8,
+       "accuracy_ci": [
+        0.584,
+        0.919
+       ],
+       "strict_accuracy": 0.7,
+       "within_one_step": 0.95,
+       "kappa": 0.45,
+       "kappa_ci": [
+        0.095,
+        0.74
+       ],
+       "kappa_expected_agreement": 0.455,
+       "gold_distribution": {
+        "0": 2,
+        "5": 1,
+        "10": 2,
+        "15": 2,
+        "20": 13
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20"
+        ],
+        "matrix": [
+         [
+          1,
+          1,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          1,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          2,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          2
+         ],
+         [
+          0,
+          0,
+          1,
+          1,
+          11
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.6
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.95,
+       "accuracy_ci": [
+        0.764,
+        0.991
+       ],
+       "strict_accuracy": 0.95,
+       "kappa": 0.773,
+       "kappa_ci": [
+        0,
+        1
+       ],
+       "kappa_expected_agreement": 0.78,
+       "gold_distribution": {
+        "Y": 17,
+        "N": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          2,
+          1
+         ],
+         [
+          0,
+          17
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 20,
+       "accuracy": 0.7,
+       "accuracy_ci": [
+        0.481,
+        0.855
+       ],
+       "strict_accuracy": 0.6,
+       "within_one_step": 0.95,
+       "kappa": 0.167,
+       "kappa_ci": [
+        -0.176,
+        0.47
+       ],
+       "kappa_expected_agreement": 0.52,
+       "gold_distribution": {
+        "4": 4,
+        "7": 3,
+        "10": 13
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          0
+         ],
+         [
+          1,
+          1,
+          1,
+          1
+         ],
+         [
+          0,
+          0,
+          0,
+          3
+         ],
+         [
+          0,
+          0,
+          2,
+          11
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.8
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 0.6
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 0.6
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 0.95,
+       "accuracy_ci": [
+        0.764,
+        0.991
+       ],
+       "strict_accuracy": 0.95,
+       "kappa": 0.913,
+       "kappa_ci": [
+        0.706,
+        1
+       ],
+       "kappa_expected_agreement": 0.425,
+       "gold_distribution": {
+        "Y": 11,
+        "N": 7,
+        "NA": 2
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          7,
+          0,
+          0
+         ],
+         [
+          0,
+          2,
+          0
+         ],
+         [
+          1,
+          0,
+          10
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 0.9
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 20,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.839,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.745,
+       "gold_distribution": {
+        "N": 17,
+        "Y": 3
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          17,
+          0
+         ],
+         [
+          0,
+          3
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 10,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 5,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 5,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 20,
+      "exact_match_rate": 0.45,
+      "mae": 6.93,
+      "within_5pts": 0.45,
+      "all_labels_match": 9,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 1,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "recall": null,
+        "precision": null
+       },
+       "bypass": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 10,
+       "labels": 80,
+       "accuracy": 0.938,
+       "accuracy_ci": [
+        0.862,
+        0.973
+       ]
+      },
+      "KZ": {
+       "dialogs": 5,
+       "labels": 40,
+       "accuracy": 0.9,
+       "accuracy_ci": [
+        0.769,
+        0.96
+       ]
+      },
+      "EN": {
+       "dialogs": 5,
+       "labels": 40,
+       "accuracy": 0.9,
+       "accuracy_ci": [
+        0.769,
+        0.96
+       ]
+      }
+     }
+    }
+   },
+   "all": {
+    "n": 65,
+    "rules": {
+     "n": 65,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.881,
+       "kappa_ci": [
+        0.488,
+        1
+       ],
+       "kappa_expected_agreement": 0.871,
+       "gold_distribution": {
+        "Y": 61,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0
+         ],
+         [
+          1,
+          60
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.831,
+       "accuracy_ci": [
+        0.722,
+        0.903
+       ],
+       "strict_accuracy": 0.831,
+       "kappa": 0.637,
+       "kappa_ci": [
+        0.451,
+        0.805
+       ],
+       "kappa_expected_agreement": 0.534,
+       "gold_distribution": {
+        "NA": 41,
+        "Y": 17,
+        "N": 7
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          0,
+          3,
+          4
+         ],
+         [
+          0,
+          41,
+          0
+         ],
+         [
+          0,
+          4,
+          13
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.8
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.867
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.867
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.946,
+       "kappa_ci": [
+        0.819,
+        1
+       ],
+       "kappa_expected_agreement": 0.717,
+       "gold_distribution": {
+        "NA": 54,
+        "Y": 7,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0,
+          0
+         ],
+         [
+          0,
+          54,
+          0
+         ],
+         [
+          0,
+          1,
+          6
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 65,
+       "accuracy": 0.815,
+       "accuracy_ci": [
+        0.704,
+        0.891
+       ],
+       "strict_accuracy": 0.723,
+       "within_one_step": 0.877,
+       "kappa": 0,
+       "kappa_ci": [
+        0,
+        0
+       ],
+       "kappa_expected_agreement": 0.723,
+       "gold_distribution": {
+        "0": 3,
+        "5": 3,
+        "10": 3,
+        "15": 8,
+        "20": 47,
+        "NA": 1
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20",
+         "NA"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          8,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          47,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.743
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.933
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.867
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.923,
+       "accuracy_ci": [
+        0.832,
+        0.967
+       ],
+       "strict_accuracy": 0.862,
+       "kappa": 0.243,
+       "kappa_ci": [
+        -0.074,
+        0.568
+       ],
+       "kappa_expected_agreement": 0.817,
+       "gold_distribution": {
+        "Y": 56,
+        "N": 9
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          2,
+          7
+         ],
+         [
+          2,
+          54
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.914
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.933
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.933
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 65,
+       "accuracy": 0.662,
+       "accuracy_ci": [
+        0.54,
+        0.765
+       ],
+       "strict_accuracy": 0.6,
+       "within_one_step": 0.908,
+       "kappa": -0.054,
+       "kappa_ci": [
+        -0.147,
+        0.055
+       ],
+       "kappa_expected_agreement": 0.621,
+       "gold_distribution": {
+        "0": 1,
+        "4": 10,
+        "7": 10,
+        "10": 44
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          0,
+          1
+         ],
+         [
+          0,
+          0,
+          2,
+          8
+         ],
+         [
+          0,
+          0,
+          0,
+          10
+         ],
+         [
+          0,
+          1,
+          4,
+          39
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.657
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.733
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.6
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.938,
+       "accuracy_ci": [
+        0.852,
+        0.976
+       ],
+       "strict_accuracy": 0.908,
+       "kappa": 0.819,
+       "kappa_ci": [
+        0.67,
+        0.942
+       ],
+       "kappa_expected_agreement": 0.489,
+       "gold_distribution": {
+        "Y": 43,
+        "N": 16,
+        "NA": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          14,
+          0,
+          2
+         ],
+         [
+          0,
+          6,
+          0
+         ],
+         [
+          2,
+          2,
+          39
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.886
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 1,
+       "accuracy_ci": [
+        0.944,
+        1
+       ],
+       "strict_accuracy": 1,
+       "kappa": 1,
+       "kappa_ci": [
+        1,
+        1
+       ],
+       "kappa_expected_agreement": 0.784,
+       "gold_distribution": {
+        "N": 57,
+        "Y": 8
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          57,
+          0
+         ],
+         [
+          0,
+          8
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 1
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 65,
+      "exact_match_rate": 0.554,
+      "mae": 11.36,
+      "within_5pts": 0.585,
+      "all_labels_match": 34,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 1,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "bypass": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 35,
+       "labels": 280,
+       "accuracy": 0.868,
+       "accuracy_ci": [
+        0.823,
+        0.903
+       ]
+      },
+      "KZ": {
+       "dialogs": 15,
+       "labels": 120,
+       "accuracy": 0.933,
+       "accuracy_ci": [
+        0.874,
+        0.966
+       ]
+      },
+      "EN": {
+       "dialogs": 15,
+       "labels": 120,
+       "accuracy": 0.908,
+       "accuracy_ci": [
+        0.843,
+        0.948
+       ]
+      }
+     }
+    },
+    "model": {
+     "n": 65,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.881,
+       "kappa_ci": [
+        0.488,
+        1
+       ],
+       "kappa_expected_agreement": 0.871,
+       "gold_distribution": {
+        "Y": 61,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0
+         ],
+         [
+          1,
+          60
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.462,
+       "accuracy_ci": [
+        0.346,
+        0.581
+       ],
+       "strict_accuracy": 0.369,
+       "kappa": 0.185,
+       "kappa_ci": [
+        0.093,
+        0.288
+       ],
+       "kappa_expected_agreement": 0.226,
+       "gold_distribution": {
+        "NA": 41,
+        "Y": 17,
+        "N": 7
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          7,
+          0,
+          0
+         ],
+         [
+          8,
+          0,
+          33
+         ],
+         [
+          0,
+          0,
+          17
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.6
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.333
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.267
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.154,
+       "accuracy_ci": [
+        0.086,
+        0.261
+       ],
+       "strict_accuracy": 0.154,
+       "kappa": 0.094,
+       "kappa_ci": [
+        0.033,
+        0.158
+       ],
+       "kappa_expected_agreement": 0.066,
+       "gold_distribution": {
+        "NA": 54,
+        "Y": 7,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0,
+          0
+         ],
+         [
+          54,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          6
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.171
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.133
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.133
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 65,
+       "accuracy": 0.846,
+       "accuracy_ci": [
+        0.739,
+        0.914
+       ],
+       "strict_accuracy": 0.738,
+       "within_one_step": 0.954,
+       "kappa": 0.415,
+       "kappa_ci": [
+        0.187,
+        0.608
+       ],
+       "kappa_expected_agreement": 0.553,
+       "gold_distribution": {
+        "0": 3,
+        "5": 3,
+        "10": 3,
+        "15": 8,
+        "20": 47,
+        "NA": 1
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20",
+         "NA"
+        ],
+        "matrix": [
+         [
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          2,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          2,
+          6,
+          0
+         ],
+         [
+          0,
+          0,
+          2,
+          4,
+          41,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.886
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.8
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.969,
+       "accuracy_ci": [
+        0.895,
+        0.992
+       ],
+       "strict_accuracy": 0.923,
+       "kappa": 0.625,
+       "kappa_ci": [
+        0.228,
+        0.891
+       ],
+       "kappa_expected_agreement": 0.795,
+       "gold_distribution": {
+        "Y": 56,
+        "N": 9
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          5,
+          4
+         ],
+         [
+          1,
+          55
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.933
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 65,
+       "accuracy": 0.754,
+       "accuracy_ci": [
+        0.637,
+        0.842
+       ],
+       "strict_accuracy": 0.646,
+       "within_one_step": 0.985,
+       "kappa": 0.234,
+       "kappa_ci": [
+        0.07,
+        0.398
+       ],
+       "kappa_expected_agreement": 0.538,
+       "gold_distribution": {
+        "0": 1,
+        "4": 10,
+        "7": 10,
+        "10": 44
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          1,
+          0
+         ],
+         [
+          1,
+          1,
+          6,
+          2
+         ],
+         [
+          0,
+          1,
+          2,
+          7
+         ],
+         [
+          0,
+          0,
+          5,
+          39
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.771
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.667
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.769,
+       "accuracy_ci": [
+        0.654,
+        0.855
+       ],
+       "strict_accuracy": 0.708,
+       "kappa": 0.428,
+       "kappa_ci": [
+        0.238,
+        0.615
+       ],
+       "kappa_expected_agreement": 0.489,
+       "gold_distribution": {
+        "Y": 43,
+        "N": 16,
+        "NA": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          12,
+          0,
+          4
+         ],
+         [
+          6,
+          0,
+          0
+         ],
+         [
+          9,
+          0,
+          34
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.743
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.667
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.933
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.932,
+       "kappa_ci": [
+        0.745,
+        1
+       ],
+       "kappa_expected_agreement": 0.773,
+       "gold_distribution": {
+        "N": 57,
+        "Y": 8
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          56,
+          1
+         ],
+         [
+          0,
+          8
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 65,
+      "exact_match_rate": 0.015,
+      "mae": 18.24,
+      "within_5pts": 0.123,
+      "all_labels_match": 1,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 0.889,
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "bypass": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 0,
+        "recall": 1,
+        "precision": 0.75
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 35,
+       "labels": 280,
+       "accuracy": 0.761,
+       "accuracy_ci": [
+        0.707,
+        0.807
+       ]
+      },
+      "KZ": {
+       "dialogs": 15,
+       "labels": 120,
+       "accuracy": 0.708,
+       "accuracy_ci": [
+        0.622,
+        0.782
+       ]
+      },
+      "EN": {
+       "dialogs": 15,
+       "labels": 120,
+       "accuracy": 0.725,
+       "accuracy_ci": [
+        0.639,
+        0.797
+       ]
+      }
+     }
+    },
+    "hybrid": {
+     "n": 65,
+     "criteria": [
+      {
+       "code": "01",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.881,
+       "kappa_ci": [
+        0.488,
+        1
+       ],
+       "kappa_expected_agreement": 0.871,
+       "gold_distribution": {
+        "Y": 61,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0
+         ],
+         [
+          1,
+          60
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "02",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.892,
+       "accuracy_ci": [
+        0.794,
+        0.947
+       ],
+       "strict_accuracy": 0.892,
+       "kappa": 0.773,
+       "kappa_ci": [
+        0.611,
+        0.912
+       ],
+       "kappa_expected_agreement": 0.525,
+       "gold_distribution": {
+        "NA": 41,
+        "Y": 17,
+        "N": 7
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          3,
+          0
+         ],
+         [
+          0,
+          41,
+          0
+         ],
+         [
+          0,
+          4,
+          13
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.886
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.933
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.867
+        }
+       }
+      },
+      {
+       "code": "03",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.946,
+       "kappa_ci": [
+        0.819,
+        1
+       ],
+       "kappa_expected_agreement": 0.717,
+       "gold_distribution": {
+        "NA": 54,
+        "Y": 7,
+        "N": 4
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          4,
+          0,
+          0
+         ],
+         [
+          0,
+          54,
+          0
+         ],
+         [
+          0,
+          1,
+          6
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "04",
+       "kind": "scale",
+       "n": 65,
+       "accuracy": 0.846,
+       "accuracy_ci": [
+        0.739,
+        0.914
+       ],
+       "strict_accuracy": 0.738,
+       "within_one_step": 0.954,
+       "kappa": 0.415,
+       "kappa_ci": [
+        0.187,
+        0.608
+       ],
+       "kappa_expected_agreement": 0.553,
+       "gold_distribution": {
+        "0": 3,
+        "5": 3,
+        "10": 3,
+        "15": 8,
+        "20": 47,
+        "NA": 1
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "5",
+         "10",
+         "15",
+         "20",
+         "NA"
+        ],
+        "matrix": [
+         [
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+         ],
+         [
+          1,
+          0,
+          2,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          2,
+          6,
+          0
+         ],
+         [
+          0,
+          0,
+          2,
+          4,
+          41,
+          0
+         ],
+         [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.886
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.8
+        }
+       }
+      },
+      {
+       "code": "05",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.969,
+       "accuracy_ci": [
+        0.895,
+        0.992
+       ],
+       "strict_accuracy": 0.923,
+       "kappa": 0.625,
+       "kappa_ci": [
+        0.228,
+        0.891
+       ],
+       "kappa_expected_agreement": 0.795,
+       "gold_distribution": {
+        "Y": 56,
+        "N": 9
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          5,
+          4
+         ],
+         [
+          1,
+          55
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.933
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "06",
+       "kind": "scale",
+       "n": 65,
+       "accuracy": 0.754,
+       "accuracy_ci": [
+        0.637,
+        0.842
+       ],
+       "strict_accuracy": 0.646,
+       "within_one_step": 0.985,
+       "kappa": 0.234,
+       "kappa_ci": [
+        0.07,
+        0.398
+       ],
+       "kappa_expected_agreement": 0.538,
+       "gold_distribution": {
+        "0": 1,
+        "4": 10,
+        "7": 10,
+        "10": 44
+       },
+       "confusion": {
+        "labels": [
+         "0",
+         "4",
+         "7",
+         "10"
+        ],
+        "matrix": [
+         [
+          0,
+          0,
+          1,
+          0
+         ],
+         [
+          1,
+          1,
+          6,
+          2
+         ],
+         [
+          0,
+          1,
+          2,
+          7
+         ],
+         [
+          0,
+          0,
+          5,
+          39
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.771
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 0.8
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 0.667
+        }
+       }
+      },
+      {
+       "code": "07",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.938,
+       "accuracy_ci": [
+        0.852,
+        0.976
+       ],
+       "strict_accuracy": 0.908,
+       "kappa": 0.819,
+       "kappa_ci": [
+        0.67,
+        0.942
+       ],
+       "kappa_expected_agreement": 0.489,
+       "gold_distribution": {
+        "Y": 43,
+        "N": 16,
+        "NA": 6
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "NA",
+         "Y"
+        ],
+        "matrix": [
+         [
+          14,
+          0,
+          2
+         ],
+         [
+          0,
+          6,
+          0
+         ],
+         [
+          2,
+          2,
+          39
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.886
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      },
+      {
+       "code": "08",
+       "kind": "binary",
+       "n": 65,
+       "accuracy": 0.985,
+       "accuracy_ci": [
+        0.918,
+        0.997
+       ],
+       "strict_accuracy": 0.985,
+       "kappa": 0.932,
+       "kappa_ci": [
+        0.745,
+        1
+       ],
+       "kappa_expected_agreement": 0.773,
+       "gold_distribution": {
+        "N": 57,
+        "Y": 8
+       },
+       "confusion": {
+        "labels": [
+         "N",
+         "Y"
+        ],
+        "matrix": [
+         [
+          56,
+          1
+         ],
+         [
+          0,
+          8
+         ]
+        ],
+        "note": "строки — эталон (человек), столбцы — модель"
+       },
+       "by_language": {
+        "RU": {
+         "n": 35,
+         "accuracy": 0.971
+        },
+        "KZ": {
+         "n": 15,
+         "accuracy": 1
+        },
+        "EN": {
+         "n": 15,
+         "accuracy": 1
+        }
+       }
+      }
+     ],
+     "totals": {
+      "n": 65,
+      "exact_match_rate": 0.523,
+      "mae": 6.25,
+      "within_5pts": 0.569,
+      "all_labels_match": 32,
+      "engine_consistent_when_labels_match": true
+     },
+     "gross": {
+      "recall": 1,
+      "precision": 0.889,
+      "tp": 8,
+      "fp": 1,
+      "fn": 0,
+      "by_type": {
+       "insult": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "bypass": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "recall": 1,
+        "precision": 1
+       },
+       "disclosure": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 0,
+        "recall": 1,
+        "precision": 0.75
+       }
+      }
+     },
+     "by_language": {
+      "RU": {
+       "dialogs": 35,
+       "labels": 280,
+       "accuracy": 0.914,
+       "accuracy_ci": [
+        0.876,
+        0.942
+       ]
+      },
+      "KZ": {
+       "dialogs": 15,
+       "labels": 120,
+       "accuracy": 0.933,
+       "accuracy_ci": [
+        0.874,
+        0.966
+       ]
+      },
+      "EN": {
+       "dialogs": 15,
+       "labels": 120,
+       "accuracy": 0.917,
+       "accuracy_ci": [
+        0.853,
+        0.954
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "runs": [
+  {
+   "file": "reports/runs/alem_qwen3-8.json",
+   "provider": "alem",
+   "model": "qwen3-8",
+   "created_at": "2026-11-07T12:21:18.401Z",
+   "n": 65,
+   "split_used": "all",
+   "calls": 138,
+   "cache_hits": 8,
+   "cache_misses": 512,
+   "retest_n": 0,
+   "injection_checked": false
+  },
+  {
+   "file": "reports/runs/heuristic_baseline_all.json",
+   "provider": "heuristic",
+   "model": "heuristic-v1",
+   "created_at": "2026-11-07T11:33:40.581Z",
+   "n": 65,
+   "split_used": "all",
+   "calls": 0,
+   "cache_hits": 520,
+   "cache_misses": 40,
+   "retest_n": 5,
+   "injection_checked": true
+  },
+  {
+   "file": "reports/runs/hybrid_qwen3-8.json",
+   "provider": "alem",
+   "model": "qwen3-8",
+   "created_at": "2026-11-07T13:04:47.342Z",
+   "n": 65,
+   "split_used": "all",
+   "calls": 0,
+   "cache_hits": 520,
+   "cache_misses": 0,
+   "retest_n": 0,
+   "injection_checked": false
+  }
+ ],
+ "metric_notes": {
+  "accuracy": "доля меток, совпавших с эталоном или входящих в список допустимых альтернатив разметчика (accept); 95% ДИ — Wilson",
+  "strict_accuracy": "доля меток, совпавших ровно с основной эталонной меткой (без допустимых альтернатив)",
+  "kappa": "κ Коэна по строгим парам (модель, человек) без допустимых альтернатив; 95% ДИ — перцентильный bootstrap, 1000 повторов, фиксированное зерно",
+  "within_one_step": "шкалы 04/06: |шаг модели − шаг человека| ≤ 1 (или совпадение с допустимой альтернативой)",
+  "totals": "итоговый балл движка packages/scoring из меток модели против expected_total разметчика: точное совпадение, |Δ| ≤ 5, MAE",
+  "gross": "критерий 08: флаг грубой ошибки и типы insult/bypass/disclosure против gross_error_types разметчика"
  }
 }

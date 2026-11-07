@@ -2,6 +2,9 @@
 // Calibration of the evaluator against human gold labels (tests/gold/dev_labels.json).
 // Usage: npm run calibrate -- [--provider P] [--model M] [--role judge|verifier|kz|fallback] [--split tune|holdout|all]
 //                             [--ids a,b,c] [--retest N] [--force] [--no-verify] [--no-injection] [--tag NAME] [--concurrency N]
+//                             [--cache-only] [--no-compare] [--compare-model M]
+// --cache-only: refuse to start if any selected dialog × model criterion is missing from data/cache/eval (no live model calls).
+// --compare-model: model whose cache is replayed for the three-way comparison (default: the judge model, else config/routing.json model).
 // Writes reports/calibration.json (shape per integration contract) and reports/calibration.md (RU + short EN).
 // Gold labels are used ONLY here for measurement; they never reach prompts or product logic.
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
@@ -11,6 +14,9 @@ import { prepareConversation } from '../packages/transcript/node.js';
 import { scoreEvaluation, isScale, isFlag, scaleSteps } from '../packages/scoring/index.js';
 import * as evaluator from '../services/evaluator/index.js';
 import { alem } from '../services/evaluator/providers/index.js';
+import { cacheKey, cacheGet } from '../services/evaluator/cache.js';
+import { POLICY_TEXT } from '../services/evaluator/prompt.js';
+import { isRuleCriterion } from '../services/evaluator/rules.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 loadDotEnv(join(ROOT, '.env')); // keys stay in process.env only; never printed
@@ -30,11 +36,11 @@ function loadDotEnv(file) {
 const SEED = 20261107;
 
 function parseArgs(argv) {
-  const a = { split: 'all', retest: 0, verify: true, injection: true, force: false, concurrency: Number(process.env.CQA_CONCURRENCY || 3) };
+  const a = { split: 'all', retest: 0, verify: true, injection: true, force: false, compare: true, cacheOnly: false, concurrency: Number(process.env.CQA_CONCURRENCY || 3) };
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
     const v = argv[i + 1];
-    if (k === '--provider') { a.provider = v; i++; } else if (k === '--model') { a.model = v; i++; } else if (k === '--role') { a.role = v; i++; } else if (k === '--split') { a.split = v; i++; } else if (k === '--ids') { a.ids = v.split(',').map((s) => s.trim()).filter(Boolean); i++; } else if (k === '--retest') { a.retest = Number(v); i++; } else if (k === '--tag') { a.tag = v; i++; } else if (k === '--concurrency') { a.concurrency = Number(v); i++; } else if (k === '--force') a.force = true; else if (k === '--no-verify') a.verify = false; else if (k === '--no-injection') a.injection = false; else if (k === '--verifier') { a.verifierModel = v; i++; }
+    if (k === '--provider') { a.provider = v; i++; } else if (k === '--model') { a.model = v; i++; } else if (k === '--role') { a.role = v; i++; } else if (k === '--split') { a.split = v; i++; } else if (k === '--ids') { a.ids = v.split(',').map((s) => s.trim()).filter(Boolean); i++; } else if (k === '--retest') { a.retest = Number(v); i++; } else if (k === '--tag') { a.tag = v; i++; } else if (k === '--concurrency') { a.concurrency = Number(v); i++; } else if (k === '--force') a.force = true; else if (k === '--no-verify') a.verify = false; else if (k === '--no-injection') a.injection = false; else if (k === '--verifier') { a.verifierModel = v; i++; } else if (k === '--cache-only') a.cacheOnly = true; else if (k === '--no-compare') a.compare = false; else if (k === '--compare-model') { a.compareModel = v; i++; }
   }
   return a;
 }
@@ -87,6 +93,28 @@ if (providerName !== 'heuristic' && providerName !== 'offline') {
 }
 console.error(`calibrate: provider=${providerName} model=${model} verifier=${verifierModel ?? 'нет'} split=${args.split} n=${selected.length} seed=${SEED}`);
 
+// ---------- cache coverage (which dialog × criterion pairs would need a live model call) ----------
+function cacheCoverage(ids, m) {
+  const missing = [];
+  for (const id of ids) {
+    const conv = convs.get(id);
+    if (!conv.lines.some((l) => l.speaker === 'operator')) continue; // no operator → no model call ever
+    for (const c of criteria) {
+      if (isRuleCriterion(c)) continue;
+      if (!cacheGet(cacheKey({ conv, criterion: c, policyText: POLICY_TEXT, promptVersion: evaluator.PROMPT_VERSION, model: m }))) missing.push(`${id}/${c.id}`);
+    }
+  }
+  return { checked: ids.length, missing };
+}
+if (providerName !== 'heuristic') {
+  const cov = cacheCoverage(selected, model);
+  console.error(`calibrate: кэш модели ${model}: промахов ${cov.missing.length} из ${selected.length} диалогов${cov.missing.length ? ` (${cov.missing.slice(0, 8).join(', ')}${cov.missing.length > 8 ? ', …' : ''})` : ''}${args.force ? ' — --force: кэш будет проигнорирован' : ''}`);
+  if (args.cacheOnly && (cov.missing.length || args.force || args.retest > 0 || args.injection)) {
+    console.error('calibrate: --cache-only — запуск требовал бы живых вызовов модели (промахи кэша / --force / --retest / проверка инъекции). Остановлено, вызовов не сделано.');
+    process.exit(3);
+  }
+}
+
 // ---------- run ----------
 function labelOf(r, c) {
   if (!r.applicable) return 'NA';
@@ -124,8 +152,9 @@ function wilson(k, n, z = 1.96) {
   const p = k / n; const d = 1 + z * z / n; const c = p + z * z / (2 * n); const s = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n));
   return [Math.max(0, (c - s) / d), Math.min(1, (c + s) / d)];
 }
-function kappa(pairs) {
-  const n = pairs.length; if (!n) return null;
+// Cohen's κ on raw (model, human) label pairs — strict agreement, accepted alternatives are NOT counted here.
+function kappaParts(pairs) {
+  const n = pairs.length; if (!n) return { k: null, po: null, pe: null };
   const labels = [...new Set(pairs.flat().map(String))];
   const idx = Object.fromEntries(labels.map((l, i) => [l, i]));
   const m = labels.map(() => labels.map(() => 0));
@@ -133,9 +162,10 @@ function kappa(pairs) {
   const po = m.reduce((s, row, i) => s + row[i], 0) / n;
   const rows = m.map((r) => r.reduce((a, b) => a + b, 0)); const cols = labels.map((_, j) => m.reduce((s, r) => s + r[j], 0));
   const pe = rows.reduce((s, r, i) => s + r * cols[i], 0) / (n * n);
-  if (pe === 1) return po === 1 ? 1 : 0;
-  return (po - pe) / (1 - pe);
+  if (pe === 1) return { k: po === 1 ? 1 : 0, po, pe };
+  return { k: (po - pe) / (1 - pe), po, pe };
 }
+function kappa(pairs) { return kappaParts(pairs).k; }
 function kappaCI(pairs, B = 1000) {
   if (pairs.length < 2) return [null, null];
   const rnd = mulberry32(SEED + pairs.length);
@@ -148,14 +178,15 @@ function kappaCI(pairs, B = 1000) {
 function round(x, d = 3) { return x == null ? null : Math.round(x * 10 ** d) / 10 ** d; }
 function pass(ai, g, code) { const acc = g.accept?.[code] || []; return ai === g.expected[code] || acc.includes(ai); }
 
-function criterionMetrics(ids, c) {
-  const code = c.code; const pairs = []; let n = 0; let hit = 0; let within = 0;
+function criterionMetrics(ids, c, rs = okRuns) {
+  const code = c.code; const pairs = []; let n = 0; let hit = 0; let within = 0; let strict = 0;
   const steps = isScale(c) ? scaleSteps(c).sort((a, b) => a - b) : null;
-  const labelsSet = new Set();
-  for (const r of okRuns) {
+  const labelsSet = new Set(); const goldDist = {};
+  for (const r of rs) {
     if (!ids.includes(r.id)) continue;
     const g = goldBy.get(r.id); const ai = r.labels[code]; if (ai === undefined) continue;
-    n++; if (pass(ai, g, code)) hit++;
+    n++; if (pass(ai, g, code)) hit++; if (String(ai) === String(g.expected[code])) strict++;
+    goldDist[String(g.expected[code])] = (goldDist[String(g.expected[code])] || 0) + 1;
     pairs.push([ai, g.expected[code]]); labelsSet.add(String(ai)); labelsSet.add(String(g.expected[code]));
     if (steps) {
       const ai_i = steps.indexOf(ai); const g_i = steps.indexOf(g.expected[code]);
@@ -167,16 +198,56 @@ function criterionMetrics(ids, c) {
   const labels = [...labelsSet].sort((a, b) => (isNaN(a) || isNaN(b) ? String(a).localeCompare(String(b)) : Number(a) - Number(b)));
   const matrix = labels.map(() => labels.map(() => 0));
   for (const [a, g] of pairs) matrix[labels.indexOf(String(g))][labels.indexOf(String(a))]++;
-  const k = kappa(pairs);
-  return { n, accuracy: n ? round(hit / n) : null, accuracy_ci: wilson(hit, n).map((x) => round(x)), within_one_step: steps ? (n ? round(within / n) : null) : undefined, kappa: round(k), kappa_ci: kappaCI(pairs).map((x) => round(x)), confusion: { labels, matrix, note: 'строки — эталон (человек), столбцы — модель' } };
+  const { k, po, pe } = kappaParts(pairs);
+  const majority = Object.entries(goldDist).sort((a, b) => b[1] - a[1])[0];
+  return {
+    n, accuracy: n ? round(hit / n) : null, accuracy_ci: wilson(hit, n).map((x) => round(x)), strict_accuracy: n ? round(strict / n) : null,
+    within_one_step: steps ? (n ? round(within / n) : null) : undefined, kappa: round(k), kappa_ci: kappaCI(pairs).map((x) => round(x)),
+    kappa_observed_agreement: round(po), kappa_expected_agreement: round(pe),
+    gold_distribution: goldDist, gold_majority: majority ? { label: majority[0], share: round(majority[1] / n) } : null,
+    confusion: { labels, matrix, note: 'строки — эталон (человек), столбцы — модель' },
+  };
 }
-function byLanguage(ids, c) {
+function byLanguage(ids, c, rs = okRuns) {
   const out = {};
   for (const lang of ['RU', 'KZ', 'EN']) {
     const sub = ids.filter((id) => convs.get(id).facts.client_language === lang);
     let n = 0; let hit = 0;
-    for (const r of okRuns) { if (!sub.includes(r.id) || r.labels[c.code] === undefined) continue; n++; if (pass(r.labels[c.code], goldBy.get(r.id), c.code)) hit++; }
+    for (const r of rs) { if (!sub.includes(r.id) || r.labels[c.code] === undefined) continue; n++; if (pass(r.labels[c.code], goldBy.get(r.id), c.code)) hit++; }
     out[lang] = { n, accuracy: n ? round(hit / n) : null };
+  }
+  return out;
+}
+function totalsFor(rs, ids) {
+  let exact = 0; let within5 = 0; let absErr = 0; let nTot = 0; let allSeven = 0; let allSevenExact = 0;
+  const weighted = criteria.filter((c) => !isFlag(c));
+  for (const r of rs) {
+    if (!ids.includes(r.id)) continue;
+    const g = goldBy.get(r.id); if (r.total == null || g.expected_total == null) continue;
+    nTot++; if (r.total === g.expected_total) exact++; if (Math.abs(r.total - g.expected_total) <= 5) within5++; absErr += Math.abs(r.total - g.expected_total);
+    if (weighted.every((c) => r.labels[c.code] === g.expected[c.code])) { allSeven++; if (r.total === g.expected_total) allSevenExact++; }
+  }
+  return { n: nTot, exact_match_rate: nTot ? round(exact / nTot) : null, mae: nTot ? round(absErr / nTot, 2) : null, within_5pts: nTot ? round(within5 / nTot) : null, all_labels_match: allSeven, engine_consistent_when_labels_match: allSeven === allSevenExact };
+}
+function grossFor(rs, ids) {
+  const grossBy = { insult: { tp: 0, fp: 0, fn: 0 }, bypass: { tp: 0, fp: 0, fn: 0 }, disclosure: { tp: 0, fp: 0, fn: 0 } };
+  let gtp = 0; let gfp = 0; let gfn = 0;
+  for (const r of rs) {
+    if (!ids.includes(r.id)) continue;
+    const g = goldBy.get(r.id); const aiTypes = new Set(r.gross?.types || []); const gTypes = new Set(g.gross_error_types || []);
+    const aiFlag = aiTypes.size > 0; const gFlag = g.gross_error === 'Y';
+    if (aiFlag && gFlag) gtp++; else if (aiFlag && !gFlag) gfp++; else if (!aiFlag && gFlag) gfn++;
+    for (const t of Object.keys(grossBy)) { const a = aiTypes.has(t); const b = gTypes.has(t); if (a && b) grossBy[t].tp++; else if (a && !b) grossBy[t].fp++; else if (!a && b) grossBy[t].fn++; }
+  }
+  for (const v of Object.values(grossBy)) { v.recall = v.tp + v.fn ? round(v.tp / (v.tp + v.fn)) : null; v.precision = v.tp + v.fp ? round(v.tp / (v.tp + v.fp)) : null; }
+  return { recall: gtp + gfn ? round(gtp / (gtp + gfn)) : null, precision: gtp + gfp ? round(gtp / (gtp + gfp)) : null, tp: gtp, fp: gfp, fn: gfn, by_type: grossBy };
+}
+function langSummaryFor(rs, ids) {
+  const out = {};
+  for (const lang of ['RU', 'KZ', 'EN']) {
+    let n = 0; let hit = 0; let nd = 0;
+    for (const r of rs) { if (!ids.includes(r.id) || convs.get(r.id).facts.client_language !== lang) continue; nd++; const g = goldBy.get(r.id); for (const c of criteria) { if (r.labels[c.code] === undefined) continue; n++; if (pass(r.labels[c.code], g, c.code)) hit++; } }
+    out[lang] = { dialogs: nd, labels: n, accuracy: n ? round(hit / n) : null, accuracy_ci: wilson(hit, n).map((x) => round(x)) };
   }
   return out;
 }
@@ -188,29 +259,12 @@ const critReport = criteria.map((c) => {
   const m = criterionMetrics(runIds, c);
   const h = criterionMetrics(holdIds, c);
   const t = criterionMetrics(tuneIds, c);
-  return { criterion_id: c.id, code: c.code, title: c.title, kind: isScale(c) ? 'scale' : 'binary', ...m, by_language: byLanguage(runIds, c), tune: { n: t.n, accuracy: t.accuracy, kappa: t.kappa }, holdout: { n: h.n, accuracy: h.accuracy, accuracy_ci: h.accuracy_ci, kappa: h.kappa, kappa_ci: h.kappa_ci, within_one_step: h.within_one_step, by_language: byLanguage(holdIds, c) } };
+  return { criterion_id: c.id, code: c.code, title: c.title, kind: isScale(c) ? 'scale' : 'binary', ...m, by_language: byLanguage(runIds, c), tune: { n: t.n, accuracy: t.accuracy, accuracy_ci: t.accuracy_ci, kappa: t.kappa, kappa_ci: t.kappa_ci, within_one_step: t.within_one_step }, holdout: { n: h.n, accuracy: h.accuracy, accuracy_ci: h.accuracy_ci, kappa: h.kappa, kappa_ci: h.kappa_ci, within_one_step: h.within_one_step, confusion: h.confusion, gold_distribution: h.gold_distribution, by_language: byLanguage(holdIds, c) } };
 });
 
-// totals
-let exact = 0; let within5 = 0; let absErr = 0; let nTot = 0; let allSeven = 0; let allSevenExact = 0;
-for (const r of okRuns) {
-  const g = goldBy.get(r.id); if (r.total == null || g.expected_total == null) continue;
-  nTot++; if (r.total === g.expected_total) exact++; if (Math.abs(r.total - g.expected_total) <= 5) within5++; absErr += Math.abs(r.total - g.expected_total);
-  const weighted = criteria.filter((c) => !isFlag(c));
-  if (weighted.every((c) => r.labels[c.code] === g.expected[c.code])) { allSeven++; if (r.total === g.expected_total) allSevenExact++; }
-}
-const totals = { n: nTot, exact_match_rate: nTot ? round(exact / nTot) : null, mae: nTot ? round(absErr / nTot, 2) : null, within_5pts: nTot ? round(within5 / nTot) : null, all_labels_match: allSeven, engine_consistent_when_labels_match: allSeven === allSevenExact };
-
-// gross
-const grossBy = { insult: { tp: 0, fp: 0, fn: 0 }, bypass: { tp: 0, fp: 0, fn: 0 }, disclosure: { tp: 0, fp: 0, fn: 0 } };
-let gtp = 0; let gfp = 0; let gfn = 0;
-for (const r of okRuns) {
-  const g = goldBy.get(r.id); const aiTypes = new Set(r.gross?.types || []); const gTypes = new Set(g.gross_error_types || []);
-  const aiFlag = aiTypes.size > 0; const gFlag = g.gross_error === 'Y';
-  if (aiFlag && gFlag) gtp++; else if (aiFlag && !gFlag) gfp++; else if (!aiFlag && gFlag) gfn++;
-  for (const t of Object.keys(grossBy)) { const a = aiTypes.has(t); const b = gTypes.has(t); if (a && b) grossBy[t].tp++; else if (a && !b) grossBy[t].fp++; else if (!a && b) grossBy[t].fn++; }
-}
-const grossReport = { recall: gtp + gfn ? round(gtp / (gtp + gfn)) : null, precision: gtp + gfp ? round(gtp / (gtp + gfp)) : null, tp: gtp, fp: gfp, fn: gfn, by_type: grossBy };
+// totals and gross flags (main run, all evaluated dialogs)
+const totals = totalsFor(okRuns, runIds);
+const grossReport = grossFor(okRuns, runIds);
 
 // retest (forced re-run, cache bypassed)
 let retest = { n: 0, identical_label_rate: null };
@@ -276,11 +330,64 @@ for (const r of okRuns) {
 }
 
 // overall by language
-const langSummary = {};
-for (const lang of ['RU', 'KZ', 'EN']) {
-  let n = 0; let hit = 0; let nd = 0;
-  for (const r of okRuns) { if (convs.get(r.id).facts.client_language !== lang) continue; nd++; const g = goldBy.get(r.id); for (const c of criteria) { if (r.labels[c.code] === undefined) continue; n++; if (pass(r.labels[c.code], g, c.code)) hit++; } }
-  langSummary[lang] = { dialogs: nd, labels: n, accuracy: n ? round(hit / n) : null, accuracy_ci: wilson(hit, n).map((x) => round(x)) };
+const langSummary = langSummaryFor(okRuns, runIds);
+
+// ---------- three-way comparison: rules-only vs model-only vs hybrid (product) ----------
+// All three arms are computed WITHOUT model calls: rules = provider «heuristic»; model-only = replay of the judge cache with
+// routing switched off (CQA_ROUTING=off); hybrid = the product path (cache + config/routing.json). The routing itself was chosen
+// on the TUNE split, so the tune numbers of the hybrid arm are optimistic; the HOLDOUT numbers are the honest estimate.
+const routingCfg = (() => { try { return JSON.parse(readFileSync(join(ROOT, 'config', 'routing.json'), 'utf8')); } catch { return { criteria: [] }; } })();
+const compareModel = args.compareModel || (providerName !== 'heuristic' ? model : (routingCfg.model || null));
+function shapeRun(id, r) {
+  const labels = {}; const answers = {};
+  for (const res of r.results) { const c = criteria.find((x) => x.id === res.criterion_id); labels[c.code] = labelOf(res, c); answers[c.id] = { applicable: res.applicable, answer: res.answer, scale_value: res.scale_value, flag_types: res.flag_types }; }
+  const score = scoreEvaluation(checklist, answers);
+  return { id, labels, results: r.results, trace: r.trace, total: score.total, gross: score.gross, seconds: 0, error: null };
+}
+async function replayArm(ids, { provider, model: m, routing }) {
+  const prev = process.env.CQA_ROUTING;
+  if (routing === false) process.env.CQA_ROUTING = 'off'; else delete process.env.CQA_ROUTING;
+  try {
+    return await pool(ids, 1, async (id) => {
+      // heuristic: force=true bypasses the heuristic-v1 cache so the rules column always reflects the CURRENT rules.js (no model calls either way);
+      // offline: force=false — the model cache is the only source, a miss is reported as a gap.
+      try { return shapeRun(id, await evaluator.evaluateConversation(convs.get(id), checklist, { provider, model: m, verify: false, force: provider === 'heuristic' })); } catch (e) { return { id, labels: {}, results: [], trace: null, total: null, gross: null, seconds: 0, error: e.message }; }
+    });
+  } finally { if (prev === undefined) delete process.env.CQA_ROUTING; else process.env.CQA_ROUTING = prev; }
+}
+function armSummary(rs, ids) {
+  const ok = rs.filter((r) => !r.error && ids.includes(r.id));
+  const okIds = ok.map((r) => r.id);
+  return {
+    n: ok.length,
+    criteria: criteria.map((c) => { const m = criterionMetrics(okIds, c, ok); return { code: c.code, kind: isScale(c) ? 'scale' : 'binary', n: m.n, accuracy: m.accuracy, accuracy_ci: m.accuracy_ci, strict_accuracy: m.strict_accuracy, within_one_step: m.within_one_step, kappa: m.kappa, kappa_ci: m.kappa_ci, kappa_expected_agreement: m.kappa_expected_agreement, gold_distribution: m.gold_distribution, confusion: m.confusion, by_language: byLanguage(okIds, c, ok) }; }),
+    totals: totalsFor(ok, okIds), gross: grossFor(ok, okIds), by_language: langSummaryFor(ok, okIds),
+  };
+}
+let comparison = null;
+if (args.compare && !args.ids && compareModel) {
+  const mainIsHybrid = providerName !== 'heuristic' && providerName !== 'fake' && process.env.CQA_ROUTING !== 'off' && model === compareModel;
+  const mainIsModelOnly = providerName !== 'heuristic' && providerName !== 'fake' && process.env.CQA_ROUTING === 'off' && model === compareModel;
+  process.stderr.write(`calibrate: сравнение трёх подходов на кэше модели ${compareModel} (вызовов модели нет)\n`);
+  const armRuns = {
+    rules: providerName === 'heuristic' ? okRuns : await replayArm(selected, { provider: 'heuristic', routing: true }),
+    model: mainIsModelOnly ? okRuns : await replayArm(selected, { provider: 'offline', model: compareModel, routing: false }),
+    hybrid: mainIsHybrid ? okRuns : await replayArm(selected, { provider: 'offline', model: compareModel, routing: true }),
+  };
+  const sel = { tune: selected.filter((id) => split.tune.includes(id)), holdout: selected.filter((id) => split.holdout.includes(id)), all: selected };
+  comparison = {
+    note: 'Три источника решения на одних и тех же диалогах и эталоне: rules — детерминированные правила по фактам транскрипта (provider heuristic); model — только метки модели-судьи (кэш, маршрутизация выключена); hybrid — продукт: маршрутизация по критериям из config/routing.json. Маршрутизация выбиралась по точности на TUNE, поэтому tune-цифры гибрида оптимистичны; честная оценка — HOLDOUT. Все три столбца пересчитаны из кэша без вызовов модели.',
+    model: compareModel,
+    arms: {
+      rules: { label: 'только правила', provider: 'heuristic', model: 'heuristic-v1', source: providerName === 'heuristic' ? 'main run' : 'replay' },
+      model: { label: 'только модель', provider: 'offline (кэш)', model: compareModel, routing: 'off', source: mainIsModelOnly ? 'main run' : 'replay' },
+      hybrid: { label: 'гибрид (продукт)', provider: 'offline (кэш)', model: compareModel, routing: 'config/routing.json', source: mainIsHybrid ? 'main run' : 'replay' },
+    },
+    routing: (routingCfg.criteria || []).map((e) => ({ code: e.code, source: e.source, confidence: e.confidence ? { agree: e.confidence.agree, disagree: e.confidence.disagree } : null })),
+    selection: { chosen_on: 'tune', honest_estimate: 'holdout', tune_n: sel.tune.length, holdout_n: sel.holdout.length },
+    missing: Object.fromEntries(Object.entries(armRuns).map(([k, rs]) => [k, rs.filter((r) => r.error).map((r) => ({ id: r.id, error: r.error }))])),
+    splits: Object.fromEntries(Object.entries(sel).map(([name, ids]) => [name, { n: ids.length, ...Object.fromEntries(Object.entries(armRuns).map(([k, rs]) => [k, armSummary(rs, ids)])) }])),
+  };
 }
 
 const report = {
@@ -288,6 +395,16 @@ const report = {
   split, n: okRuns.length, failed: runs.filter((r) => r.error && !r.retest).map((r) => ({ id: r.id, error: r.error })), split_used: args.ids ? 'ids' : args.split,
   criteria: critReport, totals, gross: grossReport, retest, disagreements, cost, by_language: langSummary, injection_regression: injection, learning_loop: null,
   targets: { binary_accuracy: 0.92, scale_within_one_step: 0.9, scale_exact: 0.7, kappa: 0.61, gross_recall_insult_bypass: 1, retest_identical: 0.95 },
+  comparison,
+  runs: loadRuns().map((o) => ({ file: `reports/runs/${o.file}`, provider: o.provider, model: o.model, created_at: o.created_at, n: o.n, split_used: o.split_used, calls: o.cost?.calls ?? null, cache_hits: o.cost?.cache_hits ?? null, cache_misses: o.cost?.cache_misses ?? null, retest_n: o.retest?.n ?? 0, injection_checked: !!o.injection_regression })),
+  metric_notes: {
+    accuracy: 'доля меток, совпавших с эталоном или входящих в список допустимых альтернатив разметчика (accept); 95% ДИ — Wilson',
+    strict_accuracy: 'доля меток, совпавших ровно с основной эталонной меткой (без допустимых альтернатив)',
+    kappa: 'κ Коэна по строгим парам (модель, человек) без допустимых альтернатив; 95% ДИ — перцентильный bootstrap, 1000 повторов, фиксированное зерно',
+    within_one_step: 'шкалы 04/06: |шаг модели − шаг человека| ≤ 1 (или совпадение с допустимой альтернативой)',
+    totals: 'итоговый балл движка packages/scoring из меток модели против expected_total разметчика: точное совпадение, |Δ| ≤ 5, MAE',
+    gross: 'критерий 08: флаг грубой ошибки и типы insult/bypass/disclosure против gross_error_types разметчика',
+  },
 };
 
 mkdirSync(join(ROOT, 'reports', 'runs'), { recursive: true });
@@ -302,6 +419,7 @@ console.error(`calibrate: done in ${cost.seconds_total}s; accuracy by criterion:
 // ---------- markdown ----------
 function pct(x) { return x == null ? '—' : `${(x * 100).toFixed(1)}%`; }
 function ci(a) { return a && a[0] != null ? `[${pct(a[0])}; ${pct(a[1])}]` : '—'; }
+function kci(a) { return a && a[0] != null ? `[${a[0]}; ${a[1]}]` : '—'; }
 function num(x) { return x == null ? '—' : String(x); }
 function loadRuns() {
   const dir = join(ROOT, 'reports', 'runs'); if (!existsSync(dir)) return [];
@@ -323,7 +441,7 @@ function renderMarkdown(rep) {
   for (const c of rep.criteria) {
     const target = c.kind === 'scale' ? '±1 шаг ≥ 90%, точно ≥ 70%' : '≥ 92%';
     const ok = c.kind === 'scale' ? (c.within_one_step ?? 0) >= 0.9 && (c.accuracy ?? 0) >= 0.7 : (c.accuracy ?? 0) >= 0.92;
-    L.push(`| ${c.code} ${c.title} | ${c.kind === 'scale' ? 'шкала' : 'да/нет'} | ${c.n} | ${pct(c.accuracy)} ${ok ? '✓' : '✗'} | ${ci(c.accuracy_ci)} | ${c.kind === 'scale' ? pct(c.within_one_step) : '—'} | ${num(c.kappa)} | ${ci(c.kappa_ci).replace(/%/g, '')} | ${pct(c.by_language.RU.accuracy)} | ${pct(c.by_language.KZ.accuracy)} | ${pct(c.by_language.EN.accuracy)} | ${target} |`);
+    L.push(`| ${c.code} ${c.title} | ${c.kind === 'scale' ? 'шкала' : 'да/нет'} | ${c.n} | ${pct(c.accuracy)} ${ok ? '✓' : '✗'} | ${ci(c.accuracy_ci)} | ${c.kind === 'scale' ? pct(c.within_one_step) : '—'} | ${num(c.kappa)} | ${kci(c.kappa_ci)} | ${pct(c.by_language.RU.accuracy)} | ${pct(c.by_language.KZ.accuracy)} | ${pct(c.by_language.EN.accuracy)} | ${target} |`);
   }
   L.push('');
   L.push('## Контрольная выборка (holdout)');
@@ -332,9 +450,10 @@ function renderMarkdown(rep) {
   L.push('|---|---|---|---|---|---|---|---|---|---|');
   for (const c of rep.criteria) {
     const h = c.holdout;
-    L.push(`| ${c.code} ${c.title} | ${h.n} | ${pct(h.accuracy)} | ${ci(h.accuracy_ci)} | ${c.kind === 'scale' ? pct(h.within_one_step) : '—'} | ${num(h.kappa)} | ${ci(h.kappa_ci).replace(/%/g, '')} | ${pct(h.by_language.RU.accuracy)} | ${pct(h.by_language.KZ.accuracy)} | ${pct(h.by_language.EN.accuracy)} |`);
+    L.push(`| ${c.code} ${c.title} | ${h.n} | ${pct(h.accuracy)} | ${ci(h.accuracy_ci)} | ${c.kind === 'scale' ? pct(h.within_one_step) : '—'} | ${num(h.kappa)} | ${kci(h.kappa_ci)} | ${pct(h.by_language.RU.accuracy)} | ${pct(h.by_language.KZ.accuracy)} | ${pct(h.by_language.EN.accuracy)} |`);
   }
   L.push('');
+  if (rep.comparison) renderComparison(rep, L);
   L.push('## По языкам (все критерии вместе)');
   L.push('');
   L.push('| Язык клиента | Диалогов | Меток | Точность | 95% ДИ |');
@@ -400,12 +519,84 @@ function renderMarkdown(rep) {
   if (below.length) L.push(`- Ниже цели: ${below.map((c) => `${c.code} (${pct(c.accuracy)}${c.kind === 'scale' ? `, ±1 шаг ${pct(c.within_one_step)}` : ''})`).join(', ')}. Причины — в таблице расхождений: в основном смысловые критерии, где нужна оценка полноты ответа и реакции на недовольство.`);
   else L.push('- Все критерии достигли целевых значений на этом разбиении.');
   if (rep.n < 65) L.push(`- Оценено ${rep.n} из 65 диалогов; доверительные интервалы широкие — малые выборки (особенно KZ: ${rep.by_language.KZ.dialogs} диалогов, EN: ${rep.by_language.EN.dialogs}).`);
-  L.push('- κ Коэна занижен для критериев с сильно несбалансированными метками (например 01 и 08, где почти все эталоны одинаковы): высокая точность при низком κ — артефакт распределения, а не слабая согласованность.');
+  L.push('- κ Коэна занижен для критериев с сильно несбалансированными метками (04, 06, 05, 01, 08 — почти все эталоны на одной ступени): высокая точность при низком κ — парадокс распространённости, см. раздел с p_e и матрицами ошибок. κ считается по строгим парам, без допустимых альтернатив разметчика; точность — с ними.');
+  L.push(`- Маршрутизация критериев (config/routing.json) выбрана на TUNE (${rep.split.tune.length}); цифры на TUNE для гибрида — оптимистичны. Честная оценка продукта — HOLDOUT (${rep.split.holdout.length} диалогов, широкие интервалы).`);
+  L.push('- Эталон (tests/gold/dev_labels.json) подготовлен командой, а не организаторами: один разметчик, 65 диалогов (60 синтетических чатов + 5 звонков), без второго разметчика — межразметчиковая согласованность неизвестна, «согласие с человеком» = согласие с этой разметкой.');
   L.push('- Эталонные метки используются только в этом скрипте; в промпты и логику продукта они не попадают.');
   L.push('');
   L.push('## Summary (EN)');
   L.push('');
   L.push(`Provider ${rep.provider}, judge model ${rep.model}, ${rep.n} DEV dialogs (${rep.split_used} split; tune ${rep.split.tune.length} / holdout ${rep.split.holdout.length}, stratified, seed ${rep.split.seed}). Per-criterion accuracy vs. accepted human labels: ${rep.criteria.map((c) => `${c.code} ${pct(c.accuracy)}`).join(', ')}. Exact total match ${pct(rep.totals.exact_match_rate)}, MAE ${num(rep.totals.mae)} pts. Gross-error recall ${pct(rep.gross.recall)}, precision ${pct(rep.gross.precision)}. By language: RU ${pct(rep.by_language.RU.accuracy)}, KZ ${pct(rep.by_language.KZ.accuracy)}, EN ${pct(rep.by_language.EN.accuracy)}. Cost: ${rep.cost.cost_note}; ${rep.cost.seconds_per_dialog ?? '—'} s per dialog measured. Gold labels are used for measurement only.`);
+  if (rep.comparison) {
+    const h = rep.comparison.splits.holdout; const t = rep.comparison.splits.tune;
+    L.push('');
+    L.push(`Three-way comparison (same dialogs, same gold, no model calls — replayed from the ${rep.comparison.model} cache): rules-only vs model-only vs hybrid (product, per-criterion routing from config/routing.json). Routing was chosen on the tune split (n=${t.n}); the holdout (n=${h.n}) is the honest estimate. Holdout accuracy per criterion (rules / model / hybrid): ${h.hybrid.criteria.map((c, i) => `${c.code} ${pct(h.rules.criteria[i].accuracy)} / ${pct(h.model.criteria[i].accuracy)} / ${pct(h.hybrid.criteria[i].accuracy)}`).join('; ')}. Holdout exact total match: rules ${pct(h.rules.totals.exact_match_rate)}, model ${pct(h.model.totals.exact_match_rate)}, hybrid ${pct(h.hybrid.totals.exact_match_rate)}; MAE ${num(h.rules.totals.mae)} / ${num(h.model.totals.mae)} / ${num(h.hybrid.totals.mae)} pts. Low κ on the scale criteria 04/06 despite high ±1-step agreement is the prevalence (kappa) paradox: most gold labels sit on the top step, so chance agreement is high and κ is deflated; the per-class confusion matrices above are the better read.`);
+  }
   L.push('');
   return L.join('\n');
+}
+
+function renderComparison(rep, L) {
+  const cmp = rep.comparison;
+  const arms = ['rules', 'model', 'hybrid'];
+  const armName = { rules: 'правила', model: 'модель', hybrid: 'гибрид' };
+  L.push('## Три источника решения: правила / модель / гибрид (продукт)');
+  L.push('');
+  L.push(cmp.note);
+  L.push('');
+  L.push(`Маршрутизация по критериям (config/routing.json, модель ${cmp.model}): ${cmp.routing.map((r) => `${r.code} → ${r.source}${r.confidence ? ` (уверенность при согласии/расхождении ${r.confidence.agree}/${r.confidence.disagree})` : ''}`).join('; ')}. Критерии без записи маршрутизируются к модели.`);
+  const miss = Object.entries(cmp.missing).filter(([, v]) => v.length);
+  if (miss.length) L.push(`\nНе удалось воспроизвести из кэша: ${miss.map(([k, v]) => `${armName[k]}: ${v.map((x) => x.id).join(', ')}`).join('; ')} — эти диалоги исключены из соответствующего столбца.`);
+  L.push('');
+  for (const sp of ['holdout', 'tune', 'all']) {
+    const s = cmp.splits[sp];
+    const title = sp === 'holdout' ? `Контрольная выборка HOLDOUT (n=${s.n}) — честная оценка, на ней ничего не выбиралось` : sp === 'tune' ? `Выборка TUNE (n=${s.n}) — на ней выбрана маршрутизация, цифры гибрида оптимистичны` : `Все диалоги (n=${s.n}) — для справки, смесь tune и holdout`;
+    L.push(`### ${title}`);
+    L.push('');
+    L.push('| Критерий | Тип | Точность: правила | модель | гибрид | 95% ДИ гибрида | κ: правила | модель | гибрид | 95% ДИ κ гибрида | ±1 шаг: правила / модель / гибрид | Маршрут |');
+    L.push('|---|---|---|---|---|---|---|---|---|---|---|---|');
+    s.hybrid.criteria.forEach((c, i) => {
+      const r = s.rules.criteria[i]; const m = s.model.criteria[i];
+      const route = cmp.routing.find((x) => x.code === c.code)?.source || 'llm';
+      L.push(`| ${c.code} | ${c.kind === 'scale' ? 'шкала' : 'да/нет'} | ${pct(r.accuracy)} | ${pct(m.accuracy)} | **${pct(c.accuracy)}** | ${ci(c.accuracy_ci)} | ${num(r.kappa)} | ${num(m.kappa)} | **${num(c.kappa)}** | ${kci(c.kappa_ci)} | ${c.kind === 'scale' ? `${pct(r.within_one_step)} / ${pct(m.within_one_step)} / ${pct(c.within_one_step)}` : '—'} | ${route} |`);
+    });
+    L.push('');
+    L.push('| Сводка | правила | модель | гибрид |');
+    L.push('|---|---|---|---|');
+    L.push(`| Итоговый балл: точное совпадение | ${arms.map((a) => pct(s[a].totals.exact_match_rate)).join(' | ')} |`);
+    L.push(`| Итоговый балл: в пределах ±5 | ${arms.map((a) => pct(s[a].totals.within_5pts)).join(' | ')} |`);
+    L.push(`| Итоговый балл: MAE, баллов | ${arms.map((a) => num(s[a].totals.mae)).join(' | ')} |`);
+    L.push(`| Все 7 весовых меток совпали, диалогов | ${arms.map((a) => num(s[a].totals.all_labels_match)).join(' | ')} |`);
+    L.push(`| Грубые ошибки: recall / precision | ${arms.map((a) => `${pct(s[a].gross.recall)} / ${pct(s[a].gross.precision)} (TP ${s[a].gross.tp}, FP ${s[a].gross.fp}, FN ${s[a].gross.fn})`).join(' | ')} |`);
+    for (const t of ['insult', 'bypass', 'disclosure']) L.push(`| Грубые ошибки «${t}»: recall / precision | ${arms.map((a) => { const v = s[a].gross.by_type[t]; return `${pct(v.recall)} / ${pct(v.precision)} (TP ${v.tp}, FP ${v.fp}, FN ${v.fn})`; }).join(' | ')} |`);
+    for (const lang of ['RU', 'KZ', 'EN']) L.push(`| Точность меток, ${lang} (диалогов ${s.hybrid.by_language[lang].dialogs}) | ${arms.map((a) => `${pct(s[a].by_language[lang].accuracy)} ${ci(s[a].by_language[lang].accuracy_ci)}`).join(' | ')} |`);
+    L.push('');
+  }
+  // kappa paradox on the scale criteria
+  const all = cmp.splits.all;
+  L.push('### Почему κ низкая у шкал 04 и 06 при высокой точности (парадокс распространённости)');
+  L.push('');
+  L.push('κ Коэна = (p_o − p_e) / (1 − p_e): наблюдаемое согласие минус согласие «по случайности», которое рассчитывается из краевых распределений. Когда почти все эталонные метки стоят на верхней ступени, p_e само близко к единице, и даже высокое p_o даёт низкую κ. Это свойство выборки (мало «плохих» диалогов в DEV), а не свидетельство слабой согласованности; поэтому рядом показываем распределение эталона, p_e и матрицу ошибок по классам.');
+  L.push('');
+  L.push('| Критерий | Подход | n | Точность | ±1 шаг | p_o | p_e | κ | Доля верхней ступени в эталоне |');
+  L.push('|---|---|---|---|---|---|---|---|---|');
+  for (const code of ['04', '06']) {
+    for (const a of arms) {
+      const c = all[a].criteria.find((x) => x.code === code); if (!c) continue;
+      const top = Object.entries(c.gold_distribution || {}).filter(([k]) => !isNaN(k)).sort((x, y) => Number(y[0]) - Number(x[0]))[0];
+      L.push(`| ${code} | ${armName[a]} | ${c.n} | ${pct(c.accuracy)} | ${pct(c.within_one_step)} | ${num(round(c.strict_accuracy))} | ${num(c.kappa_expected_agreement)} | ${num(c.kappa)} | ${top ? `${top[0]}: ${top[1]}/${c.n} (${pct(top[1] / c.n)})` : '—'} |`);
+    }
+  }
+  L.push('');
+  for (const code of ['04', '06']) {
+    for (const a of ['model', 'rules']) {
+      const c = all[a].criteria.find((x) => x.code === code); if (!c) continue;
+      L.push(`Матрица ошибок ${code}, ${armName[a]}${a === 'model' ? ' (= гибрид: критерий маршрутизирован к модели)' : ''}, все ${c.n} диалогов — строки: человек, столбцы: ${armName[a]}:`);
+      L.push('');
+      L.push(`| человек \\ ${armName[a]} | ${c.confusion.labels.join(' | ')} |`);
+      L.push(`|---|${c.confusion.labels.map(() => '---').join('|')}|`);
+      c.confusion.labels.forEach((lab, i) => L.push(`| **${lab}** | ${c.confusion.matrix[i].join(' | ')} |`));
+      L.push('');
+    }
+  }
 }

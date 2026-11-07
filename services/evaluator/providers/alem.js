@@ -157,7 +157,7 @@ export async function complete(req, _cfg = {}, ctx = {}) {
   if (!model) throw new Error('alem: модель не задана (ALEM_MODEL_JUDGE)');
   const ep = endpointForModel(model, req.role);
   if (!ep.base || !ep.apiKey) throw new Error(`alem: ALEM_BASE_URL / ALEM_API_KEY не заданы для модели роли ${req.role || 'judge'}`);
-  const timeoutMs = req.timeoutMs || 180000;
+  const timeoutMs = req.timeoutMs || Number(process.env.CQA_ALEM_TIMEOUT_MS || 180000);
   const maxTokens = req.maxTokens || 3000;
   const started = Date.now();
   let attempts = 0;
@@ -204,7 +204,7 @@ export async function complete(req, _cfg = {}, ctx = {}) {
         const q = quota.get(model) || {};
         quota.set(model, { ...q, exhausted_until: Date.now() + Math.max(e.retryAfter || 0, 30) * 1000 });
       }
-      if (retryable && attempts < 3) {
+      if (retryable && attempts < Number(process.env.CQA_RETRIES ?? 3)) {
         attempts++;
         const wait = e.retryAfter ? e.retryAfter * 1000 : 1000 * 2 ** attempts;
         await new Promise((r) => setTimeout(r, Math.min(wait, 20000)));

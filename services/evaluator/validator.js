@@ -38,6 +38,8 @@ export function normalizeResult(raw, criterion) {
     else if (['no', 'нет', 'n', 'false'].includes(a)) out.answer = 'no';
   } else if (typeof r.answer === 'boolean') out.answer = r.answer ? 'yes' : 'no';
   if (r.scale_value != null && r.scale_value !== '') out.scale_value = num(r.scale_value);
+  // A model often expresses N/A as {applicable:true, answer:null, na_reason:"..."}: treat it as N/A when N/A is allowed
+  if (!isFlag(criterion) && out.answer == null && out.scale_value == null && out.na_reason && naAllowed(criterion)) out.applicable = false;
   if (isFlag(criterion)) {
     const ft = Array.isArray(r.flag_types) ? r.flag_types : (typeof r.flag_types === 'string' && r.flag_types ? [r.flag_types] : []);
     out.flag_types = [...new Set(ft.map((t) => String(t).trim().toLowerCase()).filter(Boolean))];
@@ -142,5 +144,10 @@ export function autoFix(res, criterion, conv) {
   if (out.checked_range) out.checked_range = [Math.max(1, out.checked_range[0]), Math.min(n, out.checked_range[1])];
   if (!out.applicable && !out.na_reason) out.na_reason = criterion.na_condition || 'Условие N/A выполнено.';
   if (isFlag(criterion) && out.answer === 'no') out.flag_types = [];
+  // «Нет» for a flag (no violation found) needs evidence: the operator lines that were checked
+  if (out.applicable && out.answer === 'no' && !out.evidence.some((e) => conv.lines[e.line - 1]?.speaker === 'operator')) {
+    const ops = conv.lines.filter((l) => l.speaker === 'operator');
+    if (ops.length) out.evidence = [...out.evidence, { line: ops[ops.length - 1].n, why: 'реплики оператора проверены' }];
+  }
   return out;
 }

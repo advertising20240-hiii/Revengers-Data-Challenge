@@ -143,8 +143,12 @@ async function judgeBatch({ conv, checklist, criteria, prov, model, cfg, example
     if (!raw) { pending.push({ c, violations: [`${c.code || c.id}: модель не вернула результат для критерия`] }); continue; }
     const norm = normalizeResult(raw, c);
     const viol = validateResult(norm, c, conv);
-    if (viol.length) pending.push({ c, violations: viol, norm });
-    else final[c.id] = norm;
+    if (!viol.length) { final[c.id] = norm; continue; }
+    // harmless deterministic fixes first (missing checked range / N/A reason / evidence); a repair call only for what remains
+    const fixed = autoFix(norm, c, conv);
+    const viol2 = validateResult(fixed, c, conv);
+    if (!viol2.length) { final[c.id] = { ...fixed, confidence: Math.min(fixed.confidence, 0.8) }; issues.push(...viol.map((v) => `исправлено автоматически: ${v}`)); continue; }
+    pending.push({ c, violations: viol2, norm: fixed });
   }
 
   if (pending.length) {
@@ -279,7 +283,14 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
     } else {
       const batchSize = opts.batchSize ?? (providerName === 'alem' ? Number(process.env.CQA_JUDGE_BATCH_ALEM || 0) : (LOCAL_PROVIDERS.includes(providerName) && providerName !== 'fake' ? JUDGE_BATCH_LOCAL : 0));
       const batches = chunk(misses, batchSize);
-      const batchResults = await Promise.all(batches.map((b) => judgeBatch({ conv, checklist, criteria: b, prov, model, cfg, examples: opts.examples, signal: opts.signal })));
+      // provider failure (quota exhausted, network) degrades to conservative rule results instead of failing the evaluation
+      const batchResults = await Promise.all(batches.map((b) => judgeBatch({ conv, checklist, criteria: b, prov, model, cfg, examples: opts.examples, signal: opts.signal })
+        .catch((e) => {
+          if (opts.signal?.aborted) throw e;
+          const results = {};
+          for (const c of b) results[c.id] = heuristicResult(conv, c, { fallback: true, issues: [`модель недоступна: ${String(e.message || e).slice(0, 120)}`] });
+          return { results, issues: [`judge: ${String(e.message || e).slice(0, 200)}`], calls: [], prompt_hash: null };
+        })));
       for (const br of batchResults) {
         trace.calls.push(...br.calls);
         trace.validator_issues.push(...br.issues);

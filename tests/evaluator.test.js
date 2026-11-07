@@ -164,16 +164,30 @@ test('prompt-injection framing: transcript is marked untrusted and "score 100" c
   for (const id of ['c01', 'c02', 'c03', 'c05', 'c07', 'c08']) assert.equal(label(r.results.find((x) => x.criterion_id === id)), label(clean.results.find((x) => x.criterion_id === id)));
 });
 
-test('repair re-ask fixes a violation once; confidence capped', async () => {
-  let n = 0;
-  const fake = fakeProvider({ c05: () => (n++ === 0 ? { answer: 'no', checked_range: null } : { answer: 'no', checked_range: [10, 12] }) });
-  const r = await ev.evaluateConversation(conv('p1-ru-001'), checklist, { provider: fake, verify: false, force: true });
-  const c05 = r.results.find((x) => x.criterion_id === 'c05');
+test('fixable violations are auto-fixed without a repair call; unfixable ones get one repair', async () => {
+  // missing checked_range for «Нет» is filled deterministically — no extra model call
+  const fake1 = fakeProvider({ c05: () => ({ answer: 'no', checked_range: null }) });
+  const r1 = await ev.evaluateConversation(conv('p1-ru-001'), checklist, { provider: fake1, verify: false, force: true });
+  const c05 = r1.results.find((x) => x.criterion_id === 'c05');
   assert.equal(c05.answer, 'no');
-  assert.deepEqual(c05.checked_range, [10, 12]);
-  assert.ok(c05.confidence <= 0.7);
-  assert.equal(c05.source, 'ai');
-  assert.deepEqual(r.trace.calls.map((x) => x.role), ['judge', 'repair']);
+  assert.ok(Array.isArray(c05.checked_range));
+  assert.ok(c05.confidence <= 0.8);
+  assert.deepEqual(r1.trace.calls.map((x) => x.role), ['judge']);
+  // an illegal scale step cannot be fixed deterministically -> exactly one repair call
+  let n = 0;
+  const fake2 = fakeProvider({ c04: () => (n++ === 0 ? { scale_value: 12 } : { scale_value: 15 }) });
+  const r2 = await ev.evaluateConversation(conv('p1-ru-001'), checklist, { provider: fake2, verify: false, force: true });
+  const c04 = r2.results.find((x) => x.criterion_id === 'c04');
+  assert.equal(c04.scale_value, 15);
+  assert.ok(c04.confidence <= 0.7);
+  assert.deepEqual(r2.trace.calls.map((x) => x.role), ['judge', 'repair']);
+});
+
+test('N/A expressed as applicable:true + answer:null + na_reason is read as N/A', async () => {
+  const { normalizeResult } = await import('../services/evaluator/validator.js');
+  const c03 = checklist.criteria.find((c) => c.id === 'c03');
+  const out = normalizeResult({ criterion_id: 'c03', applicable: true, answer: null, na_reason: 'Запрос не требовал идентификации' }, c03);
+  assert.equal(out.applicable, false);
 });
 
 test('verifier disagreement lowers confidence and is recorded, label unchanged', async () => {
