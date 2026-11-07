@@ -65,7 +65,7 @@ curl -s -X POST http://localhost:8080/api/evaluate \
 
 ```bash
 npm run export:results -- --group <CONTROL> --out results/prod/results.json --expect 10
-#   печатает: results/prod/results.json: 10 записей (ok N, error M); model: hybrid — qwen3-8, kazllm ... + правила
+#   печатает: results/prod/results.json: 10 записей (ok N, error M); model: external_api — qwen3-8, kazllm (alem.plus API) + правила
 #   «ПРОВЕРКА НЕ ПРОЙДЕНА» → читать причины; типичное: записей ≠ 10 (не тот group_id), дубликаты ID.
 #   Тот же файл отдаёт сервер: GET /api/results.json?group_id=<CONTROL>
 
