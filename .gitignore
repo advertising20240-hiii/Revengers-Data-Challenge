@@ -1,0 +1,35 @@
+# secrets & env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# deps & caches
+node_modules/
+.cache/
+coverage/
+*.log
+# runtime data (raw fetches and the local database are regenerated)
+data/raw/
+data/db/
+# generated artifacts
+reports/jury/*.png
+# editor / tooling folders that never belong in the product repo
+.claude/
+.claude*
+CLAUDE.md
+AGENTS.md
+.agents/
+.mcp.json
+mcp*.json
+agents/
+skills/
+SKILL.md
+.cursor/
+.codex/
+.aider*
+memory/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

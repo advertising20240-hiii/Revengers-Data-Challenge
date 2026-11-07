@@ -1,0 +1,17 @@
+{
+  "name": "revengers-cqa",
+  "version": "0.1.0",
+  "description": "Conversation Quality Analytics — automatic, explainable, disputable evaluation of support operators against a configurable checklist.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "evaluate": "node scripts/evaluate.mjs",
+    "calibrate": "node scripts/calibrate.mjs",
+    "build:d365": "node scripts/build-d365.mjs",
+    "audit": "bash scripts/audit-repo.sh"
+  }
+}
