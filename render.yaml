@@ -1,0 +1,18 @@
+# Optional: the full product as a free Render.com web service (Blueprint). See docs/DEPLOY.md.
+# Free instances sleep after inactivity and their disk is ephemeral: data/db is rebuilt from the committed
+# DEV dataset and seed evaluations on every start; appeals and new evaluations are lost on restart.
+# Never put API keys here — the owner sets them in the Render dashboard (Environment).
+services:
+  - type: web
+    name: revengers-cqa
+    runtime: node
+    plan: free
+    buildCommand: npm install --ignore-scripts
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: false
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: CQA_PROVIDER
+        value: offline
