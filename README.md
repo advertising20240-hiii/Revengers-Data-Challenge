@@ -20,12 +20,13 @@
 3. [Как пользоваться](#как-пользоваться)
 4. [Архитектура](#архитектура)
 5. [Модели, маршрутизация и стоимость](#модели-маршрутизация-и-стоимость)
-6. [Калибровка](#калибровка)
-7. [Тесты и CI](#тесты-и-ci)
-8. [Безопасность](#безопасность)
-9. [Dynamics 365](#dynamics-365)
-10. [Ограничения](#ограничения)
-11. [Команда и лицензия](#команда-и-лицензия)
+6. [Результаты для организаторов](#результаты-для-организаторов)
+7. [Калибровка](#калибровка)
+8. [Тесты и CI](#тесты-и-ci)
+9. [Безопасность](#безопасность)
+10. [Dynamics 365](#dynamics-365)
+11. [Ограничения](#ограничения)
+12. [Команда и лицензия](#команда-и-лицензия)
 
 ## Что это
 
@@ -40,7 +41,7 @@
 | **Калибровка** | Согласие модели с человеческими метками на 65 DEV-диалогах: точность и κ Коэна по критериям с 95 % ДИ, отдельно на отложенной выборке (20 диалогов), матрицы ошибок, список расхождений со ссылками на диалоги, полнота/точность по грубым ошибкам. |
 | **Инсайты** | Распределение итогов, доля провалов по критерию, язык/канал, эскалации, время первой реакции, удержание в звонках, список грубых ошибок, карточки операторов. Экспорт CSV. |
 
-Формула — из чек-листа организаторов, один в один: Да = полный вес, Нет = 0, шкала пропорционально; N/A исключается, веса перераспределяются; округление до двух знаков точной арифметикой (`60.5 / 80 → 75.63`); грубая ошибка — отдельный флаг, итог не меняет (в DEV есть диалог `p1-ru-023` с итогом 100.00 и флагом «обход компании»). Подробно — [docs/SCORING_POLICY.md](docs/SCORING_POLICY.md).
+Формула — из чек-листа организаторов, один в один: Да = полный вес, Нет = 0, шкала пропорционально; N/A исключается, веса перераспределяются; округление до двух знаков точной арифметикой (`60.5 / 80 → 75.63`); грубая ошибка — отдельный флаг, итог не меняет (в DEV диалог `p1-kz-013` имеет итог 92.31 и флаг «обход компании»). Подробно — [docs/SCORING_POLICY.md](docs/SCORING_POLICY.md).
 
 ## Быстрый старт
 
@@ -108,15 +109,32 @@ flowchart LR
 |---|---|---|
 | Судья | alem.plus · `qwen3-8` | `ALEM_MODEL_JUDGE` |
 | Верификатор (другое семейство) | alem.plus · `gpt-oss` — настроен; в продукте вызывается только для результатов с уверенностью < 0.75 (`CQA_VERIFY=low`); в опубликованном прогоне DEV выключен (0 вызовов), его вклад в точность не измерен | `ALEM_MODEL_VERIFIER`, `CQA_VERIFY` |
-| Казахское второе мнение | alem.plus · `kazllm` — 15 вызовов (по одному на KZ-диалог); расходилось с судьёй в 9 из 15 — расхождение снижает уверенность и отправляет карточку на проверку | `ALEM_MODEL_KZ` |
+| Казахское второе мнение | alem.plus · `kazllm` — 15 вызовов (по одному на KZ-диалог); расхождение с судьёй снижает уверенность и отправляет карточку на проверку | `ALEM_MODEL_KZ` |
 | Резерв при 429/квоте | alem.plus · AlemLLM — автоматически при остатке ≤ 20 % лимита | `ALEM_MODEL_FALLBACK` |
 | Локальная модель | Ollama / любой OpenAI-совместимый сервер — поддерживается конфигурацией; на машине разработки не установлена, качество не измерено | `OPENAI_BASE_URL`, `OPENAI_MODEL` |
 | Без модели | `CQA_PROVIDER=heuristic` — правила по всем критериям; `offline` — только сохранённые результаты | `CQA_PROVIDER` |
 | Платные облачные (заблокированы) | `CQA_MODEL` / `CQA_VERIFIER_MODEL` | `CQA_ALLOW_CLOUD=1` |
 
-**Гибридная маршрутизация** ([config/routing.json](config/routing.json)): для каждого критерия источник решения выбран по измеренной точности на tune-разбиении (45 диалогов): **02** — правило, но «Нет» модели перекрывает «Да» правила; **03** и **07** — детерминированное правило по фактам транскрипта (событие подтверждения личности, события завершения), ответ модели сохраняется как второе мнение; **01, 04, 05, 06, 08** — модель. На всех 65 диалогах это подняло точность 02 с 46.2 % (только модель) до 89.2 %, 03 — с 15.4 % до 95.4 %, 07 — с 76.9 % до 93.8 %; ошибка итогового балла (MAE) — 6.41 против 18.24 у модели одной и 12.75 у правил одних. Маршрутизация выбиралась на tune-разбиении, поэтому честная оценка — отложенная выборка: там гибрид даёт MAE 6.93 против 17.58 / 14.88 (раздел «Три источника решения» в [reports/calibration.md](reports/calibration.md), методика — [docs/EVALUATION.md](docs/EVALUATION.md)). Маршрутизация действует только пока определение критерия не изменено: новый или отредактированный критерий всегда оценивает модель.
+**Гибридная маршрутизация** ([config/routing.json](config/routing.json)): для каждого критерия источник решения выбран по измеренной точности на tune-разбиении (45 диалогов). После исправления валидатора и повторного прогона модель решает **шесть критериев из восьми** (01, 02, 04, 05, 06, 08); **03** и **07** решает детерминированное правило по фактам транскрипта (системное событие подтверждения личности; события завершения), а ответ модели сохраняется как второе мнение. На всех 65 диалогах правило точнее модели на 03 (98.5 % против 95.4 %) и 07 (93.8 % против 92.3 %); ошибка итогового балла (MAE) у гибрида 6.26 против 6.91 у модели одной и 11.36 у правил одних; на отложенной выборке (20 диалогов, на ней ничего не выбиралось) — 4.91 против 5.82 / 14.11 (раздел «Три источника решения» в [reports/calibration.md](reports/calibration.md), методика — [docs/EVALUATION.md](docs/EVALUATION.md)). Маршрутизация действует только пока определение критерия не изменено: новый или отредактированный критерий всегда оценивает модель.
 
-**Стоимость одной оценки: 0 ₸** — бесплатный API alem.plus либо локальная модель. Измерено на полном прогоне DEV (`reports/runs/alem_qwen3-8.json`): 138 вызовов на 65 диалогов (64 судья, 59 повторных запросов после валидатора, 15 казахская модель), 545 с стены при параллелизме 3 (≈ 8.4 с на диалог пропускной способности; 21.8 с задержка одного диалога), ≈ 10.8 тыс. входных и 2.6 тыс. выходных токенов на диалог. Ограничение — не деньги, а квота бесплатного API (заголовки показывали 200 запросов на окно неизвестной длины), поэтому кэш по критерию, один вызов судьи на диалог и не более одного повтора. Расчёт «если бы это был платный провайдер» (явно помеченная оценка, не факт) — в [docs/COST.md](docs/COST.md). Температура 0; модель, версия промпта и хэш политики записаны в каждом результате.
+**Стоимость одной оценки: 0 ₸** — бесплатный API alem.plus либо локальная модель. Измерено на опубликованном прогоне DEV (`reports/runs/alem_qwen3-8_v2.json`): **82 вызова на 65 диалогов** (65 судья, 2 повторных запроса после валидатора, 15 казахская модель), 370 с стены при параллелизме 3 (≈ 5.7 с на диалог пропускной способности; 17 с задержка одного диалога), ≈ 6.7 тыс. входных и 2.1 тыс. выходных токенов на диалог. После уточнения подсказки по критерию 06 он переоценён отдельным прогоном (`reports/runs/alem_qwen3-8_v3_c06.json`): ещё 67 вызовов (65 судья + 2 повтора), остальные критерии — из кэша; итого опубликованное состояние стоило 149 живых вызовов и 0 ₸. Ограничение — не деньги, а квота бесплатного API (заголовки показывали 200 запросов на окно неизвестной длины), поэтому кэш по критерию, один вызов судьи на диалог и не более одного повтора. Разбор по ролям и расчёт «если бы это был платный провайдер» (явно помеченная оценка, не факт) — в [docs/COST.md](docs/COST.md). Температура 0; модель, версия промпта и хэш политики записаны в каждом результате.
+
+## Результаты для организаторов
+
+По приложению к гайду организаторов результаты сдаются файлами в формате **JSON 1.0**: один объект на файл, в `results[]` — по одной записи на каждый диалог набора с восемью критериями `contact, discovery, identification, consultation, empathy, dialogue, closure, critical` (`value`: `true`/`false`/`null` = N/A или ступень шкалы; `rationale`; `evidence_turns` — номера реплик с 1 по исходному массиву), `score.final_score` (0–100, два знака) и `score.critical_flag`. Диалог, который не удалось оценить, записывается как `status: "error"` с причиной — не скрывается и не заменяется нулём.
+
+| Файл | Набор | Состояние |
+|---|---|---|
+| [results/dev/results.json](results/dev/results.json) | DEV — 60 чатов + 5 звонков, 65 записей | в репозитории |
+| `results/prod/results.json` | контрольный набор — ровно 10 чатов, выдаётся за час до стоп-кода | создаётся 8 ноября по [docs/CONTROL_DAY.md](docs/CONTROL_DAY.md) |
+
+```bash
+npm run export:results -- --group DEV --out results/dev/results.json                 # DEV
+npm run export:results -- --group <CONTROL> --out results/prod/results.json --expect 10   # контрольный набор
+curl "http://localhost:8080/api/results.json?group_id=DEV"                            # тот же файл из API
+```
+
+Экспорт собирает файл из сохранённых оценок активной версии чек-листа и **проверяет** его (схема, восемь критериев ровно по одному разу, уникальные `conversation_id`, число записей при `--expect`); при ошибке проверки файл не считается готовым (код выхода 1). `model.mode = hybrid`, `model.name` перечисляет фактически использованные модели и правила. Код — `server/services/results.js`, `scripts/export-results.mjs`.
 
 ## Калибровка
 
@@ -128,11 +146,11 @@ npm run calibrate      # сравнивает сохранённые оценк�
 
 | Что | Значение |
 |---|---|
-| Точность по бинарным критериям 01 / 03 / 05 / 07 / 08 | 98.5 % / 95.4 % / 96.9 % / 93.8 % / 98.5 % (цель ≥ 92 %); **02 — 89.2 %, ниже цели** |
-| Шкалы 04 / 06 | точно 84.6 % / 75.4 %; в пределах ±1 ступени 95.4 % / 98.5 %; κ 0.415 / **0.234** — слабое место, честно показано |
-| Грубые ошибки (08) | полнота 100 % (8 из 8), точность 88.9 % (1 ложный флаг — `p4-ru-003`) |
-| Итоговый балл | точное совпадение 52.3 %, средняя абсолютная ошибка 6.41 балла |
-| По языкам (все метки) | RU 90.7 % · KZ 93.3 % · EN 91.7 % |
+| Точность по бинарным критериям 01 / 02 / 03 / 05 / 07 / 08 | 98.5 % / 95.4 % / 98.5 % / 95.4 % / 93.8 % / 100 % — все шесть выше цели 92 % |
+| Шкалы 04 / 06 | 04: точно 87.7 %, в пределах ±1 ступени 96.9 %, κ 0.50; 06: точно 83.1 %, ±1 ступень 98.5 %, κ 0.42 (цели «точно ≥ 70 %, ±1 ≥ 90 %» выполнены; κ умеренная — слабое место, честно показано) |
+| Грубые ошибки (08) | полнота 100 % и точность 100 % (8 из 8, ложных флагов нет) |
+| Итоговый балл | точное совпадение 55.4 %, в пределах ±5 баллов 63.1 %, средняя абсолютная ошибка 6.26 балла |
+| По языкам (все метки) | RU 92.1 % · KZ 96.7 % · EN 95.8 % |
 
 Эталонные метки используются для измерения и для выбора источника решения по критерию в `config/routing.json` (на tune-разбиении; отложенная выборка в отчёте отдельно). В промпты модели метки не попадают; «согласие с человеком» означает согласие с этой разметкой ([docs/LIMITATIONS.md](docs/LIMITATIONS.md)). Что **не** измерено: тест–ретест модели (`--retest N`, повтор измерен только для правил); устойчивость модели к инструкциям внутри транскрипта — есть архитектурная защита (транскрипт в блоке `untrusted`, строгая схема, валидатор, итог считает движок) и тест валидатора на подставном провайдере, но живого теста на модели нет; цикл обучения — реализован (подтверждённые решения проверяющего становятся примерами в промпте), его эффект не измерен (`learning_loop: null`, решений пока нет).
 
@@ -161,7 +179,7 @@ npm run build:d365     # → dist/d365/cqa.html — один файл, < 5 МБ,
 
 ## Ограничения
 
-Честный список — [docs/LIMITATIONS.md](docs/LIMITATIONS.md). Коротко: критерий 06 согласуется с человеком слабо (κ 0.23); 02 ниже цели; 92 % ответов судьи требуют одного повторного запроса после валидатора; эталон — 65 диалогов и один разметчик из команды; верификатор, тест–ретест модели, живой тест на инъекцию и эффект цикла обучения не измерены; дикция/интонация не оцениваются (нужен звук); авторизации нет; хранилище — файлы; решение Dataverse описано, не развёрнуто.
+Честный список — [docs/LIMITATIONS.md](docs/LIMITATIONS.md). Коротко: шкальные критерии 04/06 согласуются с человеком умеренно (κ 0.50 / 0.42 при высокой точности в пределах ступени — парадокс распространённости: большинство эталонов на верхней ступени); эталон — 65 диалогов и один разметчик из команды; верификатор, тест–ретест модели, живой тест на инъекцию и эффект цикла обучения не измерены; дикция/интонация не оцениваются (нужен звук); авторизации нет; хранилище — файлы; решение Dataverse описано, не развёрнуто.
 
 ## Документация
 
@@ -174,7 +192,8 @@ npm run build:d365     # → dist/d365/cqa.html — один файл, < 5 МБ,
 | [docs/SECURITY.md](docs/SECURITY.md) | данные, модель угроз, правила использования |
 | [docs/RESEARCH.md](docs/RESEARCH.md) | аналоги и журнал источников |
 | [docs/TOOLING.md](docs/TOOLING.md) | зависимости (их нет) и инструменты |
-| [docs/DEMO.md](docs/DEMO.md), [docs/CONTROL_DAY.md](docs/CONTROL_DAY.md) | сценарий демонстрации с точными числами, runbook контрольного дня |
+| [docs/DEMO.md](docs/DEMO.md), [docs/CONTROL_DAY.md](docs/CONTROL_DAY.md) | сценарий демонстрации с точными числами; runbook контрольного дня: 10 чатов → оценка → `results/prod/results.json` → push до стоп-кода |
+| [docs/EVALUATION.md](docs/EVALUATION.md) | методика оценки, гибрид правил и модели, что измерено и что нет |
 | [docs/COST.md](docs/COST.md), [reports/calibration.md](reports/calibration.md) | измеренная стоимость/задержка; отчёт калибровки |
 | [docs/UX.md](docs/UX.md), [CHANGELOG.md](CHANGELOG.md) | дизайн интерфейса; изменения |
 
@@ -182,13 +201,11 @@ npm run build:d365     # → dist/d365/cqa.html — один файл, < 5 МБ,
 
 Команда **«Revengers»** — NU Data Challenge «Doomsday», 7–8 ноября 2026, Астана.
 
-<!-- team: fill names -->
-| Роль | Участник |
+| Участник | Роль |
 |---|---|
-| Капитан / спикер | — |
-| Backend и оценщик | — |
-| Frontend | — |
-| Данные и калибровка | — |
+| **Bekassyl Duisek** | капитан команды; спикер на защите — история, бизнес-ценность для Freedom, ответы о продукте |
+| **Amirkhan Saribbek** | tech lead — архитектура, оценщик и калибровка; ведёт демонстрацию (драйвер), отвечает на технические вопросы (модель, Dynamics 365, безопасность) |
+| **Dias Abdali** | data & QA analyst — данные, контрольный набор и `results.json`; таймкипер, ответы на вопросы по метрикам |
 
 Лицензия [MIT](LICENSE) © 2026 Revengers team.
 
@@ -205,7 +222,7 @@ Every score is an argument you can audit: the checklist rule applied, the eviden
 
 - **Checklist editor** — criteria with text, section, weight, answer type (Yes/No, Yes/No/N/A, stepped scale, flag-only), N/A availability and condition, criterion- and answer-level guidance for the model; 6 templates (including a deterministic "first reaction time" rule); **versions** (save, activate, diff, restore), **replace criterion**, **simulation** of a draft on N dialogs without touching stored results. New criteria apply through configuration, no code.
 - **Evaluation** — fetch a dataset by `group_id` through the organizers' API (server-side, cached), or upload/paste JSON in the same format; evaluate one dialog or all with progress, cancel and resume. Only operator lines are judged; bot and system lines are context.
-- **Result** — per criterion: answer, points, weight and effective weight after N/A redistribution, Russian explanation, evidence lines, checked range, N/A reason, rule applied, confidence, source; total, section subtotals, gross-error flag with type (insult / bypass / disclosure) kept separate from the score (DEV dialog `p1-ru-023` scores 100.00 and carries a bypass flag); model, prompt version and latency.
+- **Result** — per criterion: answer, points, weight and effective weight after N/A redistribution, Russian explanation, evidence lines, checked range, N/A reason, rule applied, confidence, source; total, section subtotals, gross-error flag with type (insult / bypass / disclosure) kept separate from the score (DEV dialog `p1-kz-013` scores 92.31 and carries a bypass flag); model, prompt version and latency.
 - **Dialog card** — transcript and result side by side, click-to-highlight evidence, audio seek for calls, shareable deep links `#/c/<id>/l/<line>`, checklist-version switcher.
 - **Appeals and review** — operator disputes a criterion; the evaluation is marked "under appeal" everywhere and excluded from operator rankings; the reviewer sees the dispute, evidence and fragment, optionally an advisory AI second opinion, and confirms or changes with a reason and one of four outcomes; history is kept.
 - **Calibration and insights** — agreement with human labels on the 65 DEV dialogs (accuracy and Cohen's κ per criterion with 95 % CIs, a 20-dialog holdout, confusion matrices, disagreement list with dialog links, gross-error recall/precision); dataset analytics (score distribution, fail rate per criterion, escalation, first-reaction times, hold time, gross-error list, operator cards); CSV export.
@@ -223,13 +240,17 @@ npm start              # → http://localhost:8080
 
 ### Models, routing and cost
 
-Published DEV run: judge `qwen3-8` on alem.plus; Kazakh second opinion `kazllm` (one extra call per KZ dialog; disagreed with the judge on 9 of 15, which lowers confidence and routes the card to review); verifier `gpt-oss` configured — in the product it runs only for results with confidence < 0.75 (`CQA_VERIFY=low`), in the published run it was off and its contribution is unmeasured; fallback AlemLLM (automatic at ≤ 20 % of the quota); a local OpenAI-compatible model (e.g. Ollama) is supported by configuration but was not installed or measured; `CQA_PROVIDER=heuristic` runs every criterion as deterministic rules with no model. **Hybrid routing** ([config/routing.json](config/routing.json)) picks the decision source per criterion from measured tune-split accuracy: criteria 03 and 07 are decided by deterministic transcript facts (the model's answer is kept as a second opinion), 02 by a rule that a model "No" can override, 01/04/05/06/08 by the model. On all 65 dialogs this lifted accuracy on 02 from 46.2 % (model only) to 89.2 %, on 03 from 15.4 % to 95.4 %, on 07 from 76.9 % to 93.8 %, and cut the total-score MAE to 6.41 points (model only 18.24, rules only 12.75); on the untouched 20-dialog holdout the hybrid MAE is 6.93 vs 17.58 / 14.88 ([docs/EVALUATION.md](docs/EVALUATION.md)). Any new or edited criterion is always judged by the model.
+Published DEV run: judge `qwen3-8` on alem.plus; Kazakh second opinion `kazllm` (one extra call per KZ dialog; a disagreement lowers confidence and routes the card to review); verifier `gpt-oss` configured — in the product it runs only for results with confidence < 0.75 (`CQA_VERIFY=low`), in the published run it was off and its contribution is unmeasured; fallback AlemLLM (automatic at ≤ 20 % of the quota); a local OpenAI-compatible model (e.g. Ollama) is supported by configuration but was not installed or measured; `CQA_PROVIDER=heuristic` runs every criterion as deterministic rules with no model. **Hybrid routing** ([config/routing.json](config/routing.json)) picks the decision source per criterion from measured tune-split accuracy: after the validator fix and re-run the model decides six of eight criteria (01, 02, 04, 05, 06, 08); 03 and 07 are decided by deterministic transcript facts (the model's answer is kept as a second opinion), where the rule beats the model (03: 98.5 % vs 95.4 %, 07: 93.8 % vs 92.3 % on all 65). Total-score MAE: hybrid 6.26 points vs 6.91 model-only vs 11.36 rules-only; on the untouched 20-dialog holdout 4.91 vs 5.82 / 14.11 ([docs/EVALUATION.md](docs/EVALUATION.md)). Any new or edited criterion is always judged by the model.
 
-**Cost per evaluation: 0 ₸** — free API or local model. Measured on the full DEV run (`reports/runs/alem_qwen3-8.json`): 138 calls for 65 dialogs (64 judge, 59 validator repairs, 15 Kazakh), 545 s wall at concurrency 3 (≈ 8.4 s per dialog throughput, 21.8 s mean per-dialog latency), ≈ 10.8k input / 2.6k output tokens per dialog. The binding constraint is the free API's request quota (headers showed 200 requests per unknown window), not money — hence the per-criterion cache, one judge call per dialog and at most one repair. The explicitly labelled *estimate* of what a paid provider would cost is in [docs/COST.md](docs/COST.md). Temperature 0; model, prompt version and policy hash are recorded on every result.
+**Cost per evaluation: 0 ₸** — free API or local model. Measured on the published DEV run (`reports/runs/alem_qwen3-8_v2.json`): **82 calls for 65 dialogs** (65 judge, 2 validator repairs, 15 Kazakh), 370 s wall at concurrency 3 (≈ 5.7 s per dialog throughput, 17 s mean per-dialog latency), ≈ 6.7k input / 2.1k output tokens per dialog; a follow-up re-evaluation of criterion 06 after its guidance was sharpened (`reports/runs/alem_qwen3-8_v3_c06.json`) took 67 more calls (65 judge + 2 repairs, other criteria from cache) — 149 live calls and 0 ₸ for the published state. The binding constraint is the free API's request quota (headers showed 200 requests per unknown window), not money — hence the per-criterion cache, one judge call per dialog and at most one repair. The explicitly labelled *estimate* of what a paid provider would cost is in [docs/COST.md](docs/COST.md). Temperature 0; model, prompt version and policy hash are recorded on every result.
+
+### Results for the organizers (JSON 1.0)
+
+Per the organizers' appendix, results are submitted as `results/dev/results.json` (DEV, 65 records — committed) and `results/prod/results.json` (the control set, exactly 10 chats, produced on 8 Nov and pushed before the stop code; see [docs/CONTROL_DAY.md](docs/CONTROL_DAY.md)). One record per dialog with the eight fixed criterion ids `contact, discovery, identification, consultation, empathy, dialogue, closure, critical` (`value` true/false/null = N/A or a scale step, `rationale`, `evidence_turns` numbered from 1 over the original transcript), `score.final_score` and `score.critical_flag`; a dialog that could not be evaluated is written as `status: "error"` with a reason, never as a zero. `npm run export:results -- --group <id> --out results/<dev|prod>/results.json [--expect 10]` builds and validates the file (schema, eight criteria exactly once, unique ids, record count); `GET /api/results.json?group_id=<id>` serves the same document.
 
 ### Calibration headline numbers
 
-Gold labels were **prepared by the team** (one annotator with accepted alternatives for borderline cases), not by the organizers. From [reports/calibration.md](reports/calibration.md) (65 DEV dialogs): binary criteria 01 / 03 / 05 / 07 / 08 at 98.5 / 95.4 / 96.9 / 93.8 / 98.5 % accuracy, **02 at 89.2 % (below the 92 % target)**; scales 04 / 06 exact 84.6 / 75.4 %, within one step 95.4 / 98.5 %, κ 0.415 / **0.234 (weak, shown honestly)**; gross-error recall 100 % (8/8), precision 88.9 %; exact total match 52.3 %, MAE 6.41 points; by language RU 90.7 %, KZ 93.3 %, EN 91.7 %. Not measured: model test–retest (only the rules were re-run), a live prompt-injection test on the model (there is an `untrusted` transcript block, a strict schema, the validator and a validator test with a fake provider), and the effect of the learning loop (implemented — confirmed reviewer decisions become few-shot examples — but no decisions exist yet).
+Gold labels were **prepared by the team** (one annotator with accepted alternatives for borderline cases), not by the organizers. From [reports/calibration.md](reports/calibration.md) (65 DEV dialogs): binary criteria 01 / 02 / 03 / 05 / 07 / 08 at 98.5 / 95.4 / 98.5 / 95.4 / 93.8 / 100 % accuracy — all above the 92 % target; scale 04 exact 87.7 %, within one step 96.9 %, κ 0.50; scale 06 exact 83.1 %, within one step 98.5 %, κ 0.42 (targets met; moderate κ is the weak spot, shown honestly); gross-error recall 100 % and precision 100 % (8/8, no false flags); exact total match 55.4 %, within ±5 points 63.1 %, MAE 6.26 points; by language RU 92.1 %, KZ 96.7 %, EN 95.8 %. Not measured: model test–retest (only the rules were re-run), a live prompt-injection test on the model (there is an `untrusted` transcript block, a strict schema, the validator and a validator test with a fake provider), and the effect of the learning loop (implemented — confirmed reviewer decisions become few-shot examples — but no decisions exist yet).
 
 ### Scoring
 
@@ -245,4 +266,12 @@ PII masks from the source are preserved; no audio is sent to the model; storage 
 
 ### Team and license
 
-Team **Revengers**, NU Data Challenge "Doomsday", Astana, 7–8 November 2026. <!-- team: fill names --> MIT License © 2026 Revengers team.
+Team **Revengers**, NU Data Challenge "Doomsday", Astana, 7–8 November 2026.
+
+| Member | Role |
+|---|---|
+| **Bekassyl Duisek** | team captain, presenter — story, business value for Freedom, product questions |
+| **Amirkhan Saribbek** | tech lead — architecture, evaluator and calibration; demo driver, technical Q&A (model, Dynamics 365, security) |
+| **Dias Abdali** | data & QA analyst — data, control set and `results.json`; timekeeper, metrics Q&A |
+
+MIT License © 2026 Revengers team.
