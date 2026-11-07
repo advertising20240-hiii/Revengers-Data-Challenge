@@ -309,7 +309,7 @@ export function renderCard(main, params) {
 
   return {
     update(p) {
-      if (p.id !== convId) return false;
+      if (p.id !== convId || (p.group || null) !== group) return false;
       if (p.line) { if (data) focusLine(p.line, false); else pendingLine = p.line; }
       return true;
     },
