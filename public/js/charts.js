@@ -27,7 +27,7 @@ export function barChart(items, opts = {}) {
   items.forEach((it, i) => {
     const y = pad + i * (barH + gap);
     const w = Math.max(0, (Number(it.value) || 0) / max * plotW);
-    svg.append(s('text', { x: labelW - 8, y: y + barH / 2 + 5, 'text-anchor': 'end', class: 'lab' }, truncate(it.label, 30)));
+    svg.append(s('text', { x: labelW - 8, y: y + barH / 2 + 5, 'text-anchor': 'end', class: 'lab' }, truncate(it.label, Math.round(labelW / 7.5))));
     svg.append(s('rect', { x: labelW, y, width: plotW, height: barH, fill: '#f1f3f6', rx: 4 }));
     svg.append(s('rect', { x: labelW, y, width: w, height: barH, fill: it.color || PALETTE.primary, rx: 4 }, s('title', null, it.hint || `${it.label}: ${fmt(it.value)}`)));
     svg.append(s('text', { x: labelW + w + 8, y: y + barH / 2 + 5, class: 'val' }, fmt(it.value)));

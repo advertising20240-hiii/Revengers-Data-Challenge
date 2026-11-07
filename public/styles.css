@@ -275,6 +275,16 @@
 .cqa-root .ev .q { color: var(--cqa-ink-2); }
 .cqa-root .ev .q::before { content: "«"; } .cqa-root .ev .q::after { content: "»"; }
 .cqa-root .ev .why { color: var(--cqa-muted); font-size: .88rem; }
+/* Callouts inside a criterion: N/A reason and the checked range for a missed action are first-class facts, not footnotes. */
+.cqa-root .callout { padding: .6rem .8rem; border-radius: var(--cqa-radius-sm); border: 1px solid var(--cqa-border); border-left-width: 4px; background: var(--cqa-surface-2); display: flex; flex-direction: column; gap: .25rem; }
+.cqa-root .callout .callout-main { font-size: 1rem; color: var(--cqa-ink); }
+.cqa-root .callout.na { border-left-color: var(--cqa-na); background: var(--cqa-na-soft); }
+.cqa-root .callout.range { border-left-color: var(--cqa-no); background: #fdf3f3; }
+.cqa-root .callout.range .callout-main { font-size: .95rem; }
+.cqa-root .second-line { color: var(--cqa-ink-2); }
+.cqa-root .review-why { display: inline-flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.cqa-root .reasons { max-width: 16rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cqa-root input.search { min-width: 15rem; }
 .cqa-root .conf { display: inline-flex; align-items: center; gap: .35rem; font-size: .85rem; color: var(--cqa-muted); }
 .cqa-root .conf .bar { width: 60px; height: 6px; background: var(--cqa-na-soft); border-radius: 3px; overflow: hidden; }
 .cqa-root .conf .bar span { display: block; height: 100%; background: var(--cqa-accent); }
@@ -310,7 +320,7 @@
 .cqa-root .ap-item { padding: .75rem 1rem; border-bottom: 1px solid var(--cqa-border); cursor: pointer; display: flex; flex-direction: column; gap: .25rem; }
 .cqa-root .ap-item:hover { background: var(--cqa-surface-2); }
 .cqa-root .ap-item.sel { background: var(--cqa-accent-soft); }
-.cqa-root .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .75rem; }
+.cqa-root .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .75rem; }
 .cqa-root .metric { padding: .75rem .9rem; background: var(--cqa-surface); border: 1px solid var(--cqa-border); border-radius: var(--cqa-radius-sm); }
 .cqa-root .metric .k { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--cqa-muted); font-weight: 650; }
 .cqa-root .metric .v { font-size: 1.6rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.2; }
@@ -325,7 +335,7 @@
 .cqa-root .second { padding: .8rem 1rem; background: #f5f1ff; border: 1px solid #d9cdf6; border-radius: var(--cqa-radius-sm); font-size: .93rem; }
 
 /* ---- charts ---- */
-.cqa-root .chart { width: 100%; height: auto; display: block; font-family: var(--cqa-font); }
+.cqa-root .chart { width: 100%; max-width: 100%; height: auto; display: block; font-family: var(--cqa-font); }
 .cqa-root .chart text { fill: var(--cqa-ink-2); font-size: 13px; }
 .cqa-root .chart .axis { stroke: var(--cqa-border-strong); }
 .cqa-root .chart .grid { stroke: var(--cqa-border); stroke-dasharray: 2 3; }

@@ -2,7 +2,7 @@
 import { h, clear, replace } from '../dom.js';
 import { t } from '../i18n.js';
 import { api } from '../api.js';
-import { state, subscribe, isReviewer, providerAvailable, providerReason } from '../state.js';
+import { state, subscribe, isReviewer, setRole, providerAvailable, providerReason } from '../state.js';
 import { chip, toast, openModal, skeleton, emptyState, errorBox, field, select } from '../components.js';
 import { cardHash } from '../router.js';
 import { num, date, speakerLabel, statusLabel, outcomeLabel, answerKind, answerText, pct } from '../format.js';
@@ -55,8 +55,7 @@ export function renderAppeals(main, params) {
         h('div', { class: 'row between' }, h('span', { class: 'mono' }, a.conversation_id), chip(statusLabel(a.status === 'open' ? 'open' : a.status), a.status === 'open' ? 'warn' : a.status === 'changed' ? 'yes' : 'info')),
         h('div', null, h('b', null, a.criterion_title || a.criterion_id), ' · ', chip(a.original ? a.original.answer_label : '—', 'neutral')),
         h('div', { class: 'muted small' }, `${date(a.created_at)}${a.confidence !== undefined && a.confidence !== null ? ` · ${t('card.confidence')} ${Math.round(a.confidence * 100)}%` : ''}`)))
-        : emptyState(t('ap.empty_title'), t('ap.empty_hint')));
-    h('div');
+        : emptyState(t('ap.empty_title'), t('ap.empty_hint'), h('a', { class: 'btn', href: '#/' }, t('card.back'))));
   }
 
   function drawEmptyDetail() { replace(detail, emptyState(t('ap.pick_title'), t('ap.pick_hint'))); }
@@ -88,7 +87,8 @@ export function renderAppeals(main, params) {
       } }, t('ap.second_opinion')));
       actions.append(h('button', { class: 'btn primary', type: 'button', onclick: () => openDecision(d) }, t('ap.decide')));
     } else if (a.status === 'open') {
-      actions.append(h('span', { class: 'note' }, t('ap.reviewer_only')));
+      actions.append(h('div', { class: 'note row' }, h('span', null, t('ap.reviewer_only')),
+        h('button', { class: 'btn sm primary', type: 'button', onclick: () => setRole('reviewer') }, t('ap.switch_to_reviewer'))));
     }
     replace(detail,
       h('div', { class: 'card-h' }, h('div', null, h('h2', null, `${t('ap.appeal')} · ${C ? C.code + ' ' + C.title : a.criterion_title}`), h('div', { class: 'muted small' }, h('a', { href: cardHash(a.conversation_id), class: 'mono' }, a.conversation_id), ` · ${t('card.checklist')} v${E ? E.checklist_version : '—'} · ${date(a.created_at)}`)), chip(statusLabel(a.status), a.status === 'open' ? 'warn' : a.status === 'changed' ? 'yes' : 'info')),

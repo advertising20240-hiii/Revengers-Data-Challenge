@@ -2,10 +2,10 @@
 import { h, clear, replace } from '../dom.js';
 import { t, plural } from '../i18n.js';
 import { api } from '../api.js';
-import { state, subscribe, isOperator } from '../state.js';
+import { state, subscribe, isOperator, setRole } from '../state.js';
 import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, confidence, field, select } from '../components.js';
 import { cardHash, replaceHash } from '../router.js';
-import { channelLabel, speakerLabel, num, secs, mmss, date, cost, statusLabel, grossTypeLabel, outcomeLabel, answerKind, answerText } from '../format.js';
+import { channelLabel, speakerLabel, num, secs, date, provenance, reviewReasons, statusLabel, grossTypeLabel, outcomeLabel, answerKind, answerText } from '../format.js';
 
 export function renderCard(main, params) {
   let convId = params.id, pendingLine = params.line || null;
@@ -141,7 +141,8 @@ export function renderCard(main, params) {
         E.original_total !== null && E.original_total !== undefined && E.original_total !== E.total ? h('span', null, t('card.original_total'), ': ', h('b', null, num(E.original_total))) : null,
         h('span', null, t('card.status'), ': ', chip(statusLabel(E.status), E.status === 'under_appeal' ? 'warn' : E.status === 'reviewed' ? 'info' : 'neutral')),
         openAppeals.length ? h('a', { href: `#/appeals/${encodeURIComponent(openAppeals[0].id)}` }, t('card.open_appeals', { n: openAppeals.length })) : null,
-        E.needs_review ? h('span', null, chip(t('card.needs_review'), 'warn'), ' ', h('span', { class: 'small' }, t('card.min_conf', { v: Math.round((E.min_confidence || 0) * 100) }))) : h('span', { class: 'small' }, t('card.min_conf', { v: Math.round((E.min_confidence || 0) * 100) })),
+        E.needs_review ? h('span', { class: 'review-why' }, chip(t('card.needs_review'), 'warn'), h('span', { class: 'small' }, reviewReasons(E).join(' · ') || t('card.min_conf', { v: Math.round((E.min_confidence || 0) * 100) }))) : null,
+        h('span', { class: 'small' }, t('card.min_conf', { v: Math.round((E.min_confidence || 0) * 100) })),
         h('span', { class: 'small' }, `${t('card.evaluated_at')} ${date(E.created_at)}`))));
     // gross banner
     if (E.gross && E.gross.flag) {
@@ -162,10 +163,12 @@ export function renderCard(main, params) {
     for (const r of E.results || []) panel.append(criterionEl(r, E, appeals));
     // footer
     const tr = E.trace || {};
+    const prov = provenance(E);
     panel.append(h('div', { class: 'r-foot' },
       h('span', null, `${t('card.model')}: `, h('b', null, E.model || tr.model || '—')),
       h('span', null, `${t('card.prompt')}: `, h('b', { class: 'mono' }, E.prompt_version || tr.prompt_version || '—')),
-      h('span', null, cost(E.cost_usd, E.model || tr.model, E.latency_ms, tr.cost_note || E.cost_note)),
+      h('span', null, h('b', null, prov.price)),
+      prov.time ? h('span', { class: prov.fromCache ? 'cache-hit' : '', title: prov.fromCache ? t('card.from_cache_hint') : t('cl.latency') }, prov.time) : null,
       tr.cache ? h('span', null, t('card.cache', { h: (tr.cache.hits || []).length, m: (tr.cache.misses || []).length })) : null,
       E.history && E.history.length ? h('button', { class: 'btn link sm', type: 'button', onclick: () => showHistory(E) }, t('card.history')) : null));
     return panel;
@@ -182,17 +185,33 @@ export function renderCard(main, params) {
     const myAppeals = appeals.filter((a) => a.criterion_id === r.criterion_id);
     const openAp = myAppeals.find((a) => a.status === 'open');
     const flag = r.answer_type === 'flag' || r.scored === false;
+    const isNa = r.applicable === false;
     const pts = flag ? h('span', { class: 'c-pts' }, t('card.flag_only')) :
-      r.applicable === false ? h('span', { class: 'c-pts' }, t('card.na_excluded'), ' · ', t('card.weight', { w: num(r.weight, 0) })) :
+      isNa ? h('span', { class: 'c-pts' }, t('card.na_excluded_short', { w: num(r.weight, 0) })) :
         h('span', { class: 'c-pts' }, h('span', null, h('b', null, num(r.points)), ` / ${num(r.weight, 0)}`), h('span', { class: 'muted' }, '→'), h('span', { title: t('card.eff_weight_hint') }, `${t('card.eff_weight')} `, h('b', null, num(r.effective_weight))));
     const body = h('div', { class: 'c-body' });
-    if (r.explanation) body.append(h('div', null, h('span', { class: 'lbl' }, t('card.why')), r.explanation));
-    if (r.applicable === false && r.na_reason) body.append(h('div', null, h('span', { class: 'lbl' }, t('card.na_reason')), r.na_reason));
+    // N/A is a first-class outcome: the reason and the weight redistribution are shown as one explicit callout.
+    if (isNa) body.append(h('div', { class: 'callout na', role: 'note' },
+      h('div', { class: 'lbl' }, t('card.na_reason')),
+      h('div', { class: 'callout-main' }, r.na_reason || r.explanation || '—'),
+      h('div', { class: 'small muted' }, t('card.na_redistributed', { w: num(r.weight, 0) }))));
+    if (r.explanation && !(isNa && !r.na_reason)) body.append(h('div', null, h('span', { class: 'lbl' }, t('card.why')), r.explanation));
     if (r.evidence && r.evidence.length) body.append(h('div', null, h('span', { class: 'lbl' }, t('card.evidence')), h('div', { class: 'ev-list' }, r.evidence.map(evidenceEl))));
-    if (r.checked_range && r.checked_range.length === 2) body.append(h('div', null, h('span', { class: 'lbl' }, t('card.checked_range')),
-      h('button', { class: 'ev-btn', type: 'button', onclick: () => focusLine(r.checked_range[0], true) }, `#${r.checked_range[0]}`), ' — ',
-      h('button', { class: 'ev-btn', type: 'button', onclick: () => focusLine(r.checked_range[1], true) }, `#${r.checked_range[1]}`), ' ', h('span', { class: 'muted small' }, t('card.checked_range_hint'))));
+    // Checked range: for a missed action it is the proof of absence, so it gets its own callout; otherwise a quiet line.
+    if (r.checked_range && r.checked_range.length === 2 && !isNa) {
+      const [a, b] = r.checked_range;
+      const missed = kind === 'no' || (kind === 'scale' && r.points !== null && r.points !== undefined && Number(r.points) < Number(r.weight));
+      const rangeBtn = h('button', { class: 'ev-btn', type: 'button', title: t('card.goto_line'), onclick: () => focusLine(a, true) }, a === b ? `#${a}` : `#${a} — #${b}`);
+      body.append(missed
+        ? h('div', { class: 'callout range', role: 'note' }, h('div', { class: 'lbl' }, t('card.checked_range')), h('div', { class: 'callout-main row' }, rangeBtn, h('span', null, t('card.checked_range_missed', { n: b - a + 1 }))))
+        : h('div', null, h('span', { class: 'lbl' }, t('card.checked_range')), rangeBtn, ' ', h('span', { class: 'muted small' }, t('card.checked_range_ok'))));
+    }
     if (r.rule_applied) body.append(h('div', null, h('span', { class: 'lbl' }, t('card.rule')), h('span', { class: 'small' }, r.rule_applied)));
+    if (r.second_opinion && r.second_opinion.label) {
+      const so = r.second_opinion;
+      body.append(h('div', { class: 'second-line small' }, h('span', { class: 'lbl' }, t('card.second_opinion')), chip(so.label, 'neutral'),
+        so.model ? h('span', { class: 'muted' }, ` · ${so.model}`) : null, so.explanation ? h('span', { class: 'muted' }, ` — ${so.explanation}`) : null));
+    }
     body.append(h('div', { class: 'row' }, confidence(r.confidence), r.source === 'rule' ? chip(t('card.source_rule'), 'info') : null, openAp ? chip(t('status.under_appeal'), 'warn') : null));
     // review chain
     if (r.review || r.ai_original) {
@@ -208,7 +227,11 @@ export function renderCard(main, params) {
         r.review && r.review.appeal_id ? h('a', { href: `#/appeals/${encodeURIComponent(r.review.appeal_id)}`, class: 'small' }, t('card.open_appeal')) : null));
     }
     const actions = h('div', { class: 'row' });
-    if (isOperator() && !openAp && E.mode !== 'simulation') actions.append(h('button', { class: 'btn sm', type: 'button', onclick: () => openAppealModal(r, E) }, t('card.dispute')));
+    if (!openAp && E.mode !== 'simulation') {
+      if (isOperator()) actions.append(h('button', { class: 'btn sm', type: 'button', onclick: () => openAppealModal(r, E) }, t('card.dispute')));
+      // Reviewer sees the same entry point; one click switches the role and opens the form (role is a view switch, not auth).
+      else actions.append(h('button', { class: 'btn sm ghost', type: 'button', title: t('card.dispute_as_operator_hint'), onclick: () => { setRole('operator'); openAppealModal(r, E); } }, t('card.dispute_as_operator')));
+    }
     if (openAp) actions.append(h('a', { class: 'btn sm', href: `#/appeals/${encodeURIComponent(openAp.id)}` }, t('card.to_appeal')));
     return h('article', { class: 'crit', id: `crit-${r.criterion_id}`, aria: { label: `${r.code} ${r.title}` } },
       h('div', { class: 'c-h' },

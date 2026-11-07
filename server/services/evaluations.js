@@ -51,6 +51,7 @@ export function stripResult(r) {
     evidence: (r.evidence || []).map((e) => ({ line: e.line, why: e.why ?? '' })),
     checked_range: r.checked_range ?? null, rule_applied: r.rule_applied ?? '', explanation: r.explanation ?? '',
     confidence: typeof r.confidence === 'number' ? r.confidence : 0, source: r.source || 'ai',
+    ...(r.second_opinion ? { second_opinion: { source: r.second_opinion.source ?? 'ai', model: r.second_opinion.model ?? null, label: r.second_opinion.label ?? null, explanation: r.second_opinion.explanation ?? '' } } : {}),
   };
 }
 
@@ -178,7 +179,7 @@ export function evaluationSummary(ev) {
   if (!ev) return null;
   return {
     evaluation_id: ev.id, checklist_version: ev.checklist_version, total: ev.total, total_str: ev.total_str, calculated: ev.calculated,
-    gross_flag: !!ev.gross?.flag, gross_types: ev.gross?.types || [], min_confidence: ev.min_confidence, needs_review: ev.needs_review,
+    gross_flag: !!ev.gross?.flag, gross_types: ev.gross?.types || [], min_confidence: ev.min_confidence, needs_review: ev.needs_review, review_reasons: ev.review_reasons || [],
     status: ev.status, created_at: ev.created_at, model: ev.model, cost_usd: ev.cost_usd ?? 0,
   };
 }

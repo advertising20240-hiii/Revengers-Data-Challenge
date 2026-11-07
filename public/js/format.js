@@ -1,5 +1,6 @@
 // Formatting helpers (Russian locale).
 import { t } from './i18n.js';
+import { state } from './state.js';
 
 export function num(x, digits = 2) {
   if (x === null || x === undefined || Number.isNaN(Number(x))) return '—';
@@ -52,6 +53,41 @@ export function cost(usd, model, latencyMs, note) {
   if (latencyMs !== undefined && latencyMs !== null) parts.push(`${(Number(latencyMs) / 1000).toFixed(1)} с`);
   if (note) parts.push(note);
   return parts.join(' · ');
+}
+
+/**
+ * Provenance line for an evaluation: "qwen3-8 · 0 ₸ · alem.plus · из кэша".
+ * When trace.calls is empty nothing was sent to the model, so latency is meaningless and «из кэша» is shown instead.
+ */
+export function provenance(E) {
+  const tr = (E && E.trace) || {};
+  const note = tr.cost_note || (E && E.cost_note) || '';
+  const usd = Number((E && E.cost_usd) || 0);
+  const calls = Array.isArray(tr.calls) ? tr.calls.filter((c) => c && c.role !== 'rule') : null;
+  const fromCache = calls ? calls.length === 0 : /кэш/i.test(note);
+  const hp = (state.health && state.health.provider) || {};
+  const providerName = tr.provider && tr.provider !== 'none' ? tr.provider : hp.provider;
+  let price;
+  if (usd > 0) price = `$${usd.toFixed(4)}`;
+  else if (/alem\.plus/i.test(note) || providerName === 'alem') price = '0 ₸ · alem.plus';
+  else if (note && !fromCache) price = note.replace(/\s*\(.*\)\s*$/, '').replace(' — ', ' · ');
+  else price = t('cost.zero', { model: (E && E.model) || tr.model || '—' });
+  const time = fromCache ? t('card.from_cache') : (E && E.latency_ms !== null && E.latency_ms !== undefined ? `${(Number(E.latency_ms) / 1000).toFixed(1)} с` : null);
+  return { price, time, fromCache };
+}
+
+/** Human-readable reasons why an evaluation needs a reviewer's eye. Uses the server list when present. */
+export function reviewReasons(L) {
+  if (!L) return [];
+  if (Array.isArray(L.review_reasons) && L.review_reasons.length) return L.review_reasons.map(reasonLabel);
+  const out = [];
+  if (L.gross_flag) out.push(`${t('card.gross_title').toLowerCase()}: ${(L.gross_types || []).map(grossTypeLabel).join(', ')}`);
+  if (L.min_confidence !== null && L.min_confidence !== undefined && L.min_confidence < 0.6) out.push(t('card.low_conf', { v: Math.round(L.min_confidence * 100) }));
+  return out;
+}
+function reasonLabel(s) {
+  // server strings look like "грубая ошибка: disclosure" — translate the raw flag type when we know it
+  return String(s).replace(/\b(insult|bypass|disclosure)\b/g, (m) => grossTypeLabel(m));
 }
 
 export function channelLabel(ch) { return ch === 'voice call' ? t('channel.voice') : t('channel.chat'); }

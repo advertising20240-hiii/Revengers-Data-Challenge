@@ -5,7 +5,7 @@ import { api, pollJob } from '../api.js';
 import { state, providerAvailable, providerReason } from '../state.js';
 import { chip, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select, confirmModal } from '../components.js';
 import { cardHash } from '../router.js';
-import { num, date, shortDate } from '../format.js';
+import { num, date, shortDate, provenance } from '../format.js';
 import { scoreEvaluation, isFlag, isScale, naAllowed } from '../../../packages/scoring/index.js';
 
 const TYPES = ['yes_no', 'yes_no_na', 'scale', 'scale_na', 'flag'];
@@ -97,7 +97,7 @@ export function renderChecklist(main, params) {
         h('td', null, h('span', { class: 'small mono' }, c.evaluator || 'llm')),
         h('td', { class: 'nowrap' },
           h('button', { class: 'btn sm ghost', type: 'button', onclick: () => editCriterion(i) }, t('btn.edit')),
-          h('button', { class: 'btn sm ghost', type: 'button', onclick: () => replaceCriterion(c) }, t('cl.replace')),
+          h('button', { class: 'btn sm', type: 'button', onclick: () => replaceCriterion(c) }, t('cl.replace')),
           h('button', { class: 'btn sm ghost danger', type: 'button', onclick: async () => { if (await confirmModal(t('cl.delete_title'), t('cl.delete_text', { c: c.title }), t('btn.delete'))) { draft.criteria.splice(i, 1); drawEditor(); } } }, t('btn.delete'))));
     });
 
@@ -414,7 +414,7 @@ export function renderChecklist(main, params) {
         h('td', { class: 'num' }, r.error ? h('span', { class: 'dirty' }, r.error) : h('b', null, r.total_str ?? (e && e.total_str) ?? t('card.not_calculated'))),
         h('td', null, (cache.misses || []).length ? h('span', { class: 'cache-miss' }, (cache.misses || []).map(codeOf).join(', ')) : h('span', { class: 'muted' }, '—')),
         h('td', null, (cache.hits || []).length ? h('span', { class: 'cache-hit' }, (cache.hits || []).map(codeOf).join(', ')) : h('span', { class: 'muted' }, '—')),
-        h('td', null, e ? h('span', { class: 'small muted' }, `${(e.latency_ms / 1000).toFixed(1)} с`) : ''));
+        h('td', null, e ? h('span', { class: 'small muted' }, provenance(e).time || '—') : ''));
     });
     return h('div', { class: 'stack' }, h('div', { class: 'note' }, t('cl.apply_note', { v: ver })),
       h('div', { class: 'tbl-wrap' }, h('table', { class: 'tbl' }, h('thead', null, h('tr', null, h('th', null, t('col.id')), h('th', null, t('col.total')), h('th', null, t('cl.sent_to_model')), h('th', null, t('cl.from_cache')), h('th', null, t('cl.latency')))), h('tbody', null, rows))));

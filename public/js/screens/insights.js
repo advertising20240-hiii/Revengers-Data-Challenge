@@ -41,7 +41,7 @@ export function renderInsights(main) {
 
     const crit = (st.criteria || []).filter((x) => x.applicable > 0 || x.yes || x.no || x.na);
     const failItems = crit.map((x) => ({ label: `${x.code} ${x.title}`, value: Math.round((x.fail_rate || 0) * 100), color: (x.fail_rate || 0) > 0.3 ? PALETTE.no : (x.fail_rate || 0) > 0.15 ? PALETTE.warn : PALETTE.primary, hint: `${x.title}: ${t('answer.yes')} ${x.yes}, ${t('answer.no')} ${x.no}, N/A ${x.na}` }));
-    const fail = card(t('ins.fail_title'), h('div', null, barChart(failItems, { max: 100, format: (v) => `${v}%`, title: t('ins.fail_title') }),
+    const fail = card(t('ins.fail_title'), h('div', null, barChart(failItems, { max: 100, width: 1200, labelW: 340, barH: 22, format: (v) => `${v}%`, title: t('ins.fail_title') }),
       h('div', { class: 'tbl-wrap mt' }, h('table', { class: 'tbl small' }, h('thead', null, h('tr', null, h('th', null, t('cl.criterion')), h('th', null, t('answer.yes')), h('th', null, t('answer.no')), h('th', null, 'N/A'), h('th', null, t('ins.shares')), h('th', null, t('ins.avg_share')))),
         h('tbody', null, crit.map((x) => h('tr', null, h('td', null, `${x.code} ${x.title}`), h('td', { class: 'num' }, x.yes), h('td', { class: 'num' }, x.no), h('td', { class: 'num' }, x.na),
           h('td', null, stackBar([{ value: x.yes, color: PALETTE.yes, label: t('answer.yes') }, { value: x.no, color: PALETTE.no, label: t('answer.no') }, { value: x.na, color: PALETTE.na, label: 'N/A' }])), h('td', { class: 'num' }, x.avg_share !== undefined && x.avg_share !== null ? pct(x.avg_share) : '—')))))),

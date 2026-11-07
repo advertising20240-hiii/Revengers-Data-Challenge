@@ -4,8 +4,8 @@ import { t, plural } from '../i18n.js';
 import { api, pollJob } from '../api.js';
 import { state, setGroup, setJob, subscribe, providerAvailable, providerReason } from '../state.js';
 import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select, confirmModal } from '../components.js';
-import { cardHash } from '../router.js';
-import { channelLabel, num, statusLabel, grossTypeLabel, secs } from '../format.js';
+import { cardHash, navigate } from '../router.js';
+import { channelLabel, grossTypeLabel, secs, reviewReasons } from '../format.js';
 
 export function renderDialogs(main) {
   const filters = { group_id: state.group, lang: '', channel: '', flag: false, needs_review: false, status: '', q: '' };
@@ -24,7 +24,16 @@ export function renderDialogs(main) {
   const chSel = select([{ value: '', label: t('dialogs.all_channels') }, { value: 'agent chat', label: t('channel.chat') }, { value: 'voice call', label: t('channel.voice') }], '', (v) => { filters.channel = v; draw(); }, { 'aria-label': t('col.channel') });
   const flagChk = h('input', { type: 'checkbox', onchange: (e) => { filters.flag = e.target.checked; draw(); } });
   const nrChk = h('input', { type: 'checkbox', onchange: (e) => { filters.needs_review = e.target.checked; draw(); } });
-  const search = h('input', { type: 'search', placeholder: t('dialogs.search'), 'aria-label': t('dialogs.search'), oninput: (e) => { filters.q = e.target.value.trim().toLowerCase(); draw(); } });
+  // Enter opens the card when the query matches exactly one dialog (or one id exactly) — two keystrokes to any demo dialog.
+  const search = h('input', { type: 'search', class: 'search', placeholder: t('dialogs.search'), 'aria-label': t('dialogs.search'), autocomplete: 'off',
+    oninput: (e) => { filters.q = e.target.value.trim().toLowerCase(); draw(); },
+    onkeydown: (e) => {
+      if (e.key !== 'Enter') return;
+      const list = filtered();
+      const exact = list.find((r) => r.conversation_id.toLowerCase() === filters.q);
+      const hit = exact || (list.length === 1 ? list[0] : null);
+      if (hit) navigate(cardHash(hit.conversation_id));
+    } });
 
   const evalAllBtn = h('button', { class: 'btn primary', type: 'button', onclick: () => startEvaluate({ all: true }) }, t('dialogs.eval_all'));
   const evalSelBtn = h('button', { class: 'btn', type: 'button', onclick: () => startEvaluate({ ids: [...state.selection] }) }, t('dialogs.eval_selected'));
@@ -121,7 +130,7 @@ export function renderDialogs(main) {
       h('tbody', null, list.map(rowEl)));
     body.append(h('div', { class: 'tbl-wrap' }, table), h('div', { class: 'row between', style: { padding: '.6rem 1rem' } },
       h('span', { class: 'muted small' }, t('dialogs.count', { n: list.length, total: rows.length })),
-      h('span', { class: 'muted small' }, t('dialogs.hint_open'))));
+      h('span', { class: 'muted small' }, `${t('dialogs.hint_open')} · ${t('dialogs.hint_enter')}`)));
   }
 
   function rowEl(r) {
@@ -130,8 +139,10 @@ export function renderDialogs(main) {
     chk.checked = state.selection.has(r.conversation_id);
     const totalCell = L ? (L.calculated ? h('span', { class: 'total-cell' }, L.total_str) : h('span', { class: 'total-cell na' }, t('card.not_calculated'))) : h('span', { class: 'muted' }, '—');
     const gross = L ? (L.gross_flag ? chip((L.gross_types || []).map(grossTypeLabel).join(', ') || t('answer.yes'), 'flag') : h('span', { class: 'muted' }, '—')) : h('span', { class: 'muted' }, '—');
+    const reasons = L ? reviewReasons(L) : [];
     const conf = L && L.min_confidence !== null && L.min_confidence !== undefined
-      ? h('span', { class: 'row', style: { gap: '.35rem' } }, `${Math.round(L.min_confidence * 100)}%`, L.needs_review ? chip(t('card.needs_review'), 'warn') : null)
+      ? h('span', null, h('span', { class: 'row', style: { gap: '.35rem' } }, `${Math.round(L.min_confidence * 100)}%`, L.needs_review ? h('span', { class: 'chip warn', title: reasons.join('; ') || t('card.needs_review') }, t('card.needs_review')) : null),
+        L.needs_review && reasons.length ? h('div', { class: 'muted small reasons', title: reasons.join('; ') }, reasons.join(' · ')) : null)
       : h('span', { class: 'muted' }, '—');
     const ap = r.appeal_status === 'open' ? chip(t('status.under_appeal'), 'warn') : r.appeal_status === 'resolved' ? chip(t('status.reviewed'), 'info') : h('span', { class: 'muted' }, '—');
     return h('tr', { class: chk.checked ? 'sel' : '' },
