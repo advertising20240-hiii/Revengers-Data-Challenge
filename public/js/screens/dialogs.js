@@ -3,9 +3,13 @@ import { h, clear, replace } from '../dom.js';
 import { t, pl } from '../i18n.js';
 import { api, pollJob } from '../api.js';
 import { state, setGroup, setJob, subscribe, providerAvailable, providerReason } from '../state.js';
-import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select, confirmModal } from '../components.js';
+import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select } from '../components.js';
 import { cardHash, navigate } from '../router.js';
 import { channelLabel, grossTypeLabel, secs, reviewReasons } from '../format.js';
+
+// Selection keys carry the group: the same conversation_id may exist in DEV and in the control set.
+export const selKey = (r) => JSON.stringify([r.group_id || '', r.conversation_id]);
+export const fromKey = (k) => { const [group_id, conversation_id] = JSON.parse(k); return group_id ? { conversation_id, group_id } : { conversation_id }; };
 
 export function renderDialogs(main) {
   const filters = { group_id: state.group, lang: '', channel: '', flag: false, needs_review: false, status: '', q: '' };
@@ -36,7 +40,7 @@ export function renderDialogs(main) {
     } });
 
   const evalAllBtn = h('button', { class: 'btn primary', type: 'button', onclick: () => startEvaluate({ all: true }) }, t('dialogs.eval_all'));
-  const evalSelBtn = h('button', { class: 'btn', type: 'button', onclick: () => startEvaluate({ ids: [...state.selection] }) }, t('dialogs.eval_selected'));
+  const evalSelBtn = h('button', { class: 'btn', type: 'button', onclick: () => startEvaluate({ ids: [...state.selection].map(fromKey) }) }, t('dialogs.eval_selected'));
   const selInfo = h('span', { class: 'muted small' });
 
   const toolbar = h('div', { class: 'toolbar' },
@@ -121,8 +125,8 @@ export function renderDialogs(main) {
     }
     const list = filtered();
     if (!list.length) { body.append(emptyState(t('dialogs.nomatch_title'), t('dialogs.nomatch_hint'))); return; }
-    const allChk = h('input', { type: 'checkbox', 'aria-label': t('dialogs.select_all'), onchange: (e) => { for (const r of list) { if (e.target.checked) state.selection.add(r.conversation_id); else state.selection.delete(r.conversation_id); } draw(); } });
-    allChk.checked = list.every((r) => state.selection.has(r.conversation_id));
+    const allChk = h('input', { type: 'checkbox', 'aria-label': t('dialogs.select_all'), onchange: (e) => { for (const r of list) { if (e.target.checked) state.selection.add(selKey(r)); else state.selection.delete(selKey(r)); } draw(); } });
+    allChk.checked = list.every((r) => state.selection.has(selKey(r)));
     const table = h('table', { class: 'tbl' },
       h('thead', null, h('tr', null,
         h('th', null, allChk), th(t('col.id'), 'conversation_id'), th(t('col.lang'), 'language'), th(t('col.channel'), 'channel'), th(t('col.operator'), 'operator_name'),
@@ -135,8 +139,8 @@ export function renderDialogs(main) {
 
   function rowEl(r) {
     const L = r.latest;
-    const chk = h('input', { type: 'checkbox', 'aria-label': r.conversation_id, onchange: (e) => { if (e.target.checked) state.selection.add(r.conversation_id); else state.selection.delete(r.conversation_id); updateEvalButtons(); e.target.closest('tr').classList.toggle('sel', e.target.checked); } });
-    chk.checked = state.selection.has(r.conversation_id);
+    const chk = h('input', { type: 'checkbox', 'aria-label': r.conversation_id, onchange: (e) => { if (e.target.checked) state.selection.add(selKey(r)); else state.selection.delete(selKey(r)); updateEvalButtons(); e.target.closest('tr').classList.toggle('sel', e.target.checked); } });
+    chk.checked = state.selection.has(selKey(r));
     const totalCell = L ? (L.calculated ? h('span', { class: 'total-cell' }, L.total_str) : h('span', { class: 'total-cell na' }, t('card.not_calculated'))) : h('span', { class: 'muted' }, '—');
     const gross = L ? (L.gross_flag ? chip((L.gross_types || []).map(grossTypeLabel).join(', ') || t('answer.yes'), 'flag') : h('span', { class: 'muted' }, '—')) : h('span', { class: 'muted' }, '—');
     const reasons = L ? reviewReasons(L) : [];
@@ -161,19 +165,18 @@ export function renderDialogs(main) {
   // ---- dataset loading ----
   function openFetchModal() {
     const gid = h('input', { type: 'text', value: filters.group_id || 'DEV', placeholder: 'DEV', required: true });
-    const url = h('input', { type: 'text', placeholder: t('dialogs.fetch_url_ph') });
     const status = h('div', { class: 'small muted' });
     const okBtn = h('button', { class: 'btn primary', type: 'button', onclick: async () => {
       okBtn.disabled = true; status.textContent = t('dialogs.fetching');
       try {
-        const r = await api.fetchDataset(gid.value.trim(), url.value.trim() || undefined);
+        const r = await api.fetchDataset(gid.value.trim());
         toast(t('dialogs.fetched', { n: r.total, src: r.source === 'cache' ? t('dialogs.src_cache') : t('dialogs.src_api') }), 'ok');
         filters.group_id = r.group_id; setGroup(r.group_id); m.close(); load();
       } catch (e) { status.textContent = ''; replace(status, errorBox(e)); okBtn.disabled = false; }
     } }, t('dialogs.fetch_go'));
     const m = openModal({
       title: t('dialogs.fetch'),
-      body: h('div', { class: 'stack' }, h('p', { class: 'muted' }, t('dialogs.fetch_hint')), field(t('col.group'), gid), field(t('dialogs.fetch_url'), url), status),
+      body: h('div', { class: 'stack' }, h('p', { class: 'muted' }, t('dialogs.fetch_hint')), field(t('col.group'), gid), h('p', { class: 'muted small' }, t('dialogs.fetch_url_fixed')), status),
       actions: [h('button', { class: 'btn', type: 'button', onclick: () => m.close() }, t('btn.cancel')), okBtn],
     });
   }
@@ -205,14 +208,36 @@ export function renderDialogs(main) {
   async function startEvaluate({ all, ids }) {
     if (!all && (!ids || !ids.length)) return;
     const n = all ? rows.length : ids.length;
-    const ok = await confirmModal(t('dialogs.eval_confirm_title'), t('dialogs.eval_confirm', { n }), t('dialogs.eval_go'));
-    if (!ok) return;
+    const version = await pickChecklist(n);
+    if (version === null) return;
     try {
       const body = all ? { all: true, group_id: filters.group_id || undefined } : { conversation_ids: ids };
+      if (version !== '') body.checklist_version = Number(version);
       const r = await api.evaluate(body);
       setJob({ id: r.job_id, kind: 'evaluate' });
       trackJob(r.job_id);
     } catch (e) { toast(e.message, 'err'); }
+  }
+
+  /** Confirmation with the checklist version to evaluate against (default: active). Resolves to a version, '' (server default) or null (cancelled). */
+  async function pickChecklist(n) {
+    let versions = [];
+    try { versions = (await api.checklists()).sort((a, b) => b.version - a.version); } catch { /* the server then uses the active version */ }
+    const active = versions.find((v) => v.status === 'active');
+    const verSel = select(versions.map((v) => ({ value: v.version, label: `v${v.version} · ${v.name || ''} (${t(`cl.status_${v.status}`) || v.status})` })), active ? active.version : (versions[0] ? versions[0].version : ''), null, { 'aria-label': t('dialogs.eval_checklist') });
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = (v) => { if (done) return; done = true; resolve(v); };
+      const m = openModal({
+        title: t('dialogs.eval_confirm_title'),
+        body: h('div', { class: 'stack' }, h('p', null, t('dialogs.eval_confirm', { n })),
+          versions.length ? field(t('dialogs.eval_checklist'), verSel) : null,
+          versions.length ? h('p', { class: 'muted small' }, t('dialogs.eval_checklist_hint')) : null),
+        actions: [h('button', { class: 'btn', type: 'button', onclick: () => { finish(null); m.close(); } }, t('btn.cancel')),
+          h('button', { class: 'btn primary', type: 'button', onclick: () => { finish(versions.length ? String(verSel.value) : ''); m.close(); } }, t('dialogs.eval_go'))],
+        onClose: () => finish(null),
+      });
+    });
   }
 
   function trackJob(id) {
@@ -252,7 +277,7 @@ export function renderDialogs(main) {
           job.running && job.running.length ? h('span', { class: 'muted small' }, ` · ${t('job.running_now')}: ${job.running.join(', ')}`) : null),
         actions),
       bar,
-      failed.length ? h('details', { class: 'small' }, h('summary', null, t('job.failed_list', { n: failed.length })), h('ul', null, failed.map((f) => h('li', null, h('a', { href: cardHash(f.conversation_id), class: 'mono' }, f.conversation_id), ' — ', f.error)))) : null));
+      failed.length ? h('details', { class: 'small' }, h('summary', null, t('job.failed_list', { n: failed.length })), h('ul', null, failed.map((f) => h('li', null, h('a', { href: cardHash(f.conversation_id), class: 'mono' }, f.conversation_id), f.group_id ? h('span', { class: 'muted' }, ` · ${f.group_id}`) : null, ' — ', f.error)))) : null));
   }
 
   // resume tracking a job after reload

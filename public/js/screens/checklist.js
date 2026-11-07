@@ -2,16 +2,20 @@
 import { h, clear, replace } from '../dom.js';
 import { t, pl } from '../i18n.js';
 import { api, pollJob } from '../api.js';
-import { state, providerAvailable, providerReason } from '../state.js';
+import { state, providerAvailable, providerReason, subscribe } from '../state.js';
 import { chip, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select, confirmModal } from '../components.js';
 import { cardHash } from '../router.js';
 import { num, date, shortDate, provenance } from '../format.js';
 import { scoreEvaluation, isFlag, isScale, naAllowed } from '../../../packages/scoring/index.js';
+import { selKey, fromKey } from './dialogs.js';
 
 const TYPES = ['yes_no', 'yes_no_na', 'scale', 'scale_na', 'flag'];
+// Criterion fields that change the answer (mirrors server/services/checklists.js); weight only changes the score.
+const ANSWER_FIELDS = ['code', 'title', 'section', 'answer_type', 'scored', 'na_allowed', 'na_condition', 'definition', 'scale', 'evaluator', 'params', 'guidance', 'answer_guidance', 'flag_types', 'flags_config'];
+const isRule = (c) => String(c.evaluator || 'llm').startsWith('rule:');
 
 export function renderChecklist(main, params) {
-  let versions = [], selected = params.version ? Number(params.version) : null, base = null, draft = null, templates = null;
+  let versions = [], selected = params.version ? Number(params.version) : null, base = null, draft = null, templates = null, activeCl = null;
   const left = h('div', { class: 'card' });
   const right = h('div', { class: 'stack' });
   replace(main,
@@ -23,6 +27,7 @@ export function renderChecklist(main, params) {
     try {
       versions = await api.checklists();
       versions.sort((a, b) => b.version - a.version);
+      activeCl = await api.checklistActive().catch(() => null);
       if (!keepSelection || !selected || !versions.some((v) => v.version === selected)) {
         const act = versions.find((v) => v.status === 'active');
         selected = act ? act.version : (versions[0] ? versions[0].version : null);
@@ -59,12 +64,31 @@ export function renderChecklist(main, params) {
   function isDirty() { return JSON.stringify(stripMeta(draft)) !== JSON.stringify(stripMeta(base)); }
   function stripMeta(c) { if (!c) return null; const { version, status, created_at, id, ...rest } = c; return rest; }
 
+  /**
+   * LLM criteria of the draft that are new or changed in an answer-affecting field compared with the active version
+   * (stored evaluations belong to it). Only these need a model call; weights and rule criteria are re-scored locally.
+   */
+  function modelCriteria() {
+    const ref = new Map((((activeCl || base) || {}).criteria || []).map((c) => [c.id, c]));
+    return draft.criteria.filter((c) => {
+      if (isRule(c)) return false;
+      const old = ref.get(c.id);
+      return !old || ANSWER_FIELDS.some((f) => JSON.stringify(c[f] ?? null) !== JSON.stringify(old[f] ?? null));
+    });
+  }
+  const isOffline = () => !!(state.health && state.health.offline);
+
   // ---------- editor ----------
   function drawEditor() {
     const meta = versions.find((x) => x.version === selected) || {};
     const dirty = isDirty();
-    const okEval = providerAvailable();
-    const evalTitle = okEval ? '' : t('health.eval_disabled', { reason: providerReason() || '—' });
+    // offline (cache replay only): new/changed LLM criteria would fail on every dialog, so running is blocked for them
+    const needModel = providerAvailable() && isOffline() ? modelCriteria() : [];
+    const okEval = providerAvailable() && !needModel.length;
+    const evalTitle = !providerAvailable() ? t('health.eval_disabled', { reason: providerReason() || '—' })
+      : needModel.length ? t('cl.offline_needs_model', { list: needModel.map((c) => c.code || c.id).join(', ') }) : '';
+    const offlineNote = providerAvailable() && isOffline() && dirty
+      ? h('div', { class: 'note', role: 'status', style: { margin: '0 1rem .75rem' } }, needModel.length ? evalTitle : t('cl.offline_rescore_only')) : null;
     const head = h('div', { class: 'card-h' },
       h('div', null, h('h2', { class: 'row' }, `v${draft.version ?? selected} · ${draft.name || ''}`, chip(t(`cl.status_${base.status}`) || base.status, base.status === 'active' ? 'yes' : base.status === 'draft' ? 'warn' : 'na'), dirty ? h('span', { class: 'dirty small' }, t('cl.dirty')) : null),
         h('div', { class: 'muted small' }, `${t('cl.created')} ${date(base.created_at)}${meta.note ? ' · ' + meta.note : ''}`)),
@@ -108,7 +132,7 @@ export function renderChecklist(main, params) {
       h('button', { class: 'btn link sm', type: 'button', onclick: editSections }, t('btn.edit')));
     const note = h('div', { class: 'note', style: { margin: '0 1rem 1rem' } }, t('cl.weights_note', { sum: num(sumW, 0) }), (score.errors || []).length ? h('div', { class: 'dirty' }, score.errors.join('; ')) : null);
     const instr = h('details', { style: { padding: '0 1rem 1rem' } }, h('summary', null, t('cl.instructions')), h('textarea', { rows: 4, oninput: (e) => { draft.instructions = e.target.value; } }, draft.instructions || ''));
-    replace(right, h('div', { class: 'card' }, head, sections, table, note, instr));
+    replace(right, h('div', { class: 'card' }, head, offlineNote, sections, table, note, instr));
   }
 
   function editSections() {
@@ -316,22 +340,23 @@ export function renderChecklist(main, params) {
   // ---------- conversation picker ----------
   async function conversationPicker(defaultN = 5) {
     const list = await api.conversations({ group_id: state.group || undefined });
-    const chosen = new Set([...state.selection].filter((id) => list.some((c) => c.conversation_id === id)));
-    if (!chosen.size) list.slice(0, defaultN).forEach((c) => chosen.add(c.conversation_id));
+    // keys carry the group so that an id present in two groups (DEV and the control set) resolves to the right dialog
+    const chosen = new Set([...state.selection].filter((k) => list.some((c) => selKey(c) === k)));
+    if (!chosen.size) list.slice(0, defaultN).forEach((c) => chosen.add(selKey(c)));
     const nInp = h('input', { type: 'number', min: 1, max: list.length, value: defaultN, style: { width: '5rem' } });
     const box = h('div', { style: { maxHeight: '260px', overflow: 'auto', border: '1px solid var(--cqa-border)', borderRadius: '6px', padding: '.4rem .6rem' } });
     const counter = h('span', { class: 'muted small' });
     const redraw = () => {
-      replace(box, list.map((c) => { const cb = h('input', { type: 'checkbox', onchange: (e) => { if (e.target.checked) chosen.add(c.conversation_id); else chosen.delete(c.conversation_id); counter.textContent = t('cl.picked', { n: chosen.size }); } }); cb.checked = chosen.has(c.conversation_id);
-        return h('label', { class: 'chk', style: { display: 'flex', padding: '.15rem 0' } }, cb, h('span', { class: 'mono' }, c.conversation_id), h('span', { class: 'muted small' }, ` ${c.language} · ${c.latest && c.latest.total_str ? c.latest.total_str : '—'}`)); }));
+      replace(box, list.map((c) => { const k = selKey(c); const cb = h('input', { type: 'checkbox', onchange: (e) => { if (e.target.checked) chosen.add(k); else chosen.delete(k); counter.textContent = t('cl.picked', { n: chosen.size }); } }); cb.checked = chosen.has(k);
+        return h('label', { class: 'chk', style: { display: 'flex', padding: '.15rem 0' } }, cb, h('span', { class: 'mono' }, c.conversation_id), h('span', { class: 'muted small' }, ` ${c.group_id || ''} · ${c.language} · ${c.latest && c.latest.total_str ? c.latest.total_str : '—'}`)); }));
       counter.textContent = t('cl.picked', { n: chosen.size });
     };
     redraw();
     const el = h('div', { class: 'stack' },
-      h('div', { class: 'row' }, h('span', null, t('cl.first_n')), nInp, h('button', { class: 'btn sm', type: 'button', onclick: () => { chosen.clear(); list.slice(0, Number(nInp.value) || defaultN).forEach((c) => chosen.add(c.conversation_id)); redraw(); } }, t('btn.apply')),
+      h('div', { class: 'row' }, h('span', null, t('cl.first_n')), nInp, h('button', { class: 'btn sm', type: 'button', onclick: () => { chosen.clear(); list.slice(0, Number(nInp.value) || defaultN).forEach((c) => chosen.add(selKey(c))); redraw(); } }, t('btn.apply')),
         h('button', { class: 'btn sm ghost', type: 'button', onclick: () => { chosen.clear(); redraw(); } }, t('cl.clear')), h('span', { class: 'grow' }), counter),
       box);
-    return { el, ids: () => [...chosen] };
+    return { el, ids: () => [...chosen].map(fromKey) };
   }
 
   // ---------- simulation ----------
@@ -420,8 +445,17 @@ export function renderChecklist(main, params) {
       h('div', { class: 'tbl-wrap' }, h('table', { class: 'tbl' }, h('thead', null, h('tr', null, h('th', null, t('col.id')), h('th', null, t('col.total')), h('th', null, t('cl.sent_to_model')), h('th', null, t('cl.from_cache')), h('th', null, t('cl.latency')))), h('tbody', null, rows))));
   }
 
+  // provider / offline state arrives with /api/health: re-evaluate which buttons may run
+  // (only when that state changes, so periodic health polls do not reset an open editor)
+  const gate = () => `${providerAvailable()}|${isOffline()}`;
+  let lastGate = gate();
+  const unsub = subscribe((what) => {
+    if (what !== 'health' && what !== 'offline') return;
+    const g = gate();
+    if (g !== lastGate && draft && base) { lastGate = g; drawEditor(); }
+  });
   loadVersions(true);
-  return { destroy() {} };
+  return { destroy() { unsub(); } };
 }
 
 function truncate(str, n) { str = String(str ?? ''); return str.length > n ? str.slice(0, n - 1) + '…' : str; }

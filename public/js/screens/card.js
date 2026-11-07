@@ -159,6 +159,24 @@ export function renderCard(main, params) {
         h('div', { class: 'v' }, s_.calculated ? s_.total_str : h('span', { class: 'muted small' }, s_.weight ? t('card.not_calculated') : t('card.flag_only'))),
         h('div', { class: 'w' }, s_.weight ? t('card.sec_pts', { p: num(s_.points), w: num(s_.weight, 0) }) : '')))));
     }
+    // why the score is lower: every scored criterion that lost points, largest loss first
+    const losses = (E.results || [])
+      .filter((r) => r.applicable !== false && r.scored !== false && r.answer_type !== 'flag' && Number(r.weight) > 0 && r.effective_weight != null)
+      .map((r) => ({ r, lost: Number(r.effective_weight) * (1 - Number(r.points || 0) / Number(r.weight)) }))
+      .filter((x) => x.lost > 0.004)
+      .sort((a, b) => b.lost - a.lost);
+    if (losses.length) {
+      panel.append(h('div', { class: 'losses' },
+        h('div', { class: 'lbl' }, t('card.why_lower')),
+        losses.map(({ r, lost }) => {
+          const ev = (r.evidence || [])[0];
+          return h('div', { class: 'loss' },
+            h('b', { class: 'minus' }, `−${num(lost)}`),
+            h('a', { href: `#crit-${r.criterion_id}`, onclick: (e) => { e.preventDefault(); const el = document.getElementById(`crit-${r.criterion_id}`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }, `${r.code} ${r.title}`),
+            chip(answerText(r), answerKind(r)),
+            ev ? h('button', { class: 'ev-btn', type: 'button', title: t('card.goto_line'), onclick: () => focusLine(ev.line, true) }, `#${ev.line}`) : null);
+        })));
+    }
     // criteria
     for (const r of E.results || []) panel.append(criterionEl(r, E, appeals));
     // footer

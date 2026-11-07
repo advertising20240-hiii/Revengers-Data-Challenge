@@ -479,5 +479,15 @@
   "reason.gross": "gross error: {types}",
   "reason.kz": "Kazakh model disagrees: {ids}",
   "reason.verifier": "verifier model disagrees: {ids}",
-  "reason.fallback": "model answer failed validation — rules used"
+  "reason.fallback": "model answer failed validation — rules used",
+  "zoom.title": "Large text for projectors",
+  "card.why_lower": "Why the score is lower",
+  "static.banner": "View-only demo — full version: npm start",
+  "static.readonly": "This is a view-only demo: changes are not saved. To evaluate conversations, file and decide appeals or save checklists, run the full product locally: npm start (http://localhost:8080).",
+  "static.not_in_snapshot": "This data is not part of the demo snapshot. Full version: npm start.",
+  "dialogs.fetch_url_fixed": "Source: the organizers’ API from the server settings (CQA_DATA_URL); another address cannot be used.",
+  "dialogs.eval_checklist": "Checklist version",
+  "dialogs.eval_checklist_hint": "Defaults to the active version. Unchanged criteria are taken from stored results.",
+  "cl.offline_needs_model": "Offline mode: criteria {list} are new or changed and need a model call. Without a model you can change weights and rule-based criteria.",
+  "cl.offline_rescore_only": "Offline mode: no model is called — weight and rule-criterion changes are re-scored from stored answers."
 }

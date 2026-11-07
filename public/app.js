@@ -34,13 +34,15 @@ function buildHeader() {
   const langSeg = h('div', { class: 'seg lang-seg', role: 'group', aria: { label: t('lang.aria') } },
     LANGS.map((l) => h('button', { type: 'button', lang: l, title: t(`lang.${l}_full`), 'aria-pressed': String(getLang() === l), onclick: () => switchLang(l) }, t(`lang.${l}`))));
 
+  const zoomBtn = h('button', { type: 'button', class: 'zoom-btn', 'aria-pressed': String(zoomOn()), title: t('zoom.title'), aria: { label: t('zoom.title') }, onclick: (e) => { const on = !zoomOn(); setZoom(on); e.currentTarget.setAttribute('aria-pressed', String(on)); } }, 'A+');
+
   const provider = h('div', { class: 'provider', dataset: { provider: '1' } }, h('span', { class: 'dot warn' }), h('span', null, t('health.loading')));
   const offline = h('div', { class: 'provider hidden', dataset: { offline: '1' } }, h('span', { class: 'dot off' }), h('span', null, t('health.offline')));
 
   return h('header', { class: 'hdr' },
     h('a', { class: 'brand', href: '#/' }, h('span', { class: 'mark', aria: { hidden: 'true' } }, 'R'), h('span', null, 'Revengers CQA'), h('span', { class: 'sub' }, t('brand.sub'))),
     nav,
-    h('div', { class: 'hdr-right' }, offline, provider, langSeg, roleSeg));
+    h('div', { class: 'hdr-right' }, offline, provider, zoomBtn, langSeg, roleSeg));
 }
 
 function updateHeader(route) {
@@ -84,6 +86,13 @@ async function refreshHealth() {
   try { setHealth(await api.health()); } catch (e) { /* offline flag is set by api.js */ updateHealth(); }
 }
 
+/** Presentation zoom for projectors: larger base font, remembered per browser. */
+function zoomOn() { try { return window.localStorage.getItem('cqa.zoom') === '1'; } catch { return false; } }
+function setZoom(on) {
+  try { window.localStorage.setItem('cqa.zoom', on ? '1' : '0'); } catch { /* storage may be unavailable */ }
+  document.documentElement.style.fontSize = on ? '118%' : '';
+}
+
 /** Language change: remember it and rebuild the whole UI (dictionary, dates, units) without losing the current route. */
 function switchLang(l) {
   if (l === getLang()) return;
@@ -112,6 +121,7 @@ function route(r, last) {
 async function boot() {
   await loadDict(apiBase(), initialLang(window.CQA_CONFIG && window.CQA_CONFIG.lang));
   document.documentElement.lang = getLang() === 'kk' ? 'kk' : getLang();
+  if (zoomOn()) setZoom(true);
   document.title = `Revengers CQA — ${t('brand.sub')}`;
   header = buildHeader();
   bannerBox = h('div');

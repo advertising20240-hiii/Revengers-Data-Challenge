@@ -54,8 +54,8 @@ export function confirmModal(title, text, okLabel) {
       title,
       body: h('p', null, text),
       actions: [
-        h('button', { class: 'btn', type: 'button', onclick: () => { m.close(); resolve(false); } }, t('btn.cancel')),
-        h('button', { class: 'btn primary', type: 'button', onclick: () => { m.close(); resolve(true); } }, okLabel || t('btn.ok')),
+        h('button', { class: 'btn', type: 'button', onclick: () => { resolve(false); m.close(); } }, t('btn.cancel')),
+        h('button', { class: 'btn primary', type: 'button', onclick: () => { resolve(true); m.close(); } }, okLabel || t('btn.ok')),
       ],
       onClose: () => resolve(false),
     });
