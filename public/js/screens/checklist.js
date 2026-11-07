@@ -1,6 +1,6 @@
 // Screen 3 — Чек-лист: versions, criterion editor, templates, replace criterion, diff, simulation, save & apply.
 import { h, clear, replace } from '../dom.js';
-import { t, plural } from '../i18n.js';
+import { t, pl } from '../i18n.js';
 import { api, pollJob } from '../api.js';
 import { state, providerAvailable, providerReason } from '../state.js';
 import { chip, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select, confirmModal } from '../components.js';
@@ -38,7 +38,7 @@ export function renderChecklist(main, params) {
       versions.map((v) => h('div', { class: `ver ${v.version === selected ? 'sel' : ''}`, role: 'button', tabindex: 0,
         onclick: () => pick(v.version), onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(v.version); } } },
         h('div', { class: 'v' }, h('span', null, `v${v.version} · ${v.name || ''}`), chip(t(`cl.status_${v.status}`) || v.status, v.status === 'active' ? 'yes' : v.status === 'draft' ? 'warn' : 'na')),
-        h('div', { class: 'd' }, `${shortDate(v.created_at)} · ${v.criteria_count ?? '—'} ${plural(v.criteria_count || 0, ['критерий', 'критерия', 'критериев'])}`),
+        h('div', { class: 'd' }, `${shortDate(v.created_at)} · ${v.criteria_count == null ? '—' : pl(v.criteria_count, 'unit.criteria')}`),
         v.note ? h('div', { class: 'd' }, v.note) : null)));
   }
 

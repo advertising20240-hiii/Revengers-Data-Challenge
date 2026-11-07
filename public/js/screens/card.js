@@ -1,11 +1,11 @@
 // Screen 2 — Карточка диалога: transcript (left) + evaluation result (right), deep links, audio, appeals.
 import { h, clear, replace } from '../dom.js';
-import { t, plural } from '../i18n.js';
+import { t, pl } from '../i18n.js';
 import { api } from '../api.js';
 import { state, subscribe, isOperator, setRole } from '../state.js';
 import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, confidence, field, select } from '../components.js';
 import { cardHash, replaceHash } from '../router.js';
-import { channelLabel, speakerLabel, num, secs, date, provenance, reviewReasons, statusLabel, grossTypeLabel, outcomeLabel, answerKind, answerText } from '../format.js';
+import { channelLabel, speakerLabel, num, secs, date, provenance, reviewReasons, statusLabel, grossTypeLabel, outcomeLabel, answerKind, answerText, answerLabel } from '../format.js';
 
 export function renderCard(main, params) {
   let convId = params.id, pendingLine = params.line || null;
@@ -74,7 +74,7 @@ export function renderCard(main, params) {
     }
     const counts = facts.counts || {};
     const meta = h('div', { class: 't-meta' },
-      h('span', null, `${(conv.lines || []).length} ${plural((conv.lines || []).length, ['реплика', 'реплики', 'реплик'])}`),
+      h('span', null, pl((conv.lines || []).length, 'unit.lines')),
       h('span', null, `${t('speaker.operator')}: ${counts.operator_lines ?? '—'}`),
       h('span', null, `${t('speaker.client')}: ${counts.client_lines ?? '—'}`),
       h('span', null, `${t('card.duration')}: ${secs(facts.duration_seconds)}`),
@@ -253,7 +253,7 @@ export function renderCard(main, params) {
 
   function fmtVal(v) {
     if (v === null || v === undefined) return '—';
-    if (typeof v === 'object') return v.answer_label || (v.applicable === false ? 'N/A' : v.scale_value !== undefined && v.scale_value !== null ? String(v.scale_value) : v.answer === 'yes' ? t('answer.yes') : v.answer === 'no' ? t('answer.no') : JSON.stringify(v));
+    if (typeof v === 'object') return (v.answer_label && answerLabel(v.answer_label)) || (v.applicable === false ? 'N/A' : v.scale_value !== undefined && v.scale_value !== null ? String(v.scale_value) : v.answer === 'yes' ? t('answer.yes') : v.answer === 'no' ? t('answer.no') : JSON.stringify(v));
     return String(v);
   }
 

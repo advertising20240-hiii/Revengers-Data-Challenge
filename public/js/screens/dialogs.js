@@ -1,6 +1,6 @@
 // Screen 1 — Диалоги: dataset loading, table with filters, batch evaluation with progress, export.
 import { h, clear, replace } from '../dom.js';
-import { t, plural } from '../i18n.js';
+import { t, pl } from '../i18n.js';
 import { api, pollJob } from '../api.js';
 import { state, setGroup, setJob, subscribe, providerAvailable, providerReason } from '../state.js';
 import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, progressBar, field, select, confirmModal } from '../components.js';
@@ -147,7 +147,7 @@ export function renderDialogs(main) {
     const ap = r.appeal_status === 'open' ? chip(t('status.under_appeal'), 'warn') : r.appeal_status === 'resolved' ? chip(t('status.reviewed'), 'info') : h('span', { class: 'muted' }, '—');
     return h('tr', { class: chk.checked ? 'sel' : '' },
       h('td', null, chk),
-      h('td', null, h('a', { href: cardHash(r.conversation_id), class: 'mono' }, r.conversation_id), r.lines_count ? h('div', { class: 'muted small' }, `${r.lines_count} ${plural(r.lines_count, ['реплика', 'реплики', 'реплик'])} · ${secs(r.duration_seconds)}`) : null),
+      h('td', null, h('a', { href: cardHash(r.conversation_id), class: 'mono' }, r.conversation_id), r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
       h('td', null, langTag(r.language)),
       h('td', null, channelLabel(r.channel)),
       h('td', null, r.operator_name || h('span', { class: 'muted' }, '—')),

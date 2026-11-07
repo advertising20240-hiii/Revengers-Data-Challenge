@@ -1,6 +1,6 @@
 // Screen 6 — Инсайты: dataset analytics from /api/stats.
 import { h, replace } from '../dom.js';
-import { t, plural } from '../i18n.js';
+import { t, pl } from '../i18n.js';
 import { api } from '../api.js';
 import { state, setGroup } from '../state.js';
 import { chip, skeleton, emptyState, errorBox, select } from '../components.js';
@@ -52,7 +52,7 @@ export function renderInsights(main) {
     const seg = card(t('ins.seg_title'), h('div', null, barChart([...byLang, ...byCh], { max: 100, format: (v) => num(v), title: t('ins.seg_title') })), t('ins.seg_sub'));
 
     const frVals = (fr.values || []).map((v) => v.seconds).filter((v) => v !== null && v !== undefined);
-    const frBuckets = bucketize(frVals, [30, 60, 120, 180, 300, 600], (s_) => s_ >= 60 ? `${Math.round(s_ / 60)} мин` : `${s_} с`);
+    const frBuckets = bucketize(frVals, [30, 60, 120, 180, 300, 600], (s_) => s_ >= 60 ? `${Math.round(s_ / 60)} ${t('unit.min')}` : `${s_} ${t('unit.sec')}`);
     const frCard = card(t('ins.fr_title'), h('div', null, histogram(frBuckets, { xLabel: t('ins.fr_x'), yLabel: t('ins.dist_y'), highlight: (b) => b.over ? PALETTE.no : PALETTE.primary, title: t('ins.fr_title') }),
       h('div', { class: 'row small muted mt' }, h('span', null, t('ins.fr_over', { n: (fr.over_threshold || []).length })), (fr.over_threshold || []).slice(0, 12).map((id) => h('a', { href: cardHash(id), class: 'mono' }, id)))), t('ins.fr_sub'));
 
@@ -68,8 +68,8 @@ export function renderInsights(main) {
     const ops = (st.operators || []).slice().sort((a, b) => (a.avg_total ?? 101) - (b.avg_total ?? 101));
     const coach = card(t('ins.coach_title'), ops.length ? h('div', { class: 'grid-3' }, ops.map((o) => h('div', { class: 'coach' },
       h('div', { class: 'name' }, h('span', null, o.operator_name || '—'), h('span', null, o.avg_total !== null && o.avg_total !== undefined ? num(o.avg_total) : '—')),
-      h('div', { class: 'muted small' }, `${o.conversations} ${plural(o.conversations, ['диалог', 'диалога', 'диалогов'])}${o.excluded_open_appeals ? ` · ${t('ins.excluded', { n: o.excluded_open_appeals })}` : ''}`),
-      (o.top_missed || []).slice(0, 2).map((m) => h('div', { class: 'miss' }, h('b', null, m.title), ` — ${m.count} ${plural(m.count, ['раз', 'раза', 'раз'])}`,
+      h('div', { class: 'muted small' }, `${pl(o.conversations, 'unit.dialogs')}${o.excluded_open_appeals ? ` · ${t('ins.excluded', { n: o.excluded_open_appeals })}` : ''}`),
+      (o.top_missed || []).slice(0, 2).map((m) => h('div', { class: 'miss' }, h('b', null, m.title), ` — ${pl(m.count, 'unit.times')}`,
         m.example ? h('div', { class: 'small' }, h('a', { href: cardHash(m.example.conversation_id, m.example.line), class: 'mono' }, `${m.example.conversation_id} #${m.example.line}`), m.example.quote ? h('span', { class: 'muted' }, ` «${truncate(m.example.quote, 90)}»`) : null) : null)),
       !(o.top_missed || []).length ? h('div', { class: 'small muted' }, t('ins.no_misses')) : null))) : emptyState(t('ins.no_operators'), ''), t('ins.coach_sub'));
 

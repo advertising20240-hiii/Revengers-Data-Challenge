@@ -1,6 +1,6 @@
 // Revengers CQA — application entry: header, router, screen mounting.
 import { h, clear, replace } from './js/dom.js';
-import { loadDict, t } from './js/i18n.js';
+import { loadDict, t, LANGS, getLang, initialLang, saveLang } from './js/i18n.js';
 import { api, apiBase } from './js/api.js';
 import { state, subscribe, setRole, setHealth, providerAvailable, providerReason } from './js/state.js';
 import { startRouter } from './js/router.js';
@@ -31,13 +31,16 @@ function buildHeader() {
     h('button', { type: 'button', dataset: { role: 'operator' }, 'aria-pressed': String(state.role === 'operator'), onclick: () => setRole('operator') }, t('role.operator')),
     h('button', { type: 'button', dataset: { role: 'reviewer' }, 'aria-pressed': String(state.role === 'reviewer'), onclick: () => setRole('reviewer') }, t('role.reviewer')));
 
+  const langSeg = h('div', { class: 'seg lang-seg', role: 'group', aria: { label: t('lang.aria') } },
+    LANGS.map((l) => h('button', { type: 'button', lang: l, title: t(`lang.${l}_full`), 'aria-pressed': String(getLang() === l), onclick: () => switchLang(l) }, t(`lang.${l}`))));
+
   const provider = h('div', { class: 'provider', dataset: { provider: '1' } }, h('span', { class: 'dot warn' }), h('span', null, t('health.loading')));
   const offline = h('div', { class: 'provider hidden', dataset: { offline: '1' } }, h('span', { class: 'dot off' }), h('span', null, t('health.offline')));
 
   return h('header', { class: 'hdr' },
     h('a', { class: 'brand', href: '#/' }, h('span', { class: 'mark', aria: { hidden: 'true' } }, 'R'), h('span', null, 'Revengers CQA'), h('span', { class: 'sub' }, t('brand.sub'))),
     nav,
-    h('div', { class: 'hdr-right' }, offline, provider, roleSeg));
+    h('div', { class: 'hdr-right' }, offline, provider, langSeg, roleSeg));
 }
 
 function updateHeader(route) {
@@ -48,7 +51,7 @@ function updateHeader(route) {
 }
 
 function updateRole() {
-  for (const b of header.querySelectorAll('.seg button')) b.setAttribute('aria-pressed', String(b.dataset.role === state.role));
+  for (const b of header.querySelectorAll('.seg button[data-role]')) b.setAttribute('aria-pressed', String(b.dataset.role === state.role));
 }
 
 function updateHealth() {
@@ -81,6 +84,13 @@ async function refreshHealth() {
   try { setHealth(await api.health()); } catch (e) { /* offline flag is set by api.js */ updateHealth(); }
 }
 
+/** Language change: remember it and rebuild the whole UI (dictionary, dates, units) without losing the current route. */
+function switchLang(l) {
+  if (l === getLang()) return;
+  saveLang(l);
+  window.location.reload();
+}
+
 const SCREENS = { dialogs: renderDialogs, card: renderCard, checklist: renderChecklist, appeals: renderAppeals, calibration: renderCalibration, insights: renderInsights };
 
 function route(r, last) {
@@ -100,7 +110,8 @@ function route(r, last) {
 }
 
 async function boot() {
-  await loadDict(apiBase(), (window.CQA_CONFIG && window.CQA_CONFIG.lang) || 'ru');
+  await loadDict(apiBase(), initialLang(window.CQA_CONFIG && window.CQA_CONFIG.lang));
+  document.documentElement.lang = getLang() === 'kk' ? 'kk' : getLang();
   document.title = `Revengers CQA — ${t('brand.sub')}`;
   header = buildHeader();
   bannerBox = h('div');

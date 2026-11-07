@@ -97,6 +97,7 @@
 .cqa-root .nav a[aria-current="page"] { background: var(--cqa-accent-soft); color: var(--cqa-accent); }
 .cqa-root .nav .count { display: inline-block; min-width: 1.4em; padding: 0 .35em; margin-left: .35em; border-radius: 999px; background: var(--cqa-no); color: #fff; font-size: .75rem; text-align: center; font-weight: 700; vertical-align: middle; }
 .cqa-root .hdr-right { margin-left: auto; display: flex; align-items: center; gap: .9rem; flex-wrap: wrap; }
+@media (max-width: 1560px) { .cqa-root .brand .sub { display: none; } .cqa-root .hdr-right { gap: .6rem; } }
 .cqa-root .provider { font-size: .85rem; color: var(--cqa-muted); display: flex; align-items: center; gap: .4rem; }
 .cqa-root .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--cqa-yes); display: inline-block; }
 .cqa-root .dot.off { background: var(--cqa-no); }
@@ -105,6 +106,7 @@
 .cqa-root .seg { display: inline-flex; border: 1px solid var(--cqa-border-strong); border-radius: 999px; overflow: hidden; background: var(--cqa-surface); }
 .cqa-root .seg button { border: 0; background: transparent; padding: .4rem .9rem; font: inherit; font-size: .9rem; font-weight: 550; color: var(--cqa-ink-2); cursor: pointer; }
 .cqa-root .seg button[aria-pressed="true"] { background: var(--cqa-ink); color: #fff; }
+.cqa-root .lang-seg button { padding: .4rem .6rem; font-size: .8rem; letter-spacing: .02em; }
 
 .cqa-root .banner { padding: .6rem 1.25rem; font-size: .95rem; border-bottom: 1px solid var(--cqa-border); display: flex; gap: .75rem; align-items: center; }
 .cqa-root .banner.warn { background: var(--cqa-warn-soft); color: #5c3700; }

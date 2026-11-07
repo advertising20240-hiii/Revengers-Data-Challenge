@@ -1,5 +1,6 @@
 // Inline SVG charts, no libraries. All charts are responsive (viewBox) and use the shared palette.
 import { s, h } from './dom.js';
+import { t } from './i18n.js';
 
 export const PALETTE = {
   primary: '#1f4f8f', secondary: '#7a9cc9', yes: '#1a7f4b', no: '#b42c2c', na: '#8a93a0', warn: '#c77d00', doom: '#1e3b2e', grid: '#d9dee6',
@@ -115,7 +116,7 @@ export function ciChart(items, opts = {}) {
 export function confusionMatrix(cm, labels = {}) {
   if (!cm || !cm.labels || !cm.matrix) return h('span', { class: 'muted' }, '—');
   const tbl = h('table', { class: 'cm' });
-  const head = h('tr', null, h('th', null, labels.corner || 'чел. \\ ИИ'));
+  const head = h('tr', null, h('th', null, labels.corner || t('chart.human_ai')));
   for (const l of cm.labels) head.append(h('th', null, String(l)));
   tbl.append(h('thead', null, head));
   const body = h('tbody');

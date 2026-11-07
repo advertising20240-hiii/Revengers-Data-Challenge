@@ -1,5 +1,6 @@
 // Single HTTP client. Every request goes through here so apiBase, errors and offline state are handled once.
 import { setOffline } from './state.js';
+import { t } from './i18n.js';
 
 export function apiBase() { return (window.CQA_CONFIG && window.CQA_CONFIG.apiBase) || ''; }
 
@@ -17,7 +18,7 @@ async function request(method, path, body, opts = {}) {
     res = await fetch(url, init);
   } catch (e) {
     setOffline(true);
-    throw new ApiError('Сервер недоступен. Проверьте, что запущен `npm start` (порт 8080).', 0, null);
+    throw new ApiError(`${t('health.offline')}. ${t('health.offline_hint')}`, 0, null);
   }
   setOffline(false);
   const text = await res.text();

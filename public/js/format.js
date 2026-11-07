@@ -1,5 +1,5 @@
-// Formatting helpers (Russian locale).
-import { t } from './i18n.js';
+// Formatting helpers (locale follows the UI language).
+import { t, locale } from './i18n.js';
 import { state } from './state.js';
 
 export function num(x, digits = 2) {
@@ -15,11 +15,11 @@ export function pct(x, digits = 0) {
 export function secs(x) {
   if (x === null || x === undefined || Number.isNaN(Number(x))) return '—';
   const s = Math.round(Number(x));
-  if (s < 60) return `${s} с`;
+  if (s < 60) return `${s} ${t('unit.sec')}`;
   const m = Math.floor(s / 60), r = s % 60;
-  if (m < 60) return `${m} мин ${String(r).padStart(2, '0')} с`;
+  if (m < 60) return `${m} ${t('unit.min')} ${String(r).padStart(2, '0')} ${t('unit.sec')}`;
   const hh = Math.floor(m / 60);
-  return `${hh} ч ${String(m % 60).padStart(2, '0')} мин`;
+  return `${hh} ${t('unit.hour')} ${String(m % 60).padStart(2, '0')} ${t('unit.min')}`;
 }
 
 export function mmss(x) {
@@ -33,14 +33,14 @@ export function date(iso) {
   if (!iso) return '—';
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return String(iso);
-  return d.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  return d.toLocaleString(locale(), { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
 
 export function shortDate(iso) {
   if (!iso) return '—';
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return String(iso);
-  return d.toLocaleString('ru-RU', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+  return d.toLocaleString(locale(), { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
 }
 
 /** Cost line: zero cost is a local model. */
@@ -50,7 +50,7 @@ export function cost(usd, model, latencyMs, note) {
   if (u > 0) parts.push(`$${u.toFixed(4)}`);
   else parts.push(t('cost.zero', { model: model || '—' }));
   if (u > 0 && model) parts.push(model);
-  if (latencyMs !== undefined && latencyMs !== null) parts.push(`${(Number(latencyMs) / 1000).toFixed(1)} с`);
+  if (latencyMs !== undefined && latencyMs !== null) parts.push(`${(Number(latencyMs) / 1000).toFixed(1)} ${t('unit.sec')}`);
   if (note) parts.push(note);
   return parts.join(' · ');
 }
@@ -72,7 +72,7 @@ export function provenance(E) {
   else if (/alem\.plus/i.test(note) || providerName === 'alem') price = '0 ₸ · alem.plus';
   else if (note && !fromCache) price = note.replace(/\s*\(.*\)\s*$/, '').replace(' — ', ' · ');
   else price = t('cost.zero', { model: (E && E.model) || tr.model || '—' });
-  const time = fromCache ? t('card.from_cache') : (E && E.latency_ms !== null && E.latency_ms !== undefined ? `${(Number(E.latency_ms) / 1000).toFixed(1)} с` : null);
+  const time = fromCache ? t('card.from_cache') : (E && E.latency_ms !== null && E.latency_ms !== undefined ? `${(Number(E.latency_ms) / 1000).toFixed(1)} ${t('unit.sec')}` : null);
   return { price, time, fromCache };
 }
 
@@ -85,9 +85,30 @@ export function reviewReasons(L) {
   if (L.min_confidence !== null && L.min_confidence !== undefined && L.min_confidence < 0.6) out.push(t('card.low_conf', { v: Math.round(L.min_confidence * 100) }));
   return out;
 }
+const REASON_RE = [
+  [/^низкая уверенность \(([\d.]+)\)$/, (m) => t('reason.low_conf', { v: m[1] })],
+  [/^грубая ошибка: (.*)$/, (m) => t('reason.gross', { types: m[1].split(/,\s*/).map((x) => (x === 'тип не указан' ? '—' : grossTypeLabel(x))).join(', ') })],
+  [/^расхождение с казахской моделью: (.*)$/, (m) => t('reason.kz', { ids: m[1] })],
+  [/^проверяющая модель не согласна: (.*)$/, (m) => t('reason.verifier', { ids: m[1] })],
+  [/^ответ модели не прошёл проверку/, () => t('reason.fallback')],
+];
 function reasonLabel(s) {
-  // server strings look like "грубая ошибка: disclosure" — translate the raw flag type when we know it
-  return String(s).replace(/\b(insult|bypass|disclosure)\b/g, (m) => grossTypeLabel(m));
+  // server strings are canonical Russian ("грубая ошибка: disclosure"); show them in the UI language
+  const str = String(s);
+  for (const [re, fn] of REASON_RE) { const m = str.match(re); if (m) return fn(m); }
+  return str.replace(/\b(insult|bypass|disclosure)\b/g, (m) => grossTypeLabel(m));
+}
+
+/** Server answer labels are canonical Russian («Да», «Нет», «10 из 20»); render them in the UI language. */
+export function answerLabel(s) {
+  if (s === null || s === undefined || s === '') return '—';
+  const str = String(s).trim();
+  if (str === 'Да') return t('answer.yes');
+  if (str === 'Нет') return t('answer.no');
+  if (str === 'N/A') return t('answer.na');
+  const m = str.match(/^(\d+(?:[.,]\d+)?) из (\d+)$/);
+  if (m) return t('answer.scale', { v: m[1], max: m[2] });
+  return str;
 }
 
 export function channelLabel(ch) { return ch === 'voice call' ? t('channel.voice') : t('channel.chat'); }
@@ -111,7 +132,7 @@ export function answerKind(r) {
 
 export function answerText(r, criterion) {
   if (!r) return '—';
-  if (r.answer_label) return r.answer_label;
+  if (r.answer_label) return answerLabel(r.answer_label);
   if (r.applicable === false) return 'N/A';
   const c = criterion || r;
   if (c.answer_type === 'scale' || c.answer_type === 'scale_na') {

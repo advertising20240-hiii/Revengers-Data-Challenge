@@ -5,7 +5,7 @@ import { api } from '../api.js';
 import { state, subscribe, isReviewer, setRole, providerAvailable, providerReason } from '../state.js';
 import { chip, toast, openModal, skeleton, emptyState, errorBox, field, select } from '../components.js';
 import { cardHash } from '../router.js';
-import { num, date, speakerLabel, statusLabel, outcomeLabel, answerKind, answerText, pct } from '../format.js';
+import { num, date, speakerLabel, statusLabel, outcomeLabel, answerKind, answerText, answerLabel, pct } from '../format.js';
 import { scoreEvaluation, isScale, isFlag, naAllowed } from '../../../packages/scoring/index.js';
 
 const OUTCOMES = ['score_changed', 'criterion_change', 'stands_explanation', 'stands_coaching'];
@@ -53,7 +53,7 @@ export function renderAppeals(main, params) {
         onclick: () => { selectedId = a.id; history.replaceState(null, '', `#/appeals/${encodeURIComponent(a.id)}`); drawQueue(); loadDetail(a.id); },
         onkeydown: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.target.click(); } } },
         h('div', { class: 'row between' }, h('span', { class: 'mono' }, a.conversation_id), chip(statusLabel(a.status === 'open' ? 'open' : a.status), a.status === 'open' ? 'warn' : a.status === 'changed' ? 'yes' : 'info')),
-        h('div', null, h('b', null, a.criterion_title || a.criterion_id), ' · ', chip(a.original ? a.original.answer_label : '—', 'neutral')),
+        h('div', null, h('b', null, a.criterion_title || a.criterion_id), ' · ', chip(a.original ? answerLabel(a.original.answer_label) : '—', 'neutral')),
         h('div', { class: 'muted small' }, `${date(a.created_at)}${a.confidence !== undefined && a.confidence !== null ? ` · ${t('card.confidence')} ${Math.round(a.confidence * 100)}%` : ''}`)))
         : emptyState(t('ap.empty_title'), t('ap.empty_hint'), h('a', { class: 'btn', href: '#/' }, t('card.back'))));
   }
@@ -95,7 +95,7 @@ export function renderAppeals(main, params) {
       h('div', { class: 'card-b stack' },
         h('div', { class: 'grid-2' },
           h('div', { class: 'stack' }, h('div', { class: 'lbl' }, t('ap.disputed')),
-            h('div', { class: 'row' }, chip(O.answer_label || answerText(R, C), answerKind({ ...O, answer_type: C && C.answer_type, scored: C && C.scored }), 'lg'), O.points !== null && O.points !== undefined ? h('span', { class: 'muted' }, `${num(O.points)} / ${num(C ? C.weight : R && R.weight, 0)}`) : null, O.confidence !== undefined && O.confidence !== null ? h('span', { class: 'muted small' }, `${t('card.confidence')} ${Math.round((O.confidence || 0) * 100)}%`) : null),
+            h('div', { class: 'row' }, chip(O.answer_label ? answerLabel(O.answer_label) : answerText(R, C), answerKind({ ...O, answer_type: C && C.answer_type, scored: C && C.scored }), 'lg'), O.points !== null && O.points !== undefined ? h('span', { class: 'muted' }, `${num(O.points)} / ${num(C ? C.weight : R && R.weight, 0)}`) : null, O.confidence !== undefined && O.confidence !== null ? h('span', { class: 'muted small' }, `${t('card.confidence')} ${Math.round((O.confidence || 0) * 100)}%`) : null),
             O.explanation ? h('div', { class: 'quote' }, O.explanation) : null,
             O.rule_applied ? h('div', { class: 'small muted' }, `${t('card.rule')}: ${O.rule_applied}`) : null,
             h('div', null, h('span', { class: 'lbl' }, t('col.total')), ' ', h('b', null, a.total_before !== null && a.total_before !== undefined ? num(a.total_before) : (E && E.total_str) || '—'))),
@@ -119,7 +119,7 @@ export function renderAppeals(main, params) {
     const dcs = a.decision;
     return h('div', { class: 'history' },
       h('div', null, h('span', { class: 'lbl' }, t('ap.decision')), h('b', null, dcs.decision === 'confirm' ? t('ap.confirmed') : t('ap.changed')), ' · ', outcomeLabel(dcs.outcome), dcs.decided_at ? h('span', { class: 'muted' }, ` · ${date(dcs.decided_at)}`) : null),
-      h('div', { class: 'row' }, t('card.orig'), ': ', chip(a.original ? a.original.answer_label : '—', 'neutral'), h('span', { class: 'arrow' }, '→'), t('card.final'), ': ', chip(a.final ? a.final.answer_label : (a.original ? a.original.answer_label : '—'), 'info')),
+      h('div', { class: 'row' }, t('card.orig'), ': ', chip(a.original ? answerLabel(a.original.answer_label) : '—', 'neutral'), h('span', { class: 'arrow' }, '→'), t('card.final'), ': ', chip(answerLabel(a.final ? a.final.answer_label : (a.original ? a.original.answer_label : null)), 'info')),
       a.total_before !== null && a.total_before !== undefined ? h('div', null, `${t('col.total')}: `, h('b', null, num(a.total_before)), h('span', { class: 'arrow' }, '→'), h('b', null, num(a.total_after ?? a.total_before))) : null,
       dcs.reviewer_note ? h('div', { class: 'muted' }, `${t('card.reviewer_note')}: ${dcs.reviewer_note}`) : null);
   }
@@ -207,7 +207,7 @@ export function renderAppeals(main, params) {
     } }, t('ap.submit'));
 
     replace(body, h('div', { class: 'stack' },
-      h('div', { class: 'row' }, h('span', null, t('ap.disputed'), ': '), chip(a.original ? a.original.answer_label : '—', 'neutral', 'lg'), h('span', { class: 'muted' }, '·'), h('span', { class: 'muted' }, a.comment || '')),
+      h('div', { class: 'row' }, h('span', null, t('ap.disputed'), ': '), chip(a.original ? answerLabel(a.original.answer_label) : '—', 'neutral', 'lg'), h('span', { class: 'muted' }, '·'), h('span', { class: 'muted' }, a.comment || '')),
       h('div', { class: 'grid-2' }, h('div', { class: 'stack' }, h('div', { class: 'lbl' }, t('ap.decision')), decBox, valueBox), h('div', { class: 'stack' }, h('div', { class: 'lbl' }, t('ap.outcome')), outBox)),
       previewBox,
       field(t('ap.reason'), note), err,
