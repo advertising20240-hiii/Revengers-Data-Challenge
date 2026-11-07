@@ -1,0 +1,35 @@
+{
+ "key": "38e5fb21f3a9022f1d78e05a8c754fd98042d0a11ad6ea6dbccf085a161afbc8",
+ "conversation_id": "p1-ru-025",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.525Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": false,
+  "na_reason": "Чат оборвался до возможности его завершить.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "последняя реплика оператора до обрыва"
+   },
+   {
+    "line": 11,
+    "why": "клиент покинул чат / связь прервалась"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Чат оборвался до возможности его завершить",
+  "explanation": "Завершение — N/A. Чат оборвался до того, как оператор мог его завершить: клиент покинул диалог или связь прервалась, прощания оператор дать не успел. Основание — последняя реплика оператора #10 «Здравствуйте! Меня зовут Валерия, поддержка Freedom Broker.…» и системное сообщение об уходе клиента #11.",
+  "confidence": 0.6,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

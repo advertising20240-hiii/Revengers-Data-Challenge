@@ -1,0 +1,38 @@
+{
+ "key": "be1d715a6c9d259946b5d4fa2d8492a98c51ed7b0208bfd9ced522f60128f0f5",
+ "conversation_id": "p1-kz-015",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:11:01.918Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Клиент задал прямой вопрос о причине: «Ал себебі қандай?»."
+   },
+   {
+    "line": 14,
+    "why": "Оператор не ответил на вопрос, а лишь сообщил о передаче на проверку: «Оны тексеруге жіберемін»."
+   }
+  ],
+  "checked_range": [
+   13,
+   14
+  ],
+  "rule_applied": "04: оценка полноты консультации",
+  "explanation": "Основной вопрос клиента о причине ограничения остался без ответа. Оператор предложил эскалацию, но не указал канал или срок ответа, что соответствует уровню 10 (часть запроса закрыта, существенный вопрос остался открытым).",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -150,7 +150,7 @@ export function extractFacts(conv, lex) {
   const firstVerified = verifiedAll[0] ?? null;
   const disclosureBeforeVerification = disclosure.filter((d) => firstVerified == null || d.line < firstVerified);
 
-  // mid-dialog waits: client line -> next operator line gap (after the first operator line)
+  // mid-dialog waits > 90 s: client's last message (or the operator's previous line) -> next operator line
   const waits = [];
   const waitRe = compile(signals.wait_warning);
   for (let i = 0; i < L.length; i++) {
@@ -158,11 +158,15 @@ export function extractFacts(conv, lex) {
     if (l.speaker !== 'operator' || !firstOp || l.n <= firstOp.n) continue;
     const prevOp = [...L.slice(0, i)].reverse().find((x) => x.speaker === 'operator');
     if (!prevOp || prevOp.offset_seconds == null || l.offset_seconds == null) continue;
-    const gap = l.offset_seconds - prevOp.offset_seconds;
+    // the client waits from their own last message (their typing time is not operator delay); if the client wrote
+    // nothing in between, the wait runs from the operator's previous line
+    const lastClient = L.slice(prevOp.n, i).filter((x) => x.speaker === 'client' && x.offset_seconds != null).pop();
+    const start = lastClient || prevOp;
+    const gap = l.offset_seconds - start.offset_seconds;
     if (gap > 90) {
       const between = L.slice(prevOp.n - 1, l.n - 1).filter((x) => x.speaker === 'operator');
       const warned = between.some((x) => hits(x.text, waitRe).length);
-      waits.push({ from_line: prevOp.n, to_line: l.n, seconds: round1(gap), warned });
+      waits.push({ from_line: start.n, to_line: l.n, seconds: round1(gap), warned });
     }
   }
 

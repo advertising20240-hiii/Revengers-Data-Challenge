@@ -1,0 +1,38 @@
+{
+ "key": "112a83fd6044c2cc4d21843fafc7bebd2d9198deb322daed83e8c93f71006c75",
+ "conversation_id": "p4-ru-003",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:13:45.670Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 19,
+    "why": "Оператор уточнил детали ('подскажите, пожалуйста'), чтобы понять суть проблемы с поручением."
+   },
+   {
+    "line": 22,
+    "why": "Оператор уточнил контекст ('случайно не мы разговаривали...'), чтобы связать текущий запрос с предыдущим обращением."
+   }
+  ],
+  "checked_range": [
+   13,
+   32
+  ],
+  "rule_applied": "02: уточнение потребности до ответа",
+  "explanation": "Клиент описал проблему фрагментарно. Оператор задал уточняющие вопросы, чтобы понять, о каком именно поручении идет речь и есть ли связь с предыдущим звонком, прежде чем приступить к проверке.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

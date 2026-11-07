@@ -1,0 +1,34 @@
+{
+ "key": "e697903bb72c189dd840cac531db6879c8763577dc42bc4fb38c18e9bcb8c68a",
+ "conversation_id": "p1-kz-005",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:05:28.167Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "Последняя реплика оператора «Жақсы.» не содержит прощания, итога или предложения дальнейшей помощи."
+   }
+  ],
+  "checked_range": [
+   14,
+   14
+  ],
+  "rule_applied": "07: прощание + итог/помощь",
+  "explanation": "Оператор не попрощался и не подвёл итог, ограничившись подтверждением «Жақсы» (Хорошо), что не соответствует требованиям к завершению диалога.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

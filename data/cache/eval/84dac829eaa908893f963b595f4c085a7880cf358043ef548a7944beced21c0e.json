@@ -1,0 +1,34 @@
+{
+ "key": "84dac829eaa908893f963b595f4c085a7880cf358043ef548a7944beced21c0e",
+ "conversation_id": "p1-ru-029",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:02:53.631Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "Последняя реплика оператора содержит только прощание «До свидания», без итога или предложения дальнейшей помощи."
+   }
+  ],
+  "checked_range": [
+   14,
+   14
+  ],
+  "rule_applied": "07: Завершение",
+  "explanation": "Оператор попрощался, но не подвел итог по вопросу и не предложил дальнейшую помощь, что соответствует критерию «Нет» (только вежливая фраза/прощание).",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

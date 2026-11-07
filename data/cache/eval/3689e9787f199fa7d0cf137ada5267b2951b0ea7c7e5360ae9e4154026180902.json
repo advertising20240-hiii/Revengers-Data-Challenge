@@ -1,0 +1,38 @@
+{
+ "key": "3689e9787f199fa7d0cf137ada5267b2951b0ea7c7e5360ae9e4154026180902",
+ "conversation_id": "p1-ru-014",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:58:37.036Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент уже указал сайт: «На сайте Freedom Finance Global»."
+   },
+   {
+    "line": 10,
+    "why": "Оператор переспросил: «где именно ищете?», хотя информация была в диалоге с ботом."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: переспросил уже известное",
+  "explanation": "Клиент в реплике #5 уже сообщил, что ищет на сайте Freedom Finance Global. Оператор в реплике #10 задал уточняющий вопрос «где именно ищете?», что является переспросом уже известной информации, а не выявлением новой потребности.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

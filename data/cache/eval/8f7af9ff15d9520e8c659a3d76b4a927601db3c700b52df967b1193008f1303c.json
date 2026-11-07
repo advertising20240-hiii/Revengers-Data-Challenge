@@ -1,0 +1,39 @@
+{
+ "key": "8f7af9ff15d9520e8c659a3d76b4a927601db3c700b52df967b1193008f1303c",
+ "conversation_id": "p1-ru-007",
+ "criterion_id": "c05",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.464Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "тон последней реплики оператора"
+   },
+   {
+    "line": 1,
+    "why": "недовольство клиента"
+   },
+   {
+    "line": 5,
+    "why": "недовольство клиента"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Вежливый тон, грубости нет",
+  "explanation": "Эмпатия и клиентоориентированность — Да. Оператор вежлив: клиент выражал недовольство (#1, #5), грубости или отмахивания в ответах оператора нет, диалог доведён до ответа. Основание — реплики оператора #11–#13, реплика клиента с недовольством #1 «Не могу вывести деньги, просит обновить анкетные…»; последняя реплика оператора #13 «Путь к обновлению я указал. Хорошего дня!».",
+  "confidence": 0.5,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

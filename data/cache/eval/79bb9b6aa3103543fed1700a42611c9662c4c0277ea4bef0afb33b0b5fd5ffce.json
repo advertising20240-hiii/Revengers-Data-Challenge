@@ -1,0 +1,34 @@
+{
+ "key": "79bb9b6aa3103543fed1700a42611c9662c4c0277ea4bef0afb33b0b5fd5ffce",
+ "conversation_id": "p1-en-002",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:11:55.305Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор дал общую информацию о навигации, данные конкретного счёта не раскрывались.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал общую инструкцию по доступу к платформе, не запрашивая и не раскрывая персональные данные счёта."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "03: N/A если запрос не требовал идентификации",
+  "explanation": "Диалог касался общей навигации по сайту, персональные данные счёта не затрагивались.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

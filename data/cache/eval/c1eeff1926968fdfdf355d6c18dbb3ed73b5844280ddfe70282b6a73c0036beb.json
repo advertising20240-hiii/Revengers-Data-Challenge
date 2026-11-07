@@ -1,0 +1,34 @@
+{
+ "key": "c1eeff1926968fdfdf355d6c18dbb3ed73b5844280ddfe70282b6a73c0036beb",
+ "conversation_id": "p1-ru-025",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:01:52.550Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": false,
+  "na_reason": "Чат закончился до того, как клиент сформулировал запрос.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Клиент покинул чат сразу после первого вопроса оператора, не озвучив свою проблему."
+   }
+  ],
+  "checked_range": [
+   10,
+   11
+  ],
+  "rule_applied": "04: N/A если запрос не сформулирован",
+  "explanation": "Клиент не успел задать конкретный вопрос, поэтому оценить качество консультации невозможно.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

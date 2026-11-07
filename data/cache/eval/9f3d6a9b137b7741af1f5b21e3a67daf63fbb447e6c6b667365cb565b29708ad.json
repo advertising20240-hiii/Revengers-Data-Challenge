@@ -1,0 +1,35 @@
+{
+ "key": "9f3d6a9b137b7741af1f5b21e3a67daf63fbb447e6c6b667365cb565b29708ad",
+ "conversation_id": "p1-kz-002",
+ "criterion_id": "c05",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:04:37.070Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Вежливое приветствие."
+   },
+   {
+    "line": 14,
+    "why": "Вежливое прощание."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "05: вежливость и реакция на проблему",
+  "explanation": "Оператор был вежлив на протяжении всего диалога, грубости или игнорирования проблем клиента не выявлено.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

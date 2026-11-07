@@ -116,6 +116,7 @@ export async function collectSnapshot({ group = 'DEV', log = () => {} } = {}) {
     }
     await add('/api/results.json');
     await add(`/api/results.json?group_id=${enc(group)}`);
+    await add(`/api/results.json?group_id=${enc(group)}&clean=1`);
 
     // dialog cards (+ every checklist version the card can switch to)
     const rows = app.data.rows(group);

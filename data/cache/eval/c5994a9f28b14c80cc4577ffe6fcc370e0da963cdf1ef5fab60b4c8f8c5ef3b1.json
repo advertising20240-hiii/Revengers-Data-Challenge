@@ -1,0 +1,31 @@
+{
+ "key": "c5994a9f28b14c80cc4577ffe6fcc370e0da963cdf1ef5fab60b4c8f8c5ef3b1",
+ "conversation_id": "p4-ru-001",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:14:04.192Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": false,
+  "na_reason": "Чат оборвался до возможности его завершить: клиент завершил разговор (#44) сразу после реплики оператора (#43), не дав оператору возможности попрощаться или подвести итог.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 44,
+    "why": "Системное сообщение о завершении разговора клиентом."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "07: Завершение",
+  "explanation": "Клиент прервал разговор до того, как оператор мог произнести прощание или итог. Последняя реплика оператора была ответом на жалобу, а не завершением диалога.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

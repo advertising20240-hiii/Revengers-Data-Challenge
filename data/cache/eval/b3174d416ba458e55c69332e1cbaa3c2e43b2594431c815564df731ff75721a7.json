@@ -1,0 +1,38 @@
+{
+ "key": "b3174d416ba458e55c69332e1cbaa3c2e43b2594431c815564df731ff75721a7",
+ "conversation_id": "p1-ru-018",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:00:18.330Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Последняя реплика оператора «Тогда не знаю» не содержит прощания или итога."
+   },
+   {
+    "line": 13,
+    "why": "Система сообщает о закрытии чата оператором."
+   }
+  ],
+  "checked_range": [
+   12,
+   13
+  ],
+  "rule_applied": "07: завершение (прощание + итог)",
+  "explanation": "Оператор закрыл чат без прощания и без подведения итога или предложения дальнейшей помощи.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

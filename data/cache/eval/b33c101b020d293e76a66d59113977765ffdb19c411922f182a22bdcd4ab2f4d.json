@@ -1,0 +1,35 @@
+{
+ "key": "b33c101b020d293e76a66d59113977765ffdb19c411922f182a22bdcd4ab2f4d",
+ "conversation_id": "p1-ru-017",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:00:06.177Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Клиент сообщил, что может перепутать название и ищет тикер."
+   },
+   {
+    "line": 11,
+    "why": "Оператор уточнил, знает ли клиент точный тикер или видит только название, до предоставления инструкции."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: уточняющий вопрос до ответа",
+  "explanation": "Оператор задал уместный уточняющий вопрос о наличии точного тикера перед тем, как дать рекомендацию, что соответствует правилу выявления потребности.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

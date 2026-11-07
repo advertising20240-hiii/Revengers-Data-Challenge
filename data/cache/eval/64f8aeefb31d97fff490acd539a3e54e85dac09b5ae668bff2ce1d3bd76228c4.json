@@ -1,0 +1,35 @@
+{
+ "key": "64f8aeefb31d97fff490acd539a3e54e85dac09b5ae668bff2ce1d3bd76228c4",
+ "conversation_id": "p1-ru-008",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:57:56.465Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент сообщил статус поручения («в обработке») и цель (вывод средств).",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент указал, что поручение в обработке."
+   },
+   {
+    "line": 10,
+    "why": "Оператор ответил по существу, не задавая уточняющих вопросов."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент предоставил всю необходимую информацию (статус заявки), оператор ответил без уточнений, поэтому критерий не применим.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

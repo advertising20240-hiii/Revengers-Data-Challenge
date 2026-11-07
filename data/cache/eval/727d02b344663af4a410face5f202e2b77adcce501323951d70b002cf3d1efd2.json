@@ -1,0 +1,35 @@
+{
+ "key": "727d02b344663af4a410face5f202e2b77adcce501323951d70b002cf3d1efd2",
+ "conversation_id": "p4-ru-002",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.655Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 70,
+    "why": "последнее сообщение клиента перед завершением"
+   },
+   {
+    "line": 71,
+    "why": "прощание и итог"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Прощание с итогом или предложением помощи",
+  "explanation": "Завершение — Да. Оператор завершил диалог прощанием и итогом по вопросу; открытых вопросов клиента после этого нет. Основание — последняя реплика оператора #71 «Благодарю вас за уделенное время всего хорошего до свидания.», перед ней сообщение клиента #70 без вопроса.",
+  "confidence": 0.75,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

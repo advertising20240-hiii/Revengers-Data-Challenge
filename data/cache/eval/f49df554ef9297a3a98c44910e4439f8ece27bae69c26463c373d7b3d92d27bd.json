@@ -1,0 +1,31 @@
+{
+ "key": "f49df554ef9297a3a98c44910e4439f8ece27bae69c26463c373d7b3d92d27bd",
+ "conversation_id": "p1-en-010",
+ "criterion_id": "c01",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.612Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "приветствие на языке клиента и имя оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Приветствие на языке клиента и имя в первой реплике оператора",
+  "explanation": "Установление контакта — Да. В первой реплике оператор поздоровался на английском языке и представился. Основание — первая реплика оператора #10 «Hi, I'm Nina. Money in the D account can't be used directly…».",
+  "confidence": 0.85,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

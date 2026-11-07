@@ -1,0 +1,38 @@
+{
+ "key": "bf5294acb7997d98993c645fe435d49aa3da7a7215d2783384a8cb8e60433b0f",
+ "conversation_id": "p1-kz-013",
+ "criterion_id": "c05",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:10:45.074Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Оператор предложил платную консультацию по личному номеру, что является грубым нарушением и неэтичным поведением."
+   },
+   {
+    "line": 13,
+    "why": "Клиент отказался («Жоқ, рақмет»), но оператор не завершил диалог вежливо, а просто закрыл чат."
+   }
+  ],
+  "checked_range": [
+   12,
+   14
+  ],
+  "rule_applied": "05: отмахивание/игнорирование/грубость",
+  "explanation": "Оператор проявил непрофессиональное поведение, предложив платную услугу в обход компании, и не отреагировал на отказ клиента корректным завершением диалога.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

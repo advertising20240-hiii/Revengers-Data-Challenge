@@ -1,0 +1,38 @@
+{
+ "key": "e66e000b0d3d510b6441edf91ecaf798bd479855bca07ed611e71f731b3b038c",
+ "conversation_id": "p4-ru-005",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:15:07.306Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 44,
+    "why": "Дан чёткий следующий шаг: позвонить завтра утром для проверки статуса счёта."
+   },
+   {
+    "line": 67,
+    "why": "Дан ответ на вопрос о выборе страны и документа при повторной регистрации."
+   }
+  ],
+  "checked_range": [
+   17,
+   75
+  ],
+  "rule_applied": "04: все существенные вопросы закрыты",
+  "explanation": "Оператор ответил на все вопросы клиента: как удалить текущий счёт (с указанием временных рамок и следующего шага) и как правильно заполнить данные при повторной регистрации.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,34 @@
+{
+ "key": "5928db92e52cdabc7d815c0ef569d18b56a89c45369acea8339dbf681e9c7dce",
+ "conversation_id": "p1-kz-001",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:06:02.837Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор дал общую навигационную инструкцию, не раскрывая данные конкретного счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор указал путь в меню («Кабинет»), что является общей информацией, а не данными счёта."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "03: N/A для общих вопросов/навигации",
+  "explanation": "Оператор не раскрывал персональные данные счёта и не выполнял защищённых действий, поэтому идентификация не требовалась.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

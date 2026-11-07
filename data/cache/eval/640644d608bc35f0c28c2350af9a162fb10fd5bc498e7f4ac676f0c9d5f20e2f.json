@@ -1,0 +1,31 @@
+{
+ "key": "640644d608bc35f0c28c2350af9a162fb10fd5bc498e7f4ac676f0c9d5f20e2f",
+ "conversation_id": "p1-ru-008",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:57:56.465Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор дал общие инструкции по процессу, не раскрывая данные конкретного счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ответ носит общий характер: «дождитесь его исполнения и обновления данных»."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "03: N/A если нет раскрытия данных счёта",
+  "explanation": "Оператор не раскрывал персональные данные счёта и не выполнял защищённых действий, идентификация не требовалась.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

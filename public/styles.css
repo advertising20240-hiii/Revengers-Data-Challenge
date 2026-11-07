@@ -368,3 +368,5 @@
   .cqa-root .card { box-shadow: none; break-inside: avoid; }
   .cqa-root { background: #fff; }
 }
+.cqa-root .preview { color: var(--cqa-ink-2); max-width: 30rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cqa-root a.btn.ok { border-color: var(--cqa-yes, #1f7a4d); color: var(--cqa-yes, #1f7a4d); }

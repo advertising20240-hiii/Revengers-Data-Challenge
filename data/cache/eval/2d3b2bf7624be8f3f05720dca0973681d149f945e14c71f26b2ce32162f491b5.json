@@ -1,0 +1,38 @@
+{
+ "key": "2d3b2bf7624be8f3f05720dca0973681d149f945e14c71f26b2ce32162f491b5",
+ "conversation_id": "p1-kz-009",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:08:14.755Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент сообщил, что нашёл тикер, и спросил, как действовать дальше.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Клиент сообщил контекст: «Тикерді жазып алдым.»"
+   },
+   {
+    "line": 11,
+    "why": "Оператор сразу дал инструкцию без уточняющих вопросов."
+   }
+  ],
+  "checked_range": [
+   10,
+   11
+  ],
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент уже сформулировал запрос и предоставил необходимую информацию (наличие тикера), оператор ответил без дополнительных уточнений. Казахскоязычная модель (kazllm) оценила иначе: no — требуется проверка.",
+  "confidence": 0.8,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

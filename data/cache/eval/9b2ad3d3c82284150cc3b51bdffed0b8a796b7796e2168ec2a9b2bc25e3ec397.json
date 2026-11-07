@@ -1,0 +1,34 @@
+{
+ "key": "9b2ad3d3c82284150cc3b51bdffed0b8a796b7796e2168ec2a9b2bc25e3ec397",
+ "conversation_id": "p1-en-011",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:12:49.595Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Реплика 'Happy to help. Goodbye!' является только вежливой фразой и прощанием, без итога или предложения дальнейшей помощи."
+   }
+  ],
+  "checked_range": [
+   12,
+   12
+  ],
+  "rule_applied": "07: Завершение требует итога или предложения помощи",
+  "explanation": "Оператор попрощался, но не подвёл итог и не предложил дальнейшую помощь, что соответствует критерию 'Нет' по политике (только вежливая фраза и прощание).",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

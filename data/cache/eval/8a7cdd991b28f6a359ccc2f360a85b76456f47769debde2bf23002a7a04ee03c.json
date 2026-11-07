@@ -1,0 +1,42 @@
+{
+ "key": "8a7cdd991b28f6a359ccc2f360a85b76456f47769debde2bf23002a7a04ee03c",
+ "conversation_id": "p4-ru-002",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:13:55.661Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 64,
+    "why": "Оператор объяснил причину: бумагу нельзя купить через биржу, только через OTC."
+   },
+   {
+    "line": 66,
+    "why": "Оператор ответил на вопрос клиента о стакане: он отображается из-за других юрисдикций."
+   },
+   {
+    "line": 69,
+    "why": "Оператор подтвердил, что заявку на продажу тоже выставить не получится."
+   }
+  ],
+  "checked_range": [
+   64,
+   69
+  ],
+  "rule_applied": "04: Корректная и полная консультация",
+  "explanation": "Все существенные вопросы клиента (почему не проходит покупка, почему виден стакан, можно ли продать) были закрыты. Клиент подтвердил понимание («Я понял спасибо»).",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

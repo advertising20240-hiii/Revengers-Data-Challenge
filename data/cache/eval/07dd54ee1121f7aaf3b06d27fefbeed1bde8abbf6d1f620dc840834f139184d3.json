@@ -1,0 +1,34 @@
+{
+ "key": "07dd54ee1121f7aaf3b06d27fefbeed1bde8abbf6d1f620dc840834f139184d3",
+ "conversation_id": "p1-ru-006",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:57:46.897Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Оператор задал уточняющий вопрос о валюте перевода ('Укажите, пожалуйста, в какой валюте был перевод'), чтобы корректно оформить обращение."
+   }
+  ],
+  "checked_range": [
+   10,
+   15
+  ],
+  "rule_applied": "02: выявление потребности (уточняющий вопрос)",
+  "explanation": "Хотя клиент указал суть проблемы, оператор сам задал уместный уточняющий вопрос (валюта) до завершения консультации, что соответствует определению 'Да' для данного критерия.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

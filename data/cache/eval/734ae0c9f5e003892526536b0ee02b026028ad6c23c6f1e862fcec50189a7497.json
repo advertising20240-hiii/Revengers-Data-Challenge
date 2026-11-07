@@ -1,0 +1,38 @@
+{
+ "key": "734ae0c9f5e003892526536b0ee02b026028ad6c23c6f1e862fcec50189a7497",
+ "conversation_id": "p1-en-013",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:15:26.043Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Последняя реплика оператора содержит предложение личных услуг, а не прощание или итог."
+   },
+   {
+    "line": 14,
+    "why": "Чат закрыт системой без прощания от оператора."
+   }
+  ],
+  "checked_range": [
+   12,
+   14
+  ],
+  "rule_applied": "07: Нет прощания/итога",
+  "explanation": "Оператор не попрощался и не подвел итог, просто закрыл чат после того, как клиент отверг его предложение.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

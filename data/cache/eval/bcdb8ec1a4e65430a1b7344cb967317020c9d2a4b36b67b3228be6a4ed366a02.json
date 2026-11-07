@@ -1,0 +1,38 @@
+{
+ "key": "bcdb8ec1a4e65430a1b7344cb967317020c9d2a4b36b67b3228be6a4ed366a02",
+ "conversation_id": "p1-ru-022",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:00:57.423Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент изначально запросил консультацию по выбору облигаций."
+   },
+   {
+    "line": 10,
+    "why": "Оператор проигнорировал запрос клиента и предложил личную схему перевода денег."
+   }
+  ],
+  "checked_range": [
+   1,
+   12
+  ],
+  "rule_applied": "02: проигнорировал потребность клиента",
+  "explanation": "Оператор не выявил потребность клиента (консультация по облигациям) и не уточнил детали, а предложил несанкционированное действие, проигнорировав запрос.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

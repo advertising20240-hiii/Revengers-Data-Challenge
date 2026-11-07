@@ -1,0 +1,35 @@
+{
+ "key": "b911a7fc342d14699d63fc8fe19ea4acfd39a2421910789906415f9f24e99855",
+ "conversation_id": "p1-ru-012",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:58:13.602Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент уточнил язык формы, оператор ответил без дополнительных вопросов.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент задал конкретный вопрос о наличии формы на русском."
+   },
+   {
+    "line": 10,
+    "why": "Оператор ответил сразу, не задавая уточняющих вопросов."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент сформулировал запрос четко, оператор ответил по существу без необходимости уточнения деталей.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

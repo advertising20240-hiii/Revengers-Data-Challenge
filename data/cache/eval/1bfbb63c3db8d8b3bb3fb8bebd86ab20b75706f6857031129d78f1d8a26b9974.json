@@ -1,0 +1,38 @@
+{
+ "key": "1bfbb63c3db8d8b3bb3fb8bebd86ab20b75706f6857031129d78f1d8a26b9974",
+ "conversation_id": "p1-en-014",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:13:22.251Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Оператор раскрыл данные счёта ('I can see a withdrawal restriction on your account') без предшествующего подтверждения личности."
+   },
+   {
+    "line": 13,
+    "why": "Оператор проигнорировал запрос клиента на верификацию ('We can skip that')."
+   }
+  ],
+  "checked_range": [
+   11,
+   13
+  ],
+  "rule_applied": "03: Идентификация до раскрытия данных",
+  "explanation": "Оператор раскрыл информацию о конкретном счёте (ограничение на вывод) до проведения идентификации, а затем отказался от её проведения по требованию клиента.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

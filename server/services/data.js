@@ -182,6 +182,8 @@ export class DataService {
       duration_seconds: conv.facts.duration_seconds,
       first_reaction_seconds: conv.facts.first_reaction_seconds,
       has_audio: !!conv.audio_url,
+      // the client's first message: lets the reviewer recognise a dialog in the list without opening it
+      first_client_text: (conv.lines.find((l) => l.speaker === 'client')?.text || '').slice(0, 160),
     };
   }
 }

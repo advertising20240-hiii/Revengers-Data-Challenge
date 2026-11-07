@@ -77,7 +77,7 @@ export function providerInfo(opts = {}) {
   return {
     provider, model, verifier_model, kz_model: kzModelFor(provider), available: !!st.available, reason: st.reason, roles: st.roles, quota: st.quota && Object.keys(st.quota).length ? st.quota : undefined,
     local: LOCAL_PROVIDERS.includes(provider), cloud_allowed: cloudAllowed(), prompt_version: PROMPT_VERSION, policy_hash: POLICY_HASH,
-    cost_note: provider === 'offline' ? `0 ₸ — сохранённые результаты модели ${model}, модель не вызывается` : provider === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model || 'модель не задана'})` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
+    cost_note: provider === 'offline' ? `0 ₸ — сохранённые результаты модели ${model}, модель не вызывается` : provider === 'alem' ? `0 ₸ для команды — API Alem Plus по ключам хакатона (${model || 'модель не задана'})` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
   };
 }
 
@@ -119,7 +119,7 @@ function chunk(arr, size) {
 
 function costNote(provider, model, seconds) {
   if (provider === 'heuristic') return '0 ₸ — детерминированные правила без модели';
-  if (provider === 'alem') return `0 ₸ — бесплатный API alem.plus (${model}), ~${Math.round(seconds)} с на диалог`;
+  if (provider === 'alem') return `0 ₸ для команды — API Alem Plus по ключам хакатона (${model}), ~${Math.round(seconds)} с на диалог`;
   if (LOCAL_PROVIDERS.includes(provider)) return `0 ₸ — локальная модель ${model} на ${HARDWARE}, ~${Math.round(seconds)} с на диалог`;
   return `облачная модель ${model}, цена по прайс-листу`;
 }
@@ -419,7 +419,7 @@ export async function secondOpinion(conv, checklist, criterionId, originalResult
     suggestion = { applicable: h.applicable, answer: h.answer, scale_value: h.scale_value, flag_types: h.flag_types || [] };
     rationale = `Ответ модели не прошёл проверку (${problems.join('; ')}); предложение сформировано по фактам транскрипта. ${h.explanation}`;
   }
-  return { suggestion, rationale, model: resp.model || model, cost_usd: Number(resp.cost_usd || 0), cost_note: providerName === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model})` : LOCAL_PROVIDERS.includes(providerName) ? `0 ₸ — локальная модель ${model}` : 'цена по прайс-листу' };
+  return { suggestion, rationale, model: resp.model || model, cost_usd: Number(resp.cost_usd || 0), cost_note: providerName === 'alem' ? `0 ₸ для команды — API Alem Plus по ключам хакатона (${model})` : LOCAL_PROVIDERS.includes(providerName) ? `0 ₸ — локальная модель ${model}` : 'цена по прайс-листу' };
 }
 
 export { hintFor, heuristicResult, applyRule };

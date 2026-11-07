@@ -1,0 +1,38 @@
+{
+ "key": "8432142b9a60aebf05840c7562ce38c678ac1219b3a9c7bff712b0d4ba371a47",
+ "conversation_id": "p1-kz-003",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:04:54.895Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Системное сообщение о подтверждении личности: «Клиенттің жеке басы расталды»."
+   },
+   {
+    "line": 14,
+    "why": "После подтверждения оператор приступил к обработке запроса по конкретному платежу."
+   }
+  ],
+  "checked_range": [
+   11,
+   14
+  ],
+  "rule_applied": "03: подтверждение личности до раскрытия/действия",
+  "explanation": "Запрос касался конкретного платежа, требующего идентификации. Подтверждение личности (строка 13) произошло до начала работы с деталями счёта (строка 14).",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

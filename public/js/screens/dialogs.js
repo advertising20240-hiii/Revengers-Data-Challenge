@@ -21,7 +21,8 @@ export function renderDialogs(main) {
     h('div', { class: 'row' },
       h('button', { class: 'btn', type: 'button', onclick: openFetchModal }, t('dialogs.fetch')),
       h('button', { class: 'btn', type: 'button', onclick: openUploadModal }, t('dialogs.upload')),
-      h('a', { class: 'btn', href: api.exportUrl(filters.group_id), dataset: { export: '1' }, download: 'cqa-export.csv' }, t('dialogs.export'))));
+      h('a', { class: 'btn', href: api.exportUrl(filters.group_id), dataset: { export: '1' }, download: 'cqa-export.csv' }, t('dialogs.export')),
+      h('a', { class: 'btn', href: api.resultsUrl(filters.group_id || 'DEV'), dataset: { results: '1' }, download: 'results.json', title: t('dialogs.results_json_hint') }, t('dialogs.results_json'))));
 
   const groupSel = select([{ value: '', label: t('dialogs.all_groups') }], filters.group_id, (v) => { filters.group_id = v; setGroup(v); load(); }, { 'aria-label': t('col.group') });
   const langSel = select([{ value: '', label: t('dialogs.all_langs') }, { value: 'RU', label: 'RU' }, { value: 'KZ', label: 'KZ' }, { value: 'EN', label: 'EN' }], '', (v) => { filters.lang = v; draw(); }, { 'aria-label': t('col.lang') });
@@ -65,6 +66,20 @@ export function renderDialogs(main) {
     selInfo.textContent = state.selection.size ? t('dialogs.selected', { n: state.selection.size }) : '';
   }
 
+  /** Validates the organizers' results file for the current set and shows the outcome on the download button. */
+  async function checkResults() {
+    const a = head.querySelector('[data-results]');
+    const g = filters.group_id || 'DEV';
+    try {
+      const f = await api.results(g);
+      const problems = f._validation || [];
+      const n = (f.results || []).length;
+      a.textContent = problems.length ? t('dialogs.results_bad', { n }) : t('dialogs.results_ok', { n });
+      a.classList.toggle('ok', !problems.length);
+      a.title = problems.length ? problems.slice(0, 5).join('\n') : t('dialogs.results_json_hint');
+    } catch { a.textContent = t('dialogs.results_json'); }
+  }
+
   async function load() {
     loading = true; error = null; draw();
     try {
@@ -73,6 +88,8 @@ export function renderDialogs(main) {
       replace(groupSel, opts.map((o) => { const op = h('option', { value: o.value }, o.label); if (o.value === filters.group_id) op.selected = true; return op; }));
       rows = list;
       head.querySelector('[data-export]').href = api.exportUrl(filters.group_id);
+      head.querySelector('[data-results]').href = api.resultsUrl(filters.group_id || 'DEV');
+      checkResults();
     } catch (e) { error = e; }
     loading = false; draw();
   }
@@ -151,7 +168,7 @@ export function renderDialogs(main) {
     const ap = r.appeal_status === 'open' ? chip(t('status.under_appeal'), 'warn') : r.appeal_status === 'resolved' ? chip(t('status.reviewed'), 'info') : h('span', { class: 'muted' }, '—');
     return h('tr', { class: chk.checked ? 'sel' : '' },
       h('td', null, chk),
-      h('td', null, h('a', { href: cardHash(r.conversation_id, null, r.group_id), class: 'mono' }, r.conversation_id), r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
+      h('td', null, h('a', { href: cardHash(r.conversation_id, null, r.group_id), class: 'mono' }, r.conversation_id), r.first_client_text ? h('div', { class: 'small preview', title: r.first_client_text }, r.first_client_text) : null, r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
       h('td', null, langTag(r.language)),
       h('td', null, channelLabel(r.channel)),
       h('td', null, r.operator_name || h('span', { class: 'muted' }, '—')),

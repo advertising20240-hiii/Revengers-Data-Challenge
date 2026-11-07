@@ -1,0 +1,38 @@
+{
+ "key": "e979c8e84c3f3a94a06ee57cc7e090e2d117a301ea15bdcb8f8ded337341b563",
+ "conversation_id": "p4-ru-004",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:15:16.496Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 30,
+    "why": "Оператор уточнил, какие именно облигации клиент хотел приобрести."
+   },
+   {
+    "line": 34,
+    "why": "Оператор попросил назвать тикер для проверки."
+   }
+  ],
+  "checked_range": [
+   15,
+   38
+  ],
+  "rule_applied": "02: уточнение деталей до ответа",
+  "explanation": "Клиент сообщил о проблеме с покупкой облигаций, но не указал конкретный тикер. Оператор задал уточняющие вопросы (какие облигации, тикер) до предоставления решения.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

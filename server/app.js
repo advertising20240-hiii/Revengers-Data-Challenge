@@ -132,6 +132,8 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
     const version = q(url, 'checklist_version') ? Number(q(url, 'checklist_version')) : (checklists.active()?.version ?? null);
     const rows = data.rows(groupId).map((r) => ({ conversation_id: r.conversation_id, evaluations: engine.evaluationsFor(r.group_id, r.conversation_id) }));
     const file = buildResultsFile({ teamName: process.env.CQA_TEAM_NAME || 'Revengers', rows, checklistVersion: version });
+    // ?clean=1 — exactly the organizers' document (for download); otherwise the validation report is attached for the UI
+    if (q(url, 'clean')) return file;
     return { ...file, _validation: validateResultsFile(file) };
   });
 

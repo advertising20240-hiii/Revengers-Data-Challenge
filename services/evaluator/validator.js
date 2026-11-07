@@ -154,6 +154,14 @@ export function autoFix(res, criterion, conv) {
   }
   if (out.checked_range) out.checked_range = [Math.max(1, out.checked_range[0]), Math.min(n, out.checked_range[1])];
   if (!out.applicable && !out.na_reason) out.na_reason = criterion.na_condition || 'Условие N/A выполнено.';
+  // 02: «Да» needs an operator's own question; without any question from the operator the details were already known → N/A
+  if (code === '02' && out.applicable && out.answer === 'yes' && naAllowed(criterion)
+    && !conv.lines.some((l) => l.speaker === 'operator' && /\?/.test(l.text))) {
+    out.applicable = false; out.answer = null;
+    out.na_reason = 'Оператор не задавал уточняющих вопросов: данных для ответа хватало с самого начала';
+    out.explanation = `Выявление потребности — N/A. ${out.na_reason}.`;
+    out.confidence = Math.min(out.confidence ?? 0.8, 0.8);
+  }
   if (isFlag(criterion) && out.answer === 'no') out.flag_types = [];
   // «Нет» for a flag (no violation found) needs evidence: the operator lines that were checked
   if (out.applicable && out.answer === 'no' && !out.evidence.some((e) => conv.lines[e.line - 1]?.speaker === 'operator')) {

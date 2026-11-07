@@ -1,0 +1,35 @@
+{
+ "key": "f40b43674ec7533f1f6d46d8d428fb596c828ab9717630e91295fde28426f2ab",
+ "conversation_id": "p4-ru-001",
+ "criterion_id": "c05",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.660Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 43,
+    "why": "тон последней реплики оператора"
+   },
+   {
+    "line": 34,
+    "why": "недовольство клиента"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Вежливый тон, грубости нет",
+  "explanation": "Эмпатия и клиентоориентированность — Да. Оператор вежлив: клиент выражал недовольство (#34), грубости или отмахивания в ответах оператора нет, диалог доведён до ответа. Основание — реплики оператора #13–#43, реплика клиента с недовольством #34 «Да говорит то же самое сказали Трамп вам помогут,…»; последняя реплика оператора #43 «Да я вас понимаю, но видимо вас неправильно проин…».",
+  "confidence": 0.5,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

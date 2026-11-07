@@ -43,6 +43,8 @@ export const api = {
   conversation: (id, version, group) => request('GET', `/api/conversations/${enc(id)}?` + [version ? `checklist_version=${enc(version)}` : '', group ? `group_id=${enc(group)}` : ''].filter(Boolean).join('&')),
   audioUrl: (id, group) => `${apiBase()}/api/audio/${enc(id)}` + (group ? `?group_id=${enc(group)}` : ''),
   exportUrl: (group_id) => `${apiBase()}/api/export.csv` + qs({ group_id }),
+  resultsUrl: (group_id) => `${apiBase()}/api/results.json` + qs({ group_id, clean: 1 }),
+  results: (group_id) => request('GET', '/api/results.json' + qs({ group_id })),
 
   checklists: () => request('GET', '/api/checklists'),
   checklistActive: () => request('GET', '/api/checklists/active'),

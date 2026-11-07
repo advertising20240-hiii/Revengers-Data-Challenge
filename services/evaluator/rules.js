@@ -252,7 +252,8 @@ export function hintFor(conv, criterion) {
     case '06': {
       if (!range) return null;
       const waits = f.waits_over_90s || [];
-      const unwarned = waits.filter((w) => !w.warned);
+      // only an unannounced wait beyond the 3-minute response threshold (SLA) is a noticeable failure; shorter gaps are normal chat rhythm
+      const unwarned = waits.filter((w) => !w.warned && w.seconds > 180);
       const steps = scaleSteps(criterion).sort((a, b) => a - b);
       const max = steps[steps.length - 1];
       let val = max;
@@ -268,8 +269,8 @@ export function hintFor(conv, criterion) {
           `реплики оператора ${refs(unwarned.map((w) => w.to_line))} и метки времени предыдущих реплик ${refs(unwarned.map((w) => w.from_line))}`);
       }
       return H({ applicable: true, scale_value: val }, 0.4, [{ line: waits.length ? waits[0].to_line : range[0], why: waits.length ? 'ответ после объявленной паузы' : 'реплики оператора' }],
-        waits.length ? 'Паузы объявлены заранее, ответы связные' : 'Длительных пауз нет, ответы связные',
-        waits.length ? `Ответы оператора связные; ${waits.map(pause).join('; ')} — об ожидании оператор предупредил заранее.${holdNote}` : `Ответы оператора ясные и связные, пауз дольше 90 с в середине диалога нет.${holdNote}`,
+        waits.some((w) => w.warned) ? 'Паузы объявлены заранее, ответы связные' : 'Длительных необъявленных пауз нет, ответы связные',
+        waits.some((w) => w.warned) ? `Ответы оператора связные; ${waits.filter((w) => w.warned).map(pause).join('; ')} — об ожидании оператор предупредил заранее.${holdNote}` : `Ответы оператора ясные и связные, необъявленных пауз дольше 3 минут в середине диалога нет.${holdNote}`,
         `реплики оператора #${range[0]}–#${range[1]}${waits.length ? `, предупреждение об ожидании перед ${refs(waits.map((w) => w.to_line))}` : ' и метки времени между ними'}`);
     }
     case '07': {

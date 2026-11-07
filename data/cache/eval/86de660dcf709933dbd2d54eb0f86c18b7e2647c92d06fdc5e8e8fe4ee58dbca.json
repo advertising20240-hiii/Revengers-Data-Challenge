@@ -1,0 +1,31 @@
+{
+ "key": "86de660dcf709933dbd2d54eb0f86c18b7e2647c92d06fdc5e8e8fe4ee58dbca",
+ "conversation_id": "p4-ru-002",
+ "criterion_id": "c05",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.655Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 71,
+    "why": "тон последней реплики оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Вежливый тон, грубости нет",
+  "explanation": "Эмпатия и клиентоориентированность — Да. Оператор вежлив: грубости, сарказма и отмахивания в его репликах нет, недовольства клиент не выражал. Основание — реплики оператора #3–#71; последняя реплика оператора #71 «Благодарю вас за уделенное время всего хорошего д…».",
+  "confidence": 0.5,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,34 @@
+{
+ "key": "1fa804c136ffaaebb7912f90dd734503a2f429fe81f5c09b1ac32c319953c484",
+ "conversation_id": "p1-ru-013",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:58:23.849Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор предоставил общую информацию о навигации на сайте, не раскрывая данные конкретного счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Инструкция «откройте Investors, затем Financial Information» является общей информацией, не требующей проверки личности."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "03: N/A если запрос не требовал идентификации",
+  "explanation": "Оператор не раскрывал персональные данные счёта и не выполнял защищённых действий, поэтому идентификация не требовалась.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

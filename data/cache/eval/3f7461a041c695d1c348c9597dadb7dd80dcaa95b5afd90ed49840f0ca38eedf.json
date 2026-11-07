@@ -1,0 +1,42 @@
+{
+ "key": "3f7461a041c695d1c348c9597dadb7dd80dcaa95b5afd90ed49840f0ca38eedf",
+ "conversation_id": "p1-ru-010",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T20:58:04.231Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 16,
+    "why": "Оператор принял решение передать вопрос специалистам для проверки позиции."
+   },
+   {
+    "line": 21,
+    "why": "Дана четкая инструкция по скачиванию отчета."
+   },
+   {
+    "line": 30,
+    "why": "Дан корректный следующий шаг на случай изменения статуса позиции."
+   }
+  ],
+  "checked_range": [
+   11,
+   32
+  ],
+  "rule_applied": "04: полная консультация",
+  "explanation": "Все существенные вопросы клиента закрыты: проблема с позицией передана на проверку, дана инструкция по отчетам, указан алгоритм действий при повторном появлении бумаги.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

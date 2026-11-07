@@ -1,0 +1,38 @@
+{
+ "key": "fbb7d8f753810c9e4419cf3eaef22b0c6ef25e96e1474d8fabcaa45196be7e89",
+ "conversation_id": "p1-ru-022",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:00:57.423Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 0,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент спросил, какие облигации купить."
+   },
+   {
+    "line": 10,
+    "why": "Оператор не дал ответа по существу, а предложил перевести деньги на личную карту."
+   }
+  ],
+  "checked_range": [
+   1,
+   12
+  ],
+  "rule_applied": "04: Ответа по существу нет",
+  "explanation": "Оператор не ответил на вопрос клиента о выборе облигаций, а предложил незаконную схему, что является полным отсутствием ответа по существу.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

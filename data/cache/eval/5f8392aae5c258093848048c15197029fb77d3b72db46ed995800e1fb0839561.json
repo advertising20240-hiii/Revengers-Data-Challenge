@@ -1,0 +1,38 @@
+{
+ "key": "5f8392aae5c258093848048c15197029fb77d3b72db46ed995800e1fb0839561",
+ "conversation_id": "p1-en-014",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "944e2a3e443c6540563208d214cf4f37d877daadee4738bf68b0c56a9e9a77ea",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:13:22.251Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 5,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Оператор сказал 'I'll send it to the team to check the reason', не указав канал или срок ответа."
+   },
+   {
+    "line": 14,
+    "why": "Клиенту пришлось уточнить, где он получит ответ ('Will I hear back here?'), что свидетельствует о непонятности следующего шага."
+   }
+  ],
+  "checked_range": [
+   13,
+   14
+  ],
+  "rule_applied": "04: Шкала полноты консультации",
+  "explanation": "Оператор подтвердил проблему и передал её на проверку, но не указал конкретный канал или срок ответа, из-за чего клиенту потребовалось уточнение. Это соответствует уровню 5 (общая подсказка, непонятно как действовать/получить ответ).",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -53,7 +53,7 @@
   "outcome_hint.criterion_change": "The criterion wording is ambiguous — a signal for the checklist editor.",
   "outcome_hint.stands_explanation": "The score is correct, but the explanation was incomplete.",
   "outcome_hint.stands_coaching": "The score is correct; the operator needs feedback.",
-  "cost.zero": "0 ₸ · {model}, free",
+  "cost.zero": "0 ₸ to the team · {model}",
   "type.yes_no": "Yes / No",
   "type.yes_no_na": "Yes / No / N/A",
   "type.scale": "Scale",
@@ -489,5 +489,9 @@
   "dialogs.eval_checklist": "Checklist version",
   "dialogs.eval_checklist_hint": "Defaults to the active version. Unchanged criteria are taken from stored results.",
   "cl.offline_needs_model": "Offline mode: criteria {list} are new or changed and need a model call. Without a model you can change weights and rule-based criteria.",
-  "cl.offline_rescore_only": "Offline mode: no model is called — weight and rule-criterion changes are re-scored from stored answers."
+  "cl.offline_rescore_only": "Offline mode: no model is called — weight and rule-criterion changes are re-scored from stored answers.",
+  "dialogs.results_json": "results.json",
+  "dialogs.results_json_hint": "Results of the set in the organizers' format (JSON 1.0), validated before download",
+  "dialogs.results_ok": "results.json ✓ {n}",
+  "dialogs.results_bad": "results.json ⚠ {n}"
 }

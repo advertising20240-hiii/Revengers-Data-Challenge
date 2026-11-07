@@ -184,7 +184,7 @@ export async function complete(req, _cfg = {}, ctx = {}) {
         json: extractJson(text),
         usage: { input_tokens: u.prompt_tokens || 0, output_tokens: u.completion_tokens || 0, cache_read_tokens: u.prompt_tokens_details?.cached_tokens || 0, cache_creation_tokens: 0 },
         cost_usd: 0,
-        cost_basis: 'alem.plus free API — 0 ₸; tokens recorded',
+        cost_basis: 'Alem Plus API, hackathon keys — 0 ₸ for the team; tokens recorded',
         latency_ms: Date.now() - started,
         model: j.model || model,
         switched_to_fallback: switched || undefined,

@@ -1,0 +1,35 @@
+{
+ "key": "bf532e6c229ceb6f9cb4a35484eeade4af8268c3b7f294391b67b28f1f2a8ad2",
+ "conversation_id": "p1-ru-005",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "12d0d68346ffeb61137bd0f0b1bc8f3f4a0a5c0aa6c289baedcfe515d52a4dc5",
+ "policy_hash": "f0c55b26bf8f2383eb5219723c5edd0326f1d36ce14afd55764f874811f87553",
+ "created_at": "2026-11-07T21:29:10.459Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 15,
+    "why": "последнее сообщение клиента перед завершением"
+   },
+   {
+    "line": 16,
+    "why": "прощание и итог"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Прощание с итогом или предложением помощи",
+  "explanation": "Завершение — Да. Оператор завершил диалог прощанием и итогом по вопросу; открытых вопросов клиента после этого нет. Основание — последняя реплика оператора #16 «Хорошо. Перед переводом проверьте комиссию в банке. До свид…», перед ней сообщение клиента #15 без вопроса.",
+  "confidence": 0.75,
+  "source": "rule"
+ },
+ "verifier_change": null
+}
