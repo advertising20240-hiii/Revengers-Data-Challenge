@@ -11,12 +11,22 @@
     {
       "code": "02",
       "definition": "Да — оператор учёл известные детали и уточнил недостающее до ответа. N/A — данных для ответа хватало с самого начала.",
-      "source": "rule+model_no"
+      "source": "rule+model_no",
+      "confidence": {
+        "agree": 0.92,
+        "disagree": 0.81,
+        "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
+      }
     },
     {
       "code": "03",
       "definition": "Да — проверка личности подтверждена до раскрытия данных или защищённого действия. N/A — запрос не требовал идентификации.",
-      "source": "rule"
+      "source": "rule",
+      "confidence": {
+        "agree": 0.75,
+        "disagree": 0.93,
+        "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
+      }
     },
     {
       "code": "04",
@@ -36,7 +46,12 @@
     {
       "code": "07",
       "definition": "Да — оператор подвёл итог или предложил дальнейшую помощь и попрощался. N/A — чат оборвался до возможности его завершить.",
-      "source": "rule"
+      "source": "rule",
+      "confidence": {
+        "agree": 0.94,
+        "disagree": 0.82,
+        "basis": "tune split accuracy of the routed decision when the model agrees / disagrees (Laplace-smoothed)"
+      }
     },
     {
       "code": "08",

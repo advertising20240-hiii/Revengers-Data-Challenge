@@ -15,4 +15,4 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); ver
 - GitHub Actions CI: tests, audit, D365 build.
 - Documentation: scoring policy, appeals, architecture, Dynamics 365 integration, security, research ledger, tooling, demo script, control-day runbook, limitations.
 
-[Unreleased]: https://github.com/duisek/Revengers-Data-Challenge/commits/main
+[Unreleased]: https://github.com/advertising20240-hiii/Revengers-Data-Challenge/commits/main

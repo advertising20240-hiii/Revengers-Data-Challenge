@@ -1,6 +1,6 @@
 # Revengers CQA — Conversation Quality Analytics
 
-[![CI](https://github.com/duisek/Revengers-Data-Challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/duisek/Revengers-Data-Challenge/actions/workflows/ci.yml)
+[![CI](https://github.com/advertising20240-hiii/Revengers-Data-Challenge/actions/workflows/ci.yml/badge.svg)](https://github.com/advertising20240-hiii/Revengers-Data-Challenge/actions/workflows/ci.yml)
 ![Node 22](https://img.shields.io/badge/node-%E2%89%A5%2022.5-339933)
 ![зависимостей: 0](https://img.shields.io/badge/npm%20deps-0-blue)
 [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -51,7 +51,7 @@
 Нужны Node.js ≥ 22.5 и git. Внешних npm-зависимостей **нет** — `npm install` ничего не скачивает.
 
 ```bash
-git clone https://github.com/duisek/Revengers-Data-Challenge.git
+git clone https://github.com/advertising20240-hiii/Revengers-Data-Challenge.git
 cd Revengers-Data-Challenge
 npm install            # зависимостей нет; команда для привычки, завершается мгновенно
 cp .env.example .env   # при необходимости отредактируйте (см. ниже)
@@ -210,7 +210,7 @@ Every score is an argument you can audit: the checklist rule applied, the eviden
 ### Quick start
 
 ```bash
-git clone https://github.com/duisek/Revengers-Data-Challenge.git
+git clone https://github.com/advertising20240-hiii/Revengers-Data-Challenge.git
 cd Revengers-Data-Challenge
 npm install            # zero dependencies — completes instantly
 cp .env.example .env

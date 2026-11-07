@@ -1,5 +1,5 @@
 {
- "exported_at": "2026-11-07T12:34:16.248Z",
+ "exported_at": "2026-11-07T12:43:19.237Z",
  "group_id": "DEV",
  "checklists": [
   {
@@ -235,7 +235,7 @@
  ],
  "evaluations": [
   {
-   "id": "ev_mw6dxtxl85d286c1",
+   "id": "ev_mw6e9gwy18e2b867",
    "conversation_id": "p1-ru-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -243,7 +243,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.369Z",
+   "created_at": "2026-11-07T12:43:18.370Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -305,7 +305,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -339,7 +339,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -520,7 +520,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Нашла, спасибо.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -616,8 +616,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -679,7 +680,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.369Z",
+     "at": "2026-11-07T12:43:18.370Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -687,7 +688,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxl5a931e85",
+   "id": "ev_mw6e9gwy98a9d73c",
    "conversation_id": "p1-ru-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -695,7 +696,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.369Z",
+   "created_at": "2026-11-07T12:43:18.370Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -757,7 +758,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -791,7 +792,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -954,7 +955,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#18: «Ясно. Тогда сравню ещё раз.»), оператор попрощался (#19) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -1041,19 +1042,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -1104,7 +1106,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.369Z",
+     "at": "2026-11-07T12:43:18.370Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -1112,7 +1114,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxmd36a16b0",
+   "id": "ev_mw6e9gwza236d23c",
    "conversation_id": "p1-ru-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -1120,7 +1122,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.370Z",
+   "created_at": "2026-11-07T12:43:18.371Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -1182,7 +1184,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -1216,7 +1218,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -1400,7 +1402,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
      "explanation": "07: клиент задал вопрос (#14), а последняя реплика оператора #15 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -1487,8 +1489,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -1550,7 +1553,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.370Z",
+     "at": "2026-11-07T12:43:18.371Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 81.25
@@ -1558,7 +1561,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxsa1b309d9",
+   "id": "ev_mw6e9gx617c085b9",
    "conversation_id": "p1-ru-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -1566,7 +1569,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.376Z",
+   "created_at": "2026-11-07T12:43:18.378Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -1625,7 +1628,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -1659,7 +1662,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -1831,7 +1834,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Нашёл, теперь понятно.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -1918,19 +1921,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -1981,7 +1985,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.376Z",
+     "at": "2026-11-07T12:43:18.378Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -1989,7 +1993,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxt2763fbee",
+   "id": "ev_mw6e9gx67a594036",
    "conversation_id": "p1-ru-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -1997,7 +2001,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.377Z",
+   "created_at": "2026-11-07T12:43:18.378Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -2056,7 +2060,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -2090,7 +2094,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -2247,7 +2251,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #16 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -2334,19 +2338,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -2397,7 +2402,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.377Z",
+     "at": "2026-11-07T12:43:18.378Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 93.08
@@ -2405,7 +2410,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxta80cb2fa",
+   "id": "ev_mw6e9gx6fdd8d0a7",
    "conversation_id": "p1-ru-006",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -2413,7 +2418,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.377Z",
+   "created_at": "2026-11-07T12:43:18.378Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -2475,7 +2480,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -2509,7 +2514,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: подтверждение раньше раскрытия)",
      "explanation": "03: подтверждение личности в #12 → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -2672,7 +2677,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #15 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -2777,19 +2782,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -2840,7 +2846,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.377Z",
+     "at": "2026-11-07T12:43:18.378Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -2848,7 +2854,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxy6f30be6e",
+   "id": "ev_mw6e9gxb4857e3ab",
    "conversation_id": "p1-ru-007",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -2856,7 +2862,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.382Z",
+   "created_at": "2026-11-07T12:43:18.383Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -2915,7 +2921,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -2949,7 +2955,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -3133,7 +3139,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
      "explanation": "07: клиент задал вопрос (#12), а последняя реплика оператора #13 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -3229,19 +3235,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -3292,7 +3299,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.382Z",
+     "at": "2026-11-07T12:43:18.383Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 76.92
@@ -3300,7 +3307,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxy94c42c42",
+   "id": "ev_mw6e9gxc3b96ac11",
    "conversation_id": "p1-ru-008",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -3308,7 +3315,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.382Z",
+   "created_at": "2026-11-07T12:43:18.384Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -3370,7 +3377,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -3404,7 +3411,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -3585,7 +3592,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Понял, спасибо.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -3672,8 +3679,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -3735,7 +3743,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.382Z",
+     "at": "2026-11-07T12:43:18.384Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -3743,7 +3751,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtxz4c9f7f0a",
+   "id": "ev_mw6e9gxc5af4e6df",
    "conversation_id": "p1-ru-009",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -3751,7 +3759,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.383Z",
+   "created_at": "2026-11-07T12:43:18.384Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -3813,7 +3821,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -3850,7 +3858,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (03: раскрытие до подтверждения личности)",
      "explanation": "03: раскрытие данных счёта в #12 РАНЬШЕ подтверждения личности (подтверждения нет) → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -4013,7 +4021,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #16 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -4112,19 +4120,22 @@
      }
     ]
    },
-   "min_confidence": 0.55,
+   "min_confidence": 0.75,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: disclosure"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -4175,7 +4186,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.383Z",
+     "at": "2026-11-07T12:43:18.384Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 40.5
@@ -4183,7 +4194,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxty76ec99bfd",
+   "id": "ev_mw6e9gxh7a85b032",
    "conversation_id": "p1-ru-010",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -4191,7 +4202,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.391Z",
+   "created_at": "2026-11-07T12:43:18.389Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -4250,7 +4261,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -4284,7 +4295,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: подтверждение раньше раскрытия)",
      "explanation": "03: подтверждение личности в #15 → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -4477,7 +4488,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#31: «Понял, так и сделаю.»), оператор попрощался (#32) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -4584,6 +4595,7 @@
    },
    "min_confidence": 0.7,
    "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -4645,7 +4657,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.391Z",
+     "at": "2026-11-07T12:43:18.389Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 95.5
@@ -4653,7 +4665,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxty7365a6e4e",
+   "id": "ev_mw6e9gxi4fbfc3ae",
    "conversation_id": "p1-ru-011",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -4661,7 +4673,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.391Z",
+   "created_at": "2026-11-07T12:43:18.390Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -4723,7 +4735,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -4757,7 +4769,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -4947,7 +4959,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Скачалось. Спасибо.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -5052,8 +5064,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -5115,7 +5128,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.391Z",
+     "at": "2026-11-07T12:43:18.390Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -5123,7 +5136,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxty7e4287948",
+   "id": "ev_mw6e9gxi08a60513",
    "conversation_id": "p1-ru-012",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -5131,7 +5144,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.391Z",
+   "created_at": "2026-11-07T12:43:18.390Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -5193,7 +5206,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -5227,7 +5240,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -5381,7 +5394,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#12) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -5468,19 +5481,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -5531,7 +5545,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.391Z",
+     "at": "2026-11-07T12:43:18.390Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -5539,7 +5553,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyh0e7ae6a1",
+   "id": "ev_mw6e9gxn5c4134ea",
    "conversation_id": "p1-ru-013",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -5547,7 +5561,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.401Z",
+   "created_at": "2026-11-07T12:43:18.395Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -5606,7 +5620,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -5640,7 +5654,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -5812,7 +5826,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «А, я в новостях искал. Спасибо.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -5908,19 +5922,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 3,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 3,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -5971,7 +5986,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.401Z",
+     "at": "2026-11-07T12:43:18.395Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -5979,7 +5994,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyi35d49407",
+   "id": "ev_mw6e9gxn7d3e2acc",
    "conversation_id": "p1-ru-014",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -5987,7 +6002,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.402Z",
+   "created_at": "2026-11-07T12:43:18.395Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -6061,7 +6076,7 @@
      ],
      "rule_applied": "02: выявление потребности",
      "explanation": "Оператор переспросил клиента о месте поиска, хотя клиент уже сообщил об этом в сообщении боту, что является нарушением правила выявления потребности.",
-     "confidence": 0.7,
+     "confidence": 0.81,
      "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
@@ -6095,7 +6110,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -6258,7 +6273,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Зашёл. Спасибо.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -6363,19 +6378,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 3,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 3,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -6427,7 +6443,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.402Z",
+     "at": "2026-11-07T12:43:18.395Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 68.75
@@ -6435,7 +6451,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyia0818cef",
+   "id": "ev_mw6e9gxne6e4c7ad",
    "conversation_id": "p1-ru-015",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -6443,7 +6459,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.402Z",
+   "created_at": "2026-11-07T12:43:18.395Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -6502,7 +6518,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -6536,7 +6552,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -6711,7 +6727,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
      "explanation": "07: клиент задал вопрос (#11), а последняя реплика оператора #12 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -6807,19 +6823,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -6870,7 +6887,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.402Z",
+     "at": "2026-11-07T12:43:18.395Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 92.31
@@ -6878,7 +6895,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyn195a268b",
+   "id": "ev_mw6e9gxsec938b57",
    "conversation_id": "p1-ru-016",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -6886,7 +6903,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.407Z",
+   "created_at": "2026-11-07T12:43:18.400Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -6945,7 +6962,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -6979,7 +6996,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -7157,7 +7174,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #16 («Пожалуйста, до свидания.») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -7244,8 +7261,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -7307,7 +7325,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.407Z",
+     "at": "2026-11-07T12:43:18.400Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 85.38
@@ -7315,7 +7333,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyn94f14639",
+   "id": "ev_mw6e9gxs6149a473",
    "conversation_id": "p1-ru-017",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -7323,7 +7341,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.407Z",
+   "created_at": "2026-11-07T12:43:18.400Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -7385,7 +7403,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -7419,7 +7437,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -7600,7 +7618,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#14: «Нашёл одну нужную, спасибо.»), оператор попрощался (#15) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -7687,8 +7705,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -7750,7 +7769,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.407Z",
+     "at": "2026-11-07T12:43:18.400Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -7758,7 +7777,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyoe554743a",
+   "id": "ev_mw6e9gxs2e809cfa",
    "conversation_id": "p1-ru-018",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -7766,7 +7785,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.408Z",
+   "created_at": "2026-11-07T12:43:18.400Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -7825,7 +7844,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -7859,7 +7878,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -8016,7 +8035,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #12 («Тогда не знаю.») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -8112,8 +8131,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -8175,7 +8195,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.408Z",
+     "at": "2026-11-07T12:43:18.400Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 31.54
@@ -8183,7 +8203,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyx9d8ce24e",
+   "id": "ev_mw6e9gxye1023cbc",
    "conversation_id": "p1-ru-019",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -8191,7 +8211,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.417Z",
+   "created_at": "2026-11-07T12:43:18.406Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -8250,7 +8270,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -8284,7 +8304,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -8456,7 +8476,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Спасибо, нашёл.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -8561,19 +8581,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -8624,7 +8645,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.417Z",
+     "at": "2026-11-07T12:43:18.406Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -8632,7 +8653,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyx39399cb3",
+   "id": "ev_mw6e9gxyb889c23d",
    "conversation_id": "p1-ru-020",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -8640,7 +8661,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.417Z",
+   "created_at": "2026-11-07T12:43:18.406Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -8699,7 +8720,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -8733,7 +8754,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -8905,7 +8926,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Ок, спасибо.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -9010,19 +9031,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -9073,7 +9095,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.417Z",
+     "at": "2026-11-07T12:43:18.406Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 92.31
@@ -9081,7 +9103,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtyy6901cfe0",
+   "id": "ev_mw6e9gxyf91eec10",
    "conversation_id": "p1-ru-021",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -9089,7 +9111,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.418Z",
+   "created_at": "2026-11-07T12:43:18.406Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -9151,7 +9173,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -9185,7 +9207,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -9366,7 +9388,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Понял, спасибо.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -9462,19 +9484,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 3,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 3,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -9525,7 +9548,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.418Z",
+     "at": "2026-11-07T12:43:18.406Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -9533,7 +9556,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtz3b367f637",
+   "id": "ev_mw6e9gy379cd8af6",
    "conversation_id": "p1-ru-022",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -9541,7 +9564,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.423Z",
+   "created_at": "2026-11-07T12:43:18.411Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -9603,7 +9626,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -9637,7 +9660,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -9794,7 +9817,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #12 («Да, это я лично предлагаю, через компанию оформлять не надо.») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -9907,8 +9930,11 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.81,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: bypass"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -9970,7 +9996,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.423Z",
+     "at": "2026-11-07T12:43:18.411Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 15.38
@@ -9978,7 +10004,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtz4755fe8a7",
+   "id": "ev_mw6e9gy3020194dc",
    "conversation_id": "p1-ru-023",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -9986,7 +10012,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.424Z",
+   "created_at": "2026-11-07T12:43:18.411Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -10045,7 +10071,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -10079,7 +10105,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -10242,7 +10268,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -10341,8 +10367,11 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.81,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: bypass"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -10404,7 +10433,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.424Z",
+     "at": "2026-11-07T12:43:18.411Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -10412,7 +10441,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtz4f427fde5",
+   "id": "ev_mw6e9gy31a26a547",
    "conversation_id": "p1-ru-024",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -10420,7 +10449,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.424Z",
+   "created_at": "2026-11-07T12:43:18.411Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -10479,7 +10508,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -10513,7 +10542,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -10685,7 +10714,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Понятно, спасибо.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -10772,19 +10801,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -10835,7 +10865,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.424Z",
+     "at": "2026-11-07T12:43:18.411Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -10843,7 +10873,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzb6b6a89a3",
+   "id": "ev_mw6e9gy89209c986",
    "conversation_id": "p1-ru-025",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -10851,7 +10881,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.431Z",
+   "created_at": "2026-11-07T12:43:18.416Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -10913,7 +10943,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -10947,7 +10977,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -11092,7 +11122,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#11) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -11179,8 +11209,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.82,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -11242,7 +11273,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.431Z",
+     "at": "2026-11-07T12:43:18.416Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -11250,7 +11281,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzb9a6ee34c",
+   "id": "ev_mw6e9gy8b6049e82",
    "conversation_id": "p1-ru-026",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -11258,7 +11289,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.431Z",
+   "created_at": "2026-11-07T12:43:18.416Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -11332,7 +11363,7 @@
      ],
      "rule_applied": "02: Выявление потребности",
      "explanation": "Оператор не учёл контекст предыдущего диалога с ботом и не уточнил детали, что привело к повторению вопроса клиентом.",
-     "confidence": 0.7,
+     "confidence": 0.81,
      "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
@@ -11366,7 +11397,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -11532,7 +11563,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #12 («Всё есть в приложении.») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -11628,19 +11659,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -11692,7 +11724,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.431Z",
+     "at": "2026-11-07T12:43:18.416Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 56.25
@@ -11700,7 +11732,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzbde3186d6",
+   "id": "ev_mw6e9gy9573da560",
    "conversation_id": "p1-ru-027",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -11708,7 +11740,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.431Z",
+   "created_at": "2026-11-07T12:43:18.417Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -11767,7 +11799,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -11801,7 +11833,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -11991,7 +12023,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #24 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -12078,19 +12110,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -12141,7 +12174,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.431Z",
+     "at": "2026-11-07T12:43:18.417Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -12149,7 +12182,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzg9151db38",
+   "id": "ev_mw6e9gyde519039b",
    "conversation_id": "p1-ru-028",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -12157,7 +12190,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.436Z",
+   "created_at": "2026-11-07T12:43:18.421Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -12219,7 +12252,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -12253,7 +12286,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -12434,7 +12467,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#15: «Поняла, спасибо.»), оператор попрощался (#16) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -12521,19 +12554,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -12584,7 +12618,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.436Z",
+     "at": "2026-11-07T12:43:18.421Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -12592,7 +12626,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzgd93d1708",
+   "id": "ev_mw6e9gye650c5df4",
    "conversation_id": "p1-ru-029",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -12600,7 +12634,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.436Z",
+   "created_at": "2026-11-07T12:43:18.421Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -12674,7 +12708,7 @@
      ],
      "rule_applied": "02: Выявление потребности",
      "explanation": "Оператор не уточнил недостающую информацию (какой сайт, что именно не работает), а сразу перешел к ответу, не выявив потребность.",
-     "confidence": 0.7,
+     "confidence": 0.81,
      "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
@@ -12708,7 +12742,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -12874,7 +12908,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #14 («До свидания.») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -12973,19 +13007,22 @@
      }
     ]
    },
-   "min_confidence": 0.55,
+   "min_confidence": 0.81,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: insult"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -13037,7 +13074,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.436Z",
+     "at": "2026-11-07T12:43:18.421Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 44.38
@@ -13045,7 +13082,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzhca966bbc",
+   "id": "ev_mw6e9gye8054425f",
    "conversation_id": "p1-ru-030",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -13053,7 +13090,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.437Z",
+   "created_at": "2026-11-07T12:43:18.422Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -13112,7 +13149,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -13146,7 +13183,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -13309,7 +13346,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -13414,19 +13451,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -13477,7 +13515,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.437Z",
+     "at": "2026-11-07T12:43:18.422Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -13485,7 +13523,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzmf3203896",
+   "id": "ev_mw6e9gyj3b339d19",
    "conversation_id": "p1-kz-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -13493,7 +13531,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.442Z",
+   "created_at": "2026-11-07T12:43:18.427Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -13555,7 +13593,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -13589,7 +13627,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -13770,7 +13808,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Көрдім, рақмет.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -13866,8 +13904,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -13929,7 +13968,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.442Z",
+     "at": "2026-11-07T12:43:18.427Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -13937,7 +13976,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzmeb320704",
+   "id": "ev_mw6e9gyj4989438a",
    "conversation_id": "p1-kz-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -13945,7 +13984,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.442Z",
+   "created_at": "2026-11-07T12:43:18.427Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -14007,7 +14046,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -14041,7 +14080,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -14231,7 +14270,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Таптым.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -14318,8 +14357,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -14381,7 +14421,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.442Z",
+     "at": "2026-11-07T12:43:18.427Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -14389,7 +14429,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzn9ae3f02d",
+   "id": "ev_mw6e9gyjad4d2057",
    "conversation_id": "p1-kz-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -14397,7 +14437,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.443Z",
+   "created_at": "2026-11-07T12:43:18.427Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -14459,7 +14499,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -14493,7 +14533,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: подтверждение раньше раскрытия)",
      "explanation": "03: подтверждение личности в #13 → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -14665,7 +14705,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #26 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -14770,8 +14810,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -14833,7 +14874,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.443Z",
+     "at": "2026-11-07T12:43:18.427Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 94.71
@@ -14841,7 +14882,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzv6942061f",
+   "id": "ev_mw6e9gyofef94edf",
    "conversation_id": "p1-kz-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -14849,7 +14890,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.451Z",
+   "created_at": "2026-11-07T12:43:18.432Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -14911,7 +14952,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -14945,7 +14986,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -15126,7 +15167,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Енді түсінікті, рақмет.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -15213,19 +15254,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -15276,7 +15318,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.451Z",
+     "at": "2026-11-07T12:43:18.432Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -15284,7 +15326,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzv9d8813a9",
+   "id": "ev_mw6e9gyo86c7ba82",
    "conversation_id": "p1-kz-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -15292,7 +15334,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.451Z",
+   "created_at": "2026-11-07T12:43:18.432Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -15354,7 +15396,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -15388,7 +15430,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -15563,7 +15605,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #14 («Жақсы.») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -15650,19 +15692,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -15713,7 +15756,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.451Z",
+     "at": "2026-11-07T12:43:18.432Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 85.38
@@ -15721,7 +15764,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxtzw35fa6b30",
+   "id": "ev_mw6e9gypf3bd97ce",
    "conversation_id": "p1-kz-006",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -15729,7 +15772,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.452Z",
+   "created_at": "2026-11-07T12:43:18.433Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -15791,7 +15834,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -15825,7 +15868,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -16006,7 +16049,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Дайын болды. Рақмет!»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -16102,19 +16145,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 3,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 3,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -16165,7 +16209,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.452Z",
+     "at": "2026-11-07T12:43:18.433Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -16173,7 +16217,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu02859458fe",
+   "id": "ev_mw6e9gyu04b09687",
    "conversation_id": "p1-kz-007",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -16181,7 +16225,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.458Z",
+   "created_at": "2026-11-07T12:43:18.438Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -16243,7 +16287,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -16277,7 +16321,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -16449,7 +16493,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Түсіндім.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -16536,8 +16580,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -16599,7 +16644,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.458Z",
+     "at": "2026-11-07T12:43:18.438Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -16607,7 +16652,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0272a10ffb",
+   "id": "ev_mw6e9gyv2aaa90e0",
    "conversation_id": "p1-kz-008",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -16615,7 +16660,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.458Z",
+   "created_at": "2026-11-07T12:43:18.439Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -16689,7 +16734,7 @@
      ],
      "rule_applied": "02: Выявление потребности (не переспрашивать известное)",
      "explanation": "Оператор переспросил клиента о сайте, который тот уже четко указал в сообщении боту, что является нарушением правила выявления потребности.",
-     "confidence": 0.7,
+     "confidence": 0.81,
      "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
@@ -16723,7 +16768,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -16898,7 +16943,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #12 («Ол ақпараттық сайт. Сауда шотына tradernet.global веб-нұсқас») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -16994,8 +17039,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -17058,7 +17104,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.458Z",
+     "at": "2026-11-07T12:43:18.439Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 51.25
@@ -17066,7 +17112,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu02aac428ed",
+   "id": "ev_mw6e9gyv507e56f3",
    "conversation_id": "p1-kz-009",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -17074,7 +17120,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.458Z",
+   "created_at": "2026-11-07T12:43:18.439Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -17136,7 +17182,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -17170,7 +17216,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -17360,7 +17406,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#19: «Түсіндім. Рақмет!»), оператор попрощался (#20) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -17483,19 +17529,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -17546,7 +17593,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.458Z",
+     "at": "2026-11-07T12:43:18.439Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -17554,7 +17601,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0a32221241",
+   "id": "ev_mw6e9gz000feaeaf",
    "conversation_id": "p1-kz-010",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -17562,7 +17609,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.466Z",
+   "created_at": "2026-11-07T12:43:18.444Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -17624,7 +17671,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -17658,7 +17705,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -17830,7 +17877,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Өшірдім, рақмет.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -17926,8 +17973,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -17989,7 +18037,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.466Z",
+     "at": "2026-11-07T12:43:18.444Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -17997,7 +18045,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0a0917011a",
+   "id": "ev_mw6e9gz0a6c9d327",
    "conversation_id": "p1-kz-011",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -18005,7 +18053,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.466Z",
+   "created_at": "2026-11-07T12:43:18.444Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -18067,7 +18115,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -18101,7 +18149,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -18273,7 +18321,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#14) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -18369,19 +18417,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -18432,7 +18481,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.466Z",
+     "at": "2026-11-07T12:43:18.444Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -18440,7 +18489,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0bbed000dd",
+   "id": "ev_mw6e9gz00279fc66",
    "conversation_id": "p1-kz-012",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -18448,7 +18497,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.467Z",
+   "created_at": "2026-11-07T12:43:18.444Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -18510,7 +18559,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -18544,7 +18593,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -18689,7 +18738,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -18776,19 +18825,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 3,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 3,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -18839,7 +18889,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.467Z",
+     "at": "2026-11-07T12:43:18.444Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 87.5
@@ -18847,7 +18897,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0i5e7e2be6",
+   "id": "ev_mw6e9gz508fc4e85",
    "conversation_id": "p1-kz-013",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -18855,7 +18905,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.474Z",
+   "created_at": "2026-11-07T12:43:18.449Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -18917,7 +18967,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -18951,7 +19001,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -19126,7 +19176,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #12 («Жеке нөміріңізді қалдырсаңыз, жұмыстан кейін хабарласып, қан») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -19225,19 +19275,22 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.7,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: bypass"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -19288,7 +19341,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.474Z",
+     "at": "2026-11-07T12:43:18.449Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 76.92
@@ -19296,7 +19349,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0i71dce8e4",
+   "id": "ev_mw6e9gz5ad4cb0eb",
    "conversation_id": "p1-kz-014",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -19304,7 +19357,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.474Z",
+   "created_at": "2026-11-07T12:43:18.449Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -19366,7 +19419,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -19400,7 +19453,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -19572,7 +19625,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Жақсы, рақмет.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -19668,19 +19721,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -19731,7 +19785,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.474Z",
+     "at": "2026-11-07T12:43:18.449Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -19739,7 +19793,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0j24b7c0b9",
+   "id": "ev_mw6e9gz6a5408c9c",
    "conversation_id": "p1-kz-015",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -19747,7 +19801,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.475Z",
+   "created_at": "2026-11-07T12:43:18.450Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -19809,7 +19863,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -19846,7 +19900,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (03: раскрытие до подтверждения личности)",
      "explanation": "03: раскрытие данных счёта в #10 РАНЬШЕ подтверждения личности (подтверждения нет) → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -20021,7 +20075,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
      "explanation": "07: клиент задал вопрос (#13), а последняя реплика оператора #14 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -20120,19 +20174,22 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.7,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: disclosure"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -20183,7 +20240,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.475Z",
+     "at": "2026-11-07T12:43:18.450Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 58.82
@@ -20191,7 +20248,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0pca430aeb",
+   "id": "ev_mw6e9gzb365ea4eb",
    "conversation_id": "p1-en-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -20199,7 +20256,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.481Z",
+   "created_at": "2026-11-07T12:43:18.455Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -20261,7 +20318,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -20295,7 +20352,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -20476,7 +20533,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Right, I thought I'd just have to wait. »), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -20563,19 +20620,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -20626,7 +20684,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.481Z",
+     "at": "2026-11-07T12:43:18.455Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -20634,7 +20692,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0qa3559cde",
+   "id": "ev_mw6e9gzba2fc2d06",
    "conversation_id": "p1-en-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -20642,7 +20700,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.482Z",
+   "created_at": "2026-11-07T12:43:18.455Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -20701,7 +20759,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -20735,7 +20793,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -20898,7 +20956,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «I'm on a laptop. The web version works. »), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -20994,19 +21052,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -21057,7 +21116,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.482Z",
+     "at": "2026-11-07T12:43:18.455Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -21065,7 +21124,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0qec6f294b",
+   "id": "ev_mw6e9gzb97ebf453",
    "conversation_id": "p1-en-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -21073,7 +21132,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.482Z",
+   "created_at": "2026-11-07T12:43:18.455Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -21132,7 +21191,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -21166,7 +21225,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -21329,7 +21388,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Found it.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -21416,19 +21475,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -21479,7 +21539,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.482Z",
+     "at": "2026-11-07T12:43:18.455Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -21487,7 +21547,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0wba154de7",
+   "id": "ev_mw6e9gzg4ff50bef",
    "conversation_id": "p1-en-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -21495,7 +21555,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.488Z",
+   "created_at": "2026-11-07T12:43:18.460Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -21557,7 +21617,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -21591,7 +21651,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -21781,7 +21841,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «That worked. Thanks!»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -21868,8 +21928,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -21931,7 +21992,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.488Z",
+     "at": "2026-11-07T12:43:18.460Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -21939,7 +22000,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0w908a9526",
+   "id": "ev_mw6e9gzgf7751053",
    "conversation_id": "p1-en-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -21947,7 +22008,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.488Z",
+   "created_at": "2026-11-07T12:43:18.460Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -22006,7 +22067,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -22040,7 +22101,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -22215,7 +22276,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#13: «Got them, thanks.»), оператор попрощался (#14) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -22302,19 +22363,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -22365,7 +22427,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.488Z",
+     "at": "2026-11-07T12:43:18.460Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 93.08
@@ -22373,7 +22435,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu0w1e62d9fe",
+   "id": "ev_mw6e9gzh63ed122e",
    "conversation_id": "p1-en-006",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -22381,7 +22443,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.488Z",
+   "created_at": "2026-11-07T12:43:18.461Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -22443,7 +22505,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -22477,7 +22539,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: подтверждение раньше раскрытия)",
      "explanation": "03: подтверждение личности в #13 → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -22658,7 +22720,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #30 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -22763,8 +22825,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -22826,7 +22889,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.488Z",
+     "at": "2026-11-07T12:43:18.461Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 94.71
@@ -22834,7 +22897,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1138e83fe1",
+   "id": "ev_mw6e9gzl95fd71b3",
    "conversation_id": "p1-en-007",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -22842,7 +22905,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.493Z",
+   "created_at": "2026-11-07T12:43:18.465Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -22901,7 +22964,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -22935,7 +22998,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -23119,7 +23182,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
      "explanation": "07: клиент задал вопрос (#11), а последняя реплика оператора #12 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -23215,8 +23278,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -23278,7 +23342,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.493Z",
+     "at": "2026-11-07T12:43:18.465Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 76.92
@@ -23286,7 +23350,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu118976cdfb",
+   "id": "ev_mw6e9gzm5061637b",
    "conversation_id": "p1-en-008",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -23294,7 +23358,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.493Z",
+   "created_at": "2026-11-07T12:43:18.466Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -23353,7 +23417,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -23387,7 +23451,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -23550,7 +23614,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #20 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -23637,19 +23701,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -23700,7 +23765,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.493Z",
+     "at": "2026-11-07T12:43:18.466Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 85.38
@@ -23708,7 +23773,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu11f3425ef3",
+   "id": "ev_mw6e9gzm994945ac",
    "conversation_id": "p1-en-009",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -23716,7 +23781,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.493Z",
+   "created_at": "2026-11-07T12:43:18.466Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -23775,7 +23840,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -23809,7 +23874,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -23954,7 +24019,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#12) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -24041,8 +24106,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -24104,7 +24170,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.493Z",
+     "at": "2026-11-07T12:43:18.466Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -24112,7 +24178,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu169a384e3a",
+   "id": "ev_mw6e9gzsc1bf1623",
    "conversation_id": "p1-en-010",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -24120,7 +24186,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.498Z",
+   "created_at": "2026-11-07T12:43:18.472Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -24179,7 +24245,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -24213,7 +24279,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -24376,7 +24442,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «Understood, thanks.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -24463,8 +24529,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -24526,7 +24593,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.498Z",
+     "at": "2026-11-07T12:43:18.472Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -24534,7 +24601,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu174dd1eece",
+   "id": "ev_mw6e9gzs9705d976",
    "conversation_id": "p1-en-011",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -24542,7 +24609,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.499Z",
+   "created_at": "2026-11-07T12:43:18.472Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -24604,7 +24671,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -24638,7 +24705,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -24810,7 +24877,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
      "explanation": "07: последняя реплика оператора #12 содержит прощание и предложение помощи → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -24906,19 +24973,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.81,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -24969,7 +25037,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.499Z",
+     "at": "2026-11-07T12:43:18.472Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -24977,7 +25045,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu176f1357e6",
+   "id": "ev_mw6e9gzs0e90baea",
    "conversation_id": "p1-en-012",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -24985,7 +25053,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.499Z",
+   "created_at": "2026-11-07T12:43:18.472Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -25044,7 +25112,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -25078,7 +25146,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -25250,7 +25318,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#11: «That's the page I was after. Thanks.»), оператор попрощался (#12) → предварительно Да.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -25346,19 +25414,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -25409,7 +25478,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.499Z",
+     "at": "2026-11-07T12:43:18.472Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -25417,7 +25486,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1b8dc5e874",
+   "id": "ev_mw6e9h00a8f96b4a",
    "conversation_id": "p1-en-013",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -25425,7 +25494,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.503Z",
+   "created_at": "2026-11-07T12:43:18.480Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -25487,7 +25556,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -25521,7 +25590,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -25696,7 +25765,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #12 («Send me your personal number and I'll call you after work. I») — нет прощания → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -25795,19 +25864,22 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.8,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: bypass"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -25858,7 +25930,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.503Z",
+     "at": "2026-11-07T12:43:18.480Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 61.54
@@ -25866,7 +25938,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1b057e414b",
+   "id": "ev_mw6e9h009555f905",
    "conversation_id": "p1-en-014",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -25874,7 +25946,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.503Z",
+   "created_at": "2026-11-07T12:43:18.480Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -25936,7 +26008,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #11).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -25973,7 +26045,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (03: раскрытие до подтверждения личности)",
      "explanation": "03: раскрытие данных счёта в #11 РАНЬШЕ подтверждения личности (подтверждения нет) → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -26157,7 +26229,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
      "explanation": "07: клиент задал вопрос (#14), а последняя реплика оператора #15 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -26256,19 +26328,22 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.7,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: disclosure"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -26319,7 +26394,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.503Z",
+     "at": "2026-11-07T12:43:18.480Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 30.59
@@ -26327,7 +26402,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1b59b962ad",
+   "id": "ev_mw6e9h00deeb2196",
    "conversation_id": "p1-en-015",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -26335,7 +26410,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.503Z",
+   "created_at": "2026-11-07T12:43:18.480Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -26397,7 +26472,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -26431,7 +26506,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -26597,7 +26672,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
      "explanation": "07: последняя реплика оператора #14 («Bye.») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.94,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -26702,8 +26777,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -26765,7 +26841,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.503Z",
+     "at": "2026-11-07T12:43:18.480Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 70
@@ -26773,7 +26849,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1ie5471cee",
+   "id": "ev_mw6e9h085c2601f4",
    "conversation_id": "p4-ru-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -26781,7 +26857,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.510Z",
+   "created_at": "2026-11-07T12:43:18.488Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -26840,7 +26916,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #13).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -26877,7 +26953,7 @@
      ],
      "rule_applied": "маршрут: детерминированная проверка (03: раскрытие до подтверждения личности)",
      "explanation": "03: раскрытие данных счёта в #49 РАНЬШЕ подтверждения личности (подтверждения нет) → предварительно Нет.",
-     "confidence": 0.8,
+     "confidence": 0.75,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -27067,7 +27143,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#78) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -27166,8 +27242,11 @@
      }
     ]
    },
-   "min_confidence": 0.55,
+   "min_confidence": 0.75,
    "needs_review": true,
+   "review_reasons": [
+    "грубая ошибка: disclosure"
+   ],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -27229,7 +27308,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.510Z",
+     "at": "2026-11-07T12:43:18.488Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 78.95
@@ -27237,7 +27316,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1j6f5176f4",
+   "id": "ev_mw6e9h09654af681",
    "conversation_id": "p4-ru-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -27245,7 +27324,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.511Z",
+   "created_at": "2026-11-07T12:43:18.489Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -27307,7 +27386,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #3).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -27341,7 +27420,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -27531,7 +27610,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
      "explanation": "07: клиент подтвердил решение (#70: «Мхм, всё хорошо. Я понял спасибо.»), оператор попрощался (#71) → предварительно Да.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -27627,8 +27706,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -27690,7 +27770,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.511Z",
+     "at": "2026-11-07T12:43:18.489Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 84.62
@@ -27698,7 +27778,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1j8ad07552",
+   "id": "ev_mw6e9h091917cf30",
    "conversation_id": "p4-ru-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -27706,7 +27786,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.511Z",
+   "created_at": "2026-11-07T12:43:18.489Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -27765,7 +27845,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора не содержит вопроса; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #13).",
-     "confidence": 0.4,
+     "confidence": 0.81,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -27799,7 +27879,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -27971,7 +28051,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#44) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -28076,19 +28156,20 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -28139,7 +28220,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.511Z",
+     "at": "2026-11-07T12:43:18.489Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -28147,7 +28228,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1pe6f983fc",
+   "id": "ev_mw6e9h0g6cc48187",
    "conversation_id": "p4-ru-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -28155,7 +28236,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.517Z",
+   "created_at": "2026-11-07T12:43:18.496Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -28217,7 +28298,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #17).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -28251,7 +28332,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -28432,7 +28513,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#74) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -28537,8 +28618,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -28600,7 +28682,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.517Z",
+     "at": "2026-11-07T12:43:18.496Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 74
@@ -28608,7 +28690,7 @@
    ]
   },
   {
-   "id": "ev_mw6dxu1pb3141cf0",
+   "id": "ev_mw6e9h0gc5883c70",
    "conversation_id": "p4-ru-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -28616,7 +28698,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:34:15.517Z",
+   "created_at": "2026-11-07T12:43:18.496Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -28675,7 +28757,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
      "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #15).",
-     "confidence": 0.8,
+     "confidence": 0.92,
      "source": "rule",
      "code": "02",
      "title": "Выявление потребности",
@@ -28709,7 +28791,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (03: нет раскрытия данных счёта)",
      "explanation": "03: событие подтверждения личности отсутствует; сигналов раскрытия данных счёта не найдено → вероятно N/A (проверьте, не раскрыты/обещаны ли данные или действия по счёту).",
-     "confidence": 0.55,
+     "confidence": 0.93,
      "source": "rule",
      "code": "03",
      "title": "Идентификация",
@@ -28872,7 +28954,7 @@
      "checked_range": null,
      "rule_applied": "маршрут: детерминированная проверка (07: обрыв связи)",
      "explanation": "07: прощания нет, связь/клиент прервал диалог (#114) → вероятно N/A, если оператор не успел завершить.",
-     "confidence": 0.55,
+     "confidence": 0.82,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -28977,8 +29059,9 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.55,
-   "needs_review": true,
+   "min_confidence": 0.7,
+   "needs_review": false,
+   "review_reasons": [],
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
@@ -29040,7 +29123,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:34:15.517Z",
+     "at": "2026-11-07T12:43:18.496Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 87.33

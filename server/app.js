@@ -83,15 +83,30 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
       latest, appeals: db.appeals.find((a) => a.conversation_id === row.conversation_id && a.group_id === row.group_id),
     };
   });
+  const audioUrls = new Map(); // player-page URL -> { url: media file URL, until }
   router.get('/api/audio/:id', async ({ params, url, req, res }) => {
     const row = data.resolve(params.id, q(url, 'group_id'));
     const conv = data.conversation(row);
     if (!conv.audio_url) throw new HttpError(404, 'У этого диалога нет записи');
     const headers = {};
     if (req.headers.range) headers.Range = req.headers.range;
+    const doFetch = fetchImpl || globalThis.fetch;
     let upstream;
-    try { upstream = await (fetchImpl || globalThis.fetch)(conv.audio_url, { headers }); } catch (e) { throw new HttpError(502, `Запись недоступна: ${e.message}`); }
-    if (!upstream.ok && upstream.status !== 206) throw new HttpError(502, `Запись недоступна (HTTP ${upstream.status})`);
+    try {
+      // The recording link may be a player page; the media file is in its <source src>. That URL is short-lived, so it is resolved on demand.
+      const known = audioUrls.get(conv.audio_url);
+      const target = known && known.until > Date.now() ? known.url : conv.audio_url;
+      upstream = await doFetch(target, { headers });
+      if (/text\/html/i.test(upstream.headers.get('content-type') || '')) {
+        const html = await upstream.text();
+        const m = /<source[^>]+src="([^"]+)"/i.exec(html) || /<audio[^>]+src="([^"]+)"/i.exec(html);
+        if (!m) throw new Error('страница записи не содержит ссылки на аудиофайл');
+        const media = m[1].replace(/&amp;/g, '&');
+        audioUrls.set(conv.audio_url, { url: media, until: Date.now() + 20 * 60 * 1000 });
+        upstream = await doFetch(media, { headers });
+      }
+    } catch (e) { audioUrls.delete(conv.audio_url); throw new HttpError(502, `Запись недоступна: ${e.message}`); }
+    if (!upstream.ok && upstream.status !== 206) { audioUrls.delete(conv.audio_url); throw new HttpError(502, `Запись недоступна (HTTP ${upstream.status})`); }
     const h = { 'Content-Type': upstream.headers.get('content-type') || 'audio/mpeg', 'Accept-Ranges': 'bytes', 'Cache-Control': 'private, max-age=3600' };
     for (const k of ['content-length', 'content-range']) if (upstream.headers.get(k)) h[k] = upstream.headers.get(k);
     res.writeHead(upstream.status, h);

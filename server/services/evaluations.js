@@ -99,6 +99,13 @@ export function buildEvaluation({ conv, checklist, results, trace = {}, mode = '
   }
   const confs = criteriaOut.map((r) => (typeof r.confidence === 'number' ? r.confidence : 0));
   const minConf = confs.length ? Math.min(...confs) : 0;
+  // Human-review queue: concrete risk signals, not a blanket threshold
+  const reviewReasons = [];
+  if (minConf < 0.6) reviewReasons.push(`низкая уверенность (${minConf.toFixed(2)})`);
+  if (scored.gross.flag) reviewReasons.push(`грубая ошибка: ${scored.gross.types.join(', ') || 'тип не указан'}`);
+  if ((trace?.kz_disagreements || []).length) reviewReasons.push(`расхождение с казахской моделью: ${trace.kz_disagreements.map((d) => d.criterion_id).join(', ')}`);
+  if ((trace?.verifier_changes || []).length) reviewReasons.push(`проверяющая модель не согласна: ${trace.verifier_changes.map((d) => d.criterion_id).join(', ')}`);
+  if (criteriaOut.some((r) => String(r.rule_applied || '').startsWith('fallback:'))) reviewReasons.push('ответ модели не прошёл проверку — использованы правила');
   const now = new Date().toISOString();
   const costUsd = Number(trace?.cost_usd ?? 0) || 0;
   const ev = {
@@ -112,7 +119,7 @@ export function buildEvaluation({ conv, checklist, results, trace = {}, mode = '
     total: scored.total, total_str: scored.total_str, calculated: scored.calculated, original_total: scored.total,
     section_totals,
     gross: { ...scored.gross, evidence: grossEvidence },
-    min_confidence: Number(minConf.toFixed(3)), needs_review: minConf < 0.6,
+    min_confidence: Number(minConf.toFixed(3)), needs_review: reviewReasons.length > 0, review_reasons: reviewReasons,
     operator_participated: conv.facts?.operator_participated ?? true,
     cost_usd: costUsd, cost_note: trace?.cost_note ?? null, latency_ms: Number(trace?.latency_ms ?? 0) || 0,
     trace: trace || {},

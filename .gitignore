@@ -19,3 +19,4 @@ reports/jury/*.png
 .idea/
 .DS_Store
 Thumbs.db
+data/db.bak-*/
