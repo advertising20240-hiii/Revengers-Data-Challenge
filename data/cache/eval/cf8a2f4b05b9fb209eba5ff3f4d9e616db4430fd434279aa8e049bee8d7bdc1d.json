@@ -1,0 +1,38 @@
+{
+ "key": "cf8a2f4b05b9fb209eba5ff3f4d9e616db4430fd434279aa8e049bee8d7bdc1d",
+ "conversation_id": "p1-kz-015",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.065Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "вопрос клиента перед завершением"
+   },
+   {
+    "line": 14,
+    "why": "прощание без ответа на этот вопрос"
+   }
+  ],
+  "checked_range": [
+   13,
+   14
+  ],
+  "rule_applied": "Прощание при открытом вопросе клиента",
+  "explanation": "Завершение — Нет. Клиент задал вопрос (#13 «Ал себебі қандай?»), а оператор завершил диалог прощанием, не ответив на него. Основание — сообщение клиента #13 и последняя реплика оператора #14 «Оны тексеруге жіберемін. Сау болыңыз.».",
+  "confidence": 0.65,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

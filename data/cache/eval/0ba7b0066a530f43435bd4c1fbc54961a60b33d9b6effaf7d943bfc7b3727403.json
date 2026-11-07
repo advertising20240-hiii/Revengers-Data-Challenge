@@ -1,0 +1,38 @@
+{
+ "key": "0ba7b0066a530f43435bd4c1fbc54961a60b33d9b6effaf7d943bfc7b3727403",
+ "conversation_id": "p1-kz-005",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:31.869Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Время 02:52."
+   },
+   {
+    "line": 12,
+    "why": "Время 04:23. Пауза 91 секунда без предупреждения об ожидании."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: одно заметное нарушение (необъявленная пауза)",
+  "explanation": "Между репликами 10 и 12 была пауза более 90 секунд, оператор не предупредил клиента об ожидании, что является одним заметным сбоем.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

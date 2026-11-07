@@ -1,0 +1,31 @@
+{
+ "key": "946e3b648e687003c6b839f80a6421b1da0f5bf39686f79b05e8fd3d12d42c7b",
+ "conversation_id": "p1-kz-006",
+ "criterion_id": "c05",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.009Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "тон последней реплики оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Вежливый тон, грубости нет",
+  "explanation": "Эмпатия и клиентоориентированность — Да. Оператор вежлив: грубости, сарказма и отмахивания в его репликах нет, недовольства клиент не выражал. Основание — реплики оператора #10–#12; последняя реплика оператора #12 «Көмегім тигеніне қуаныштымын. Сау болыңыз!».",
+  "confidence": 0.5,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

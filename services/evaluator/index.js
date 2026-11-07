@@ -33,6 +33,18 @@ function routeConfidence(c, agree) {
 const ruLabel = (r) => (!r ? '—' : r.applicable === false ? 'N/A' : r.scale_value != null ? String(r.scale_value) : r.answer === 'yes' ? 'Да' : r.answer === 'no' ? 'Нет' : '—');
 
 export const PROMPT_VERSION = PV;
+
+// Criteria judged in their own call. Measured on DEV: criterion 06 (dialogue management, 0/4/7/10) judged alone agrees with
+// the annotator far more often than inside the all-criteria call (83.1 % vs 70.8 % exact), at one extra call per dialog.
+export function soloCodes(providerName) {
+  const raw = process.env.CQA_JUDGE_SOLO ?? (['heuristic', 'fake'].includes(providerName) ? '' : '06'); // offline replays the alem cache, so it shares the key space
+  return new Set(String(raw).split(',').map((x) => x.trim()).filter(Boolean));
+}
+/** Cache key of one criterion; a solo-judged criterion has its own key space (its answer comes from a different call). */
+export function criterionCacheKey({ conv, criterion, model, providerName }) {
+  const solo = soloCodes(providerName).has(criterion.code || criterion.id.replace(/^c/, ''));
+  return cacheKey({ conv, criterion, policyText: POLICY_TEXT, promptVersion: solo ? `${PROMPT_VERSION}/solo` : PROMPT_VERSION, model });
+}
 export { POLICY_HASH, cacheStats };
 
 const HARDWARE = process.env.CQA_HARDWARE || 'RTX 4050';
@@ -107,6 +119,7 @@ function chunk(arr, size) {
 
 function costNote(provider, model, seconds) {
   if (provider === 'heuristic') return '0 ₸ — детерминированные правила без модели';
+  if (provider === 'alem') return `0 ₸ — бесплатный API alem.plus (${model}), ~${Math.round(seconds)} с на диалог`;
   if (LOCAL_PROVIDERS.includes(provider)) return `0 ₸ — локальная модель ${model} на ${HARDWARE}, ~${Math.round(seconds)} с на диалог`;
   return `облачная модель ${model}, цена по прайс-листу`;
 }
@@ -264,7 +277,7 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
   const llmCriteria = [];
   for (const c of criteria) {
     if (isRuleCriterion(c)) { out[c.id] = applyRule(conv, c); trace.calls.push({ role: 'rule', model: c.evaluator, input_tokens: 0, output_tokens: 0, cache_read_tokens: 0, cost_usd: 0, latency_ms: 0 }); continue; }
-    const key = cacheKey({ conv, criterion: c, policyText: POLICY_TEXT, promptVersion: PROMPT_VERSION, model });
+    const key = criterionCacheKey({ conv, criterion: c, model, providerName });
     const hit = opts.force ? null : cacheGet(key);
     if (hit?.result) { out[c.id] = { ...hit.result }; trace.cache.hits.push(c.id); if (hit.verifier_change) trace.verifier_changes.push(hit.verifier_change); }
     else { llmCriteria.push({ c, key }); trace.cache.misses.push(c.id); }
@@ -282,7 +295,9 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
       await prov.mod.complete({ model }, cfg, { conversationId: conv.conversation_id, criteria: misses });
     } else {
       const batchSize = opts.batchSize ?? (providerName === 'alem' ? Number(process.env.CQA_JUDGE_BATCH_ALEM || 0) : (LOCAL_PROVIDERS.includes(providerName) && providerName !== 'fake' ? JUDGE_BATCH_LOCAL : 0));
-      const batches = chunk(misses, batchSize);
+      const solo = soloCodes(providerName);
+      const isSolo = (c) => solo.has(c.code || c.id.replace(/^c/, ''));
+      const batches = [...chunk(misses.filter((c) => !isSolo(c)), batchSize), ...misses.filter(isSolo).map((c) => [c])].filter((b) => b.length);
       // provider failure (quota exhausted, network) degrades to conservative rule results instead of failing the evaluation
       const batchResults = await Promise.all(batches.map((b) => judgeBatch({ conv, checklist, criteria: b, prov, model, cfg, examples: opts.examples, signal: opts.signal })
         .catch((e) => {
@@ -358,6 +373,15 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
       trace.routing.push({ criterion_id: c.id, source: 'rule', model_label: ruLabel(cur), rule_label: ruLabel(h), agree });
     }
   }
+  // honest provenance: when the model was unreachable and nothing came from it, say so instead of naming the model
+  if (trace.calls.length === 0 && !['offline', 'heuristic', 'fake'].includes(providerName)) {
+    const fb = criteria.filter((c) => String(out[c.id]?.rule_applied || '').includes('fallback:'));
+    if (fb.length) {
+      trace.model_requested = model;
+      if (fb.length === criteria.length) trace.model = 'heuristic-fallback';
+      trace.cost_note = `0 ₸ — модель ${model} недоступна, по ${fb.length} из ${criteria.length} критериев использованы детерминированные правила`;
+    }
+  }
   // flag criteria are never N/A
   for (const c of criteria) if (isFlag(c) && out[c.id] && !out[c.id].applicable && operatorLines > 0) { out[c.id] = { ...out[c.id], applicable: true, na_reason: null, answer: 'no', flag_types: [], checked_range: out[c.id].checked_range || [1, conv.lines.length] }; }
   return { results: criteria.map((c) => out[c.id]), trace };
@@ -395,7 +419,7 @@ export async function secondOpinion(conv, checklist, criterionId, originalResult
     suggestion = { applicable: h.applicable, answer: h.answer, scale_value: h.scale_value, flag_types: h.flag_types || [] };
     rationale = `Ответ модели не прошёл проверку (${problems.join('; ')}); предложение сформировано по фактам транскрипта. ${h.explanation}`;
   }
-  return { suggestion, rationale, model: resp.model || model, cost_usd: Number(resp.cost_usd || 0), cost_note: LOCAL_PROVIDERS.includes(providerName) ? `0 ₸ — локальная модель ${model}` : 'цена по прайс-листу' };
+  return { suggestion, rationale, model: resp.model || model, cost_usd: Number(resp.cost_usd || 0), cost_note: providerName === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model})` : LOCAL_PROVIDERS.includes(providerName) ? `0 ₸ — локальная модель ${model}` : 'цена по прайс-листу' };
 }
 
 export { hintFor, heuristicResult, applyRule };

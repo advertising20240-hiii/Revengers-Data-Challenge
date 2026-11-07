@@ -1,0 +1,34 @@
+{
+ "key": "6b389c071714254d40e22ff5179dd443d5c9488b4b87c393f5627ca218155237",
+ "conversation_id": "p1-ru-017",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:32.925Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор дал общую навигационную инструкцию, не раскрывая данные конкретного счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Оператор дал общую инструкцию по вводу тикера, не запрашивая и не раскрывая персональные данные счёта."
+   }
+  ],
+  "checked_range": [
+   11,
+   15
+  ],
+  "rule_applied": "03: N/A если запрос не требовал идентификации",
+  "explanation": "Диалог касался общей навигации в приложении, данные конкретного счёта не раскрывались, защищённых действий не выполнялось.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

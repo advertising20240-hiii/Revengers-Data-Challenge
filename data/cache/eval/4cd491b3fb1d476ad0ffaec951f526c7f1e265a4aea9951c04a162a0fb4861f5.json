@@ -1,0 +1,38 @@
+{
+ "key": "4cd491b3fb1d476ad0ffaec951f526c7f1e265a4aea9951c04a162a0fb4861f5",
+ "conversation_id": "p1-ru-018",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:33.992Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 0,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал ошибочное утверждение ('точно биржа отменяет'), не зная деталей."
+   },
+   {
+    "line": 12,
+    "why": "Ответ 'Тогда не знаю' не решает проблему клиента и не предлагает следующего шага."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "04: Корректная и полная консультация",
+  "explanation": "Ключевая рекомендация оператора была ошибочной (утверждение без данных), а последующий ответ не содержал решения или корректного следующего шага.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

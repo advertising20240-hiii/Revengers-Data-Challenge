@@ -1,0 +1,38 @@
+{
+ "key": "a2fe1353e740522a9c74851c6739989dc9194e99f73c2996a579b0f623a6c772",
+ "conversation_id": "p1-ru-017",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:32.925Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Клиент сообщил, что может перепутать название и ищет тикер."
+   },
+   {
+    "line": 11,
+    "why": "Оператор уточнил, знает ли клиент точный тикер или видит только название, до дачи инструкции."
+   }
+  ],
+  "checked_range": [
+   10,
+   11
+  ],
+  "rule_applied": "02: уточнение недостающих деталей",
+  "explanation": "Оператор задал уместный уточняющий вопрос о наличии точного тикера, учитывая неопределенность клиента, перед тем как дать рекомендацию.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

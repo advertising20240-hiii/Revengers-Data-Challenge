@@ -1,0 +1,38 @@
+{
+ "key": "29186cf83d296d97f2356faba0a6bce6755b96cdf2ba7bf5b6460be63f3acfe6",
+ "conversation_id": "p1-en-006",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:00.196Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "Оператор уточнил валюту перевода, что было необходимо для корректной эскалации."
+   },
+   {
+    "line": 19,
+    "why": "Оператор уточнил время отправки перевода."
+   }
+  ],
+  "checked_range": [
+   11,
+   21
+  ],
+  "rule_applied": "02: выявление потребности",
+  "explanation": "Оператор задал уместные уточняющие вопросы (валюта, время отправки), чтобы собрать необходимую информацию для проверки перевода.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

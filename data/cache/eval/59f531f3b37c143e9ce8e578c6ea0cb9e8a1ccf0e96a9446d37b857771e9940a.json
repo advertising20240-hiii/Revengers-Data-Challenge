@@ -1,0 +1,35 @@
+{
+ "key": "59f531f3b37c143e9ce8e578c6ea0cb9e8a1ccf0e96a9446d37b857771e9940a",
+ "conversation_id": "p1-en-009",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.126Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": false,
+  "na_reason": "Чат оборвался до возможности его завершить.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "последняя реплика оператора до обрыва"
+   },
+   {
+    "line": 12,
+    "why": "клиент покинул чат / связь прервалась"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Чат оборвался до возможности его завершить",
+  "explanation": "Завершение — N/A. Чат оборвался до того, как оператор мог его завершить: клиент покинул диалог или связь прервалась, прощания оператор дать не успел. Основание — последняя реплика оператора #10 «Hi, I'm Leo. Open Order Settings and untick Use Margin befo…» и системное сообщение об уходе клиента #12.",
+  "confidence": 0.6,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,31 @@
+{
+ "key": "986367eb69cc026a657273748ed14998c531d492f10c99dad785ad82911feca4",
+ "conversation_id": "p1-en-015",
+ "criterion_id": "c06",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.135Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "реплики оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Длительных пауз нет, ответы связные",
+  "explanation": "Управление диалогом, скорость и грамотность — 10 из 10. Ответы оператора ясные и связные, пауз дольше 90 с в середине диалога нет. Основание — реплики оператора #10–#14 и метки времени между ними.",
+  "confidence": 0.4,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

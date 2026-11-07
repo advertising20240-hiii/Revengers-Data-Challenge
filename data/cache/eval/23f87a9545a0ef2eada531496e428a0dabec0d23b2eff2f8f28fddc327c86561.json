@@ -1,0 +1,38 @@
+{
+ "key": "23f87a9545a0ef2eada531496e428a0dabec0d23b2eff2f8f28fddc327c86561",
+ "conversation_id": "p1-kz-010",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "80e97244c983289ad0e14d64d759da597402061c220d2209bc7bf8e6c69d3ba3",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:45:33.975Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал четкую инструкцию по решению проблемы клиента без лишних слов."
+   },
+   {
+    "line": 12,
+    "why": "Оператор вежливо завершил диалог после подтверждения клиентом."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Ответы оператора ясные, связные и логичные. Клиенту не пришлось переспрашивать, пауз в середине диалога не было. Соответствует максимальному баллу шкалы.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

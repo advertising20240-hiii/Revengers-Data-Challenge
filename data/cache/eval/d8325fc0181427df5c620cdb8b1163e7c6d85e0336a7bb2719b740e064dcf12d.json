@@ -1,0 +1,31 @@
+{
+ "key": "d8325fc0181427df5c620cdb8b1163e7c6d85e0336a7bb2719b740e064dcf12d",
+ "conversation_id": "p1-kz-003",
+ "criterion_id": "c03",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:23.981Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "подтверждение личности"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Подтверждение личности раньше раскрытия данных",
+  "explanation": "Идентификация — Да. Личность клиента подтверждена, данные счёта до этого не раскрывались. Основание — системное сообщение «Личность клиента подтверждена» #13; явного раскрытия данных счёта в репликах оператора не найдено.",
+  "confidence": 0.8,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

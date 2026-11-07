@@ -1,0 +1,38 @@
+{
+ "key": "31a601e58bb72181eb429e0623f6b4f238dcf2b46e146019ebd83cca50f6e45f",
+ "conversation_id": "p1-en-007",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "80e97244c983289ad0e14d64d759da597402061c220d2209bc7bf8e6c69d3ba3",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:45:52.302Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Клиент задал прямой вопрос: 'Can I submit the withdrawal right after this?'"
+   },
+   {
+    "line": 12,
+    "why": "Оператор ответил: 'That's where the profile request is. Thanks for contacting us. Bye.', не ответив на вопрос о возможности повторной попытки вывода средств."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: один заметный сбой (проигнорированный вопрос клиента), но клиент мог продолжить",
+  "explanation": "Оператор дал ясную инструкцию в первой реплике, но во второй реплике проигнорировал прямой вопрос клиента о том, можно ли сразу после обновления профиля повторить попытку вывода средств. Это соответствует описанию шкалы 7: один заметный сбой (пропущенный вопрос), но диалог не стал непонятным, и клиент мог продолжить самостоятельно.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

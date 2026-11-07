@@ -1,0 +1,38 @@
+{
+ "key": "c3364fc07dfd99bac98e91eccc0ba290c6919f8f2e9c5c9ceaff03cb2943c543",
+ "conversation_id": "p4-ru-003",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:29.532Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": false,
+  "na_reason": "Чат оборвался до возможности его завершить: клиент завершил разговор (#78) сразу после благодарности, не дав оператору возможности произнести прощание.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 77,
+    "why": "Клиент поблагодарил: 'Всё спасибо, спасибо'."
+   },
+   {
+    "line": 78,
+    "why": "Система зафиксировала завершение разговора клиентом: 'Клиент завершил разговор'."
+   }
+  ],
+  "checked_range": [
+   76,
+   78
+  ],
+  "rule_applied": "07: N/A при обрыве связи",
+  "explanation": "Клиент завершил разговор сразу после благодарности, не оставив оператору возможности произнести прощание или итог. Это соответствует условию N/A.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

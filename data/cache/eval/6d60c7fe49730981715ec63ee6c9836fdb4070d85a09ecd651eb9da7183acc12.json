@@ -1,0 +1,38 @@
+{
+ "key": "6d60c7fe49730981715ec63ee6c9836fdb4070d85a09ecd651eb9da7183acc12",
+ "conversation_id": "p1-kz-006",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "80e97244c983289ad0e14d64d759da597402061c220d2209bc7bf8e6c69d3ba3",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:45:26.382Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал четкую инструкцию по запросу клиента (выбрать период и скачать отчет), ответ логичен и понятен."
+   },
+   {
+    "line": 12,
+    "why": "Завершение диалога вежливое и связное, без противоречий."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Ответы оператора ясные, связные и логичные. Клиенту не пришлось переспрашивать. Пауз в середине диалога, требующих предупреждения, не было (первая реакция оператора не штрафуется).",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

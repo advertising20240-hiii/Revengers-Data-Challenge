@@ -1,0 +1,38 @@
+{
+ "key": "754a68e3719cd57a07101b2eb9a1d4f6474e7865cb77292852af5b7975007a6a",
+ "conversation_id": "p1-kz-011",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:40:25.662Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор ответил на основной вопрос: деньги с D-шота нельзя использовать напрямую."
+   },
+   {
+    "line": 12,
+    "why": "Оператор дал корректный следующий шаг: проверить торговый счёт для покупки акций."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "04: все существенные вопросы закрыты",
+  "explanation": "Оператор ответил на вопрос клиента и предложил правильное действие (перевод/проверка торгового счёта), закрыв запрос полностью.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

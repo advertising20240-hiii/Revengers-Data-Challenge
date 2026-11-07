@@ -1,0 +1,38 @@
+{
+ "key": "0dd4143d06f9c13cfdb840d14e3feafb0bd962062dc2c343f5ef70726d9b4e9d",
+ "conversation_id": "p1-ru-002",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:36:03.337Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ответы ясные, логичные, без противоречий."
+   },
+   {
+    "line": 15,
+    "why": "Пауза между #14 (03:12) и #15 (04:02) составляет 50 секунд, что меньше порога 90 секунд, требующего предупреждения."
+   }
+  ],
+  "checked_range": [
+   10,
+   19
+  ],
+  "rule_applied": "06: ясность и порядок ответов",
+  "explanation": "Диалог ведётся ясно и связно, клиенту не пришлось переспрашивать, значимых пауз без предупреждения не было.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

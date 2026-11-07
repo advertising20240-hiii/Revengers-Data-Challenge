@@ -1,0 +1,38 @@
+{
+ "key": "e8338e8c5e55ccb0c03ecb68a29ff2f1adb7256cd7bb5304de5ab898a90f089c",
+ "conversation_id": "p1-kz-004",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:18.936Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Чёткий ответ на первый вопрос."
+   },
+   {
+    "line": 12,
+    "why": "Чёткий ответ на второй вопрос."
+   }
+  ],
+  "checked_range": [
+   10,
+   14
+  ],
+  "rule_applied": "06: ясные и связные ответы",
+  "explanation": "Ответы оператора были ясными, логичными и последовательными, клиенту не пришлось переспрашивать.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

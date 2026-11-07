@@ -1,0 +1,38 @@
+{
+ "key": "98cca201c0759cb09e3f8960eed99c816da618d567f7a2be1f3b2a34a9f7a0a7",
+ "conversation_id": "p1-ru-014",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:13.876Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент уже указал сайт: «На сайте Freedom Finance Global»."
+   },
+   {
+    "line": 10,
+    "why": "Оператор переспросил: «где именно ищете?», игнорируя уже данную информацию."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: выявление потребности",
+  "explanation": "Оператор переспросил клиента о том, что тот уже сообщил в реплике #5, что является нарушением критерия выявления потребности.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

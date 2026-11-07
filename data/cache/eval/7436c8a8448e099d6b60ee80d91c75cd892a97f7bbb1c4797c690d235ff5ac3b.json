@@ -1,0 +1,34 @@
+{
+ "key": "7436c8a8448e099d6b60ee80d91c75cd892a97f7bbb1c4797c690d235ff5ac3b",
+ "conversation_id": "p1-kz-003",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:11.975Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 22,
+    "why": "Между репликой клиента #21 (07:23) и ответом оператора #22 (07:55) прошло 32 секунды, что не является критичной паузой, но в целом диалог вёл себя логично."
+   }
+  ],
+  "checked_range": [
+   19,
+   22
+  ],
+  "rule_applied": "06: предупреждение об ожидании",
+  "explanation": "Между репликами #19 и #22 была пауза более 90 секунд (110 с), в течение которой оператор не предупредил клиента об ожидании («сейчас проверю» и т.п.). Это один заметный сбой в управлении диалогом.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

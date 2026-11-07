@@ -1,0 +1,35 @@
+{
+ "key": "59ec76b86952b3299d1ba635fcc8febc63475b703b607fbc0d749d61b2ab555a",
+ "conversation_id": "p1-en-009",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:05.738Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": false,
+  "na_reason": "Чат оборвался до возможности его завершить: клиент покинул чат сразу после получения ответа.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Клиент поблагодарил и закрыл диалог."
+   },
+   {
+    "line": 12,
+    "why": "Система зафиксировала обрыв связи."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "07: N/A если чат оборвался до завершения",
+  "explanation": "Клиент сам завершил диалог, поблагодарив оператора, поэтому оператор не имел возможности произнести прощальную фразу с итогом.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

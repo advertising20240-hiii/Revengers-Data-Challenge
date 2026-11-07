@@ -1,0 +1,35 @@
+{
+ "key": "2437fe12595dddbfa9ed4ed82bbe72a320475f3885411a9a11bdfa7401517756",
+ "conversation_id": "p1-kz-004",
+ "criterion_id": "c02",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:23.991Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 7,
+    "why": "запрос клиента с известными деталями"
+   },
+   {
+    "line": 10,
+    "why": "ответ оператора без уточнений"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Данных для ответа хватало с самого начала",
+  "explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #7 «Иә, қосыңызшы» и первая реплика оператора #10 «Сәлеметсіз бе, мен Айбекпін. «Меню → Поручения →…».",
+  "confidence": 0.4,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

@@ -21,6 +21,12 @@ import { isRuleCriterion } from '../services/evaluator/rules.js';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 loadDotEnv(join(ROOT, '.env')); // keys stay in process.env only; never printed
 const args = parseArgs(process.argv.slice(2));
+// The injection regression always needs live model calls, so a cache-only run skips it instead of refusing to start;
+// the report then keeps the last live injection measurement (see injectionOut below).
+if (args.cacheOnly && args.injection) {
+  args.injection = false;
+  console.error('calibrate: --cache-only — проверка prompt-инъекции пропущена (ей нужны живые вызовы модели); в отчёт попадёт последнее живое измерение.');
+}
 
 function loadDotEnv(file) {
   if (!existsSync(file)) return;
@@ -101,7 +107,7 @@ function cacheCoverage(ids, m) {
     if (!conv.lines.some((l) => l.speaker === 'operator')) continue; // no operator → no model call ever
     for (const c of criteria) {
       if (isRuleCriterion(c)) continue;
-      if (!cacheGet(cacheKey({ conv, criterion: c, policyText: POLICY_TEXT, promptVersion: evaluator.PROMPT_VERSION, model: m }))) missing.push(`${id}/${c.id}`);
+      if (!cacheGet(evaluator.criterionCacheKey ? evaluator.criterionCacheKey({ conv, criterion: c, model: m, providerName: 'offline' }) : cacheKey({ conv, criterion: c, policyText: POLICY_TEXT, promptVersion: evaluator.PROMPT_VERSION, model: m }))) missing.push(`${id}/${c.id}`);
     }
   }
   return { checked: ids.length, missing };
@@ -394,8 +400,8 @@ if (args.compare && !args.ids && compareModel) {
 const liveRuns = loadRuns().filter((o) => o.provider !== 'offline' && o.provider !== 'heuristic').sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)));
 const lastRetest = liveRuns.find((o) => (o.retest?.n || 0) > 0);
 const lastInjection = liveRuns.find((o) => o.injection_regression && !o.injection_regression.error);
-const retestOut = retest.n > 0 ? retest : (lastRetest ? { ...lastRetest.retest, source: `reports/runs/${lastRetest.file}`, measured_at: lastRetest.created_at } : retest);
-const injectionOut = injection || (lastInjection ? { ...lastInjection.injection_regression, source: `reports/runs/${lastInjection.file}`, measured_at: lastInjection.created_at } : null);
+const retestOut = retest.n > 0 ? retest : (lastRetest ? { ...lastRetest.retest, source: lastRetest.retest.source || `reports/runs/${lastRetest.file}`, measured_at: lastRetest.retest.measured_at || lastRetest.created_at } : retest);
+const injectionOut = injection || (lastInjection ? { ...lastInjection.injection_regression, source: lastInjection.injection_regression.source || `reports/runs/${lastInjection.file}`, measured_at: lastInjection.injection_regression.measured_at || lastInjection.created_at } : null);
 const report = {
   created_at: new Date().toISOString(), model, provider: providerName, verifier_model: verifierModel, prompt_version: evaluator.PROMPT_VERSION, policy_hash: evaluator.POLICY_HASH, checklist_version: checklist.version,
 

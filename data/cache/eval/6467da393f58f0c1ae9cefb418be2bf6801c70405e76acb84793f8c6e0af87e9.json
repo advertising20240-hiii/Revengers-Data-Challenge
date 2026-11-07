@@ -1,0 +1,38 @@
+{
+ "key": "6467da393f58f0c1ae9cefb418be2bf6801c70405e76acb84793f8c6e0af87e9",
+ "conversation_id": "p1-en-012",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:41:33.159Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент четко сформулировал запрос о навигации к финансовой отчетности компании.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент запросил помощь в навигации к правильному меню."
+   },
+   {
+    "line": 10,
+    "why": "Оператор сразу дал инструкцию без уточняющих вопросов, так как запрос был однозначным."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент уже сообщил суть запроса (поиск финансовой отчетности), оператор корректно ответил без необходимости уточнений.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

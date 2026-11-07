@@ -1,2699 +1,2741 @@
 {
- "schema": "cqa-gold-labels-v1",
- "source": "Human-judged reference labels for the organizers' DEV dataset (65 dialogs), built strictly from the Freedom Broker checklist (8 criteria). Use for calibration/regression tests only — never hardcode into the product.",
- "answer_legend": {
-  "Y": "Да (full weight)",
-  "N": "Нет (0)",
-  "NA": "N/A (criterion excluded, weight redistributed)",
-  "numbers": "scale step for 04 (0/5/10/15/20) and 06 (0/4/7/10)"
- },
- "scoring": {
-  "weights": {
-   "01": 10,
-   "02": 15,
-   "03": 20,
-   "04": 20,
-   "05": 15,
-   "06": 15,
-   "07": 5
-  },
-  "scale_max": {
-   "04": 20,
-   "06": 10
-  },
-  "formula": "total = sum(points of applicable criteria) / sum(weights of applicable criteria) * 100; points = weight for Да, 0 for Нет, value/scale_max*weight for scales; round HALF-UP to 2 decimals using exact (non-float) arithmetic; 08 carries no weight",
-  "unit_test_vector": {
-   "example": "p1-ru-003",
-   "points": 60.5,
-   "weights": 80,
-   "raw": 75.625,
-   "rounded": 75.63
-  }
- },
- "evidence_lines_note": "1-based index into record.transcript (same numbering as the '#' column of CQA_DEV_Transcripts.md).",
- "accept_note": "For a criterion listed in 'accept', any of the listed values passes the regression test; everything else must match 'expected' exactly. Compute the total from the model's OWN labels and verify it against the scoring engine; compare to expected_total only when all seven weighted labels match 'expected'.",
- "labels": [
-  {
-   "conversation_id": "p1-ru-001",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Ideal chat. Client already said web/laptop (#5) -> 02 N/A; navigation question -> 03 N/A; closing = acknowledgment + farewell (#12).",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-002",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "03": [
-     "NA",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "03": [
-     12,
-     15
-    ],
-    "04": [
-     12,
-     15,
-     17
-    ],
-    "05": [
-     10
-    ],
-    "07": [
-     19
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Operator correctly refuses account check without ID (#12,#15) and discloses nothing -> 03 N/A (policy; YES also acceptable, same total). Empathy line #10.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-003",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 10,
-    "05": "Y",
-    "06": 7,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     10,
-     5
-    ],
-    "06": [
-     7,
-     4
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "02": [
-     11
-    ],
-    "04": [
-     1,
-     10,
-     14,
-     15
-    ],
-    "06": [
-     15
-    ],
-    "07": [
-     15
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary).",
-   "expected_total": 75.63,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-004",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "Y",
-     "NA"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Need confirmed ('верно?') + currency handled. 02 N/A also acceptable.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-005",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 15,
-    "05": "Y",
-    "06": 4,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "Y"
-    ],
-    "04": [
-     15,
-     20
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     14,
-     16
-    ],
-    "05": [
-     14
-    ],
-    "06": [
-     12,
-     13,
-     14
-    ],
-    "07": [
-     16
-    ]
-   },
-   "gross_error_types": [],
-   "note": "#12 is garbled ('Там же где перевод, не в отчете, сверху вниз в меню'); client must re-ask (#13) -> 06=4; apology #14 keeps 05=Y; summary+farewell #16.",
-   "expected_total": 78.46,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-006",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     13
-    ],
-    "03": [
-     10,
-     12
-    ],
-    "04": [
-     13,
-     15
-    ],
-    "05": [
-     10
-    ],
-    "07": [
-     15
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Identity verified (#12) before account action; empathy #10; follow-up channel stated #15.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-007",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 10,
-    "05": "Y",
-    "06": 7,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     10,
-     15
-    ],
-    "06": [
-     7,
-     4
-    ],
-    "05": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "04": [
-     5,
-     11,
-     12,
-     13
-    ],
-    "06": [
-     13
-    ],
-    "07": [
-     13
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question).",
-   "expected_total": 70.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-008",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Process question, no account data -> 03 N/A.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-009",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "N",
-    "04": 5,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "04": [
-     5,
-     0,
-     10
-    ],
-    "06": [
-     4,
-     7
-    ],
-    "08": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "03": [
-     12,
-     13,
-     14
-    ],
-    "04": [
-     16
-    ],
-    "05": [
-     13,
-     14,
-     15,
-     16
-    ],
-    "06": [
-     12,
-     14,
-     15
-    ],
-    "07": [
-     16
-    ],
-    "08": [
-     12
-    ]
-   },
-   "gross_error_types": [
-    "disclosure"
-   ],
-   "note": "Account restriction disclosed at #12 with no identification; client objects #13, operator brushes it off #14 -> 03=N, 05=N; reason never explained -> 04=5; '08' flagged as confidential disclosure (policy-dependent).",
-   "expected_total": 36.0,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-ru-010",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "02": [
-     11,
-     16
-    ],
-    "03": [
-     13,
-     15
-    ],
-    "04": [
-     16,
-     19,
-     21,
-     23,
-     26,
-     28,
-     30
-    ],
-    "05": [
-     11
-    ],
-    "07": [
-     32
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Long multi-question chat handled fully; ID before escalation.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-011",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-012",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "NA",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     20,
-     15
-    ],
-    "07": [
-     "NA",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Connection lost (#12) right after client's 'это всё' -> 07 N/A (policy). 04: 'на английском' implicitly answers 'есть ли на русском' (15 acceptable).",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-013",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-014",
-   "expected": {
-    "01": "N",
-    "02": "N",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 7,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "05": [
-     "Y",
-     "N"
-    ],
-    "06": [
-     7,
-     4
-    ],
-    "07": [
-     "N",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     5,
-     10,
-     11
-    ],
-    "04": [
-     12
-    ],
-    "06": [
-     10,
-     11
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N.",
-   "expected_total": 56.88,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-015",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     20,
-     15
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-016",
-   "expected": {
-    "01": "Y",
-    "02": "N",
-    "03": "NA",
-    "04": 15,
-    "05": "Y",
-    "06": 4,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     15,
-     10
-    ],
-    "05": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "04": [
-     10,
-     12,
-     14
-    ],
-    "05": [
-     12
-    ],
-    "06": [
-     10,
-     11,
-     12,
-     13
-    ],
-    "07": [
-     16
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4.",
-   "expected_total": 63.75,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-017",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "02": [
-     11
-    ],
-    "04": [
-     13
-    ],
-    "07": [
-     15
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-018",
-   "expected": {
-    "01": "Y",
-    "02": "N",
-    "03": "NA",
-    "04": 0,
-    "05": "N",
-    "06": 0,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "06": [
-     0,
-     4
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10,
-     11
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "05": [
-     12,
-     13
-    ],
-    "06": [
-     10,
-     12
-    ],
-    "07": [
-     13
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N.",
-   "expected_total": 12.5,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-019",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "04": [
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-020",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     20,
-     15
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-021",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-022",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 0,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "N"
-    ],
-    "06": [
-     4,
-     0
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "05": [
-     10,
-     12
-    ],
-    "06": [
-     10,
-     11,
-     12
-    ],
-    "07": [
-     14
-    ],
-    "08": [
-     10,
-     12
-    ]
-   },
-   "gross_error_types": [
-    "bypass"
-   ],
-   "note": "GROSS: 'Скиньте деньги мне на карту' (#10) + 'через компанию оформлять не надо' (#12) = paid service bypassing the company. 04=0, 05=N, 07=N (closed without farewell).",
-   "expected_total": 24.62,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-ru-023",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "Y"
-   },
-   "accept": {
-    "05": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     14
-    ],
-    "08": [
-     12
-    ]
-   },
-   "gross_error_types": [
-    "bypass"
-   ],
-   "note": "GROSS: asks for personal number for a paid private consultation (#12). Score can still be 100 — gross errors are tracked separately (demo point).",
-   "expected_total": 100.0,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-ru-024",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-025",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": "NA",
-    "05": "Y",
-    "06": 10,
-    "07": "NA",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "Y",
-     "NA"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "04": [
-     11
-    ],
-    "07": [
-     11
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Client left before stating a request (#11): 04 N/A (exact checklist condition), 07 N/A (chat broke off), 03 N/A. Demo example for N/A.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-026",
-   "expected": {
-    "01": "Y",
-    "02": "N",
-    "03": "NA",
-    "04": 0,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     0,
-     5
-    ],
-    "06": [
-     4,
-     0
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     5,
-     10,
-     11
-    ],
-    "04": [
-     12
-    ],
-    "05": [
-     12,
-     13
-    ],
-    "06": [
-     10,
-     11,
-     12
-    ],
-    "07": [
-     13
-    ]
-   },
-   "gross_error_types": [],
-   "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client.",
-   "expected_total": 20.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-027",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "04": [
-     11,
-     13,
-     15,
-     17,
-     20,
-     22
-    ],
-    "07": [
-     24
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-028",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     12,
-     14
-    ],
-    "06": [
-     10,
-     12
-    ],
-    "07": [
-     16
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Explicit wait warning (#10) and thanks for waiting (#12) -> 06=10 despite 2-min gap. Demo example for 'предупреждение об ожидании'.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-ru-029",
-   "expected": {
-    "01": "Y",
-    "02": "N",
-    "03": "NA",
-    "04": 15,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "04": [
-     15,
-     20
-    ],
-    "06": [
-     4,
-     7
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "04": [
-     12
-    ],
-    "05": [
-     10,
-     13,
-     14
-    ],
-    "06": [
-     10,
-     11
-    ],
-    "07": [
-     14
-    ],
-    "08": [
-     10
-    ]
-   },
-   "gross_error_types": [
-    "insult"
-   ],
-   "note": "GROSS: insult 'Вы вообще читать умеете?' (#10). Answer itself correct (#12). Complaint #13 ignored -> 05=N; 'До свидания.' alone -> 07=N.",
-   "expected_total": 38.75,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-ru-030",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10
-    ],
-    "04": [
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-001",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-002",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-003",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "02": [
-     14,
-     17
-    ],
-    "03": [
-     11,
-     13
-    ],
-    "04": [
-     14,
-     19,
-     22,
-     24
-    ],
-    "05": [
-     11
-    ],
-    "07": [
-     26
-    ]
-   },
-   "gross_error_types": [],
-   "note": "ID (#13) before case escalation; empathy #11.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-004",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Both path and retry-timing answered.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-005",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 15,
-    "05": "Y",
-    "06": 4,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "N"
-    ],
-    "04": [
-     15,
-     20
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "06": [
-     10,
-     11,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N.",
-   "expected_total": 70.77,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-006",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-007",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-008",
-   "expected": {
-    "01": "N",
-    "02": "N",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 7,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "05": [
-     "Y",
-     "N"
-    ],
-    "06": [
-     7,
-     4
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     5,
-     10,
-     11
-    ],
-    "04": [
-     12
-    ],
-    "06": [
-     10,
-     11
-    ],
-    "07": [
-     12,
-     13
-    ]
-   },
-   "gross_error_types": [],
-   "note": "'Сәлем. Қай сайтқа кірдіңіз?' — no name, re-asks known info; no operator closing at all (chat ends on client #13).",
-   "expected_total": 56.88,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-009",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "04": [
-     11,
-     13,
-     16,
-     18
-    ],
-    "07": [
-     20
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-010",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-011",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "NA",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Connection lost (#14) -> 07 N/A.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-012",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10,
-     12
-    ],
-    "04": [
-     12,
-     14
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Correct next step given even though client postponed.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-013",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "05": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     14
-    ],
-    "08": [
-     12
-    ]
-   },
-   "gross_error_types": [
-    "bypass"
-   ],
-   "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14).",
-   "expected_total": 92.31,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-kz-014",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-kz-015",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "N",
-    "04": 5,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "N"
-    ],
-    "04": [
-     5,
-     0
-    ],
-    "06": [
-     4,
-     7
-    ],
-    "07": [
-     "N",
-     "Y"
-    ],
-    "08": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "03": [
-     10,
-     11,
-     12
-    ],
-    "04": [
-     14
-    ],
-    "05": [
-     12,
-     14
-    ],
-    "06": [
-     12,
-     13
-    ],
-    "07": [
-     14
-    ],
-    "08": [
-     10
-    ]
-   },
-   "gross_error_types": [
-    "disclosure"
-   ],
-   "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12).",
-   "expected_total": 24.71,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-en-001",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-002",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-003",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-004",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-005",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-010",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-011",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-012",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-006",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "02": [
-     14,
-     19
-    ],
-    "03": [
-     11,
-     13
-    ],
-    "04": [
-     16,
-     21,
-     23,
-     26,
-     28
-    ],
-    "05": [
-     11
-    ],
-    "07": [
-     30
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-007",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 10,
-    "05": "Y",
-    "06": 7,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     10,
-     15
-    ],
-    "05": [
-     "Y",
-     "N"
-    ],
-    "06": [
-     7,
-     4
-    ],
-    "07": [
-     "N",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     5,
-     10,
-     11,
-     12
-    ],
-    "06": [
-     12
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Mirror of p1-ru-007: retry question (#5,#11) ignored at #12.",
-   "expected_total": 70.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-008",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "04": [
-     11,
-     13,
-     16,
-     18
-    ],
-    "07": [
-     20
-    ]
-   },
-   "gross_error_types": [],
-   "note": "",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-009",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "NA",
-    "08": "N"
-   },
-   "accept": {},
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     12
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Connection lost -> 07 N/A.",
-   "expected_total": 100.0,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p1-en-013",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 20,
-    "05": "Y",
-    "06": 10,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "05": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "04": [
-     10
-    ],
-    "07": [
-     14
-    ],
-    "08": [
-     12
-    ]
-   },
-   "gross_error_types": [
-    "bypass"
-   ],
-   "note": "GROSS: paid private advice (#12); agent closed chat (#14).",
-   "expected_total": 92.31,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-en-014",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "N",
-    "04": 5,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "Y"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "N"
-    ],
-    "04": [
-     5,
-     0
-    ],
-    "06": [
-     4,
-     7
-    ],
-    "08": [
-     "Y",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     11
-    ],
-    "03": [
-     11,
-     12,
-     13
-    ],
-    "04": [
-     13,
-     14,
-     15
-    ],
-    "05": [
-     13,
-     15
-    ],
-    "06": [
-     13,
-     14,
-     15
-    ],
-    "07": [
-     15
-    ],
-    "08": [
-     11
-    ]
-   },
-   "gross_error_types": [
-    "disclosure"
-   ],
-   "note": "Restriction disclosed (#11) with no ID; 'We can skip that' (#13); 'Will I hear back here?' (#14) unanswered; 'Goodbye.' only.",
-   "expected_total": 24.71,
-   "gross_error": "Y"
-  },
-  {
-   "conversation_id": "p1-en-015",
-   "expected": {
-    "01": "N",
-    "02": "N",
-    "03": "NA",
-    "04": 15,
-    "05": "N",
-    "06": 4,
-    "07": "N",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     15,
-     20
-    ],
-    "05": [
-     "N",
-     "Y"
-    ],
-    "07": [
-     "N",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     10
-    ],
-    "02": [
-     10,
-     11
-    ],
-    "04": [
-     10,
-     12
-    ],
-    "05": [
-     10,
-     14
-    ],
-    "06": [
-     10,
-     11,
-     12
-    ],
-    "07": [
-     14
-    ]
-   },
-   "gross_error_types": [],
-   "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only.",
-   "expected_total": 26.25,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p4-ru-003",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 20,
-    "05": "Y",
-    "06": 7,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "Y",
-     "NA"
-    ],
-    "04": [
-     20,
-     15
-    ],
-    "06": [
-     7,
-     10
-    ],
-    "07": [
-     "Y",
-     "NA"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     13
-    ],
-    "02": [
-     19,
-     22,
-     32
-    ],
-    "03": [
-     40,
-     49,
-     54,
-     65,
-     66
-    ],
-    "04": [
-     66,
-     68,
-     71,
-     76
-    ],
-    "05": [
-     22
-    ],
-    "06": [
-     20,
-     22,
-     27
-    ],
-    "07": [
-     71,
-     73,
-     76
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76).",
-   "expected_total": 95.5,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p4-ru-002",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 15,
-    "05": "Y",
-    "06": 7,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     15,
-     20
-    ],
-    "06": [
-     7,
-     10
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     3
-    ],
-    "02": [
-     6,
-     12
-    ],
-    "03": [
-     12,
-     15
-    ],
-    "04": [
-     64,
-     66,
-     67,
-     69
-    ],
-    "05": [
-     15,
-     60
-    ],
-    "06": [
-     15,
-     60
-    ],
-    "07": [
-     71
-    ]
-   },
-   "gross_error_types": [],
-   "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7.",
-   "expected_total": 90.5,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p4-ru-001",
-   "expected": {
-    "01": "Y",
-    "02": "NA",
-    "03": "NA",
-    "04": 15,
-    "05": "Y",
-    "06": 7,
-    "07": "NA",
-    "08": "N"
-   },
-   "accept": {
-    "02": [
-     "NA",
-     "Y"
-    ],
-    "04": [
-     15,
-     10
-    ],
-    "05": [
-     "Y",
-     "N"
-    ],
-    "06": [
-     7,
-     10
-    ],
-    "07": [
-     "NA",
-     "N"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     13,
-     15,
-     17
-    ],
-    "04": [
-     26,
-     28,
-     30,
-     36
-    ],
-    "05": [
-     41,
-     42,
-     43
-    ],
-    "06": [
-     38,
-     43
-    ],
-    "07": [
-     44,
-     45
-    ]
-   },
-   "gross_error_types": [],
-   "note": "General question about what support does; correct boundaries explained (#26-31) but no concrete next step (how to get advice) -> 04=15. Client's hurt feelings (#41-42) acknowledged only partly (#43). Client hung up mid-sentence -> 07 N/A.",
-   "expected_total": 84.17,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p4-ru-005",
-   "expected": {
-    "01": "N",
-    "02": "Y",
-    "03": "N",
-    "04": 20,
-    "05": "Y",
-    "06": 7,
-    "07": "Y",
-    "08": "N"
-   },
-   "accept": {
-    "01": [
-     "N",
-     "Y"
-    ],
-    "03": [
-     "N",
-     "NA"
-    ],
-    "06": [
-     7,
-     10
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     17
-    ],
-    "02": [
-     20,
-     24,
-     62
-    ],
-    "03": [
-     20,
-     22,
-     29,
-     35
-    ],
-    "04": [
-     29,
-     30,
-     44,
-     49,
-     51,
-     67,
-     71
-    ],
-    "05": [
-     29,
-     44
-    ],
-    "06": [
-     29,
-     35,
-     40
-    ],
-    "07": [
-     53,
-     55,
-     72
-    ]
-   },
-   "gross_error_types": [],
-   "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20.",
-   "expected_total": 65.5,
-   "gross_error": "N"
-  },
-  {
-   "conversation_id": "p4-ru-004",
-   "expected": {
-    "01": "Y",
-    "02": "Y",
-    "03": "Y",
-    "04": 15,
-    "05": "N",
-    "06": 7,
-    "07": "NA",
-    "08": "N"
-   },
-   "accept": {
-    "04": [
-     15,
-     20
-    ],
-    "05": [
-     "N",
-     "Y"
-    ],
-    "06": [
-     7,
-     4
-    ],
-    "07": [
-     "NA",
-     "Y"
-    ]
-   },
-   "evidence_lines": {
-    "01": [
-     15
-    ],
-    "02": [
-     23,
-     30,
-     32,
-     34
-    ],
-    "03": [
-     38,
-     47,
-     49,
-     51,
-     71,
-     79
-    ],
-    "04": [
-     90,
-     94,
-     98,
-     112
-    ],
-    "05": [
-     29,
-     41,
-     84,
-     87,
-     91
-    ],
-    "06": [
-     99,
-     104,
-     107,
-     110
-    ],
-    "07": [
-     114,
-     115
-    ]
-   },
-   "gross_error_types": [],
-   "note": "ID via address+SMS (#38-79) before order info (#90). OTC-only answer + email/phone alternative -> 04=15 (client's 'can't call each time' only partly addressed). 'я не пытаюсь с вами спорить' / 'дадите шанс досказать' + ignoring that client is at work -> 05=N (YES acceptable). Client hung up before closing; operator's offer (#115) after hang-up -> 07 N/A.",
-   "expected_total": 74.21,
-   "gross_error": "N"
-  }
- ]
+  "schema": "cqa-gold-labels-v1",
+  "source": "Human-judged reference labels for the organizers' DEV dataset (65 dialogs), built strictly from the Freedom Broker checklist (8 criteria). Use for calibration/regression tests only — never hardcode into the product.",
+  "answer_legend": {
+    "Y": "Да (full weight)",
+    "N": "Нет (0)",
+    "NA": "N/A (criterion excluded, weight redistributed)",
+    "numbers": "scale step for 04 (0/5/10/15/20) and 06 (0/4/7/10)"
+  },
+  "scoring": {
+    "weights": {
+      "01": 10,
+      "02": 15,
+      "03": 20,
+      "04": 20,
+      "05": 15,
+      "06": 15,
+      "07": 5
+    },
+    "scale_max": {
+      "04": 20,
+      "06": 10
+    },
+    "formula": "total = sum(points of applicable criteria) / sum(weights of applicable criteria) * 100; points = weight for Да, 0 for Нет, value/scale_max*weight for scales; round HALF-UP to 2 decimals using exact (non-float) arithmetic; 08 carries no weight",
+    "unit_test_vector": {
+      "example": "p1-ru-003",
+      "points": 60.5,
+      "weights": 80,
+      "raw": 75.625,
+      "rounded": 75.63
+    }
+  },
+  "evidence_lines_note": "1-based index into record.transcript (same numbering as the '#' column of CQA_DEV_Transcripts.md).",
+  "accept_note": "For a criterion listed in 'accept', any of the listed values passes the regression test; everything else must match 'expected' exactly. Compute the total from the model's OWN labels and verify it against the scoring engine; compare to expected_total only when all seven weighted labels match 'expected'.",
+  "labels": [
+    {
+      "conversation_id": "p1-ru-001",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Ideal chat. Client already said web/laptop (#5) -> 02 N/A; navigation question -> 03 N/A; closing = acknowledgment + farewell (#12).",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-002",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {
+        "03": [
+          "NA",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "03": [
+          12,
+          15
+        ],
+        "04": [
+          12,
+          15,
+          17
+        ],
+        "05": [
+          10
+        ],
+        "07": [
+          19
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Operator correctly refuses account check without ID (#12,#15) and discloses nothing -> 03 N/A (policy; YES also acceptable, same total). Empathy line #10.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-003",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 10,
+        "05": "Y",
+        "06": 7,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          10,
+          5
+        ],
+        "06": [
+          7,
+          4
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "02": [
+          11
+        ],
+        "04": [
+          1,
+          10,
+          14,
+          15
+        ],
+        "06": [
+          15
+        ],
+        "07": [
+          15
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary).",
+      "expected_total": 75.63,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-004",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "Y",
+          "NA"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Need confirmed ('верно?') + currency handled. 02 N/A also acceptable.",
+      "expected_total": 93.75,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-005",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 15,
+        "05": "Y",
+        "06": 4,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "Y"
+        ],
+        "04": [
+          15,
+          20
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          14,
+          16
+        ],
+        "05": [
+          14
+        ],
+        "06": [
+          12,
+          13,
+          14
+        ],
+        "07": [
+          16
+        ]
+      },
+      "gross_error_types": [],
+      "note": "#12 is garbled ('Там же где перевод, не в отчете, сверху вниз в меню'); client must re-ask (#13) -> 06=4; apology #14 keeps 05=Y; summary+farewell #16.",
+      "expected_total": 78.46,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-006",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          13
+        ],
+        "03": [
+          10,
+          12
+        ],
+        "04": [
+          13,
+          15
+        ],
+        "05": [
+          10
+        ],
+        "07": [
+          15
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Identity verified (#12) before account action; empathy #10; follow-up channel stated #15.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-007",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 10,
+        "05": "Y",
+        "06": 7,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          10,
+          15
+        ],
+        "06": [
+          7,
+          4
+        ],
+        "05": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "04": [
+          5,
+          11,
+          12,
+          13
+        ],
+        "06": [
+          13
+        ],
+        "07": [
+          13
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question).",
+      "expected_total": 70,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-008",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Process question, no account data -> 03 N/A.",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-009",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "N",
+        "04": 5,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "04": [
+          5,
+          0,
+          10
+        ],
+        "06": [
+          4,
+          7
+        ],
+        "08": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "03": [
+          12,
+          13,
+          14
+        ],
+        "04": [
+          16
+        ],
+        "05": [
+          13,
+          14,
+          15,
+          16
+        ],
+        "06": [
+          12,
+          14,
+          15
+        ],
+        "07": [
+          16
+        ],
+        "08": [
+          12
+        ]
+      },
+      "gross_error_types": [
+        "disclosure"
+      ],
+      "note": "Account restriction disclosed at #12 with no identification; client objects #13, operator brushes it off #14 -> 03=N, 05=N; reason never explained -> 04=5; '08' flagged as confidential disclosure (policy-dependent).",
+      "expected_total": 36,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-ru-010",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "02": [
+          11,
+          16
+        ],
+        "03": [
+          13,
+          15
+        ],
+        "04": [
+          16,
+          19,
+          21,
+          23,
+          26,
+          28,
+          30
+        ],
+        "05": [
+          11
+        ],
+        "07": [
+          32
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Long multi-question chat handled fully; ID before escalation.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-011",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-012",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "NA",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          20,
+          15
+        ],
+        "07": [
+          "NA",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Connection lost (#12) right after client's 'это всё' -> 07 N/A (policy). 04: 'на английском' implicitly answers 'есть ли на русском' (15 acceptable).",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-013",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-014",
+      "expected": {
+        "01": "N",
+        "02": "N",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 7,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "05": [
+          "Y",
+          "N"
+        ],
+        "06": [
+          7,
+          4
+        ],
+        "07": [
+          "N",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          5,
+          10,
+          11
+        ],
+        "04": [
+          12
+        ],
+        "06": [
+          10,
+          11
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N.",
+      "expected_total": 56.88,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-015",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          20,
+          15
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-016",
+      "expected": {
+        "01": "Y",
+        "02": "N",
+        "03": "NA",
+        "04": 15,
+        "05": "Y",
+        "06": 4,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          15,
+          10
+        ],
+        "05": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "04": [
+          10,
+          12,
+          14
+        ],
+        "05": [
+          12
+        ],
+        "06": [
+          10,
+          11,
+          12,
+          13
+        ],
+        "07": [
+          16
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4.",
+      "expected_total": 57.5,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-017",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "02": [
+          11
+        ],
+        "04": [
+          13
+        ],
+        "07": [
+          15
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 93.75,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-018",
+      "expected": {
+        "01": "Y",
+        "02": "N",
+        "03": "NA",
+        "04": 0,
+        "05": "N",
+        "06": 0,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "06": [
+          0,
+          4
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10,
+          11
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "05": [
+          12,
+          13
+        ],
+        "06": [
+          10,
+          12
+        ],
+        "07": [
+          13
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N.",
+      "expected_total": 12.5,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-019",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "04": [
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 93.75,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-020",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          20,
+          15
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-021",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-022",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 0,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "N"
+        ],
+        "06": [
+          4,
+          0
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "05": [
+          10,
+          12
+        ],
+        "06": [
+          10,
+          11,
+          12
+        ],
+        "07": [
+          14
+        ],
+        "08": [
+          10,
+          12
+        ]
+      },
+      "gross_error_types": [
+        "bypass"
+      ],
+      "note": "GROSS: 'Скиньте деньги мне на карту' (#10) + 'через компанию оформлять не надо' (#12) = paid service bypassing the company. 04=0, 05=N, 07=N (closed without farewell).",
+      "expected_total": 24.62,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-ru-023",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "05": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          14
+        ],
+        "08": [
+          12
+        ]
+      },
+      "gross_error_types": [
+        "bypass"
+      ],
+      "note": "GROSS: asks for personal number for a paid private consultation (#12). Score can still be 100 — gross errors are tracked separately (demo point).",
+      "expected_total": 92.31,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-ru-024",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-025",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": "NA",
+        "05": "Y",
+        "06": 10,
+        "07": "NA",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "Y",
+          "NA"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "04": [
+          11
+        ],
+        "07": [
+          11
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Client left before stating a request (#11): 04 N/A (exact checklist condition), 07 N/A (chat broke off), 03 N/A. Demo example for N/A.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-026",
+      "expected": {
+        "01": "Y",
+        "02": "N",
+        "03": "NA",
+        "04": 0,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          0,
+          5
+        ],
+        "06": [
+          4,
+          0
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          5,
+          10,
+          11
+        ],
+        "04": [
+          12
+        ],
+        "05": [
+          12,
+          13
+        ],
+        "06": [
+          10,
+          11,
+          12
+        ],
+        "07": [
+          13
+        ]
+      },
+      "gross_error_types": [],
+      "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client.",
+      "expected_total": 20,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-027",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "04": [
+          11,
+          13,
+          15,
+          17,
+          20,
+          22
+        ],
+        "07": [
+          24
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-028",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          12,
+          14
+        ],
+        "06": [
+          10,
+          12
+        ],
+        "07": [
+          16
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Explicit wait warning (#10) and thanks for waiting (#12) -> 06=10 despite 2-min gap. Demo example for 'предупреждение об ожидании'.",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-ru-029",
+      "expected": {
+        "01": "Y",
+        "02": "N",
+        "03": "NA",
+        "04": 15,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "04": [
+          15,
+          20
+        ],
+        "06": [
+          4,
+          7
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "04": [
+          12
+        ],
+        "05": [
+          10,
+          13,
+          14
+        ],
+        "06": [
+          10,
+          11
+        ],
+        "07": [
+          14
+        ],
+        "08": [
+          10
+        ]
+      },
+      "gross_error_types": [
+        "insult"
+      ],
+      "note": "GROSS: insult 'Вы вообще читать умеете?' (#10). Answer itself correct (#12). Complaint #13 ignored -> 05=N; 'До свидания.' alone -> 07=N.",
+      "expected_total": 38.75,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-ru-030",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10
+        ],
+        "04": [
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 93.75,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-001",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-002",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-003",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "02": [
+          14,
+          17
+        ],
+        "03": [
+          11,
+          13
+        ],
+        "04": [
+          14,
+          19,
+          22,
+          24
+        ],
+        "05": [
+          11
+        ],
+        "07": [
+          26
+        ]
+      },
+      "gross_error_types": [],
+      "note": "ID (#13) before case escalation; empathy #11.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-004",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Both path and retry-timing answered.",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-005",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 15,
+        "05": "Y",
+        "06": 4,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "N"
+        ],
+        "04": [
+          15,
+          20
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "06": [
+          10,
+          11,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N.",
+      "expected_total": 70.77,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-006",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-007",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-008",
+      "expected": {
+        "01": "N",
+        "02": "N",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 7,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "05": [
+          "Y",
+          "N"
+        ],
+        "06": [
+          7,
+          4
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          5,
+          10,
+          11
+        ],
+        "04": [
+          12
+        ],
+        "06": [
+          10,
+          11
+        ],
+        "07": [
+          12,
+          13
+        ]
+      },
+      "gross_error_types": [],
+      "note": "'Сәлем. Қай сайтқа кірдіңіз?' — no name, re-asks known info; no operator closing at all (chat ends on client #13).",
+      "expected_total": 56.88,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-009",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "04": [
+          11,
+          13,
+          16,
+          18
+        ],
+        "07": [
+          20
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-010",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-011",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "NA",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Connection lost (#14) -> 07 N/A.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-012",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10,
+          12
+        ],
+        "04": [
+          12,
+          14
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Correct next step given even though client postponed.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-013",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "05": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          14
+        ],
+        "08": [
+          12
+        ]
+      },
+      "gross_error_types": [
+        "bypass"
+      ],
+      "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14).",
+      "expected_total": 92.31,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-kz-014",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-kz-015",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "N",
+        "04": 5,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "N"
+        ],
+        "04": [
+          5,
+          0
+        ],
+        "06": [
+          4,
+          7
+        ],
+        "07": [
+          "N",
+          "Y"
+        ],
+        "08": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "03": [
+          10,
+          11,
+          12
+        ],
+        "04": [
+          14
+        ],
+        "05": [
+          12,
+          14
+        ],
+        "06": [
+          12,
+          13
+        ],
+        "07": [
+          14
+        ],
+        "08": [
+          10
+        ]
+      },
+      "gross_error_types": [
+        "disclosure"
+      ],
+      "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12).",
+      "expected_total": 24.71,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-en-001",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-002",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-003",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-004",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-005",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-010",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-011",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-012",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-006",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "02": [
+          14,
+          19
+        ],
+        "03": [
+          11,
+          13
+        ],
+        "04": [
+          16,
+          21,
+          23,
+          26,
+          28
+        ],
+        "05": [
+          11
+        ],
+        "07": [
+          30
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-007",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 10,
+        "05": "Y",
+        "06": 7,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          10,
+          15
+        ],
+        "05": [
+          "Y",
+          "N"
+        ],
+        "06": [
+          7,
+          4
+        ],
+        "07": [
+          "N",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          5,
+          10,
+          11,
+          12
+        ],
+        "06": [
+          12
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Mirror of p1-ru-007: retry question (#5,#11) ignored at #12.",
+      "expected_total": 70,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-008",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "04": [
+          11,
+          13,
+          16,
+          18
+        ],
+        "07": [
+          20
+        ]
+      },
+      "gross_error_types": [],
+      "note": "",
+      "expected_total": 92.31,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-009",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "NA",
+        "08": "N"
+      },
+      "accept": {},
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          12
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Connection lost -> 07 N/A.",
+      "expected_total": 100,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p1-en-013",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 20,
+        "05": "Y",
+        "06": 10,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "05": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "04": [
+          10
+        ],
+        "07": [
+          14
+        ],
+        "08": [
+          12
+        ]
+      },
+      "gross_error_types": [
+        "bypass"
+      ],
+      "note": "GROSS: paid private advice (#12); agent closed chat (#14).",
+      "expected_total": 92.31,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-en-014",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "N",
+        "04": 5,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "Y"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "N"
+        ],
+        "04": [
+          5,
+          0
+        ],
+        "06": [
+          4,
+          7
+        ],
+        "08": [
+          "Y",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          11
+        ],
+        "03": [
+          11,
+          12,
+          13
+        ],
+        "04": [
+          13,
+          14,
+          15
+        ],
+        "05": [
+          13,
+          15
+        ],
+        "06": [
+          13,
+          14,
+          15
+        ],
+        "07": [
+          15
+        ],
+        "08": [
+          11
+        ]
+      },
+      "gross_error_types": [
+        "disclosure"
+      ],
+      "note": "Restriction disclosed (#11) with no ID; 'We can skip that' (#13); 'Will I hear back here?' (#14) unanswered; 'Goodbye.' only.",
+      "expected_total": 24.71,
+      "gross_error": "Y"
+    },
+    {
+      "conversation_id": "p1-en-015",
+      "expected": {
+        "01": "N",
+        "02": "N",
+        "03": "NA",
+        "04": 15,
+        "05": "N",
+        "06": 4,
+        "07": "N",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          15,
+          20
+        ],
+        "05": [
+          "N",
+          "Y"
+        ],
+        "07": [
+          "N",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          10
+        ],
+        "02": [
+          10,
+          11
+        ],
+        "04": [
+          10,
+          12
+        ],
+        "05": [
+          10,
+          14
+        ],
+        "06": [
+          10,
+          11,
+          12
+        ],
+        "07": [
+          14
+        ]
+      },
+      "gross_error_types": [],
+      "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only.",
+      "expected_total": 26.25,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p4-ru-003",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 20,
+        "05": "Y",
+        "06": 7,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "Y",
+          "NA"
+        ],
+        "04": [
+          20,
+          15
+        ],
+        "06": [
+          7,
+          10
+        ],
+        "07": [
+          "Y",
+          "NA"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          13
+        ],
+        "02": [
+          19,
+          22,
+          32
+        ],
+        "03": [
+          40,
+          49,
+          54,
+          65,
+          66
+        ],
+        "04": [
+          66,
+          68,
+          71,
+          76
+        ],
+        "05": [
+          22
+        ],
+        "06": [
+          20,
+          22,
+          27
+        ],
+        "07": [
+          71,
+          73,
+          76
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76).",
+      "expected_total": 95.5,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p4-ru-002",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 15,
+        "05": "Y",
+        "06": 7,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          15,
+          20
+        ],
+        "06": [
+          7,
+          10
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          3
+        ],
+        "02": [
+          6,
+          12
+        ],
+        "03": [
+          12,
+          15
+        ],
+        "04": [
+          64,
+          66,
+          67,
+          69
+        ],
+        "05": [
+          15,
+          60
+        ],
+        "06": [
+          15,
+          60
+        ],
+        "07": [
+          71
+        ]
+      },
+      "gross_error_types": [],
+      "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7.",
+      "expected_total": 90.5,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p4-ru-001",
+      "expected": {
+        "01": "Y",
+        "02": "NA",
+        "03": "NA",
+        "04": 15,
+        "05": "Y",
+        "06": 7,
+        "07": "NA",
+        "08": "N"
+      },
+      "accept": {
+        "02": [
+          "NA",
+          "Y"
+        ],
+        "04": [
+          15,
+          10
+        ],
+        "05": [
+          "Y",
+          "N"
+        ],
+        "06": [
+          7,
+          10
+        ],
+        "07": [
+          "NA",
+          "N"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          13,
+          15,
+          17
+        ],
+        "04": [
+          26,
+          28,
+          30,
+          36
+        ],
+        "05": [
+          41,
+          42,
+          43
+        ],
+        "06": [
+          38,
+          43
+        ],
+        "07": [
+          44,
+          45
+        ]
+      },
+      "gross_error_types": [],
+      "note": "General question about what support does; correct boundaries explained (#26-31) but no concrete next step (how to get advice) -> 04=15. Client's hurt feelings (#41-42) acknowledged only partly (#43). Client hung up mid-sentence -> 07 N/A.",
+      "expected_total": 84.17,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p4-ru-005",
+      "expected": {
+        "01": "N",
+        "02": "Y",
+        "03": "N",
+        "04": 20,
+        "05": "Y",
+        "06": 7,
+        "07": "Y",
+        "08": "N"
+      },
+      "accept": {
+        "01": [
+          "N",
+          "Y"
+        ],
+        "03": [
+          "N",
+          "NA"
+        ],
+        "06": [
+          7,
+          10
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          17
+        ],
+        "02": [
+          20,
+          24,
+          62
+        ],
+        "03": [
+          20,
+          22,
+          29,
+          35
+        ],
+        "04": [
+          29,
+          30,
+          44,
+          49,
+          51,
+          67,
+          71
+        ],
+        "05": [
+          29,
+          44
+        ],
+        "06": [
+          29,
+          35,
+          40
+        ],
+        "07": [
+          53,
+          55,
+          72
+        ]
+      },
+      "gross_error_types": [],
+      "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20.",
+      "expected_total": 65.5,
+      "gross_error": "N"
+    },
+    {
+      "conversation_id": "p4-ru-004",
+      "expected": {
+        "01": "Y",
+        "02": "Y",
+        "03": "Y",
+        "04": 15,
+        "05": "N",
+        "06": 7,
+        "07": "NA",
+        "08": "N"
+      },
+      "accept": {
+        "04": [
+          15,
+          20
+        ],
+        "05": [
+          "N",
+          "Y"
+        ],
+        "06": [
+          7,
+          4
+        ],
+        "07": [
+          "NA",
+          "Y"
+        ]
+      },
+      "evidence_lines": {
+        "01": [
+          15
+        ],
+        "02": [
+          23,
+          30,
+          32,
+          34
+        ],
+        "03": [
+          38,
+          47,
+          49,
+          51,
+          71,
+          79
+        ],
+        "04": [
+          90,
+          94,
+          98,
+          112
+        ],
+        "05": [
+          29,
+          41,
+          84,
+          87,
+          91
+        ],
+        "06": [
+          99,
+          104,
+          107,
+          110
+        ],
+        "07": [
+          114,
+          115
+        ]
+      },
+      "gross_error_types": [],
+      "note": "ID via address+SMS (#38-79) before order info (#90). OTC-only answer + email/phone alternative -> 04=15 (client's 'can't call each time' only partly addressed). 'я не пытаюсь с вами спорить' / 'дадите шанс досказать' + ignoring that client is at work -> 05=N (YES acceptable). Client hung up before closing; operator's offer (#115) after hang-up -> 07 N/A.",
+      "expected_total": 74.21,
+      "gross_error": "N"
+    }
+  ],
+  "revisions": [
+    {
+      "version": "1.1",
+      "date": "2026-11-07",
+      "criterion": "07",
+      "changed": 31,
+      "reason": "Checklist 07: «Да — оператор подвёл итог или предложил дальнейшую помощь и попрощался». A closing made only of a courtesy phrase and a farewell (no summary, next step or offer of help) is relabelled from Y to N, following the literal checklist wording and the organizers' answer in the participants chat («Внимательно перечитайте чеклист по данному пункту») to the question about a farewell without summary or offer of help.",
+      "dialogs": [
+        "p1-ru-001",
+        "p1-ru-004",
+        "p1-ru-008",
+        "p1-ru-011",
+        "p1-ru-016",
+        "p1-ru-017",
+        "p1-ru-019",
+        "p1-ru-020",
+        "p1-ru-021",
+        "p1-ru-023",
+        "p1-ru-024",
+        "p1-ru-027",
+        "p1-ru-028",
+        "p1-ru-030",
+        "p1-kz-001",
+        "p1-kz-002",
+        "p1-kz-004",
+        "p1-kz-006",
+        "p1-kz-007",
+        "p1-kz-009",
+        "p1-kz-010",
+        "p1-kz-014",
+        "p1-en-001",
+        "p1-en-002",
+        "p1-en-003",
+        "p1-en-004",
+        "p1-en-005",
+        "p1-en-008",
+        "p1-en-010",
+        "p1-en-011",
+        "p1-en-012"
+      ]
+    }
+  ]
 }

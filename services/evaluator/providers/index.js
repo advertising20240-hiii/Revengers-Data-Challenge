@@ -16,7 +16,7 @@ export function defaultProviderName() {
   if (process.env.CQA_PROVIDER) return process.env.CQA_PROVIDER;
   if (alem.configured()) return 'alem';
   if (process.env.OLLAMA_BASE_URL || process.env.OPENAI_BASE_URL) return 'openai';
-  return 'openai'; // local Ollama default endpoint; falls back to cache when unreachable
+  return 'offline'; // nothing configured: replay the committed cache honestly instead of guessing a local endpoint
 }
 
 export function defaultModelFor(provider) {

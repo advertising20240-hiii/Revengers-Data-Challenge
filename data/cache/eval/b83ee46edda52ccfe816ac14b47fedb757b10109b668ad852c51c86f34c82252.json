@@ -1,0 +1,38 @@
+{
+ "key": "b83ee46edda52ccfe816ac14b47fedb757b10109b668ad852c51c86f34c82252",
+ "conversation_id": "p1-kz-012",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:40:31.669Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент сообщил, что заявка отклонена, но не указал конкретный инструмент."
+   },
+   {
+    "line": 10,
+    "why": "Оператор уточнил недостающую деталь: «Қай облигацияны таңдадыңыз? Тикері болса, жазыңыз»."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: уточнение недостающих деталей",
+  "explanation": "Оператор корректно уточнил конкретный тикер облигации, который был необходим для диагностики проблемы, но не был указан клиентом.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

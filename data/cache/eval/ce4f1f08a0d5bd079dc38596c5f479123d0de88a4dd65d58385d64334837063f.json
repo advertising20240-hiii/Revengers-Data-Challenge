@@ -1,0 +1,35 @@
+{
+ "key": "ce4f1f08a0d5bd079dc38596c5f479123d0de88a4dd65d58385d64334837063f",
+ "conversation_id": "p4-ru-003",
+ "criterion_id": "c02",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.140Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "запрос клиента с известными деталями"
+   },
+   {
+    "line": 13,
+    "why": "уточняющий вопрос оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Уточняющий вопрос до ответа",
+  "explanation": "Выявление потребности — Да. Оператор до ответа уточнил недостающие детали запроса. Основание — запрос клиента #5 «2» и первая реплика оператора #13 «Здравствуйте, Фридом брокер меня зовут [Имя скрыт…».",
+  "confidence": 0.4,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

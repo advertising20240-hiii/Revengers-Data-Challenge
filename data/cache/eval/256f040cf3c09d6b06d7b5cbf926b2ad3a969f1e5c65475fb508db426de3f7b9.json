@@ -1,0 +1,31 @@
+{
+ "key": "256f040cf3c09d6b06d7b5cbf926b2ad3a969f1e5c65475fb508db426de3f7b9",
+ "conversation_id": "p1-ru-012",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:03.920Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ответ ясный и связный, клиенту не пришлось переспрашивать."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "06: ясность и порядок ответов",
+  "explanation": "Диалог прошёл логично, ответ был понятен, паузы в середине диалога не требовали предупреждения.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

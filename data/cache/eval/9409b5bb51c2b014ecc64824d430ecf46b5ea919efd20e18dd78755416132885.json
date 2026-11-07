@@ -1,0 +1,38 @@
+{
+ "key": "9409b5bb51c2b014ecc64824d430ecf46b5ea919efd20e18dd78755416132885",
+ "conversation_id": "p1-en-014",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:20.703Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Оператор сообщил, что передаст вопрос команде, но не объяснил причину блокировки."
+   },
+   {
+    "line": 14,
+    "why": "Клиент задал прямой вопрос о канале обратной связи ('Will I hear back here?'), который остался без ответа."
+   }
+  ],
+  "checked_range": [
+   11,
+   15
+  ],
+  "rule_applied": "04: Оценка полноты консультации",
+  "explanation": "Основной вопрос (причина блокировки) не был решен, а лишь передан на проверку. Существенный вопрос клиента о том, где он получит ответ, остался открытым.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

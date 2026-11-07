@@ -1,0 +1,35 @@
+{
+ "key": "400bbd36422cd3541ac20f508aaf780d822d0e808c55dc6fdf588ddaba30ddb7",
+ "conversation_id": "p1-en-009",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:05.738Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент описал проблему и контекст (не отправлял ордер), оператор дал точную инструкцию без уточнений.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент задал конкретный вопрос о выключении опции."
+   },
+   {
+    "line": 10,
+    "why": "Оператор ответил по существу, опираясь на известные детали."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент уже сообщил всё необходимое для решения проблемы, оператор корректно ответил без дополнительных уточняющих вопросов.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,34 @@
+{
+ "key": "26e3e98474bf6d665ad6dc6cb35b003fc9a6f1eca96c3a962527eda29484a8fb",
+ "conversation_id": "p1-en-014",
+ "criterion_id": "c03",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.132Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "данные счёта («I can see (a|an|your|the)») без подтверждения личности"
+   }
+  ],
+  "checked_range": [
+   1,
+   11
+  ],
+  "rule_applied": "Раскрытие данных счёта до подтверждения личности",
+  "explanation": "Идентификация — Нет. Оператор раскрыл данные счёта («I can see (a|an|your|the)») без подтверждения личности: такого события в диалоге нет. Основание — реплика оператора #11 «Hi, I'm Tyler. I can see a withdrawal restriction…».",
+  "confidence": 0.7,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

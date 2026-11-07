@@ -1,0 +1,35 @@
+{
+ "key": "0a44cd11e231ce2aa2385e8b1aa1b043278d30ea69bc33f2ae1d5a4cae05abe0",
+ "conversation_id": "p1-ru-007",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:36:36.002Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент описал проблему и уточнил платформу (телефон), оператор дал конкретную инструкцию по навигации.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Клиент уточнил контекст («Я на телефоне»)."
+   },
+   {
+    "line": 11,
+    "why": "Оператор сразу дал инструкцию без лишних уточнений."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент предоставил всю необходимую информацию (проблема с выводом, платформа), оператор корректно ответил без дополнительных уточняющих вопросов.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

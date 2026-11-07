@@ -1,0 +1,38 @@
+{
+ "key": "709b66adb36a31843d43c9dcb96a2b0505ece84ef7102def492776b59c96ae5e",
+ "conversation_id": "p1-kz-005",
+ "criterion_id": "c05",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:31.869Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Вежливое приветствие."
+   },
+   {
+    "line": 12,
+    "why": "Конструктивный ответ на замечание клиента."
+   }
+  ],
+  "checked_range": [
+   10,
+   14
+  ],
+  "rule_applied": "05: вежливость и реакция на проблему",
+  "explanation": "Оператор сохранял вежливый тон и оперативно отреагировал на затруднение клиента, не проявляя раздражения.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

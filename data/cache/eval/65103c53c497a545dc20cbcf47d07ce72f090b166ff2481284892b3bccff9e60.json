@@ -1,0 +1,39 @@
+{
+ "key": "65103c53c497a545dc20cbcf47d07ce72f090b166ff2481284892b3bccff9e60",
+ "conversation_id": "p1-en-005",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:41:23.992Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Дана инструкция, где найти детали."
+   },
+   {
+    "line": 12,
+    "why": "Уточнено про выбор валюты для евро."
+   },
+   {
+    "line": 13,
+    "why": "Клиент подтвердил получение информации."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "04: все существенные вопросы закрыты",
+  "explanation": "Оператор ответил на основной вопрос о месте получения деталей и уточнил про валюту, клиент подтвердил, что получил нужное.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

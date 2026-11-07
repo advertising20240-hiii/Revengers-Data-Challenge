@@ -17,7 +17,7 @@ export const POLICY_HASH = sha256(POLICY_TEXT);
 const TYPE_LABEL = { yes_no: 'Да/Нет', yes_no_na: 'Да/Нет/N/A', scale: 'шкала', scale_na: 'шкала или N/A', flag: 'флаг Да/Нет (без баллов)' };
 
 export function renderCriterion(c) {
-  const lines = [`[${c.id}] ${c.code ? `${c.code} ` : ''}${c.title} — тип: ${TYPE_LABEL[c.answer_type] || c.answer_type}, вес ${c.weight ?? 0}${c.scored === false ? ' (не влияет на балл)' : ''}`];
+  const lines = [`[${c.id}] ${c.code ? `${c.code} ` : ''}${c.title} — тип: ${TYPE_LABEL[c.answer_type] || c.answer_type}${c.scored === false ? ' (не влияет на балл)' : ''}`];
   if (c.definition) lines.push(`  Определение: ${c.definition}`);
   if (isScale(c) && c.scale) lines.push(`  Шаги шкалы: ${c.scale.map((s) => `${s.value} = ${s.label}`).join(' | ')}`);
   lines.push(`  N/A: ${naAllowed(c) ? `разрешён, условие — ${c.na_condition || c.answer_guidance?.na || 'см. определение'}` : 'НЕ разрешён'}`);

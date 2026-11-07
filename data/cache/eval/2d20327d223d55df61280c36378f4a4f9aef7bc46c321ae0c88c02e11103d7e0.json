@@ -1,0 +1,35 @@
+{
+ "key": "2d20327d223d55df61280c36378f4a4f9aef7bc46c321ae0c88c02e11103d7e0",
+ "conversation_id": "p1-ru-011",
+ "criterion_id": "c02",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:23.781Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 7,
+    "why": "запрос клиента с известными деталями"
+   },
+   {
+    "line": 10,
+    "why": "ответ оператора без уточнений"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Данных для ответа хватало с самого начала",
+  "explanation": "Выявление потребности — N/A. Данных для ответа хватало с самого начала: клиент изложил запрос, и оператор ответил по известным деталям без уточнений. Основание — запрос клиента #7 «Да, пожалуйста» и первая реплика оператора #10 «Здравствуйте! Я Лиза. В приложении откройте «Меню…».",
+  "confidence": 0.4,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

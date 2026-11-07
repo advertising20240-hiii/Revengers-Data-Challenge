@@ -1,0 +1,38 @@
+{
+ "key": "034d0a3422f2f605af25723d496f20b10d99e1281a2f4434a819289381348c21",
+ "conversation_id": "p1-ru-026",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:38:15.932Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ясная реплика."
+   },
+   {
+    "line": 12,
+    "why": "Ясная реплика, отсутствие противоречий."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Реплики оператора ясны и связны, задержек в середине диалога не было, клиент не переспрашивал из-за формулировок.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

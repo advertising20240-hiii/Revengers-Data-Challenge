@@ -1,0 +1,38 @@
+{
+ "key": "57e06f962b0f55d6284fd4967143b82924c13e25f2ead78bf65e2af645874ffa",
+ "conversation_id": "p1-kz-009",
+ "criterion_id": "c05",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:40:07.948Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Вежливое приветствие."
+   },
+   {
+    "line": 18,
+    "why": "Вежливое подтверждение: «Жарайды.»"
+   }
+  ],
+  "checked_range": [
+   11,
+   20
+  ],
+  "rule_applied": "05: вежливость и реакция на проблему",
+  "explanation": "Оператор был вежлив на протяжении всего диалога. Клиент не выражал недовольства, но оператор корректно реагировал на его запросы.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

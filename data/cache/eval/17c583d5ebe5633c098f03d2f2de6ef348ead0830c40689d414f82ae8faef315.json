@@ -1,0 +1,34 @@
+{
+ "key": "17c583d5ebe5633c098f03d2f2de6ef348ead0830c40689d414f82ae8faef315",
+ "conversation_id": "p1-en-001",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.069Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "только прощание без итога и предложения помощи"
+   }
+  ],
+  "checked_range": [
+   12,
+   12
+  ],
+  "rule_applied": "Завершение без прощания или без итога",
+  "explanation": "Завершение — Нет. Клиент поблагодарил, но оператор ответил только вежливой фразой и прощанием — без итога, следующего шага или предложения дальнейшей помощи. Основание — последняя реплика оператора #12 «You're welcome. Take care!».",
+  "confidence": 0.6,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

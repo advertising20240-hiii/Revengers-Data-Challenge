@@ -1,0 +1,35 @@
+{
+ "key": "c5a6c5dc1c931ffbc7292cec9633ccd86dd6612b8b9324db8294e9c8e74b2c72",
+ "conversation_id": "p1-ru-023",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:38:01.387Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал четкую инструкцию по поиску облигаций, закрыв основной вопрос клиента."
+   },
+   {
+    "line": 11,
+    "why": "Клиент подтвердил, что видит результат («Вижу, спасибо»), что свидетельствует о решении вопроса."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "04: Все существенные вопросы закрыты",
+  "explanation": "Основной вопрос клиента о поиске облигаций был решен, клиент подтвердил понимание, дополнительных открытых вопросов не осталось.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

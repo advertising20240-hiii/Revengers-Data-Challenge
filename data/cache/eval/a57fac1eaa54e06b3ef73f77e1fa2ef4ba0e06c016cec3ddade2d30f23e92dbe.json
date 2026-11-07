@@ -1,0 +1,35 @@
+{
+ "key": "a57fac1eaa54e06b3ef73f77e1fa2ef4ba0e06c016cec3ddade2d30f23e92dbe",
+ "conversation_id": "p4-ru-005",
+ "criterion_id": "c02",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.152Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 16,
+    "why": "запрос клиента с известными деталями"
+   },
+   {
+    "line": 17,
+    "why": "уточняющий вопрос оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Уточняющий вопрос до ответа",
+  "explanation": "Выявление потребности — Да. Оператор до ответа уточнил недостающие детали запроса. Основание — запрос клиента #16 «Ну в хабаровскомто.» и первая реплика оператора #17 «Компания fernetbark и операции Здравствуйте, чем…».",
+  "confidence": 0.4,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

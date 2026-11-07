@@ -1,0 +1,38 @@
+{
+ "key": "e00948cc9830445c5653e44e590268b2f9ba08a2005bef4e76b79ac3470d382b",
+ "conversation_id": "p1-kz-007",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:46.782Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал чёткий ответ на вопрос клиента о статусе старого логина и совет по новому."
+   },
+   {
+    "line": 11,
+    "why": "Клиент подтвердил понимание: «Түсіндім»."
+   }
+  ],
+  "checked_range": [
+   10,
+   11
+  ],
+  "rule_applied": "04: шкала консультации",
+  "explanation": "Основной вопрос клиента был решён, клиент подтвердил понимание, открытых вопросов не осталось.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

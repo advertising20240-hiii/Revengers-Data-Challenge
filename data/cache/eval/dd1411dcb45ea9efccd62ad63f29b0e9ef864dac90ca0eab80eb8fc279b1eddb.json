@@ -1,0 +1,43 @@
+{
+ "key": "dd1411dcb45ea9efccd62ad63f29b0e9ef864dac90ca0eab80eb8fc279b1eddb",
+ "conversation_id": "p1-ru-005",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:36:47.144Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Клиент задал вопрос о месте нахождения реквизитов"
+   },
+   {
+    "line": 14,
+    "why": "Оператор дал точный путь: «Меню → Пополнить → Перевод по реквизитам»"
+   },
+   {
+    "line": 15,
+    "why": "Клиент подтвердил, что теперь видит нужное"
+   },
+   {
+    "line": 16,
+    "why": "Оператор дал финальную рекомендацию проверить комиссию в банке"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "04: Корректная и полная консультация",
+  "explanation": "Оператор ответил на вопрос клиента о поиске реквизитов, предоставив точный путь в меню, и клиент подтвердил, что нашёл нужное. Все существенные вопросы закрыты.",
+  "confidence": 0.7,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

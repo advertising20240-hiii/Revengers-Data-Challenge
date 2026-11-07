@@ -1,0 +1,38 @@
+{
+ "key": "8fa9f2eaa67e78f6328376ea2feedce6e0701f24a69d7e403a126e7d88856624",
+ "conversation_id": "p1-ru-003",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:36:13.140Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "Клиент задал прямой вопрос: 'А комиссию где искать?'"
+   },
+   {
+    "line": 15,
+    "why": "Ответ оператора: 'Название тарифа смотрите там же.' — не отвечает на вопрос о месте поиска комиссии, а лишь повторяет информацию о тарифе."
+   }
+  ],
+  "checked_range": [
+   14,
+   15
+  ],
+  "rule_applied": "04: часть запроса закрыта, существенный вопрос остался открытым",
+  "explanation": "Оператор ответил на вопрос о месте нахождения тарифа, но проигнорировал второй, не менее важный вопрос клиента о том, где именно искать информацию о комиссиях. Это соответствует шкале 10 (часть закрыта, существенный вопрос открыт).",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

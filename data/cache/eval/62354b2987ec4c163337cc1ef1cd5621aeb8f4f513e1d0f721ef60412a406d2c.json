@@ -1,0 +1,31 @@
+{
+ "key": "62354b2987ec4c163337cc1ef1cd5621aeb8f4f513e1d0f721ef60412a406d2c",
+ "conversation_id": "p1-ru-001",
+ "criterion_id": "c04",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:23.723Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "последний ответ оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Открытых вопросов клиента после последнего ответа нет",
+  "explanation": "Корректная и полная консультация — 20 из 20. После последнего ответа оператора вопросов у клиента не осталось. Основание — последняя реплика оператора #12 «Пожалуйста. Хорошего вечера!», реплик клиента с вопросами после неё нет.",
+  "confidence": 0.35,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,31 @@
+{
+ "key": "819d0969561c2c437cda9443c1ee6574a8e737261636807f87785530d57b6239",
+ "conversation_id": "p1-ru-028",
+ "criterion_id": "c01",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:23.935Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "приветствие на языке клиента и имя оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Приветствие на языке клиента и имя в первой реплике оператора",
+  "explanation": "Установление контакта — Да. В первой реплике оператор поздоровался на русском языке и представился. Основание — первая реплика оператора #10 «Здравствуйте, я Ирина. Сейчас проверю путь.».",
+  "confidence": 0.85,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

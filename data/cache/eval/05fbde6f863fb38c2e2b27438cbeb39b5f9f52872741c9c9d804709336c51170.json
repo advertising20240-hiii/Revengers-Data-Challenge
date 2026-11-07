@@ -1,0 +1,34 @@
+{
+ "key": "05fbde6f863fb38c2e2b27438cbeb39b5f9f52872741c9c9d804709336c51170",
+ "conversation_id": "p1-kz-002",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:00.418Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор дал общую навигационную инструкцию, не раскрывая данные конкретного счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал общий путь в меню, не запрашивая личные данные."
+   }
+  ],
+  "checked_range": [
+   10,
+   14
+  ],
+  "rule_applied": "03: идентификация",
+  "explanation": "Диалог касался общей навигации в приложении, данные конкретного счёта не раскрывались, поэтому идентификация не требовалась.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -9,6 +9,14 @@ export const NO_OPERATOR_REASON = 'Оператор не участвовал в
 
 const SENTENCE_RE = /[^.!?…]+[.!?…]*/gu;
 const QUESTION_RE = /\?/u;
+// 07: phrases that are pure courtesy or farewell. A closing made only of these is not a summary, next step or offer of help
+// (checklist: «подвёл итог или предложил дальнейшую помощь и попрощался»).
+const COURTESY_RE = /(всегда\s+)?пожалуйста|отлично|хорошо|ладно|конечно|рад[аы]?(\s+был[аи]?)?\s+помочь|спасибо(\s+(за\s+(обращение|ожидание|терпение)|что\s+(обратились|подождали)))?|благодарю(\s+за\s+обращение)?|до\s+свидания|всего\s+(доброго|хорошего)|хорошего\s+(дня|вечера)|удачного\s+дня|оқасы\s+жоқ|жақсы|жарайды|рақмет|рахмет|көмегім\s+тигеніне\s+қуаныштымын|көмектескеніме\s+қуаныштымын|сау\s+болыңыз|қош\s+болыңыз|күніңіз\s+сәтті\s+өтсін|you'?re\s+welcome|great|ok(ay)?|of\s+course|sure|happy\s+to\s+help|glad\s+(to\s+help|i\s+could\s+help|you\s+got\s+in|it\s+worked)|thanks?(\s+you)?(\s+for\s+(reaching\s+out|contacting\s+us|your\s+patience|waiting))?|good\s*bye|bye|take\s+care|have\s+a\s+(good|great|nice)\s+(day|evening|one)|\band\b/giu;
+/** True when a sentence carries content beyond courtesy and farewell (a summary, next step or instruction). */
+function substantive(sentence) {
+  const rest = String(sentence || '').replace(COURTESY_RE, ' ').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  return rest.split(/\s+/).filter((w) => w.length >= 3).length >= 2;
+}
 // client confirms the issue is resolved (RU / KZ / EN)
 const CLIENT_CONFIRM_RE = /(спасибо|благодарю|понятно|понял|поняла|ясно|разобрал|получилось|нашёл|нашел|нашла|то,? что (я )?хотел|рақмет|рахмет|түсіндім|түсінікті|таптым|thank|thanks|got it|understood|that helps|found it|perfect)/iu;
 
@@ -283,13 +291,8 @@ export function hintFor(conv, criterion) {
           `Клиент задал вопрос (#${prevClient.n} ${quote(prevClient.text, 50)}), а оператор завершил диалог прощанием, не ответив на него`,
           `сообщение клиента #${prevClient.n} и ${lastRef}`, [prevClient.n, conv.lines.length]);
       }
-      if (lo.farewell && clientConfirmed && !openQ) {
-        return H({ applicable: true, answer: 'yes' }, 0.75, [{ line: prevClient.n, why: 'клиент подтвердил, что вопрос решён' }, { line: lo.line, why: 'прощание оператора' }],
-          'Решение подтверждено клиентом, оператор попрощался',
-          'Клиент подтвердил, что вопрос решён, после чего оператор попрощался; открытых вопросов не осталось',
-          `сообщение клиента #${prevClient.n} ${quote(prevClient.text, 50)} и ${lastRef}`);
-      }
-      if (lo.farewell && (lo.offer_help || sentences.length >= 2) && !openQ) {
+      const summary = sentences.some(substantive);
+      if (lo.farewell && (lo.offer_help || summary) && !openQ) {
         const evidence = prevClient ? [{ line: prevClient.n, why: 'последнее сообщение клиента перед завершением' }] : [];
         evidence.push({ line: lo.line, why: lo.offer_help ? 'прощание и предложение помощи' : 'прощание и итог' });
         return H({ applicable: true, answer: 'yes' }, 0.75, evidence, 'Прощание с итогом или предложением помощи',
@@ -309,6 +312,7 @@ export function hintFor(conv, criterion) {
       const reason = !lo.farewell
         ? `Оператор ${closedLine ? 'закрыл чат' : 'завершил диалог'} без прощания`
         : openQ ? `Оператор попрощался, хотя вопрос клиента (${refs(openLines)} ${quote(line(openLines[0])?.text, 50)}) остался без ответа`
+          : clientConfirmed ? 'Клиент поблагодарил, но оператор ответил только вежливой фразой и прощанием — без итога, следующего шага или предложения дальнейшей помощи'
           : 'Оператор только попрощался, не подведя итог и не предложив дальнейшую помощь';
       const evidence = [{ line: lo.line, why }, ...openLines.slice(0, 1).map((n) => ({ line: n, why: 'вопрос клиента без ответа' }))];
       if (closedLine) evidence.push({ line: closedLine, why: 'сообщение о закрытии чата' });

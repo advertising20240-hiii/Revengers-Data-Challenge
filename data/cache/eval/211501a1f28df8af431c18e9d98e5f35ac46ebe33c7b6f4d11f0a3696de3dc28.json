@@ -1,0 +1,38 @@
+{
+ "key": "211501a1f28df8af431c18e9d98e5f35ac46ebe33c7b6f4d11f0a3696de3dc28",
+ "conversation_id": "p1-ru-029",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:38:40.998Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент уже описал проблему: «Почему опять не могу найти вход? На вашем сайте всё перелопатил»."
+   },
+   {
+    "line": 10,
+    "why": "Оператор не уточнил детали, а оскорбил клиента и сослался на бота, не решив вопрос."
+   }
+  ],
+  "checked_range": [
+   1,
+   10
+  ],
+  "rule_applied": "02: Выявление потребности",
+  "explanation": "Оператор не уточнил недостающие детали и не использовал известные из контекста данные для решения проблемы, а перешел к оскорблению.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

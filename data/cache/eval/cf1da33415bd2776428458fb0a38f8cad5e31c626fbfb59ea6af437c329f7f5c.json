@@ -1,0 +1,38 @@
+{
+ "key": "cf1da33415bd2776428458fb0a38f8cad5e31c626fbfb59ea6af437c329f7f5c",
+ "conversation_id": "p1-kz-008",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:57.161Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент уже указал сайт: «Freedom Finance Global сайты»."
+   },
+   {
+    "line": 10,
+    "why": "Оператор переспросил: «Қай сайтқа кірдіңіз?»."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: выявление потребности",
+  "explanation": "Оператор переспросил информацию, которую клиент уже предоставил в диалоге с ботом, что является нарушением критерия 02. Казахскоязычная модель (kazllm) оценила иначе: yes — требуется проверка.",
+  "confidence": 0.8,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

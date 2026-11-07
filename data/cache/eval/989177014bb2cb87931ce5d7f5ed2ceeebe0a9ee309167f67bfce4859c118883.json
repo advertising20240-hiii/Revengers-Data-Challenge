@@ -1,0 +1,38 @@
+{
+ "key": "989177014bb2cb87931ce5d7f5ed2ceeebe0a9ee309167f67bfce4859c118883",
+ "conversation_id": "p1-kz-002",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:39:00.418Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ясный ответ на запрос клиента."
+   },
+   {
+    "line": 12,
+    "why": "Логичное продолжение диалога с учётом уточнения клиента."
+   }
+  ],
+  "checked_range": [
+   10,
+   14
+  ],
+  "rule_applied": "06: управление диалогом, скорость и грамотность",
+  "explanation": "Ответы оператора ясные, логичные и последовательные, клиенту не пришлось переспрашивать, длительных пауз без предупреждения в середине диалога не было.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

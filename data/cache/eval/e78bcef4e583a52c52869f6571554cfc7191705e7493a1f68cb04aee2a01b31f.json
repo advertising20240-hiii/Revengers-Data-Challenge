@@ -1,0 +1,38 @@
+{
+ "key": "e78bcef4e583a52c52869f6571554cfc7191705e7493a1f68cb04aee2a01b31f",
+ "conversation_id": "p1-ru-022",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:54.401Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Последняя реплика оператора не содержит прощания или итога."
+   },
+   {
+    "line": 14,
+    "why": "Чат закрыт системой без прощания от оператора."
+   }
+  ],
+  "checked_range": [
+   12,
+   14
+  ],
+  "rule_applied": "07: Завершение",
+  "explanation": "Оператор закрыл чат без прощания и без подведения итога или предложения дальнейшей помощи.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

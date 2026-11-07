@@ -1,0 +1,34 @@
+{
+ "key": "cf82d32059fc127346aef91e34a0f303a3ee90796fde37b7ed384cbfbe479086",
+ "conversation_id": "p1-en-001",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:40:58.430Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Реплика 'You're welcome. Take care!' содержит только вежливую фразу и прощание, без итога или предложения дальнейшей помощи."
+   }
+  ],
+  "checked_range": [
+   12,
+   12
+  ],
+  "rule_applied": "07: прощание + итог/помощь",
+  "explanation": "Последняя реплика оператора содержит только вежливое прощание. По политике, благодарность клиента не заменяет итог оператора, поэтому критерий не выполнен.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

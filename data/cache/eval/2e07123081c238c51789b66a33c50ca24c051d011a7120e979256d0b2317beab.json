@@ -1,0 +1,31 @@
+{
+ "key": "2e07123081c238c51789b66a33c50ca24c051d011a7120e979256d0b2317beab",
+ "conversation_id": "p1-ru-016",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:24.054Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор давал общие инструкции по навигации и не раскрывал данные счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "Оператор сообщил общий путь к веб-кабинету (tradernet.global), не раскрывая персональные данные."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "03: N/A если запрос не требовал идентификации",
+  "explanation": "Диалог касался общих вопросов навигации и доступа к сайту, данные конкретного счёта не раскрывались.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

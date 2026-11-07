@@ -1,0 +1,38 @@
+{
+ "key": "8fba84b89bd318c026e5308703f52e01f3353115341a55f75518a71c393bcdca",
+ "conversation_id": "p1-en-008",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:41:55.873Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации: оператор давал общие инструкции по навигации в приложении, не раскрывая данные конкретного счёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Инструкция по поиску тикера."
+   },
+   {
+    "line": 13,
+    "why": "Инструкция по оформлению ордера."
+   }
+  ],
+  "checked_range": [
+   11,
+   20
+  ],
+  "rule_applied": "03: идентификация",
+  "explanation": "Диалог касался общих функций приложения (навигация, настройки ордера), данные счёта не раскрывались, защищённых действий не выполнялось.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

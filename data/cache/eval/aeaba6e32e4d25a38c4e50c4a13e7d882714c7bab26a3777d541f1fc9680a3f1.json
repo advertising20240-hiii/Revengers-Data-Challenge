@@ -1,0 +1,42 @@
+{
+ "key": "aeaba6e32e4d25a38c4e50c4a13e7d882714c7bab26a3777d541f1fc9680a3f1",
+ "conversation_id": "p4-ru-003",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:29.532Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 40,
+    "why": "Оператор инициирует идентификацию: 'Давайте проведем идентификацию...'"
+   },
+   {
+    "line": 65,
+    "why": "Оператор подтверждает успешную идентификацию: 'идентификацию успешно проеданная'."
+   },
+   {
+    "line": 66,
+    "why": "Раскрытие данных счёта происходит после идентификации: 'Лежу, на данный момент там вот имеется поручение...'"
+   }
+  ],
+  "checked_range": [
+   40,
+   66
+  ],
+  "rule_applied": "03: идентификация до раскрытия данных",
+  "explanation": "Оператор провёл процедуру идентификации (ФИО, ИИН, SMS-код) и подтвердил её успешность до раскрытия статуса поручения по счёту.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

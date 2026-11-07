@@ -1,0 +1,34 @@
+{
+ "key": "a2d2ed908fc211ea30ca16c62c1d2effa5755eea062854478bbbc593a970260e",
+ "conversation_id": "p1-en-013",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:42:10.068Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Реплика оператора содержит грубое нарушение (предложение личных услуг), что является заметным сбоем в ведении диалога, хотя формально текст связный."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом",
+  "explanation": "Хотя ответы были ясными, наличие грубого нарушения в реплике #12 (предложение личных услуг) является одним заметным сбоем в профессиональном ведении диалога, что соответствует оценке 7.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

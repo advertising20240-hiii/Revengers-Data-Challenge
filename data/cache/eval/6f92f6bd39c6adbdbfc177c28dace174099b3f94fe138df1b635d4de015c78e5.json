@@ -1,0 +1,35 @@
+{
+ "key": "6f92f6bd39c6adbdbfc177c28dace174099b3f94fe138df1b635d4de015c78e5",
+ "conversation_id": "p1-ru-013",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:23.799Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "последнее сообщение клиента перед завершением"
+   },
+   {
+    "line": 12,
+    "why": "прощание и итог"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Прощание с итогом или предложением помощи",
+  "explanation": "Завершение — Да. Оператор завершил диалог прощанием и итогом по вопросу; открытых вопросов клиента после этого нет. Основание — последняя реплика оператора #12 «Да, нужный раздел в меню для инвесторов. Хорошего дня!», перед ней сообщение клиента #11 без вопроса.",
+  "confidence": 0.75,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

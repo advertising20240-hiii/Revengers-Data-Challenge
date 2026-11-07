@@ -1,6 +1,6 @@
 // Per-criterion evaluation cache: data/cache/eval/<sha256>.json
-// Key = sha256(conversation lines, criterion definition JSON, policy text, PROMPT_VERSION, model).
-// A changed checklist therefore only re-evaluates the criteria whose definition actually changed.
+// Key = sha256(conversation lines, criterion definition JSON without its weight, policy text, PROMPT_VERSION, model).
+// A changed checklist therefore only re-evaluates the criteria whose definition actually changed; a weight change is pure re-scoring.
 import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,7 +14,9 @@ export function linesDigest(conv) {
 }
 
 export function criterionDigest(criterion) {
-  return sha256(stableStringify(criterion));
+  // the weight never reaches the model, so it must not invalidate cached answers
+  const { weight, ...rest } = criterion || {};
+  return sha256(stableStringify(rest));
 }
 
 export function cacheKey({ conv, criterion, policyText, promptVersion, model }) {

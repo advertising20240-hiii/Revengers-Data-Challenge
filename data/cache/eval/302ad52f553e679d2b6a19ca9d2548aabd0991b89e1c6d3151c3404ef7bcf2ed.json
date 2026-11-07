@@ -1,0 +1,34 @@
+{
+ "key": "302ad52f553e679d2b6a19ca9d2548aabd0991b89e1c6d3151c3404ef7bcf2ed",
+ "conversation_id": "p1-ru-030",
+ "criterion_id": "c08",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:38:37.869Z",
+ "result": {
+  "criterion_id": "c08",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Проверены все реплики оператора, нарушений не найдено."
+   }
+  ],
+  "checked_range": [
+   10,
+   14
+  ],
+  "rule_applied": "08: отсутствие грубых ошибок",
+  "explanation": "В репликах оператора не выявлено оскорблений, предложений услуг в обход компании или раскрытия конфиденциальной информации.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

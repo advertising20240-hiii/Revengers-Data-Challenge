@@ -1,0 +1,38 @@
+{
+ "key": "f7e21eed45940777945a8468c64dc23b955b5c9e6def2f6ec1d2ed6a17511da1",
+ "conversation_id": "p1-ru-018",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:33.992Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал ответ, который оказался неточным/ошибочным в контексте (не знал бумаги)."
+   },
+   {
+    "line": 11,
+    "why": "Клиенту пришлось указать на ошибку оператора ('Я даже бумагу вам не назвал')."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Один заметный сбой: оператор ответил некорректно, не уточнив детали, что потребовало от клиента исправления, но диалог продолжился.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

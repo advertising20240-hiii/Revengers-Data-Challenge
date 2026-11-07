@@ -1,0 +1,31 @@
+{
+ "key": "859d63f0131c23c32d7617f2a059cf653b1b126f21c055703d0ec48898cd7898",
+ "conversation_id": "p1-ru-014",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:37:13.876Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Реплики оператора ясны и связны, логичный порядок ответов."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "06: управление диалогом, скорость и грамотность",
+  "explanation": "Диалог ведется ясно, без противоречий и необъявленных пауз, клиенту не пришлось переспрашивать из-за формулировок.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

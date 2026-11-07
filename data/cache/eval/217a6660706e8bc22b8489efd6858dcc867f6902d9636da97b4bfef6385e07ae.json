@@ -1,0 +1,31 @@
+{
+ "key": "217a6660706e8bc22b8489efd6858dcc867f6902d9636da97b4bfef6385e07ae",
+ "conversation_id": "p1-kz-009",
+ "criterion_id": "c01",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.030Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "приветствие на языке клиента и имя оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Приветствие на языке клиента и имя в первой реплике оператора",
+  "explanation": "Установление контакта — Да. В первой реплике оператор поздоровался на казахском языке и представился. Основание — первая реплика оператора #11 «Сәлеметсіз бе! Мен Айсұлумын. Тикерді іздеу жолағына енгізі…».",
+  "confidence": 0.85,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

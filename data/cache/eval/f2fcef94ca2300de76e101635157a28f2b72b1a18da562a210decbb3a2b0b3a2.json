@@ -1,0 +1,31 @@
+{
+ "key": "f2fcef94ca2300de76e101635157a28f2b72b1a18da562a210decbb3a2b0b3a2",
+ "conversation_id": "p4-ru-001",
+ "criterion_id": "c01",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.148Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "приветствие на языке клиента и имя оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Приветствие на языке клиента и имя в первой реплике оператора",
+  "explanation": "Установление контакта — Да. В первой реплике оператор поздоровался на русском языке и представился. Основание — первая реплика оператора #13 «Компания в виду меня зовут [Имя скрыто] Здравствуйте, чем м…».",
+  "confidence": 0.85,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

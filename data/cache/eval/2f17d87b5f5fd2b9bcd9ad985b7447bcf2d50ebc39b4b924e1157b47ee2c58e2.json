@@ -1,0 +1,38 @@
+{
+ "key": "2f17d87b5f5fd2b9bcd9ad985b7447bcf2d50ebc39b4b924e1157b47ee2c58e2",
+ "conversation_id": "p1-en-007",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:41:45.326Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Клиент задал открытый вопрос: 'Can I submit the withdrawal right after this?'"
+   },
+   {
+    "line": 12,
+    "why": "Оператор попрощался ('Bye'), не ответив на вопрос клиента."
+   }
+  ],
+  "checked_range": [
+   11,
+   12
+  ],
+  "rule_applied": "07: Завершение",
+  "explanation": "Оператор завершил диалог прощанием, оставив открытый вопрос клиента без ответа. Согласно правилу, прощание при открытом вопросе клиента является нарушением критерия завершения.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

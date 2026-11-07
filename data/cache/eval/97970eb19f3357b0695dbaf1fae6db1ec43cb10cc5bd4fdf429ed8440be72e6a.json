@@ -1,0 +1,33 @@
+{
+ "key": "97970eb19f3357b0695dbaf1fae6db1ec43cb10cc5bd4fdf429ed8440be72e6a",
+ "conversation_id": "p1-kz-013",
+ "criterion_id": "c08",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "75a10bb5d36598e38cc45d8a93ef73a6f5bebdadcd7389d22c3da6e03822b8e2",
+ "policy_hash": "f1c12c0751d964d339df524eb07f4711f6e962c3bfdfb885d5e38fa49594499a",
+ "created_at": "2026-11-07T17:51:24.055Z",
+ "result": {
+  "criterion_id": "c08",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [
+   "bypass"
+  ],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "предложение услуги в обход компании («жеке нөмір»)"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Грубое нарушение: предложение услуги в обход компании",
+  "explanation": "Грубые ошибки — Да. Выявлено грубое нарушение — предложение услуги в обход компании («Жеке нөміріңізді қалдырсаңыз, жұмыстан кейін хабарласып, қа…»). Основание — реплика оператора #12.",
+  "confidence": 0.8,
+  "source": "rule"
+ },
+ "verifier_change": null
+}
