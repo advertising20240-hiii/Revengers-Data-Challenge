@@ -1,7 +1,16 @@
 // Orchestrates one evaluation: reuse of unchanged criteria, learning-loop examples, evaluator call, assembly, persistence.
-import { buildEvaluation, noOperatorResults, stripResult } from './evaluations.js';
-import { criterionHash } from './checklists.js';
+import { buildEvaluation, noOperatorResults, stripResult, transcriptDigest } from './evaluations.js';
+import { criterionHash, legacyCriterionHash } from './checklists.js';
 import { HttpError } from '../lib/http.js';
+
+/**
+ * Whether a stored evaluation was produced from the transcript the conversation has now.
+ * Evaluations stored before transcript digests existed count as current unless the dialog was re-uploaded with new content later.
+ */
+export function sameTranscript(ev, row, conv) {
+  if (ev.transcript_hash) return ev.transcript_hash === transcriptDigest(conv);
+  return !(row.content_changed_at && row.content_changed_at > (ev.created_at || ''));
+}
 
 export class EvalEngine {
   constructor({ db, config, data, checklists, evaluator }) {
@@ -75,14 +84,18 @@ export class EvalEngine {
       results = noOperatorResults(checklist);
       trace.provider = 'rule';
     } else {
-      // 1. reuse results of criteria whose definition hash is unchanged (latest stored evaluation of this conversation)
-      const prior = opts.force ? null : this.latestFor(row.group_id, conv.conversation_id);
-      const priorBy = new Map((prior?.results || []).map((r) => [r.criterion_hash || `${r.criterion_id}:?`, r]));
+      // 1. reuse results of criteria whose definition hash is unchanged (latest stored evaluation of this conversation),
+      //    but only for the same transcript: a re-uploaded dialog with the same id and new content is evaluated again
+      const latest = opts.force ? null : this.latestFor(row.group_id, conv.conversation_id);
+      const prior = latest && sameTranscript(latest, row, conv) ? latest : null;
+      const priorById = new Map((prior?.results || []).map((r) => [r.criterion_id, r]));
       const toRun = [];
       for (const c of wanted) {
-        const h = criterionHash(c);
-        const old = priorBy.get(h);
-        if (old && old.criterion_id === c.id && !opts.force) {
+        const old = priorById.get(c.id);
+        // weight is not part of the hash, so a weight-only change reuses the answer and is re-scored below with the new weight;
+        // results stored before that change carry the old (weight-inclusive) hash
+        const same = old && (old.criterion_hash === criterionHash(c) || old.criterion_hash === legacyCriterionHash({ ...c, weight: old.weight }));
+        if (same && !opts.force) {
           const reused = { ...stripResult(old) };
           if (old.ai_original) reused.ai_original = old.ai_original;
           if (old.review) reused.review = old.review;

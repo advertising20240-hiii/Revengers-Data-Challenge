@@ -3,12 +3,23 @@ import { ANSWER_TYPES, isScale, isFlag } from '../../packages/scoring/index.js';
 import { hashJson } from '../lib/hash.js';
 import { HttpError } from '../lib/http.js';
 
-const CRITERION_FIELDS = ['code', 'title', 'section', 'answer_type', 'weight', 'scored', 'na_allowed', 'na_condition', 'definition', 'scale', 'evaluator', 'params', 'guidance', 'answer_guidance', 'flag_types', 'flags_config'];
+// Fields that influence the answer. `weight` is deliberately absent: a weight-only change is pure re-scoring
+// through packages/scoring and must reuse the stored answers instead of calling the model again.
+const CRITERION_FIELDS = ['code', 'title', 'section', 'answer_type', 'scored', 'na_allowed', 'na_condition', 'definition', 'scale', 'evaluator', 'params', 'guidance', 'answer_guidance', 'flag_types', 'flags_config'];
+// Fields shown in a version diff (weight changes are still changes for the reviewer).
+const DIFF_FIELDS = ['code', 'title', 'section', 'answer_type', 'weight', 'scored', 'na_allowed', 'na_condition', 'definition', 'scale', 'evaluator', 'params', 'guidance', 'answer_guidance', 'flag_types', 'flags_config'];
 
 /** Hash of the parts of a criterion that influence the model's answer (used for result reuse). */
 export function criterionHash(c) {
   const sub = {};
   for (const f of CRITERION_FIELDS) if (c[f] !== undefined) sub[f] = c[f];
+  return hashJson(sub);
+}
+
+/** Hash as computed before weight was excluded; lets results stored by older versions still be reused. */
+export function legacyCriterionHash(c) {
+  const sub = {};
+  for (const f of DIFF_FIELDS) if (c[f] !== undefined) sub[f] = c[f];
   return hashJson(sub);
 }
 
@@ -72,7 +83,7 @@ export function normalizeChecklist(cl) {
 
 export function criterionDiff(a, b) {
   const fields = [];
-  for (const f of CRITERION_FIELDS) {
+  for (const f of DIFF_FIELDS) {
     const av = a[f]; const bv = b[f];
     if (JSON.stringify(av ?? null) !== JSON.stringify(bv ?? null)) fields.push({ field: f, from: av ?? null, to: bv ?? null });
   }

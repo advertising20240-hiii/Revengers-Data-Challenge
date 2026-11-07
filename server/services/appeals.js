@@ -102,11 +102,16 @@ export class AppealService {
     if (decision === 'change' && outcome !== 'score_changed') throw new HttpError(400, 'Изменение оценки требует исхода score_changed');
     if (decision === 'confirm' && outcome === 'score_changed') throw new HttpError(400, 'Исход score_changed требует decision "change"');
 
-    const ev = this.db.evaluations.get(appeal.evaluation_id);
-    if (!ev) throw new HttpError(404, 'Evaluation not found');
-    const checklist = this.checklists.getOrThrow(ev.checklist_version);
+    const stored = this.db.evaluations.get(appeal.evaluation_id);
+    if (!stored) throw new HttpError(404, 'Evaluation not found');
+    const checklist = this.checklists.getOrThrow(stored.checklist_version);
     const criterion = checklist.criteria.find((c) => c.id === appeal.criterion_id);
+    if (!criterion) throw new HttpError(409, `Критерий ${appeal.criterion_id} отсутствует в чек-листе v${stored.checklist_version}`);
+    // All changes are made on a copy and written only after re-scoring succeeded: a refused decision
+    // (invalid value, scoring error) leaves the stored evaluation and the appeal untouched.
+    const ev = structuredClone(stored);
     const result = ev.results.find((r) => r.criterion_id === appeal.criterion_id);
+    if (!result) throw new HttpError(409, `Критерий ${appeal.criterion_id} отсутствует в оценке ${ev.id}`);
     const row = this.data.resolve(ev.conversation_id, ev.group_id);
     const conv = this.data.prepare(row);
     const now = new Date().toISOString();

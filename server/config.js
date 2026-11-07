@@ -13,7 +13,9 @@ export function getConfig(env = process.env, overrides = {}) {
   const num = (v, d) => { const n = Number(v); return Number.isFinite(n) && n > 0 ? n : d; };
   return {
     port: num(env.PORT, 8080),
-    host: env.HOST || '0.0.0.0',
+    // Loopback by default: the API has no authentication and answers CORS *, so it must not be reachable from the
+    // network unless the operator opts in explicitly (HOST=0.0.0.0, e.g. inside a container behind a proxy).
+    host: env.HOST || '127.0.0.1',
     dataUrl: env.CQA_DATA_URL || DEFAULT_DATA_URL,
     provider: env.CQA_PROVIDER || null,
     model: env.CQA_MODEL || null,

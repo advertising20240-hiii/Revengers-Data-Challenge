@@ -15,8 +15,9 @@ import { computeStats, exportCsv } from './services/stats.js';
 import { evaluationSummary } from './services/evaluations.js';
 import { hashJson } from './lib/hash.js';
 import { buildResultsFile, validateResultsFile } from './services/results.js';
+import { guardedFetch } from './lib/net.js';
 
-export async function createApp({ evaluator = undefined, dataDir = undefined, config: configOverrides = {}, fetchImpl = undefined, log = () => {} } = {}) {
+export async function createApp({ evaluator = undefined, dataDir = undefined, config: configOverrides = {}, fetchImpl = undefined, resolveHost = undefined, log = () => {} } = {}) {
   const config = getConfig(process.env, { ...(dataDir ? { dataDir } : {}), ...configOverrides });
   const db = new Db(join(config.dataDir, 'db'));
   const data = new DataService(db, config, fetchImpl ? { fetchImpl } : {});
@@ -41,7 +42,7 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
     return { ok: true, version: VERSION, provider: p, offline: !p.available || p.provider === 'offline', groups: data.groups(), counts: { conversations: db.conversations.size, evaluations: db.evaluations.find((e) => e.mode === 'stored').length, appeals_open: db.appeals.find((a) => a.status === 'open').length, checklists: db.checklists.size }, concurrency: config.concurrency, data_url_configured: !!config.dataUrl };
   });
   router.get('/api/groups', () => data.groups());
-  router.post('/api/datasets/fetch', async ({ body }) => data.fetchGroup(String(body.group_id ?? '').trim(), { url: body.url || null }));
+  router.post('/api/datasets/fetch', async ({ body }) => data.fetchGroup(String(body.group_id ?? '').trim(), { url: body.url ? String(body.url) : null }));
   router.post('/api/transcripts/upload', async ({ body, raw }) => {
     const payload = body.payload !== undefined ? body.payload : (Array.isArray(body) || body.records || body.data || body.conversation_id ? body : undefined);
     if (payload === undefined) throw new HttpError(400, 'payload is required (API response, {records}, array or a single record)');
@@ -77,7 +78,8 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
     const conv = data.conversation(row);
     const list = engine.evaluationsFor(row.group_id, row.conversation_id);
     const version = q(url, 'checklist_version');
-    const latest = version ? (list.find((e) => e.checklist_version === Number(version)) ?? null) : (list[0] ?? null);
+    // same rule as the list row: the requested version, otherwise the active checklist version, otherwise the newest
+    const latest = engine.latestFor(row.group_id, row.conversation_id, version || null);
     return {
       conversation: { ...conv, group_id: row.group_id, operator_name: data.operatorName(conv) },
       evaluations: list.map((e) => ({ id: e.id, checklist_version: e.checklist_version, total_str: e.total_str, total: e.total, created_at: e.created_at, status: e.status, model: e.model })),
@@ -94,19 +96,25 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
     const doFetch = fetchImpl || globalThis.fetch;
     let upstream;
     try {
+      // Only the audio_url of a loaded conversation is fetched; every hop (player page, media file, redirects) must be
+      // a public http(s) host, so an uploaded record cannot point the proxy at loopback or the internal network.
       // The recording link may be a player page; the media file is in its <source src>. That URL is short-lived, so it is resolved on demand.
       const known = audioUrls.get(conv.audio_url);
       const target = known && known.until > Date.now() ? known.url : conv.audio_url;
-      upstream = await doFetch(target, { headers });
+      upstream = await guardedFetch(doFetch, target, { headers }, { resolve: resolveHost });
       if (/text\/html/i.test(upstream.headers.get('content-type') || '')) {
         const html = await upstream.text();
         const m = /<source[^>]+src="([^"]+)"/i.exec(html) || /<audio[^>]+src="([^"]+)"/i.exec(html);
         if (!m) throw new Error('страница записи не содержит ссылки на аудиофайл');
-        const media = m[1].replace(/&amp;/g, '&');
+        const media = new URL(m[1].replace(/&amp;/g, '&'), target).toString();
         audioUrls.set(conv.audio_url, { url: media, until: Date.now() + 20 * 60 * 1000 });
-        upstream = await doFetch(media, { headers });
+        upstream = await guardedFetch(doFetch, media, { headers }, { resolve: resolveHost });
       }
-    } catch (e) { audioUrls.delete(conv.audio_url); throw new HttpError(502, `Запись недоступна: ${e.message}`); }
+    } catch (e) {
+      audioUrls.delete(conv.audio_url);
+      if (e instanceof HttpError) throw e;
+      throw new HttpError(502, `Запись недоступна: ${e.message}`);
+    }
     if (!upstream.ok && upstream.status !== 206) { audioUrls.delete(conv.audio_url); throw new HttpError(502, `Запись недоступна (HTTP ${upstream.status})`); }
     const h = { 'Content-Type': upstream.headers.get('content-type') || 'audio/mpeg', 'Accept-Ranges': 'bytes', 'Cache-Control': 'private, max-age=3600' };
     for (const k of ['content-length', 'content-range']) if (upstream.headers.get(k)) h[k] = upstream.headers.get(k);
@@ -121,8 +129,9 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
   // ---------- organizers' results file (JSON 1.0) ----------
   router.get('/api/results.json', ({ url }) => {
     const groupId = q(url, 'group_id') || 'DEV';
+    const version = q(url, 'checklist_version') ? Number(q(url, 'checklist_version')) : (checklists.active()?.version ?? null);
     const rows = data.rows(groupId).map((r) => ({ conversation_id: r.conversation_id, evaluations: engine.evaluationsFor(r.group_id, r.conversation_id) }));
-    const file = buildResultsFile({ teamName: process.env.CQA_TEAM_NAME || 'Revengers', rows });
+    const file = buildResultsFile({ teamName: process.env.CQA_TEAM_NAME || 'Revengers', rows, checklistVersion: version });
     return { ...file, _validation: validateResultsFile(file) };
   });
 

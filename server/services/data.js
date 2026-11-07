@@ -5,6 +5,7 @@ import { prepareConversation } from '../../packages/transcript/node.js';
 import { extractOperatorName } from '../../packages/transcript/index.js';
 import { writeJsonAtomic, readJson } from '../lib/store.js';
 import { HttpError } from '../lib/http.js';
+import { transcriptDigest } from './evaluations.js';
 
 export const convKey = (groupId, conversationId) => `${groupId}::${conversationId}`;
 
@@ -41,14 +42,31 @@ export class DataService {
   /** Add records to a group; duplicates within the same group are replaced, same ids in other groups are kept apart. */
   addRecords(groupId, records, source = 'upload', meta = {}) {
     if (!groupId || typeof groupId !== 'string') throw new HttpError(400, 'group_id is required');
-    const ids = [];
+    const prepared = [];
     let skipped = 0;
     for (const rec of records) {
       if (!rec || typeof rec !== 'object' || !rec.conversation_id) { skipped++; continue; }
       let conv;
       try { conv = prepareConversation(rec, groupId); } catch (e) { skipped++; continue; }
+      if (!conv.lines.length) { skipped++; continue; } // a dialog without a single line cannot be evaluated
+      prepared.push({ rec, conv });
+    }
+    // nothing usable: refuse instead of creating an empty group
+    if (!prepared.length) throw new HttpError(400, `Ни одна из записей (${records.length}) не прошла проверку: нужны conversation_id и transcript с репликами; группа «${groupId}» не создана.`, { skipped });
+    const ids = [];
+    const now = new Date().toISOString();
+    for (const { rec, conv } of prepared) {
       const id = convKey(groupId, conv.conversation_id);
-      this.db.conversations.put({ id, group_id: groupId, conversation_id: conv.conversation_id, record: rec, added_at: new Date().toISOString(), source });
+      const digest = transcriptDigest(conv);
+      const old = this.db.conversations.get(id);
+      let changedAt = old?.content_changed_at ?? null;
+      if (old) {
+        let oldDigest = old.transcript_hash;
+        if (!oldDigest) { try { oldDigest = transcriptDigest(this.prepare(old)); } catch { oldDigest = null; } }
+        // remembered so that evaluations of the previous content are not reused (see engine.sameTranscript)
+        if (oldDigest !== digest) changedAt = now;
+      }
+      this.db.conversations.put({ id, group_id: groupId, conversation_id: conv.conversation_id, record: rec, added_at: now, source, transcript_hash: digest, ...(changedAt ? { content_changed_at: changedAt } : {}) });
       this.prepared.delete(id);
       ids.push(conv.conversation_id);
     }
@@ -73,7 +91,10 @@ export class DataService {
 
   async fetchGroup(groupId, { url = null } = {}) {
     if (!groupId || typeof groupId !== 'string' || !/^[A-Za-z0-9_.-]{1,64}$/.test(groupId)) throw new HttpError(400, 'group_id must be a short identifier (letters, digits, - _ .)');
-    const base = url || this.config.dataUrl;
+    // Only the configured organizers' endpoint (DEFAULT_DATA_URL or CQA_DATA_URL) is fetched: a client-supplied URL
+    // would turn the server into an open proxy into whatever network it runs in.
+    if (url && url !== this.config.dataUrl) throw new HttpError(400, 'Загрузка возможна только из API организаторов (CQA_DATA_URL); произвольный url не принимается.');
+    const base = this.config.dataUrl;
     const target = this.buildUrl(base, groupId);
     const cacheFile = join(this.rawDir, `${groupId}.json`);
     let payload = null; let source = 'api'; let apiError = null;

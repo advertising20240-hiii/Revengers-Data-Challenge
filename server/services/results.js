@@ -23,10 +23,19 @@ function clip(t, max = 300) {
   return s.length <= max ? s : `${s.slice(0, max - 1).replace(/\s+\S*$/, '')}…`;
 }
 
-/** Picks the stored evaluation that covers all eight organizer criteria (newest first). */
-export function pickEvaluation(evaluations) {
+/**
+ * Picks the stored evaluation (list is newest first) that covers all eight organizer criteria.
+ * With `checklistVersion` the newest complete evaluation of that version wins, so an export reflects one checklist
+ * (callers pass the active version); without one, or when that version has none, the newest complete evaluation is used.
+ */
+export function pickEvaluation(evaluations, { checklistVersion = null } = {}) {
   const codes = Object.keys(RESULT_IDS);
-  return (evaluations || []).find((e) => codes.every((code) => (e.results || []).some((r) => r.code === code))) || null;
+  const complete = (evaluations || []).filter((e) => codes.every((code) => (e.results || []).some((r) => r.code === code)));
+  if (checklistVersion != null) {
+    const same = complete.find((e) => e.checklist_version === Number(checklistVersion));
+    if (same) return same;
+  }
+  return complete[0] || null;
 }
 
 /** One results[] record for a conversation. */
@@ -50,31 +59,50 @@ export function resultRecord(conversationId, evaluation, error = null) {
   };
 }
 
-/** Model description from what was actually called while producing these evaluations. */
+const RULES_NAME = 'детерминированные правила по фактам транскрипта';
+const isModelName = (m) => !!m && !/^(heuristic|cache|rule)/.test(m);
+
+/**
+ * Model description from what actually produced these evaluations. A model is named only when it answered:
+ * a model call in trace.calls (rule "calls" are code), or — for traces without calls (cache replay, reused results,
+ * committed seeds) — model-judged results (source "ai", not a fallback) under a model provider.
+ * Rules fallback / heuristic-only runs therefore say "rules" and are local.
+ */
 export function modelInfo(evaluations) {
   const models = new Set();
   let rules = false;
+  let provider = null;
   for (const e of evaluations) {
-    if (e?.model && !/^heuristic|^cache/.test(e.model)) models.add(e.model);
-    for (const c of e?.trace?.calls || []) if (c.model) models.add(c.model);
-    if (e?.trace?.kz_model) models.add(e.trace.kz_model);
-    if ((e?.results || []).some((r) => r.source === 'rule')) rules = true;
+    if (!e) continue;
+    const results = e.results || [];
+    if (results.some((r) => r.source === 'rule' || String(r.rule_applied || '').startsWith('fallback:'))) rules = true;
+    if (e.provider === 'heuristic') continue;
+    const called = (e.trace?.calls || []).filter((c) => c.role !== 'rule' && isModelName(c.model));
+    const judged = results.some((r) => r.source === 'ai' && !String(r.rule_applied || '').startsWith('fallback:'));
+    if (called.length) for (const c of called) models.add(c.model);
+    else if (judged) {
+      if (isModelName(e.model)) models.add(e.model);
+      if (isModelName(e.trace?.kz_model)) models.add(e.trace.kz_model);
+    }
+    if ((called.length || judged) && e.provider) provider ??= e.provider;
   }
-  const provider = evaluations.find((e) => e?.provider)?.provider;
+  if (!evaluations.length) return { mode: 'external_api', name: `${process.env.ALEM_MODEL_JUDGE || 'qwen3-8'} (alem.plus API) + ${RULES_NAME}` };
   const list = [...models];
-  const name = [list.length ? `${list.join(', ')}${provider === 'alem' ? ' (alem.plus API)' : ''}` : null, rules ? 'детерминированные правила по фактам транскрипта' : null].filter(Boolean).join(' + ');
-  // mode describes where the models run: every model call goes to the alem.plus API (rules are plain code, not a model)
-  const local = provider === 'openai' || provider === 'ollama';
-  const mode = local ? 'local' : 'external_api';
-  return { mode, name: name || `${process.env.ALEM_MODEL_JUDGE || 'qwen3-8'} (alem.plus API) + детерминированные правила по фактам транскрипта` };
+  // offline replays answers the alem.plus judge produced earlier, so they are still credited to that API
+  // rules are plain code on this machine: with no model answer the whole pipeline is local
+  if (!list.length) return { mode: 'local', name: `${RULES_NAME} (без вызова модели)` };
+  const name = [`${list.join(', ')}${provider === 'alem' || provider === 'offline' ? ' (alem.plus API)' : ''}`, rules ? RULES_NAME : null].filter(Boolean).join(' + ');
+  // mode describes where the models run: every model call goes to the alem.plus API unless a local server is used
+  const mode = provider === 'openai' || provider === 'ollama' ? 'local' : 'external_api';
+  return { mode, name };
 }
 
-/** Full results file; `rows` = [{conversation_id, evaluations:[newest first]}]. */
-export function buildResultsFile({ teamName, rows }) {
+/** Full results file; `rows` = [{conversation_id, evaluations:[newest first]}]; `checklistVersion` = preferred version. */
+export function buildResultsFile({ teamName, rows, checklistVersion = null }) {
   const records = [];
   const used = [];
   for (const row of rows) {
-    const ev = pickEvaluation(row.evaluations);
+    const ev = pickEvaluation(row.evaluations, { checklistVersion });
     if (ev) used.push(ev);
     records.push(resultRecord(row.conversation_id, ev, row.error));
   }

@@ -3,6 +3,10 @@
 import { newId } from '../lib/hash.js';
 import { HttpError } from '../lib/http.js';
 
+// A job may contain the same conversation_id from two groups (DEV and the control set): rows are matched by both.
+// Rows written before group_id was recorded match by conversation_id alone.
+const sameItem = (r, it) => r.conversation_id === it.conversation_id && (r.group_id == null || it.group_id == null || r.group_id === it.group_id);
+
 export class JobService {
   constructor(db, config) {
     this.db = db;
@@ -56,8 +60,7 @@ export class JobService {
     this.controllers.set(id, ac);
     job.status = 'running'; job.finished_at = null; job.interrupted = false; job.error = null;
     this.db.jobs.put(job); this.db.scheduleSave();
-    const doneSet = new Set(job.results.map((r) => r.conversation_id));
-    const pending = job.items.filter((it) => !doneSet.has(it.conversation_id));
+    const pending = job.items.filter((it) => !job.results.some((r) => sameItem(r, it)));
     const limit = Math.max(1, Number(job.concurrency || this.config.concurrency || 2));
     let cursor = 0;
     const next = async () => {
@@ -70,12 +73,13 @@ export class JobService {
           row = await worker(item, ac.signal, job);
         } catch (e) {
           if (ac.signal.aborted) { job.running = job.running.filter((x) => x !== item.conversation_id); return; }
-          row = { conversation_id: item.conversation_id, error: e?.message || String(e) };
+          row = { conversation_id: item.conversation_id, group_id: item.group_id, error: e?.message || String(e) };
         }
         job.running = job.running.filter((x) => x !== item.conversation_id);
         if (ac.signal.aborted && !row) return;
         if (row) {
-          job.results = job.results.filter((r) => r.conversation_id !== item.conversation_id).concat([row]);
+          row.group_id ??= item.group_id;
+          job.results = job.results.filter((r) => !sameItem(r, item)).concat([row]);
           job.cost_usd = Number((job.results.reduce((s, r) => s + (Number(r.cost_usd) || 0), 0)).toFixed(6));
           if (row.cost_note) job.cost_note = row.cost_note;
         }
@@ -112,9 +116,8 @@ export class JobService {
   resume(id) {
     const job = this.get(id);
     if (job.status === 'running') return job;
-    const doneSet = new Set(job.results.filter((r) => !r.error).map((r) => r.conversation_id));
     job.results = job.results.filter((r) => !r.error); // failed rows are retried
-    if (job.items.every((it) => doneSet.has(it.conversation_id))) { job.status = 'done'; this.db.jobs.put(job); this.db.scheduleSave(); return job; }
+    if (job.items.every((it) => job.results.some((r) => sameItem(r, it)))) { job.status = 'done'; this.db.jobs.put(job); this.db.scheduleSave(); return job; }
     return this.run(id);
   }
 

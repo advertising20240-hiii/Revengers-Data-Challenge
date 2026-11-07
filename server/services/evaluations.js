@@ -2,6 +2,7 @@
 // Totals are never computed here directly — always through packages/scoring.
 import { scoreEvaluation, isScale, isFlag, scaleMax, naAllowed } from '../../packages/scoring/index.js';
 import { criterionHash } from './checklists.js';
+import { createHash } from 'node:crypto';
 import { newId } from '../lib/hash.js';
 import { HttpError } from '../lib/http.js';
 
@@ -41,6 +42,34 @@ export function enrichEvidence(conv, evidence) {
     out.push({ line: n, why: String(e.why ?? ''), timestamp: line.timestamp, offset_label: line.offset_label, offset_seconds: line.offset_seconds, speaker: line.speaker, quote: quoteOf(line) });
   }
   return out;
+}
+
+/** Digest of the transcript as the evaluator saw it; stored results are reused only for the same digest. */
+export function transcriptDigest(conv) {
+  const lines = (conv?.lines || []).map((l, i) => [l.n ?? i + 1, l.speaker ?? null, String(l.text ?? '')]);
+  return createHash('sha256').update(JSON.stringify(lines)).digest('hex').slice(0, 32);
+}
+
+/**
+ * Human-review queue: concrete risk signals, not a blanket threshold. Shared by creation and re-scoring.
+ * Criteria a reviewer has already decided (`review`) no longer raise low-confidence / disagreement / fallback signals.
+ */
+export function reviewSignals(results, gross, trace = {}) {
+  const conf = (r) => (typeof r.confidence === 'number' ? r.confidence : 0);
+  const confs = results.map(conf);
+  const minConf = confs.length ? Math.min(...confs) : 0;
+  const open = results.filter((r) => !r.review);
+  const openIds = new Set(open.map((r) => r.criterion_id));
+  const openMin = open.length ? Math.min(...open.map(conf)) : 1;
+  const reasons = [];
+  if (openMin < 0.6) reasons.push(`низкая уверенность (${openMin.toFixed(2)})`);
+  if (gross?.flag) reasons.push(`грубая ошибка: ${(gross.types || []).join(', ') || 'тип не указан'}`);
+  const kz = (trace?.kz_disagreements || []).filter((d) => openIds.has(d.criterion_id));
+  if (kz.length) reasons.push(`расхождение с казахской моделью: ${kz.map((d) => d.criterion_id).join(', ')}`);
+  const ver = (trace?.verifier_changes || []).filter((d) => openIds.has(d.criterion_id));
+  if (ver.length) reasons.push(`проверяющая модель не согласна: ${ver.map((d) => d.criterion_id).join(', ')}`);
+  if (open.some((r) => String(r.rule_applied || '').startsWith('fallback:'))) reasons.push('ответ модели не прошёл проверку — использованы правила');
+  return { min_confidence: Number(minConf.toFixed(3)), needs_review: reasons.length > 0, review_reasons: reasons };
 }
 
 /** Bare CriterionResult (what the evaluator produced), without presentation fields. */
@@ -98,15 +127,7 @@ export function buildEvaluation({ conv, checklist, results, trace = {}, mode = '
     const r = criteriaOut.find((x) => x.criterion_id === cid);
     for (const e of r?.evidence || []) grossEvidence.push({ line: e.line, quote: e.quote, speaker: e.speaker });
   }
-  const confs = criteriaOut.map((r) => (typeof r.confidence === 'number' ? r.confidence : 0));
-  const minConf = confs.length ? Math.min(...confs) : 0;
-  // Human-review queue: concrete risk signals, not a blanket threshold
-  const reviewReasons = [];
-  if (minConf < 0.6) reviewReasons.push(`низкая уверенность (${minConf.toFixed(2)})`);
-  if (scored.gross.flag) reviewReasons.push(`грубая ошибка: ${scored.gross.types.join(', ') || 'тип не указан'}`);
-  if ((trace?.kz_disagreements || []).length) reviewReasons.push(`расхождение с казахской моделью: ${trace.kz_disagreements.map((d) => d.criterion_id).join(', ')}`);
-  if ((trace?.verifier_changes || []).length) reviewReasons.push(`проверяющая модель не согласна: ${trace.verifier_changes.map((d) => d.criterion_id).join(', ')}`);
-  if (criteriaOut.some((r) => String(r.rule_applied || '').startsWith('fallback:'))) reviewReasons.push('ответ модели не прошёл проверку — использованы правила');
+  const review = reviewSignals(criteriaOut, scored.gross, trace);
   const now = new Date().toISOString();
   const costUsd = Number(trace?.cost_usd ?? 0) || 0;
   const ev = {
@@ -120,7 +141,8 @@ export function buildEvaluation({ conv, checklist, results, trace = {}, mode = '
     total: scored.total, total_str: scored.total_str, calculated: scored.calculated, original_total: scored.total,
     section_totals,
     gross: { ...scored.gross, evidence: grossEvidence },
-    min_confidence: Number(minConf.toFixed(3)), needs_review: reviewReasons.length > 0, review_reasons: reviewReasons,
+    ...review,
+    transcript_hash: transcriptDigest(conv),
     operator_participated: conv.facts?.operator_participated ?? true,
     cost_usd: costUsd, cost_note: trace?.cost_note ?? null, latency_ms: Number(trace?.latency_ms ?? 0) || 0,
     trace: trace || {},
@@ -130,7 +152,7 @@ export function buildEvaluation({ conv, checklist, results, trace = {}, mode = '
   return ev;
 }
 
-/** Recompute totals after a reviewer changed one criterion; mutates and returns the evaluation. */
+/** Recompute totals and the review signals after a reviewer decision; mutates and returns the evaluation. */
 export function rescoreEvaluation(ev, checklist, conv) {
   const scored = scoreEvaluation(checklist, answersFromResults(checklist, ev.results));
   if (scored.errors.length) throw new HttpError(400, `Новое значение не проходит проверку движка: ${scored.errors.join('; ')}`);
@@ -150,6 +172,8 @@ export function rescoreEvaluation(ev, checklist, conv) {
   ev.gross = { ...scored.gross, evidence: grossEvidence };
   ev.total = scored.total; ev.total_str = scored.total_str; ev.calculated = scored.calculated;
   ev.scoring_errors = scored.errors;
+  // same queue rules as on creation: a decided gross error or uncertain criterion leaves the review queue
+  Object.assign(ev, reviewSignals(ev.results, ev.gross, ev.trace));
   return ev;
 }
 
