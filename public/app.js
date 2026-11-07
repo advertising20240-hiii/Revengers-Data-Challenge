@@ -132,6 +132,7 @@ async function boot() {
   subscribe((what) => {
     if (what === 'role') { updateRole(); toast(t(state.role === 'operator' ? 'role.now_operator' : 'role.now_reviewer')); }
     if (what === 'health' || what === 'offline') updateHealth();
+    if (what === 'stale') refreshHealth();
   });
   updateHealth();
   refreshHealth();

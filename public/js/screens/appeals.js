@@ -2,7 +2,7 @@
 import { h, clear, replace } from '../dom.js';
 import { t } from '../i18n.js';
 import { api } from '../api.js';
-import { state, subscribe, isReviewer, setRole, providerAvailable, providerReason } from '../state.js';
+import { state, subscribe, isReviewer, setRole, providerAvailable, providerReason, healthStale } from '../state.js';
 import { chip, toast, openModal, skeleton, emptyState, errorBox, field, select } from '../components.js';
 import { cardHash } from '../router.js';
 import { num, date, speakerLabel, statusLabel, outcomeLabel, answerKind, answerText, answerLabel, pct } from '../format.js';
@@ -202,7 +202,7 @@ export function renderAppeals(main, params) {
         const r = await api.decide(a.id, payload);
         const ap = r.appeal || {};
         toast(t('ap.decided', { b: num(ap.total_before), a: num(ap.total_after) }), 'ok');
-        m.close(); selectedId = a.id; await loadQueue(); loadMetrics();
+        m.close(); selectedId = a.id; healthStale(); await loadQueue(); loadMetrics();
       } catch (e) { replace(err, errorBox(e)); submit.disabled = false; }
     } }, t('ap.submit'));
 

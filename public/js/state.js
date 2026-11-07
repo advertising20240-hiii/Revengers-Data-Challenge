@@ -23,6 +23,8 @@ export function setHealth(h) { state.health = h; emit('health'); }
 export function setOffline(v) { if (state.offline !== v) { state.offline = v; emit('offline'); } }
 export function setGroup(g) { state.group = g || ''; LS.set('cqa.group', state.group); emit('group'); }
 export function setJob(j) { state.job = j; LS.set('cqa.job', j); emit('job'); }
+/** Server counters changed (appeal created or decided): ask the header to re-read /api/health now instead of on the next poll. */
+export function healthStale() { emit('stale'); }
 
 export function isReviewer() { return state.role === 'reviewer'; }
 export function isOperator() { return state.role === 'operator'; }

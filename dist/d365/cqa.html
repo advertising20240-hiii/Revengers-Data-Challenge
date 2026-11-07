@@ -556,7 +556,7 @@ function pl(n, key) {
 
 };
 __cqa_modules["/public/js/state.js"] = function (__exports) {
-Object.defineProperties(__exports, { "state": { enumerable: true, get: () => state }, "subscribe": { enumerable: true, get: () => subscribe }, "setRole": { enumerable: true, get: () => setRole }, "setHealth": { enumerable: true, get: () => setHealth }, "setOffline": { enumerable: true, get: () => setOffline }, "setGroup": { enumerable: true, get: () => setGroup }, "setJob": { enumerable: true, get: () => setJob }, "isReviewer": { enumerable: true, get: () => isReviewer }, "isOperator": { enumerable: true, get: () => isOperator }, "providerAvailable": { enumerable: true, get: () => providerAvailable }, "providerReason": { enumerable: true, get: () => providerReason } });
+Object.defineProperties(__exports, { "state": { enumerable: true, get: () => state }, "subscribe": { enumerable: true, get: () => subscribe }, "setRole": { enumerable: true, get: () => setRole }, "setHealth": { enumerable: true, get: () => setHealth }, "setOffline": { enumerable: true, get: () => setOffline }, "setGroup": { enumerable: true, get: () => setGroup }, "setJob": { enumerable: true, get: () => setJob }, "healthStale": { enumerable: true, get: () => healthStale }, "isReviewer": { enumerable: true, get: () => isReviewer }, "isOperator": { enumerable: true, get: () => isOperator }, "providerAvailable": { enumerable: true, get: () => providerAvailable }, "providerReason": { enumerable: true, get: () => providerReason } });
 // Small shared state with subscriptions: role, health, offline flag, current group, active job.
 
 const listeners = new Set();
@@ -582,6 +582,8 @@ function setHealth(h) { state.health = h; emit('health'); }
 function setOffline(v) { if (state.offline !== v) { state.offline = v; emit('offline'); } }
 function setGroup(g) { state.group = g || ''; LS.set('cqa.group', state.group); emit('group'); }
 function setJob(j) { state.job = j; LS.set('cqa.job', j); emit('job'); }
+/** Server counters changed (appeal created or decided): ask the header to re-read /api/health now instead of on the next poll. */
+function healthStale() { emit('stale'); }
 
 function isReviewer() { return state.role === 'reviewer'; }
 function isOperator() { return state.role === 'operator'; }
@@ -1316,7 +1318,7 @@ Object.defineProperties(__exports, { "renderCard": { enumerable: true, get: () =
 const { h, clear, replace } = __cqa_require("/public/js/dom.js");
 const { t, pl } = __cqa_require("/public/js/i18n.js");
 const { api } = __cqa_require("/public/js/api.js");
-const { state, subscribe, isOperator, setRole } = __cqa_require("/public/js/state.js");
+const { state, subscribe, isOperator, setRole, healthStale } = __cqa_require("/public/js/state.js");
 const { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, confidence, field, select } = __cqa_require("/public/js/components.js");
 const { cardHash, replaceHash } = __cqa_require("/public/js/router.js");
 const { channelLabel, speakerLabel, num, secs, date, provenance, reviewReasons, statusLabel, grossTypeLabel, outcomeLabel, answerKind, answerText, answerLabel } = __cqa_require("/public/js/format.js");
@@ -1598,7 +1600,7 @@ function renderCard(main, params) {
       okBtn.disabled = true;
       try {
         await api.createAppeal({ evaluation_id: E.id, criterion_id: r.criterion_id, comment: ta.value.trim() });
-        toast(t('appeal.created'), 'ok'); m.close(); load();
+        toast(t('appeal.created'), 'ok'); m.close(); healthStale(); load();
       } catch (e) { replace(err, errorBox(e)); okBtn.disabled = false; }
     } }, t('appeal.submit'));
     const m = openModal({
@@ -2310,7 +2312,7 @@ Object.defineProperties(__exports, { "renderAppeals": { enumerable: true, get: (
 const { h, clear, replace } = __cqa_require("/public/js/dom.js");
 const { t } = __cqa_require("/public/js/i18n.js");
 const { api } = __cqa_require("/public/js/api.js");
-const { state, subscribe, isReviewer, setRole, providerAvailable, providerReason } = __cqa_require("/public/js/state.js");
+const { state, subscribe, isReviewer, setRole, providerAvailable, providerReason, healthStale } = __cqa_require("/public/js/state.js");
 const { chip, toast, openModal, skeleton, emptyState, errorBox, field, select } = __cqa_require("/public/js/components.js");
 const { cardHash } = __cqa_require("/public/js/router.js");
 const { num, date, speakerLabel, statusLabel, outcomeLabel, answerKind, answerText, answerLabel, pct } = __cqa_require("/public/js/format.js");
@@ -2510,7 +2512,7 @@ function renderAppeals(main, params) {
         const r = await api.decide(a.id, payload);
         const ap = r.appeal || {};
         toast(t('ap.decided', { b: num(ap.total_before), a: num(ap.total_after) }), 'ok');
-        m.close(); selectedId = a.id; await loadQueue(); loadMetrics();
+        m.close(); selectedId = a.id; healthStale(); await loadQueue(); loadMetrics();
       } catch (e) { replace(err, errorBox(e)); submit.disabled = false; }
     } }, t('ap.submit'));
 
@@ -3019,6 +3021,7 @@ async function boot() {
   subscribe((what) => {
     if (what === 'role') { updateRole(); toast(t(state.role === 'operator' ? 'role.now_operator' : 'role.now_reviewer')); }
     if (what === 'health' || what === 'offline') updateHealth();
+    if (what === 'stale') refreshHealth();
   });
   updateHealth();
   refreshHealth();

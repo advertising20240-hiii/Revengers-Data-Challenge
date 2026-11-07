@@ -2,7 +2,7 @@
 import { h, clear, replace } from '../dom.js';
 import { t, pl } from '../i18n.js';
 import { api } from '../api.js';
-import { state, subscribe, isOperator, setRole } from '../state.js';
+import { state, subscribe, isOperator, setRole, healthStale } from '../state.js';
 import { chip, langTag, toast, openModal, skeleton, emptyState, errorBox, confidence, field, select } from '../components.js';
 import { cardHash, replaceHash } from '../router.js';
 import { channelLabel, speakerLabel, num, secs, date, provenance, reviewReasons, statusLabel, grossTypeLabel, outcomeLabel, answerKind, answerText, answerLabel } from '../format.js';
@@ -284,7 +284,7 @@ export function renderCard(main, params) {
       okBtn.disabled = true;
       try {
         await api.createAppeal({ evaluation_id: E.id, criterion_id: r.criterion_id, comment: ta.value.trim() });
-        toast(t('appeal.created'), 'ok'); m.close(); load();
+        toast(t('appeal.created'), 'ok'); m.close(); healthStale(); load();
       } catch (e) { replace(err, errorBox(e)); okBtn.disabled = false; }
     } }, t('appeal.submit'));
     const m = openModal({
