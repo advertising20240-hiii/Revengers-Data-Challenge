@@ -13,6 +13,14 @@ const SPEAKERS_BY_CODE = {
 function num(x) { const n = Number(x); return Number.isFinite(n) ? n : null; }
 
 /** Coerce loosely-typed model output into the CriterionResult shape (no judgement here). */
+function clip(t, max) {
+  const s = String(t || '').replace(/\s+/g, ' ').trim();
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('.»'));
+  return (end > max * 0.5 ? cut.slice(0, end + 1) : cut.replace(/\s+\S*$/, '')) + (end > max * 0.5 ? '' : '…');
+}
+
 export function normalizeResult(raw, criterion) {
   const r = raw || {};
   const out = {
@@ -38,6 +46,9 @@ export function normalizeResult(raw, criterion) {
     else if (['no', 'нет', 'n', 'false'].includes(a)) out.answer = 'no';
   } else if (typeof r.answer === 'boolean') out.answer = r.answer ? 'yes' : 'no';
   if (r.scale_value != null && r.scale_value !== '') out.scale_value = num(r.scale_value);
+  // keep model text short and clean (a model may leak its reasoning into free-text fields)
+  out.explanation = clip(out.explanation, 600);
+  out.rule_applied = clip(out.rule_applied, 160);
   // A model often expresses N/A as {applicable:true, answer:null, na_reason:"..."}: treat it as N/A when N/A is allowed
   if (!isFlag(criterion) && out.answer == null && out.scale_value == null && out.na_reason && naAllowed(criterion)) out.applicable = false;
   if (isFlag(criterion)) {
@@ -47,7 +58,7 @@ export function normalizeResult(raw, criterion) {
   }
   if (isScale(criterion) && out.scale_value == null && out.answer && !out.applicable === false) { /* keep */ }
   const ev = Array.isArray(r.evidence) ? r.evidence : [];
-  out.evidence = ev.map((e) => (typeof e === 'number' ? { line: e, why: '' } : { line: num(e?.line ?? e?.n), why: String(e?.why ?? e?.quote ?? '') })).filter((e) => e.line != null);
+  out.evidence = ev.map((e) => (typeof e === 'number' ? { line: e, why: '' } : { line: num(e?.line ?? e?.n), why: clip(e?.why ?? e?.quote ?? '', 200) })).filter((e) => e.line != null);
   if (Array.isArray(r.checked_range) && r.checked_range.length === 2) {
     const a = num(r.checked_range[0]); const b = num(r.checked_range[1]);
     if (a != null && b != null) out.checked_range = [Math.min(a, b), Math.max(a, b)];
