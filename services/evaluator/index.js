@@ -35,7 +35,7 @@ const ruLabel = (r) => (!r ? '—' : r.applicable === false ? 'N/A' : r.scale_va
 export const PROMPT_VERSION = PV;
 
 // Criteria judged in their own call. Measured on DEV: criterion 06 (dialogue management, 0/4/7/10) judged alone agrees with
-// the annotator far more often than inside the all-criteria call (83.1 % vs 70.8 % exact), at one extra call per dialog.
+// the annotator far more often than inside the all-criteria call (84.6 % vs 70.8 % exact on 65 DEV dialogs), at one extra call per dialog.
 export function soloCodes(providerName) {
   const raw = process.env.CQA_JUDGE_SOLO ?? (['heuristic', 'fake'].includes(providerName) ? '' : '06'); // offline replays the alem cache, so it shares the key space
   return new Set(String(raw).split(',').map((x) => x.trim()).filter(Boolean));

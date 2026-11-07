@@ -53,7 +53,7 @@
   "outcome_hint.criterion_change": "Критерий тұжырымы әртүрлі түсінуге жол береді — чек-лист редакторына белгі.",
   "outcome_hint.stands_explanation": "Баға дұрыс, бірақ түсіндірме толық емес болды.",
   "outcome_hint.stands_coaching": "Баға дұрыс; операторға кері байланыс қажет.",
-  "cost.zero": "0 ₸ · жергілікті модель {model}",
+  "cost.zero": "0 ₸ · {model}, тегін",
   "type.yes_no": "Иә / Жоқ",
   "type.yes_no_na": "Иә / Жоқ / N/A",
   "type.scale": "Шкала",

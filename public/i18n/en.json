@@ -53,7 +53,7 @@
   "outcome_hint.criterion_change": "The criterion wording is ambiguous — a signal for the checklist editor.",
   "outcome_hint.stands_explanation": "The score is correct, but the explanation was incomplete.",
   "outcome_hint.stands_coaching": "The score is correct; the operator needs feedback.",
-  "cost.zero": "0 ₸ · local model {model}",
+  "cost.zero": "0 ₸ · {model}, free",
   "type.yes_no": "Yes / No",
   "type.yes_no_na": "Yes / No / N/A",
   "type.scale": "Scale",

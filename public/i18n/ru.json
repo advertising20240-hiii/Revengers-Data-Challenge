@@ -53,7 +53,7 @@
   "outcome_hint.criterion_change": "Формулировка критерия допускает разночтения — сигнал для редактора чек-листа.",
   "outcome_hint.stands_explanation": "Оценка верна, но объяснение было неполным.",
   "outcome_hint.stands_coaching": "Оценка верна; оператору нужна обратная связь.",
-  "cost.zero": "0 ₸ · локальная модель {model}",
+  "cost.zero": "0 ₸ · {model}, без оплаты",
   "type.yes_no": "Да / Нет",
   "type.yes_no_na": "Да / Нет / N/A",
   "type.scale": "Шкала",
