@@ -1870,7 +1870,7 @@
  "cost": {
   "total_usd": 0,
   "per_dialog_usd": 0,
-  "cost_note": "0 ₸ — бесплатный API alem.plus (qwen3-8)",
+  "cost_note": "0 ₸ для команды — API Alem Plus по ключам хакатона (qwen3-8)",
   "calls": 82,
   "by_role": {
    "judge": {

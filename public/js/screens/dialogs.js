@@ -168,7 +168,7 @@ export function renderDialogs(main) {
     const ap = r.appeal_status === 'open' ? chip(t('status.under_appeal'), 'warn') : r.appeal_status === 'resolved' ? chip(t('status.reviewed'), 'info') : h('span', { class: 'muted' }, '—');
     return h('tr', { class: chk.checked ? 'sel' : '' },
       h('td', null, chk),
-      h('td', null, h('a', { href: cardHash(r.conversation_id, null, r.group_id), class: 'mono' }, r.conversation_id), r.first_client_text ? h('div', { class: 'small preview', title: r.first_client_text }, r.first_client_text) : null, r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
+      h('td', null, h('a', { href: cardHash(r.conversation_id, null, r.group_id), class: 'mono' }, r.conversation_id), r.first_client_text ? h('div', { class: 'small first-msg', title: r.first_client_text }, r.first_client_text) : null, r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
       h('td', null, langTag(r.language)),
       h('td', null, channelLabel(r.channel)),
       h('td', null, r.operator_name || h('span', { class: 'muted' }, '—')),
@@ -203,7 +203,13 @@ export function renderDialogs(main) {
     const file = h('input', { type: 'file', accept: 'application/json,.json' });
     const ta = h('textarea', { placeholder: t('dialogs.paste_ph'), rows: 8 });
     const status = h('div', { class: 'small muted' });
-    file.addEventListener('change', () => { const f = file.files[0]; if (f) f.text().then((txt) => { ta.value = txt; }); });
+    // The organizers' API response names its set (data.dataset_group_id): use it instead of the pre-filled filter group,
+    // otherwise a control file uploaded while DEV is selected would be merged into DEV.
+    const groupFromFile = () => {
+      try { const p = JSON.parse(ta.value); const g = p && (p.data?.dataset_group_id ?? p.dataset_group_id ?? (Array.isArray(p) ? null : p.group_id)); if (typeof g === 'string' && g.trim()) gid.value = g.trim(); } catch { /* not JSON yet */ }
+    };
+    ta.addEventListener('input', groupFromFile);
+    file.addEventListener('change', () => { const f = file.files[0]; if (f) f.text().then((txt) => { ta.value = txt; groupFromFile(); }); });
     const okBtn = h('button', { class: 'btn primary', type: 'button', onclick: async () => {
       let payload;
       try { payload = JSON.parse(ta.value); } catch { replace(status, errorBox(new Error(t('dialogs.bad_json')))); return; }
