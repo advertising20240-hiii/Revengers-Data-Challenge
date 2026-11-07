@@ -77,7 +77,7 @@ export function providerInfo(opts = {}) {
   return {
     provider, model, verifier_model, kz_model: kzModelFor(provider), available: !!st.available, reason: st.reason, roles: st.roles, quota: st.quota && Object.keys(st.quota).length ? st.quota : undefined,
     local: LOCAL_PROVIDERS.includes(provider), cloud_allowed: cloudAllowed(), prompt_version: PROMPT_VERSION, policy_hash: POLICY_HASH,
-    cost_note: provider === 'offline' ? `0 ₸ — сохранённые результаты модели ${model}, модель не вызывается` : provider === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model || 'модель не задана'})` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
+    cost_note: provider === 'offline' ? `0 ₸ — сохранённые результаты модели ${model}, модель не вызывается` : provider === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model || 'модель не задана'})` : provider === 'gemini' || provider === 'nvidia' ? `0 ₸ — ${provider === 'gemini' ? 'бесплатный тариф Google Gemini API' : 'кредит NVIDIA API'} (${model}), жёсткий лимит расходов` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
   };
 }
 
@@ -103,7 +103,7 @@ async function callWithRetry(prov, req, cfg, ctx, signal) {
     if (signal?.aborted) throw new Error('aborted');
     try { return await withSlot(() => prov.mod.complete({ ...req, signal }, cfg, ctx)); } catch (e) {
       lastErr = e;
-      if (/aborted|нулевых затрат|Офлайн|не задан|не установлен/.test(e.message) || attempt === MAX_RETRIES) break;
+      if (e.budget || /aborted|нулевых затрат|Офлайн|не задан|не установлен/.test(e.message) || attempt === MAX_RETRIES) break; // never retry around a spending limit
       await new Promise((r) => setTimeout(r, 800 * 2 ** attempt));
     }
   }
@@ -120,6 +120,8 @@ function chunk(arr, size) {
 function costNote(provider, model, seconds) {
   if (provider === 'heuristic') return '0 ₸ — детерминированные правила без модели';
   if (provider === 'alem') return `0 ₸ — бесплатный API alem.plus (${model}), ~${Math.round(seconds)} с на диалог`;
+  if (provider === 'gemini') return `0 ₸ — бесплатный тариф Google Gemini API (${model}) под жёстким лимитом, ~${Math.round(seconds)} с на диалог`;
+  if (provider === 'nvidia') return `0 ₸ — кредит NVIDIA API (${model}) под жёстким лимитом, ~${Math.round(seconds)} с на диалог`;
   if (LOCAL_PROVIDERS.includes(provider)) return `0 ₸ — локальная модель ${model} на ${HARDWARE}, ~${Math.round(seconds)} с на диалог`;
   return `облачная модель ${model}, цена по прайс-листу`;
 }
