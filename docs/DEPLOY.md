@@ -22,7 +22,7 @@ npm run build:static          # -> dist/static/index.html
 
 1. Сделать репозиторий публичным (Settings → General → Danger Zone → Change visibility). Pages для приватных репозиториев на бесплатном плане недоступны.
 2. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
-3. Push в `main` или Actions → «Pages (static demo)» → Run workflow.
+3. Actions → «Pages (static demo)» → **Run workflow** (запуск вручную, чтобы до включения Pages workflow не падал).
 
 Workflow `.github/workflows/pages.yml` собирает демо на Node 24 и публикует `dist/static` только официальными действиями GitHub. Адрес: `https://<владелец>.github.io/<репозиторий>/`. До шагов 1–2 workflow завершится ошибкой — это ожидаемо.
 

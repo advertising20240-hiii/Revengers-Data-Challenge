@@ -1,11 +1,10 @@
 name: Pages (static demo)
 
 # Builds the read-only static demo (npm run build:static -> dist/static/index.html) and publishes it to GitHub Pages.
-# Works only after the repository is public and Settings -> Pages -> Source is set to "GitHub Actions" (docs/DEPLOY.md).
+# Works only after the repository is public and Settings -> Pages -> Source is set to "GitHub Actions" (docs/DEPLOY.md),
+# so it is started by hand (Actions -> Run workflow) instead of on every push.
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
