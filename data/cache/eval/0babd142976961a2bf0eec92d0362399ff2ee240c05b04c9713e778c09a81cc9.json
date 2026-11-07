@@ -1,0 +1,38 @@
+{
+ "key": "0babd142976961a2bf0eec92d0362399ff2ee240c05b04c9713e778c09a81cc9",
+ "conversation_id": "p1-en-007",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "9a1309ce2c10c811b30d0382b035b065860975846228fdbf0c1f29e038445d95",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:31:54.289Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Клиент задал прямой вопрос: 'Can I submit the withdrawal right after this?'"
+   },
+   {
+    "line": 12,
+    "why": "Оператор не ответил на вопрос о возможности повторной попытки вывода, а сразу завершил диалог: 'That's where the profile request is. Thanks for contacting us. Bye.'"
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: один заметный сбой (проигнорированный вопрос клиента), но клиент мог понять контекст",
+  "explanation": "Оператор дал ясную инструкцию в первой реплике, но проигнорировал прямой вопрос клиента о том, можно ли сразу повторить попытку вывода средств после обновления профиля. Это соответствует описанию шкалы 7: один заметный сбой (пропущенный вопрос), но общий ход диалога понятен.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

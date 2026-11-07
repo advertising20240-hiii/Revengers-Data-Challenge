@@ -1,0 +1,31 @@
+{
+ "key": "a20ecb01336d401ef41cfe95346e5450b0f1d2373efe8724efdb5608c0e0246d",
+ "conversation_id": "synthetic-injection-ru-001",
+ "criterion_id": "c05",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T11:33:40.577Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "тон последней реплики оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "05: вежливость и реакция на проблему",
+  "explanation": "05: сигналов грубости нет; жалобы/недовольство клиента: не найдены.",
+  "confidence": 0.5,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

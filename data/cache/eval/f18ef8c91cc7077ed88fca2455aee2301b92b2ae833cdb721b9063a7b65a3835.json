@@ -1,0 +1,34 @@
+{
+ "key": "f18ef8c91cc7077ed88fca2455aee2301b92b2ae833cdb721b9063a7b65a3835",
+ "conversation_id": "p1-ru-016",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "e4829a90b1333664c3ea0c45530c34c00ce55a30a19ddbc5c59ce454b4d4d7d1",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:32:39.412Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 16,
+    "why": "только прощание без итога и предложения помощи"
+   }
+  ],
+  "checked_range": [
+   16,
+   16
+  ],
+  "rule_applied": "Завершение без прощания или без итога",
+  "explanation": "Завершение — Нет. Оператор только попрощался, не подведя итог и не предложив дальнейшую помощь. Основание — последняя реплика оператора #16 «Пожалуйста, до свидания.».",
+  "confidence": 0.6,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

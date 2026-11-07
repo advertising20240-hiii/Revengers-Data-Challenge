@@ -7,7 +7,7 @@
  "prompt_version": "judge-v1.0",
  "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
  "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
- "created_at": "2026-11-07T12:18:11.264Z",
+ "created_at": "2026-11-07T13:17:46.780Z",
  "result": {
   "criterion_id": "c08",
   "applicable": true,
@@ -20,15 +20,15 @@
   "evidence": [
    {
     "line": 12,
-    "why": "Оператор просит личный номер телефона и предлагает платную частную консультацию в обход компании."
+    "why": "Оператор предложил: 'Send me your personal number and I'll call you after work. I charge for private advice...'. Это предложение платной услуги в обход компании."
    }
   ],
   "checked_range": [
    12,
    12
   ],
-  "rule_applied": "08: Грубые ошибки",
-  "explanation": "Оператор предложил платную частную консультацию и запросил личный номер телефона, что является нарушением политики (bypass).",
+  "rule_applied": "08: bypass (предложение платной услуги в обход компании)",
+  "explanation": "Оператор предложил клиенту связаться с ним лично для получения платной консультации, что является грубым нарушением политики (bypass).",
   "confidence": 1,
   "source": "ai"
  },

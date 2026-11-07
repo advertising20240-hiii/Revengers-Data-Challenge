@@ -1,0 +1,38 @@
+{
+ "key": "d43801b227bb6cfb34a458bf0c0504ff1c019c0ff4f432c8f37ac9c2dba398f4",
+ "conversation_id": "p1-ru-003",
+ "criterion_id": "c07",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "e4829a90b1333664c3ea0c45530c34c00ce55a30a19ddbc5c59ce454b4d4d7d1",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:32:39.358Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "вопрос клиента перед завершением"
+   },
+   {
+    "line": 15,
+    "why": "прощание без ответа на этот вопрос"
+   }
+  ],
+  "checked_range": [
+   14,
+   15
+  ],
+  "rule_applied": "Прощание при открытом вопросе клиента",
+  "explanation": "Завершение — Нет. Клиент задал вопрос (#14 «Да, «Инвестор». А комиссию где искать?»), а оператор завершил диалог прощанием, не ответив на него. Основание — сообщение клиента #14 и последняя реплика оператора #15 «Название тарифа смотрите там же. Хорошего дня!».",
+  "confidence": 0.65,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

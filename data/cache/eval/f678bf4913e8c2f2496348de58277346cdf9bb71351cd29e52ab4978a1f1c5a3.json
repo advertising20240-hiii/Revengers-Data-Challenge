@@ -1,0 +1,31 @@
+{
+ "key": "f678bf4913e8c2f2496348de58277346cdf9bb71351cd29e52ab4978a1f1c5a3",
+ "conversation_id": "p4-ru-005",
+ "criterion_id": "c04",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "e4829a90b1333664c3ea0c45530c34c00ce55a30a19ddbc5c59ce454b4d4d7d1",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:32:39.619Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 75,
+    "why": "последний ответ оператора"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Открытых вопросов клиента после последнего ответа нет",
+  "explanation": "Корректная и полная консультация — 20 из 20. После последнего ответа оператора вопросов у клиента не осталось. Основание — последняя реплика оператора #75 «Да, в конце разговора присниматься не.», реплик клиента с вопросами после неё нет.",
+  "confidence": 0.35,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

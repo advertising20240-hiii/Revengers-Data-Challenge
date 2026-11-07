@@ -1,0 +1,38 @@
+{
+ "key": "94f749fd590a02a184b493d942eda7ccae846aba2176fe5406cba470fa0c319f",
+ "conversation_id": "p1-en-015",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "9a1309ce2c10c811b30d0382b035b065860975846228fdbf0c1f29e038445d95",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:32:00.971Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 4,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор дал инструкцию 'Open settings then go back and log in again', которая была непонятна клиенту."
+   },
+   {
+    "line": 11,
+    "why": "Клиент вынужден переспросить: 'Settings where? I'm on the company website and there's no login.', так как не понял, о каких настройках идет речь и где находится логин."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Ведение диалога, шкала 4 (клиенту пришлось переспрашивать из-за формулировок)",
+  "explanation": "Первая реплика оператора (#10) была сформулирована так, что клиент не понял, что именно нужно сделать ('Settings where?'). Это привело к необходимости переспроса (#11), что соответствует оценке 4 по шкале критерия 06.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

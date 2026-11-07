@@ -1,0 +1,42 @@
+{
+ "key": "0057ac5d60832d6dbc0377e8fded372471460aa1b96ffdc269fcc71df2adb5a3",
+ "conversation_id": "p1-en-013",
+ "criterion_id": "c05",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "e4829a90b1333664c3ea0c45530c34c00ce55a30a19ddbc5c59ce454b4d4d7d1",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:32:39.592Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "последний ответ оператора"
+   },
+   {
+    "line": 13,
+    "why": "реплика клиента, оставшаяся без ответа"
+   },
+   {
+    "line": 14,
+    "why": "закрытие чата оператором"
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "Чат закрыт при реплике клиента без ответа",
+  "explanation": "Эмпатия и клиентоориентированность — Нет. Оператор закрыл чат, не ответив на реплику клиента #13. Основание — последняя реплика оператора #12, сообщение клиента #13 «No, I'm only asking for help with the app.» и сообщение о закрытии чата #14.",
+  "confidence": 0.55,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

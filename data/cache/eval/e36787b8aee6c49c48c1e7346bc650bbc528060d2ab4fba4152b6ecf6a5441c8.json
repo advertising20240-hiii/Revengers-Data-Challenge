@@ -7,7 +7,7 @@
  "prompt_version": "judge-v1.0",
  "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
  "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
- "created_at": "2026-11-07T12:17:10.087Z",
+ "created_at": "2026-11-07T13:16:59.468Z",
  "result": {
   "criterion_id": "c07",
   "applicable": true,
@@ -18,15 +18,15 @@
   "evidence": [
    {
     "line": 12,
-    "why": "Содержит прощание ('Take care!') и подтверждение/вежливость ('You're welcome')."
+    "why": "Содержит прощание 'Take care!' и вежливое завершение 'You're welcome'."
    }
   ],
   "checked_range": [
    12,
    12
   ],
-  "rule_applied": "07: завершение",
-  "explanation": "Последняя реплика оператора содержит прощание и подтверждение решения/вежливость, что соответствует правилу.",
+  "rule_applied": "07: прощание и итог",
+  "explanation": "Оператор корректно завершил диалог, попрощавшись и подтвердив завершение взаимодействия.",
   "confidence": 1,
   "source": "ai"
  },

@@ -7,7 +7,7 @@
  "prompt_version": "judge-v1.0",
  "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
  "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
- "created_at": "2026-11-07T12:14:56.369Z",
+ "created_at": "2026-11-07T13:14:46.017Z",
  "result": {
   "criterion_id": "c08",
   "applicable": true,
@@ -20,7 +20,7 @@
   "evidence": [
    {
     "line": 10,
-    "why": "Оператор оскорбил клиента фразой 'Вы вообще читать умеете?'"
+    "why": "Оператор оскорбил клиента фразой «Вы вообще читать умеете?»."
    }
   ],
   "checked_range": [
@@ -28,7 +28,7 @@
    10
   ],
   "rule_applied": "08: Грубые ошибки",
-  "explanation": "Выявлено оскорбление клиента, что является грубой ошибкой.",
+  "explanation": "Выявлено оскорбление клиента, что является грубым нарушением.",
   "confidence": 1,
   "source": "ai"
  },

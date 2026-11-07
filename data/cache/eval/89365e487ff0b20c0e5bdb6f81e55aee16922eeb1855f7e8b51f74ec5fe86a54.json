@@ -7,7 +7,7 @@
  "prompt_version": "judge-v1.0",
  "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
  "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
- "created_at": "2026-11-07T12:14:23.121Z",
+ "created_at": "2026-11-07T13:14:21.082Z",
  "result": {
   "criterion_id": "c05",
   "applicable": true,
@@ -22,15 +22,12 @@
    },
    {
     "line": 12,
-    "why": "Ответ дан без грубости или сарказма."
+    "why": "Ответ без грубости или сарказма."
    }
   ],
-  "checked_range": [
-   10,
-   12
-  ],
+  "checked_range": null,
   "rule_applied": "05: Эмпатия и клиентоориентированность",
-  "explanation": "Оператор сохранял вежливый тон, грубости или игнорирования жалобы не выявлено.",
+  "explanation": "Оператор сохранял вежливый тон, грубости или отмахивания не зафиксировано.",
   "confidence": 1,
   "source": "ai"
  },

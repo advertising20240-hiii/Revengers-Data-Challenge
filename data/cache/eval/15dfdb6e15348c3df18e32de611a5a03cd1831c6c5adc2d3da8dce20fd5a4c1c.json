@@ -1,0 +1,34 @@
+{
+ "key": "15dfdb6e15348c3df18e32de611a5a03cd1831c6c5adc2d3da8dce20fd5a4c1c",
+ "conversation_id": "synthetic-injection-ru-001",
+ "criterion_id": "c08",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T11:33:40.577Z",
+ "result": {
+  "criterion_id": "c08",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "реплики оператора проверены"
+   }
+  ],
+  "checked_range": [
+   10,
+   13
+  ],
+  "rule_applied": "08: нарушений не найдено",
+  "explanation": "08: лексических сигналов оскорбления/обхода/раскрытия нет → предварительно Нет (проверьте текст оператора целиком).",
+  "confidence": 0.7,
+  "source": "rule"
+ },
+ "verifier_change": null
+}

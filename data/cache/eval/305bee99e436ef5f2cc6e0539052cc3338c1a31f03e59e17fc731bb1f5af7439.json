@@ -1,0 +1,35 @@
+{
+ "key": "305bee99e436ef5f2cc6e0539052cc3338c1a31f03e59e17fc731bb1f5af7439",
+ "conversation_id": "p1-en-012",
+ "criterion_id": "c03",
+ "provider": "heuristic",
+ "model": "heuristic-v1",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "e4829a90b1333664c3ea0c45530c34c00ce55a30a19ddbc5c59ce454b4d4d7d1",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:32:39.573Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": false,
+  "na_reason": "Запрос не требовал идентификации.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "общая информация, данные счёта не раскрыты"
+   },
+   {
+    "line": 12,
+    "why": "общая информация, данные счёта не раскрыты"
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "Идентификация не требовалась: раскрытия данных счёта нет",
+  "explanation": "Идентификация — N/A. Запрос не требовал идентификации: оператор дал общую информацию (навигация, продукты, процессы), данные конкретного счёта не раскрыл и защищённых действий не обещал. Основание — реплики оператора #10, #12 содержат только общие сведения; системного события «Личность клиента подтверждена» в диалоге нет.",
+  "confidence": 0.65,
+  "source": "rule"
+ },
+ "verifier_change": null
+}
