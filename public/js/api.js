@@ -40,8 +40,8 @@ export const api = {
   fetchDataset: (group_id, url) => request('POST', '/api/datasets/fetch', url ? { group_id, url } : { group_id }),
   upload: (payload, group_id) => request('POST', '/api/transcripts/upload', group_id ? { group_id, payload } : { payload }),
   conversations: (q = {}) => request('GET', '/api/conversations' + qs(q)),
-  conversation: (id, version) => request('GET', `/api/conversations/${enc(id)}` + (version ? `?checklist_version=${enc(version)}` : '')),
-  audioUrl: (id) => `${apiBase()}/api/audio/${enc(id)}`,
+  conversation: (id, version, group) => request('GET', `/api/conversations/${enc(id)}?` + [version ? `checklist_version=${enc(version)}` : '', group ? `group_id=${enc(group)}` : ''].filter(Boolean).join('&')),
+  audioUrl: (id, group) => `${apiBase()}/api/audio/${enc(id)}` + (group ? `?group_id=${enc(group)}` : ''),
   exportUrl: (group_id) => `${apiBase()}/api/export.csv` + qs({ group_id }),
 
   checklists: () => request('GET', '/api/checklists'),

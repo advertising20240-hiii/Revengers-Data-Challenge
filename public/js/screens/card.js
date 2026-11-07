@@ -9,6 +9,7 @@ import { channelLabel, speakerLabel, num, secs, date, provenance, reviewReasons,
 
 export function renderCard(main, params) {
   let convId = params.id, pendingLine = params.line || null;
+  const group = params.group || null;
   let data = null, version = null, audioEl = null, unsub = null;
   const page = h('div');
   main.append(page);
@@ -16,7 +17,7 @@ export function renderCard(main, params) {
   async function load() {
     replace(page, h('div', { class: 'cardpage' }, h('div', { class: 'card' }, skeleton(14)), h('div', { class: 'card' }, skeleton(10))));
     try {
-      data = await api.conversation(convId, version);
+      data = await api.conversation(convId, version, group);
       draw();
       if (pendingLine) { focusLine(pendingLine, true); pendingLine = null; }
     } catch (e) {
@@ -67,7 +68,7 @@ export function renderCard(main, params) {
         ? h('button', { type: 'button', title: t('card.seek'), onclick: () => seekAudio(l.offset_seconds) }, ts)
         : ts;
       lines.append(h('div', { class: `line ${l.speaker} ${seg ? 'in-' + seg.kind : ''} ${ev ? 'evidence' : ''}`, id: `line-${l.n}`, role: 'listitem', dataset: { line: l.n } },
-        h('span', { class: 'n' }, h('a', { href: cardHash(conv.conversation_id, l.n), title: t('card.deep_link'), onclick: (e) => { e.preventDefault(); focusLine(l.n, true); } }, `#${l.n}`)),
+        h('span', { class: 'n' }, h('a', { href: cardHash(conv.conversation_id, l.n, group), title: t('card.deep_link'), onclick: (e) => { e.preventDefault(); focusLine(l.n, true); } }, `#${l.n}`)),
         h('span', { class: 'ts' }, tsEl),
         h('span', { class: 'txt' }, h('span', { class: 'who' }, speakerLabel(l.speaker)), l.text,
           ev ? h('span', { class: 'tags' }, ev.map((c) => h('span', { class: 'tag ev', title: t('card.evidence_for', { c }) }, c))) : null)));
@@ -96,7 +97,7 @@ export function renderCard(main, params) {
 
   function audioPanel(conv) {
     // preload="none": the recording is streamed through the server proxy only when the user plays or seeks.
-    audioEl = h('audio', { controls: true, preload: 'none', src: api.audioUrl(conv.conversation_id), 'aria-label': t('card.open_recording') });
+    audioEl = h('audio', { controls: true, preload: 'none', src: api.audioUrl(conv.conversation_id, group), 'aria-label': t('card.open_recording') });
     const fallback = h('a', { href: conv.audio_url, target: '_blank', rel: 'noopener', class: 'btn sm' }, t('card.open_recording'));
     const note = h('span', { class: 'muted small' }, t('card.audio_hint'));
     audioEl.addEventListener('error', () => { note.textContent = t('card.audio_unavailable'); note.classList.add('dirty'); });
@@ -117,7 +118,7 @@ export function renderCard(main, params) {
     for (const x of page.querySelectorAll('.line.hl')) x.classList.remove('hl');
     el.classList.add('hl');
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (updateUrl) replaceHash(cardHash(convId, n));
+    if (updateUrl) replaceHash(cardHash(convId, n, group));
     if (data && data.conversation.channel === 'voice call') {
       const line = (data.conversation.lines || []).find((l) => l.n === n);
       if (line) seekAudio(line.offset_seconds);
@@ -297,7 +298,7 @@ export function renderCard(main, params) {
   }
 
   function copyLink() {
-    const url = location.href.split('#')[0] + (location.hash || cardHash(convId));
+    const url = location.href.split('#')[0] + (location.hash || cardHash(convId, null, group));
     const done = () => toast(t('card.link_copied'), 'ok');
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => prompt(t('card.copy_manual'), url));
     else prompt(t('card.copy_manual'), url);

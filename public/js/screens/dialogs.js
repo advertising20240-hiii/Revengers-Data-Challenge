@@ -36,7 +36,7 @@ export function renderDialogs(main) {
       const list = filtered();
       const exact = list.find((r) => r.conversation_id.toLowerCase() === filters.q);
       const hit = exact || (list.length === 1 ? list[0] : null);
-      if (hit) navigate(cardHash(hit.conversation_id));
+      if (hit) navigate(cardHash(hit.conversation_id, null, hit.group_id));
     } });
 
   const evalAllBtn = h('button', { class: 'btn primary', type: 'button', onclick: () => startEvaluate({ all: true }) }, t('dialogs.eval_all'));
@@ -151,7 +151,7 @@ export function renderDialogs(main) {
     const ap = r.appeal_status === 'open' ? chip(t('status.under_appeal'), 'warn') : r.appeal_status === 'resolved' ? chip(t('status.reviewed'), 'info') : h('span', { class: 'muted' }, '—');
     return h('tr', { class: chk.checked ? 'sel' : '' },
       h('td', null, chk),
-      h('td', null, h('a', { href: cardHash(r.conversation_id), class: 'mono' }, r.conversation_id), r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
+      h('td', null, h('a', { href: cardHash(r.conversation_id, null, r.group_id), class: 'mono' }, r.conversation_id), r.lines_count ? h('div', { class: 'muted small' }, `${pl(r.lines_count, 'unit.lines')} · ${secs(r.duration_seconds)}`) : null),
       h('td', null, langTag(r.language)),
       h('td', null, channelLabel(r.channel)),
       h('td', null, r.operator_name || h('span', { class: 'muted' }, '—')),

@@ -75,7 +75,7 @@ export function renderAppeals(main, params) {
     if (!O.explanation && R && a.status === 'open') O.explanation = R.explanation;
     const evLines = new Set((R && R.evidence || []).map((x) => x.line));
     const frag = h('div', { class: 'frag' }, lines.map((l) => h('div', { class: `line ${l.speaker} ${evLines.has(l.n) ? 'evidence' : ''}` },
-      h('span', { class: 'n' }, h('a', { href: cardHash(a.conversation_id, l.n) }, `#${l.n}`)), h('span', { class: 'ts' }, l.offset_label || l.timestamp || ''), h('span', { class: 'txt' }, h('span', { class: 'who' }, speakerLabel(l.speaker)), l.text))));
+      h('span', { class: 'n' }, h('a', { href: cardHash(a.conversation_id, l.n, a.group_id) }, `#${l.n}`)), h('span', { class: 'ts' }, l.offset_label || l.timestamp || ''), h('span', { class: 'txt' }, h('span', { class: 'who' }, speakerLabel(l.speaker)), l.text))));
     const second = h('div');
     if (a.second_opinion) second.append(secondOpinionEl(a.second_opinion));
     const actions = h('div', { class: 'row' });
