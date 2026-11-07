@@ -16,14 +16,14 @@ const BUDGET_DIR = () => process.env.CQA_BUDGET_DIR || join(process.env.CQA_DATA
 const DEFS = {
   gemini: {
     prefix: 'GEMINI', label: 'Google Gemini API',
-    base: 'https://generativelanguage.googleapis.com/v1beta/openai', model: 'gemini-2.5-flash',
-    // list price of gemini-2.5-flash, $ per 1M tokens — used only to bound the worst case if billing were ever enabled
+    base: 'https://generativelanguage.googleapis.com/v1beta/openai', model: 'gemini-3.8-flash',
+    // list price of a Gemini Flash model (2.5 tier), $ per 1M tokens — used only to bound the worst case if billing were ever enabled
     priceIn: 0.30, priceOut: 2.50, maxUsd: 0.50, maxCallsPerDay: 200,
     extra: () => ({ reasoning_effort: process.env.GEMINI_REASONING_EFFORT || 'none' }),
   },
   nvidia: {
     prefix: 'NVIDIA', label: 'NVIDIA API',
-    base: 'https://integrate.api.nvidia.com/v1', model: 'meta/llama-3.3-70b-instruct',
+    base: 'https://integrate.api.nvidia.com/v1', model: 'deepseek-ai/deepseek-v4.1-flash',
     priceIn: 0.80, priceOut: 0.80, maxUsd: 35, maxCallsPerDay: 300,
     extra: () => ({}),
   },
@@ -105,8 +105,9 @@ export function makeProvider(name) {
     const started = Date.now();
     try {
       let mode = schema ? 'json_schema' : null;
-      for (let attempt = 0; attempt < 3; attempt++) {
-        const body = { model: m, temperature: 0, max_tokens: maxTokens, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], ...D.extra() };
+      let reasoning = true;
+      for (let attempt = 0; attempt < 4; attempt++) {
+        const body = { model: m, temperature: 0, max_tokens: maxTokens, messages: [{ role: 'system', content: system }, { role: 'user', content: user }], ...(reasoning ? D.extra() : {}) };
         if (mode === 'json_schema') body.response_format = { type: 'json_schema', json_schema: { name: 'cqa', schema } };
         if (mode === 'json_object') body.response_format = { type: 'json_object' };
         const r = await fetch(`${c.base}/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${c.apiKey}` }, body: JSON.stringify(body), signal: ctl.signal });
@@ -114,7 +115,8 @@ export function makeProvider(name) {
         if (!r.ok) {
           // the request reached the API: count it against the daily limit even when it failed
           record(c, { input_tokens: 0, output_tokens: 0 });
-          if (r.status === 400 && mode && /response_format|json_schema|schema|reasoning/i.test(raw)) { mode = mode === 'json_schema' ? 'json_object' : null; continue; }
+          if (r.status === 400 && reasoning && /reasoning/i.test(raw)) { reasoning = false; continue; }
+          if (r.status === 400 && mode && /response_format|json_schema|schema/i.test(raw)) { mode = mode === 'json_schema' ? 'json_object' : null; continue; }
           const e = new Error(`${D.label} ${r.status}: ${raw.slice(0, 200).replace(/key=[^&\s"]+/gi, 'key=***')}`); e.status = r.status; throw e;
         }
         const j = JSON.parse(raw);
