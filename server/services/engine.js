@@ -101,6 +101,8 @@ export class EvalEngine {
         if (!res || !Array.isArray(res.results)) throw new HttpError(502, 'Модуль оценки вернул некорректный результат');
         results.push(...res.results.map(stripResult));
         trace = { ...trace, ...(res.trace || {}), reused: trace.reused, examples_used: examples.length };
+        // criteria reused from the previous evaluation count as cache hits: only new/changed criteria reached the model
+        trace.cache = { hits: [...new Set([...(res.trace?.cache?.hits || []), ...trace.reused])], misses: res.trace?.cache?.misses || [] };
       } else if (prior) {
         trace = { ...trace, prompt_version: prior.prompt_version, provider: prior.provider, model: prior.model, cache: { hits: trace.reused, misses: [] } };
       }

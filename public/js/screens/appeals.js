@@ -174,11 +174,11 @@ export function renderAppeals(main, params) {
       try { after = scoreEvaluation(checklist, ans); errs = after.errors || []; } catch (e) { errs = [e.message]; }
       const b = before && before.calculated ? before.total_str : t('card.not_calculated');
       const af = after && after.calculated ? after.total_str : t('card.not_calculated');
-      previewBox.append(h('div', null, h('div', { class: 'lbl' }, t('ap.preview')), h('span', { class: 'big' }, b), h('span', { class: 'arrow' }, '→'), h('span', { class: 'big', style: { color: after && before && after.total !== before.total ? 'var(--cqa-accent)' : 'inherit' } }, af)),
+      previewBox.append(...[h('div', null, h('div', { class: 'lbl' }, t('ap.preview')), h('span', { class: 'big' }, b), h('span', { class: 'arrow' }, '→'), h('span', { class: 'big', style: { color: after && before && after.total !== before.total ? 'var(--cqa-accent)' : 'inherit' } }, af)),
         after && after.per_criterion && after.per_criterion[C.id] ? h('div', { class: 'small muted' }, `${t('card.eff_weight')} ${num(after.per_criterion[C.id].effective_weight)} · ${num(after.per_criterion[C.id].points)} / ${num(C.weight, 0)}`) : null,
         after && after.gross && after.gross.flag ? chip(`${t('card.gross_title')}: ${after.gross.types.map((x) => t(`gross.${x}`)).join(', ')}`, 'flag') : null,
         errs.length ? h('div', { class: 'dirty small' }, errs.join('; ')) : null,
-        h('div', { class: 'small muted' }, t('ap.preview_engine')));
+        h('div', { class: 'small muted' }, t('ap.preview_engine'))].filter(Boolean));
     }
 
     function drawOutcomes() {
