@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  test:
+    name: test · audit · d365 build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install (no runtime dependencies — kept for parity with the README)
+        run: npm install --ignore-scripts
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Repository hygiene audit (secrets, paths)
+        run: bash scripts/audit-repo.sh
+
+      - name: Dynamics 365 single-file build
+        if: ${{ hashFiles('public/index.html') != '' }}
+        run: npm run build:d365
+
+      - name: Upload web resource
+        if: ${{ hashFiles('dist/d365/cqa.html') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cqa-d365-webresource
+          path: dist/d365/cqa.html

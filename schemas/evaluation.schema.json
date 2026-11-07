@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://revengers-cqa.local/schemas/evaluation.schema.json",
+  "title": "Evaluation",
+  "description": "One evaluation of one conversation against one checklist version, as persisted in data/db/ and returned by GET /api/evaluations/:id.",
+  "type": "object",
+  "required": ["id", "conversation_id", "checklist_id", "checklist_version", "prompt_version", "provider", "model", "created_at", "status", "mode", "results", "total", "total_str", "calculated", "section_totals", "gross", "trace", "history"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "conversation_id": { "type": "string", "minLength": 1 },
+    "group_id": { "type": "string" },
+    "checklist_id": { "type": "string" },
+    "checklist_version": { "type": "integer", "minimum": 1 },
+    "prompt_version": { "type": "string" },
+    "provider": { "type": "string" },
+    "model": { "type": "string" },
+    "created_at": { "type": "string" },
+    "status": { "type": "string", "enum": ["final", "under_appeal", "reviewed"] },
+    "mode": { "type": "string", "enum": ["stored", "simulation"] },
+    "results": { "type": "array", "items": { "$ref": "#/$defs/criterionResult" } },
+    "total": { "type": ["number", "null"] },
+    "total_str": { "type": ["string", "null"] },
+    "calculated": { "type": "boolean" },
+    "original_total": { "type": ["number", "null"] },
+    "section_totals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "points": { "type": "number" },
+          "weight": { "type": "number" },
+          "total": { "type": ["number", "null"] },
+          "total_str": { "type": ["string", "null"] },
+          "calculated": { "type": "boolean" }
+        }
+      }
+    },
+    "gross": {
+      "type": "object",
+      "required": ["flag", "types"],
+      "properties": {
+        "flag": { "type": "boolean" },
+        "types": { "type": "array", "items": { "type": "string", "enum": ["insult", "bypass", "disclosure"] } },
+        "criteria": { "type": "array", "items": { "type": "string" } },
+        "evidence": { "type": "array", "items": { "type": "object", "properties": { "line": { "type": "integer" }, "quote": { "type": "string" } } } }
+      }
+    },
+    "min_confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "needs_review": { "type": "boolean" },
+    "cost_usd": { "type": ["number", "null"] },
+    "latency_ms": { "type": ["number", "null"] },
+    "trace": { "$ref": "#/$defs/trace" },
+    "history": { "type": "array", "items": { "$ref": "#/$defs/historyEntry" } }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["line"],
+      "properties": {
+        "line": { "type": "integer", "minimum": 1 },
+        "why": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "offset_label": { "type": "string" },
+        "speaker": { "type": "string", "enum": ["client", "operator", "bot", "system"] },
+        "quote": { "type": "string" }
+      }
+    },
+    "criterionResult": {
+      "type": "object",
+      "required": ["criterion_id", "applicable", "answer", "scale_value", "flag_types", "evidence", "explanation", "confidence", "source"],
+      "properties": {
+        "criterion_id": { "type": "string" },
+        "code": { "type": "string" },
+        "title": { "type": "string" },
+        "section": { "type": "string" },
+        "answer_type": { "type": "string", "enum": ["yes_no", "yes_no_na", "scale", "scale_na", "flag"] },
+        "weight": { "type": "number" },
+        "scored": { "type": "boolean" },
+        "applicable": { "type": "boolean" },
+        "na_reason": { "type": ["string", "null"] },
+        "answer": { "type": ["string", "null"], "enum": ["yes", "no", null] },
+        "scale_value": { "type": ["number", "null"] },
+        "flag_types": { "type": "array", "items": { "type": "string" } },
+        "points": { "type": ["number", "null"] },
+        "effective_weight": { "type": ["number", "null"] },
+        "answer_label": { "type": "string" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "checked_range": { "type": ["array", "null"], "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "rule_applied": { "type": "string" },
+        "explanation": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "source": { "type": "string", "enum": ["ai", "rule", "review"] },
+        "ai_original": { "type": "object" },
+        "review": {
+          "type": "object",
+          "properties": {
+            "appeal_id": { "type": "string" },
+            "outcome": { "type": "string", "enum": ["score_changed", "criterion_change", "stands_explanation", "stands_coaching"] },
+            "reviewer_note": { "type": "string" },
+            "decided_at": { "type": "string" }
+          }
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "properties": {
+        "prompt_version": { "type": "string" },
+        "prompt_hash": { "type": "string" },
+        "policy_hash": { "type": "string" },
+        "provider": { "type": "string" },
+        "model": { "type": "string" },
+        "verifier_model": { "type": ["string", "null"] },
+        "calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": { "type": "string", "enum": ["judge", "verifier", "repair", "rule"] },
+              "model": { "type": "string" },
+              "input_tokens": { "type": "integer" },
+              "output_tokens": { "type": "integer" },
+              "cache_read_tokens": { "type": "integer" },
+              "cost_usd": { "type": "number" },
+              "latency_ms": { "type": "number" }
+            }
+          }
+        },
+        "cost_usd": { "type": "number" },
+        "latency_ms": { "type": "number" },
+        "cache": { "type": "object", "properties": { "hits": { "type": "array" }, "misses": { "type": "array" } } },
+        "validator_issues": { "type": "array", "items": { "type": "string" } },
+        "verifier_changes": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "historyEntry": {
+      "type": "object",
+      "required": ["at", "action", "by"],
+      "properties": {
+        "at": { "type": "string" },
+        "action": { "type": "string", "enum": ["evaluated", "appeal_opened", "decision"] },
+        "by": { "type": "string", "enum": ["ai", "operator", "reviewer"] },
+        "criterion_id": { "type": "string" },
+        "from": {},
+        "to": {},
+        "total_before": { "type": ["number", "null"] },
+        "total_after": { "type": ["number", "null"] },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

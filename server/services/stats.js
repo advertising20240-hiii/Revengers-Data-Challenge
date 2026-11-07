@@ -36,7 +36,7 @@ export function computeStats({ data, engine, appeals, checklists, groupId = null
   const gross = latest.filter((c) => c.ev.gross?.flag).map((c) => ({ conversation_id: c.row.conversation_id, group_id: c.row.group_id, types: c.ev.gross.types, line: c.ev.gross.evidence?.[0]?.line ?? null, quote: c.ev.gross.evidence?.[0]?.quote ?? null, operator_name: c.summary.operator_name, total_str: c.ev.total_str }));
 
   const withBot = convs.filter((c) => c.conv.facts.counts.bot_lines > 0).length;
-  const escalated = convs.filter((c) => c.conv.facts.escalation_lines.length > 0 || c.conv.facts.operator_participated).length;
+  const escalated = convs.filter((c) => c.conv.facts.counts.bot_lines > 0 && (c.conv.facts.escalation_lines.length > 0 || c.conv.facts.operator_participated)).length;
   const botOnly = convs.filter((c) => c.conv.facts.counts.bot_lines > 0 && !c.conv.facts.operator_participated).length;
   const frValues = convs.filter((c) => c.conv.facts.first_reaction_seconds != null).map((c) => ({ conversation_id: c.row.conversation_id, seconds: c.conv.facts.first_reaction_seconds, channel: c.conv.channel }));
   const frSec = frValues.map((v) => v.seconds);

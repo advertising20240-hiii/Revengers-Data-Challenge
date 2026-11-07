@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://revengers-cqa.local/schemas/appeal.schema.json",
+  "title": "Appeal",
+  "description": "A dispute raised by an operator against one criterion of one evaluation, and the reviewer's decision on it.",
+  "type": "object",
+  "required": ["id", "evaluation_id", "conversation_id", "criterion_id", "comment", "created_at", "status", "original", "decision", "final"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "evaluation_id": { "type": "string", "minLength": 1 },
+    "conversation_id": { "type": "string", "minLength": 1 },
+    "criterion_id": { "type": "string", "minLength": 1 },
+    "criterion_title": { "type": "string" },
+    "comment": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string" },
+    "status": { "type": "string", "enum": ["open", "confirmed", "changed"] },
+    "original": { "$ref": "#/$defs/valueSnapshot" },
+    "decision": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["decision", "outcome", "reviewer_note", "decided_at"],
+          "properties": {
+            "decision": { "type": "string", "enum": ["confirm", "change"] },
+            "outcome": { "type": "string", "enum": ["score_changed", "criterion_change", "stands_explanation", "stands_coaching"] },
+            "new_value": {
+              "type": ["object", "null"],
+              "properties": {
+                "applicable": { "type": "boolean" },
+                "answer": { "type": ["string", "null"], "enum": ["yes", "no", null] },
+                "scale_value": { "type": ["number", "null"] },
+                "flag_types": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "reviewer_note": { "type": "string", "minLength": 1 },
+            "decided_at": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "final": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "properties": {
+            "answer_label": { "type": "string" },
+            "points": { "type": ["number", "null"] }
+          }
+        }
+      ]
+    },
+    "total_before": { "type": ["number", "null"] },
+    "total_after": { "type": ["number", "null"] },
+    "second_opinion": {
+      "type": ["object", "null"],
+      "properties": {
+        "suggestion": { "type": "object" },
+        "rationale": { "type": "string" },
+        "model": { "type": "string" },
+        "cost_usd": { "type": "number" }
+      }
+    }
+  },
+  "$defs": {
+    "valueSnapshot": {
+      "type": "object",
+      "properties": {
+        "answer_label": { "type": "string" },
+        "applicable": { "type": "boolean" },
+        "answer": { "type": ["string", "null"] },
+        "scale_value": { "type": ["number", "null"] },
+        "points": { "type": ["number", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://revengers-cqa.local/schemas/checklist.schema.json",
+  "title": "Checklist",
+  "description": "A versioned quality checklist: sections and criteria evaluated against an operator's conversation. Mirrors config/checklist.v1.json.",
+  "type": "object",
+  "required": ["id", "name", "version", "status", "created_at", "sections", "criteria"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "type": "integer", "minimum": 1 },
+    "status": { "type": "string", "enum": ["draft", "active", "archived"] },
+    "created_at": { "type": "string" },
+    "note": { "type": "string" },
+    "language": { "type": "string", "enum": ["ru", "kz", "en"] },
+    "instructions": { "type": "string" },
+    "sections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/section" }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/criterion" }
+    }
+  },
+  "$defs": {
+    "section": {
+      "type": "object",
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 }
+      }
+    },
+    "scaleStep": {
+      "type": "object",
+      "required": ["value", "label"],
+      "properties": {
+        "value": { "type": "number", "minimum": 0 },
+        "label": { "type": "string" }
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "required": ["id", "code", "title", "section", "answer_type", "weight", "scored", "na_allowed", "definition", "evaluator"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+        "code": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "section": { "type": "string", "minLength": 1 },
+        "answer_type": { "type": "string", "enum": ["yes_no", "yes_no_na", "scale", "scale_na", "flag"] },
+        "weight": { "type": "number", "minimum": 0 },
+        "scored": { "type": "boolean" },
+        "na_allowed": { "type": "boolean" },
+        "na_condition": { "type": ["string", "null"] },
+        "definition": { "type": "string" },
+        "scale": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/scaleStep" } },
+        "evaluator": { "type": "string", "pattern": "^(llm|rule:[a-z_][a-z0-9_]*)$" },
+        "params": { "type": "object" },
+        "guidance": { "type": "string" },
+        "answer_guidance": {
+          "type": "object",
+          "properties": {
+            "yes": { "type": "string" },
+            "no": { "type": "string" },
+            "na": { "type": "string" }
+          }
+        },
+        "flag_types": { "type": "array", "items": { "type": "string" } },
+        "flags_config": { "type": "object" }
+      }
+    }
+  }
+}
