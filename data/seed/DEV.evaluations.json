@@ -1,5 +1,5 @@
 {
- "exported_at": "2026-11-07T12:24:44.591Z",
+ "exported_at": "2026-11-07T12:34:16.248Z",
  "group_id": "DEV",
  "checklists": [
   {
@@ -235,7 +235,7 @@
  ],
  "evaluations": [
   {
-   "id": "ev_mw6dlktidb67762f",
+   "id": "ev_mw6dxtxl85d286c1",
    "conversation_id": "p1-ru-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -243,7 +243,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.686Z",
+   "created_at": "2026-11-07T12:34:15.369Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -499,8 +499,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "01:28",
+       "offset_label": "01:28",
+       "offset_seconds": 88,
+       "speaker": "client",
+       "quote": "Нашла, спасибо."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "02:04",
        "offset_label": "02:04",
        "offset_seconds": 124,
@@ -509,8 +518,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Нашла, спасибо.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -612,14 +621,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -670,7 +679,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.686Z",
+     "at": "2026-11-07T12:34:15.369Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -678,7 +687,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlktj3c820396",
+   "id": "ev_mw6dxtxl5a931e85",
    "conversation_id": "p1-ru-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -686,7 +695,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.687Z",
+   "created_at": "2026-11-07T12:34:15.369Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -924,8 +933,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 18,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "04:50",
+       "offset_label": "04:50",
+       "offset_seconds": 290,
+       "speaker": "client",
+       "quote": "Ясно. Тогда сравню ещё раз."
+      },
+      {
        "line": 19,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "05:17",
        "offset_label": "05:17",
        "offset_seconds": 317,
@@ -934,8 +952,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #19 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#18: «Ясно. Тогда сравню ещё раз.»), оператор попрощался (#19) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -1028,14 +1046,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -1086,7 +1104,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.687Z",
+     "at": "2026-11-07T12:34:15.369Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -1094,7 +1112,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlktj430e967a",
+   "id": "ev_mw6dxtxmd36a16b0",
    "conversation_id": "p1-ru-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -1102,7 +1120,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.687Z",
+   "created_at": "2026-11-07T12:34:15.370Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -1353,13 +1371,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 14,
+       "why": "вопрос клиента перед завершением",
+       "timestamp": "04:32",
+       "offset_label": "04:32",
+       "offset_seconds": 272,
+       "speaker": "client",
+       "quote": "Да, «Инвестор». А комиссию где искать?"
+      },
+      {
        "line": 15,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание без ответа на этот вопрос",
        "timestamp": "05:07",
        "offset_label": "05:07",
        "offset_seconds": 307,
@@ -1367,10 +1394,13 @@
        "quote": "Название тарифа смотрите там же. Хорошего дня!"
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #15 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "checked_range": [
+      14,
+      15
+     ],
+     "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
+     "explanation": "07: клиент задал вопрос (#14), а последняя реплика оператора #15 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -1378,9 +1408,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 5,
+     "points": 0,
      "effective_weight": 6.25,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -1421,10 +1451,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 87.5,
-   "total_str": "87.50",
+   "total": 81.25,
+   "total_str": "81.25",
    "calculated": true,
-   "original_total": 87.5,
+   "original_total": 81.25,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -1444,10 +1474,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 35,
+     "points": 30,
      "weight": 35,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 85.71,
+     "total_str": "85.71",
      "calculated": true
     }
    },
@@ -1462,14 +1492,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 6,
+   "latency_ms": 5,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 6,
+    "latency_ms": 5,
     "cache": {
      "hits": [
       "c01",
@@ -1511,8 +1541,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Да",
-      "rule_label": "Да",
-      "agree": true
+      "rule_label": "Нет",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -1520,15 +1550,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.687Z",
+     "at": "2026-11-07T12:34:15.370Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 87.5
+     "total_after": 81.25
     }
    ]
   },
   {
-   "id": "ev_mw6dlktp25f2f341",
+   "id": "ev_mw6dxtxsa1b309d9",
    "conversation_id": "p1-ru-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -1536,7 +1566,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.693Z",
+   "created_at": "2026-11-07T12:34:15.376Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -1780,8 +1810,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:39",
+       "offset_label": "03:39",
+       "offset_seconds": 219,
+       "speaker": "client",
+       "quote": "Нашёл, теперь понятно."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "04:21",
        "offset_label": "04:21",
        "offset_seconds": 261,
@@ -1790,8 +1829,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Нашёл, теперь понятно.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -1884,14 +1923,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -1942,7 +1981,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.693Z",
+     "at": "2026-11-07T12:34:15.376Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -1950,7 +1989,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlktq601cb14d",
+   "id": "ev_mw6dxtxt2763fbee",
    "conversation_id": "p1-ru-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -1958,7 +1997,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.694Z",
+   "created_at": "2026-11-07T12:34:15.377Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -2300,14 +2339,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -2358,7 +2397,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.694Z",
+     "at": "2026-11-07T12:34:15.377Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 93.08
@@ -2366,7 +2405,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlktq5ce52d1a",
+   "id": "ev_mw6dxtxta80cb2fa",
    "conversation_id": "p1-ru-006",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -2374,7 +2413,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.694Z",
+   "created_at": "2026-11-07T12:34:15.377Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -2801,7 +2840,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.694Z",
+     "at": "2026-11-07T12:34:15.377Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -2809,7 +2848,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlktu9cd4cd7d",
+   "id": "ev_mw6dxtxy6f30be6e",
    "conversation_id": "p1-ru-007",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -2817,7 +2856,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.698Z",
+   "created_at": "2026-11-07T12:34:15.382Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -3065,13 +3104,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 12,
+       "why": "вопрос клиента перед завершением",
+       "timestamp": "03:21",
+       "offset_label": "03:21",
+       "offset_seconds": 201,
+       "speaker": "client",
+       "quote": "Нашёл. После отправки сразу заново подавать на вывод?"
+      },
+      {
        "line": 13,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание без ответа на этот вопрос",
        "timestamp": "03:41",
        "offset_label": "03:41",
        "offset_seconds": 221,
@@ -3079,10 +3127,13 @@
        "quote": "Путь к обновлению я указал. Хорошего дня!"
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #13 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "checked_range": [
+      12,
+      13
+     ],
+     "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
+     "explanation": "07: клиент задал вопрос (#12), а последняя реплика оператора #13 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -3090,9 +3141,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 5,
+     "points": 0,
      "effective_weight": 7.69,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -3142,10 +3193,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 84.62,
-   "total_str": "84.62",
+   "total": 76.92,
+   "total_str": "76.92",
    "calculated": true,
-   "original_total": 84.62,
+   "original_total": 76.92,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -3165,10 +3216,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 35,
+     "points": 30,
      "weight": 35,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 85.71,
+     "total_str": "85.71",
      "calculated": true
     }
    },
@@ -3183,14 +3234,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -3232,8 +3283,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Да",
-      "rule_label": "Да",
-      "agree": true
+      "rule_label": "Нет",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -3241,15 +3292,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.698Z",
+     "at": "2026-11-07T12:34:15.382Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 84.62
+     "total_after": 76.92
     }
    ]
   },
   {
-   "id": "ev_mw6dlktv6c5cf33f",
+   "id": "ev_mw6dxtxy94c42c42",
    "conversation_id": "p1-ru-008",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -3257,7 +3308,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.699Z",
+   "created_at": "2026-11-07T12:34:15.382Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -3513,8 +3564,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:02",
+       "offset_label": "03:02",
+       "offset_seconds": 182,
+       "speaker": "client",
+       "quote": "Понял, спасибо."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "03:35",
        "offset_label": "03:35",
        "offset_seconds": 215,
@@ -3523,8 +3583,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Понял, спасибо.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -3675,7 +3735,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.699Z",
+     "at": "2026-11-07T12:34:15.382Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -3683,7 +3743,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlktvea096fee",
+   "id": "ev_mw6dxtxz4c9f7f0a",
    "conversation_id": "p1-ru-009",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -3691,7 +3751,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.699Z",
+   "created_at": "2026-11-07T12:34:15.383Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -4057,14 +4117,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -4115,7 +4175,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.699Z",
+     "at": "2026-11-07T12:34:15.383Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 40.5
@@ -4123,7 +4183,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlku0c1f4a2e1",
+   "id": "ev_mw6dxty76ec99bfd",
    "conversation_id": "p1-ru-010",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -4131,7 +4191,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.704Z",
+   "created_at": "2026-11-07T12:34:15.391Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -4396,8 +4456,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 31,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "13:29",
+       "offset_label": "13:29",
+       "offset_seconds": 809,
+       "speaker": "client",
+       "quote": "Понял, так и сделаю."
+      },
+      {
        "line": 32,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "14:07",
        "offset_label": "14:07",
        "offset_seconds": 847,
@@ -4406,8 +4475,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #32 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#31: «Понял, так и сделаю.»), оператор попрощался (#32) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -4576,7 +4645,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.704Z",
+     "at": "2026-11-07T12:34:15.391Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 95.5
@@ -4584,7 +4653,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlku0265bf2f2",
+   "id": "ev_mw6dxty7365a6e4e",
    "conversation_id": "p1-ru-011",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -4592,7 +4661,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.704Z",
+   "created_at": "2026-11-07T12:34:15.391Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -4857,8 +4926,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:24",
+       "offset_label": "03:24",
+       "offset_seconds": 204,
+       "speaker": "client",
+       "quote": "Скачалось. Спасибо."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "03:41",
        "offset_label": "03:41",
        "offset_seconds": 221,
@@ -4867,8 +4945,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Скачалось. Спасибо.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -5037,7 +5115,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.704Z",
+     "at": "2026-11-07T12:34:15.391Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -5045,7 +5123,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlku17b49901e",
+   "id": "ev_mw6dxty7e4287948",
    "conversation_id": "p1-ru-012",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -5053,7 +5131,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.705Z",
+   "created_at": "2026-11-07T12:34:15.391Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -5395,14 +5473,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -5453,7 +5531,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.705Z",
+     "at": "2026-11-07T12:34:15.391Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -5461,7 +5539,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlku5f470342e",
+   "id": "ev_mw6dxtyh0e7ae6a1",
    "conversation_id": "p1-ru-013",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -5469,7 +5547,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.709Z",
+   "created_at": "2026-11-07T12:34:15.401Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -5713,8 +5791,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:55",
+       "offset_label": "03:55",
+       "offset_seconds": 235,
+       "speaker": "client",
+       "quote": "А, я в новостях искал. Спасибо."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "04:36",
        "offset_label": "04:36",
        "offset_seconds": 276,
@@ -5723,8 +5810,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «А, я в новостях искал. Спасибо.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -5826,14 +5913,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -5884,7 +5971,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.709Z",
+     "at": "2026-11-07T12:34:15.401Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -5892,7 +5979,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlku5e0bc6b73",
+   "id": "ev_mw6dxtyi35d49407",
    "conversation_id": "p1-ru-014",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -5900,7 +5987,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.709Z",
+   "created_at": "2026-11-07T12:34:15.402Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -5945,13 +6032,22 @@
      "criterion_id": "c02",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 5,
+       "why": "Клиент уже указал: «На сайте Freedom Finance Global».",
+       "timestamp": "01:03",
+       "offset_label": "01:03",
+       "offset_seconds": 63,
+       "speaker": "client",
+       "quote": "На сайте Freedom Finance Global. Дайте оператора, я запутался."
+      },
+      {
        "line": 10,
-       "why": "оператор задаёт уточняющий вопрос",
+       "why": "Оператор спросил: «где именно ищете?», переспрашивая уже известную информацию.",
        "timestamp": "01:36",
        "offset_label": "01:36",
        "offset_seconds": 96,
@@ -5959,20 +6055,23 @@
        "quote": "Привет, где именно ищете?"
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
-     "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
-     "source": "rule",
+     "checked_range": [
+      5,
+      10
+     ],
+     "rule_applied": "02: выявление потребности",
+     "explanation": "Оператор переспросил клиента о месте поиска, хотя клиент уже сообщил об этом в сообщении боту, что является нарушением правила выявления потребности.",
+     "confidence": 0.7,
+     "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
      "section": "A",
      "answer_type": "yes_no_na",
      "weight": 15,
      "scored": true,
-     "points": 15,
+     "points": 0,
      "effective_weight": 18.75,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "7e679fdc90058c73"
     },
     {
@@ -6133,13 +6232,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "02:46",
+       "offset_label": "02:46",
+       "offset_seconds": 166,
+       "speaker": "client",
+       "quote": "Зашёл. Спасибо."
+      },
+      {
        "line": 14,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "03:24",
        "offset_label": "03:24",
        "offset_seconds": 204,
@@ -6147,13 +6255,10 @@
        "quote": "Хорошего дня."
       }
      ],
-     "checked_range": [
-      14,
-      14
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #14 («Хорошего дня.») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Зашёл. Спасибо.»), оператор попрощался (#14) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -6161,9 +6266,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 6.25,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -6222,17 +6327,17 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 81.25,
-   "total_str": "81.25",
+   "total": 68.75,
+   "total_str": "68.75",
    "calculated": true,
-   "original_total": 81.25,
+   "original_total": 68.75,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
-     "points": 15,
+     "points": 0,
      "weight": 25,
-     "total": 60,
-     "total_str": "60.00",
+     "total": 0,
+     "total_str": "0.00",
      "calculated": true
     },
     "B": {
@@ -6245,10 +6350,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -6258,19 +6363,19 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.55,
    "needs_review": true,
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -6296,10 +6401,11 @@
     "routing": [
      {
       "criterion_id": "c02",
-      "source": "rule",
+      "source": "ai",
       "model_label": "Нет",
       "rule_label": "Да",
-      "agree": false
+      "agree": false,
+      "note": "model_no_overrides_rule_yes"
      },
      {
       "criterion_id": "c03",
@@ -6312,8 +6418,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -6321,15 +6427,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.709Z",
+     "at": "2026-11-07T12:34:15.402Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 81.25
+     "total_after": 68.75
     }
    ]
   },
   {
-   "id": "ev_mw6dlku6cbb35356",
+   "id": "ev_mw6dxtyia0818cef",
    "conversation_id": "p1-ru-015",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -6337,7 +6443,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.710Z",
+   "created_at": "2026-11-07T12:34:15.402Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -6576,13 +6682,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "вопрос клиента перед завершением",
+       "timestamp": "02:00",
+       "offset_label": "02:00",
+       "offset_seconds": 120,
+       "speaker": "client",
+       "quote": "То есть ждать, пока освободится, не надо?"
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание без ответа на этот вопрос",
        "timestamp": "02:48",
        "offset_label": "02:48",
        "offset_seconds": 168,
@@ -6590,10 +6705,13 @@
        "quote": "Для регистрации сейчас выберите другой логин. Спасибо за обращение, до свидания!"
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "checked_range": [
+      11,
+      12
+     ],
+     "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
+     "explanation": "07: клиент задал вопрос (#11), а последняя реплика оператора #12 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -6601,9 +6719,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 5,
+     "points": 0,
      "effective_weight": 7.69,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -6653,10 +6771,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 100,
-   "total_str": "100.00",
+   "total": 92.31,
+   "total_str": "92.31",
    "calculated": true,
-   "original_total": 100,
+   "original_total": 92.31,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -6676,10 +6794,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 35,
+     "points": 30,
      "weight": 35,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 85.71,
+     "total_str": "85.71",
      "calculated": true
     }
    },
@@ -6694,14 +6812,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -6743,8 +6861,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Да",
-      "rule_label": "Да",
-      "agree": true
+      "rule_label": "Нет",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -6752,15 +6870,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.710Z",
+     "at": "2026-11-07T12:34:15.402Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 100
+     "total_after": 92.31
     }
    ]
   },
   {
-   "id": "ev_mw6dlkua46a7eb9c",
+   "id": "ev_mw6dxtyn195a268b",
    "conversation_id": "p1-ru-016",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -6768,7 +6886,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.714Z",
+   "created_at": "2026-11-07T12:34:15.407Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -7189,7 +7307,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.714Z",
+     "at": "2026-11-07T12:34:15.407Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 85.38
@@ -7197,7 +7315,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkua4a569a89",
+   "id": "ev_mw6dxtyn94f14639",
    "conversation_id": "p1-ru-017",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -7205,7 +7323,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.714Z",
+   "created_at": "2026-11-07T12:34:15.407Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -7461,8 +7579,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 14,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "04:02",
+       "offset_label": "04:02",
+       "offset_seconds": 242,
+       "speaker": "client",
+       "quote": "Нашёл одну нужную, спасибо."
+      },
+      {
        "line": 15,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "04:24",
        "offset_label": "04:24",
        "offset_seconds": 264,
@@ -7471,8 +7598,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #15 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#14: «Нашёл одну нужную, спасибо.»), оператор попрощался (#15) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -7623,7 +7750,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.714Z",
+     "at": "2026-11-07T12:34:15.407Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -7631,7 +7758,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkua08b18021",
+   "id": "ev_mw6dxtyoe554743a",
    "conversation_id": "p1-ru-018",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -7639,7 +7766,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.714Z",
+   "created_at": "2026-11-07T12:34:15.408Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -8048,7 +8175,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.714Z",
+     "at": "2026-11-07T12:34:15.408Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 31.54
@@ -8056,7 +8183,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkufb3aa529d",
+   "id": "ev_mw6dxtyx9d8ce24e",
    "conversation_id": "p1-ru-019",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -8064,7 +8191,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.719Z",
+   "created_at": "2026-11-07T12:34:15.417Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -8308,8 +8435,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "04:01",
+       "offset_label": "04:01",
+       "offset_seconds": 241,
+       "speaker": "client",
+       "quote": "Спасибо, нашёл."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "04:37",
        "offset_label": "04:37",
        "offset_seconds": 277,
@@ -8318,8 +8454,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Спасибо, нашёл.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -8430,14 +8566,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -8488,7 +8624,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.719Z",
+     "at": "2026-11-07T12:34:15.417Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -8496,7 +8632,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkugacd5a715",
+   "id": "ev_mw6dxtyx39399cb3",
    "conversation_id": "p1-ru-020",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -8504,7 +8640,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.720Z",
+   "created_at": "2026-11-07T12:34:15.417Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -8748,8 +8884,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "05:00",
+       "offset_label": "05:00",
+       "offset_seconds": 300,
+       "speaker": "client",
+       "quote": "Ок, спасибо."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "05:43",
        "offset_label": "05:43",
        "offset_seconds": 343,
@@ -8758,8 +8903,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Ок, спасибо.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -8870,14 +9015,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -8928,7 +9073,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.720Z",
+     "at": "2026-11-07T12:34:15.417Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 92.31
@@ -8936,7 +9081,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkugf5e84f56",
+   "id": "ev_mw6dxtyy6901cfe0",
    "conversation_id": "p1-ru-021",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -8944,7 +9089,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.720Z",
+   "created_at": "2026-11-07T12:34:15.418Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -9200,8 +9345,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "01:38",
+       "offset_label": "01:38",
+       "offset_seconds": 98,
+       "speaker": "client",
+       "quote": "Понял, спасибо."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "02:10",
        "offset_label": "02:10",
        "offset_seconds": 130,
@@ -9210,8 +9364,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Понял, спасибо.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -9313,14 +9467,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -9371,7 +9525,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.720Z",
+     "at": "2026-11-07T12:34:15.418Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -9379,7 +9533,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkuk4265fdf5",
+   "id": "ev_mw6dxtz3b367f637",
    "conversation_id": "p1-ru-022",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -9387,7 +9541,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.724Z",
+   "created_at": "2026-11-07T12:34:15.423Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -9758,14 +9912,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -9816,7 +9970,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.724Z",
+     "at": "2026-11-07T12:34:15.423Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 15.38
@@ -9824,7 +9978,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkuk2293b5d2",
+   "id": "ev_mw6dxtz4755fe8a7",
    "conversation_id": "p1-ru-023",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -9832,7 +9986,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.724Z",
+   "created_at": "2026-11-07T12:34:15.424Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -10192,14 +10346,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -10250,7 +10404,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.724Z",
+     "at": "2026-11-07T12:34:15.424Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -10258,7 +10412,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkula8fee67f",
+   "id": "ev_mw6dxtz4f427fde5",
    "conversation_id": "p1-ru-024",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -10266,7 +10420,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.725Z",
+   "created_at": "2026-11-07T12:34:15.424Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -10505,13 +10659,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:33",
+       "offset_label": "03:33",
+       "offset_seconds": 213,
+       "speaker": "client",
+       "quote": "Понятно, спасибо."
+      },
+      {
        "line": 14,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "04:07",
        "offset_label": "04:07",
        "offset_seconds": 247,
@@ -10519,13 +10682,10 @@
        "quote": "Хорошего дня!"
       }
      ],
-     "checked_range": [
-      14,
-      14
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #14 («Хорошего дня!») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Понятно, спасибо.»), оператор попрощался (#14) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -10533,9 +10693,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 7.69,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -10576,10 +10736,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 92.31,
-   "total_str": "92.31",
+   "total": 100,
+   "total_str": "100.00",
    "calculated": true,
-   "original_total": 92.31,
+   "original_total": 100,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -10599,10 +10759,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -10666,8 +10826,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -10675,15 +10835,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.725Z",
+     "at": "2026-11-07T12:34:15.424Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 92.31
+     "total_after": 100
     }
    ]
   },
   {
-   "id": "ev_mw6dlkup78b46035",
+   "id": "ev_mw6dxtzb6b6a89a3",
    "conversation_id": "p1-ru-025",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -10691,7 +10851,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.729Z",
+   "created_at": "2026-11-07T12:34:15.431Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -11024,14 +11184,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -11082,7 +11242,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.729Z",
+     "at": "2026-11-07T12:34:15.431Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -11090,7 +11250,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkuqa80d7a53",
+   "id": "ev_mw6dxtzb9a6ee34c",
    "conversation_id": "p1-ru-026",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -11098,7 +11258,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.730Z",
+   "created_at": "2026-11-07T12:34:15.431Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -11143,34 +11303,46 @@
      "criterion_id": "c02",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
-       "line": 10,
-       "why": "оператор задаёт уточняющий вопрос",
-       "timestamp": "03:00",
-       "offset_label": "03:00",
-       "offset_seconds": 180,
-       "speaker": "operator",
-       "quote": "Добрый день, я Виктор. Чем могу помочь?"
+       "line": 1,
+       "why": "Клиент уже указал суть запроса: 'где скачать реквизиты пополнения'.",
+       "timestamp": "00:00",
+       "offset_label": "00:00",
+       "offset_seconds": 0,
+       "speaker": "client",
+       "quote": "Скажите, где скачать реквизиты пополнения?"
+      },
+      {
+       "line": 11,
+       "why": "Клиент вынужден повторить запрос: 'Я писал выше. Нужны реквизиты...'",
+       "timestamp": "03:08",
+       "offset_label": "03:08",
+       "offset_seconds": 188,
+       "speaker": "client",
+       "quote": "Я писал выше. Нужны реквизиты, какую кнопку нажать?"
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
-     "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
-     "source": "rule",
+     "checked_range": [
+      1,
+      11
+     ],
+     "rule_applied": "02: Выявление потребности",
+     "explanation": "Оператор не учёл контекст предыдущего диалога с ботом и не уточнил детали, что привело к повторению вопроса клиентом.",
+     "confidence": 0.7,
+     "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
      "section": "A",
      "answer_type": "yes_no_na",
      "weight": 15,
      "scored": true,
-     "points": 15,
+     "points": 0,
      "effective_weight": 18.75,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "7e679fdc90058c73"
     },
     {
@@ -11420,17 +11592,17 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 75,
-   "total_str": "75.00",
+   "total": 56.25,
+   "total_str": "56.25",
    "calculated": true,
-   "original_total": 75,
+   "original_total": 56.25,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
-     "points": 25,
+     "points": 10,
      "weight": 25,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 40,
+     "total_str": "40.00",
      "calculated": true
     },
     "B": {
@@ -11456,7 +11628,7 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.55,
    "needs_review": true,
    "operator_participated": true,
    "cost_usd": 0,
@@ -11494,10 +11666,11 @@
     "routing": [
      {
       "criterion_id": "c02",
-      "source": "rule",
+      "source": "ai",
       "model_label": "Нет",
       "rule_label": "Да",
-      "agree": false
+      "agree": false,
+      "note": "model_no_overrides_rule_yes"
      },
      {
       "criterion_id": "c03",
@@ -11519,15 +11692,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.730Z",
+     "at": "2026-11-07T12:34:15.431Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 75
+     "total_after": 56.25
     }
    ]
   },
   {
-   "id": "ev_mw6dlkuqef513c29",
+   "id": "ev_mw6dxtzbde3186d6",
    "conversation_id": "p1-ru-027",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -11535,7 +11708,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.730Z",
+   "created_at": "2026-11-07T12:34:15.431Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -11910,14 +12083,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -11968,7 +12141,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.730Z",
+     "at": "2026-11-07T12:34:15.431Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -11976,7 +12149,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkuu3a0e3eff",
+   "id": "ev_mw6dxtzg9151db38",
    "conversation_id": "p1-ru-028",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -11984,7 +12157,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.734Z",
+   "created_at": "2026-11-07T12:34:15.436Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -12240,8 +12413,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 15,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "05:02",
+       "offset_label": "05:02",
+       "offset_seconds": 302,
+       "speaker": "client",
+       "quote": "Поняла, спасибо."
+      },
+      {
        "line": 16,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "05:51",
        "offset_label": "05:51",
        "offset_seconds": 351,
@@ -12250,8 +12432,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #16 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#15: «Поняла, спасибо.»), оператор попрощался (#16) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -12344,14 +12526,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -12402,7 +12584,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.734Z",
+     "at": "2026-11-07T12:34:15.436Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -12410,7 +12592,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkuv744a9727",
+   "id": "ev_mw6dxtzgd93d1708",
    "conversation_id": "p1-ru-029",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -12418,7 +12600,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.735Z",
+   "created_at": "2026-11-07T12:34:15.436Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -12463,13 +12645,22 @@
      "criterion_id": "c02",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 1,
+       "why": "Клиент уже сообщил, что не может найти вход на сайте.",
+       "timestamp": "00:00",
+       "offset_label": "00:00",
+       "offset_seconds": 0,
+       "speaker": "client",
+       "quote": "Почему опять не могу найти вход? На вашем сайте всё перелопатил."
+      },
+      {
        "line": 10,
-       "why": "оператор задаёт уточняющий вопрос",
+       "why": "Оператор не уточнил детали (какой именно сайт, какая ошибка), а сразу ответил грубо и без попытки понять проблему.",
        "timestamp": "01:23",
        "offset_label": "01:23",
        "offset_seconds": 83,
@@ -12477,20 +12668,23 @@
        "quote": "Здравствуйте, я Алексей. Вы вообще читать умеете? Бот всё написал."
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
-     "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
-     "source": "rule",
+     "checked_range": [
+      1,
+      10
+     ],
+     "rule_applied": "02: Выявление потребности",
+     "explanation": "Оператор не уточнил недостающую информацию (какой сайт, что именно не работает), а сразу перешел к ответу, не выявив потребность.",
+     "confidence": 0.7,
+     "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
      "section": "A",
      "answer_type": "yes_no_na",
      "weight": 15,
      "scored": true,
-     "points": 15,
+     "points": 0,
      "effective_weight": 18.75,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "7e679fdc90058c73"
     },
     {
@@ -12733,17 +12927,17 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 63.13,
-   "total_str": "63.13",
+   "total": 44.38,
+   "total_str": "44.38",
    "calculated": true,
-   "original_total": 63.13,
+   "original_total": 44.38,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
-     "points": 25,
+     "points": 10,
      "weight": 25,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 40,
+     "total_str": "40.00",
      "calculated": true
     },
     "B": {
@@ -12779,7 +12973,7 @@
      }
     ]
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.55,
    "needs_review": true,
    "operator_participated": true,
    "cost_usd": 0,
@@ -12817,10 +13011,11 @@
     "routing": [
      {
       "criterion_id": "c02",
-      "source": "rule",
+      "source": "ai",
       "model_label": "Нет",
       "rule_label": "Да",
-      "agree": false
+      "agree": false,
+      "note": "model_no_overrides_rule_yes"
      },
      {
       "criterion_id": "c03",
@@ -12842,15 +13037,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.735Z",
+     "at": "2026-11-07T12:34:15.436Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 63.13
+     "total_after": 44.38
     }
    ]
   },
   {
-   "id": "ev_mw6dlkuvafa38e8d",
+   "id": "ev_mw6dxtzhca966bbc",
    "conversation_id": "p1-ru-030",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -12858,7 +13053,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.735Z",
+   "created_at": "2026-11-07T12:34:15.437Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -13224,14 +13419,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -13282,7 +13477,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.735Z",
+     "at": "2026-11-07T12:34:15.437Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -13290,7 +13485,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkuz81e78cb3",
+   "id": "ev_mw6dxtzmf3203896",
    "conversation_id": "p1-kz-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -13298,7 +13493,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.739Z",
+   "created_at": "2026-11-07T12:34:15.442Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -13554,8 +13749,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "01:28",
+       "offset_label": "01:28",
+       "offset_seconds": 88,
+       "speaker": "client",
+       "quote": "Көрдім, рақмет."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "02:04",
        "offset_label": "02:04",
        "offset_seconds": 124,
@@ -13564,8 +13768,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Көрдім, рақмет.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -13725,7 +13929,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.739Z",
+     "at": "2026-11-07T12:34:15.442Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -13733,7 +13937,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkv01d3562b6",
+   "id": "ev_mw6dxtzmeb320704",
    "conversation_id": "p1-kz-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -13741,7 +13945,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.740Z",
+   "created_at": "2026-11-07T12:34:15.442Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -14006,8 +14210,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "02:46",
+       "offset_label": "02:46",
+       "offset_seconds": 166,
+       "speaker": "client",
+       "quote": "Таптым."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "03:14",
        "offset_label": "03:14",
        "offset_seconds": 194,
@@ -14016,8 +14229,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Таптым.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -14168,7 +14381,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.740Z",
+     "at": "2026-11-07T12:34:15.442Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -14176,7 +14389,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkv054c0138f",
+   "id": "ev_mw6dxtzn9ae3f02d",
    "conversation_id": "p1-kz-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -14184,7 +14397,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.740Z",
+   "created_at": "2026-11-07T12:34:15.443Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -14620,7 +14833,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.740Z",
+     "at": "2026-11-07T12:34:15.443Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 94.71
@@ -14628,7 +14841,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkv616c17d95",
+   "id": "ev_mw6dxtzv6942061f",
    "conversation_id": "p1-kz-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -14636,7 +14849,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.746Z",
+   "created_at": "2026-11-07T12:34:15.451Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -14887,13 +15100,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:39",
+       "offset_label": "03:39",
+       "offset_seconds": 219,
+       "speaker": "client",
+       "quote": "Енді түсінікті, рақмет."
+      },
+      {
        "line": 14,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "04:21",
        "offset_label": "04:21",
        "offset_seconds": 261,
@@ -14901,13 +15123,10 @@
        "quote": "Сау болыңыз!"
       }
      ],
-     "checked_range": [
-      14,
-      14
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #14 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Енді түсінікті, рақмет.»), оператор попрощался (#14) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -14915,9 +15134,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 7.69,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -14958,10 +15177,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 92.31,
-   "total_str": "92.31",
+   "total": 100,
+   "total_str": "100.00",
    "calculated": true,
-   "original_total": 92.31,
+   "original_total": 100,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -14981,10 +15200,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -14999,14 +15218,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -15048,8 +15267,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -15057,15 +15276,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.746Z",
+     "at": "2026-11-07T12:34:15.451Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 92.31
+     "total_after": 100
     }
    ]
   },
   {
-   "id": "ev_mw6dlkv6954231ab",
+   "id": "ev_mw6dxtzv9d8813a9",
    "conversation_id": "p1-kz-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -15073,7 +15292,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.746Z",
+   "created_at": "2026-11-07T12:34:15.451Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -15436,14 +15655,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -15494,7 +15713,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.746Z",
+     "at": "2026-11-07T12:34:15.451Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 85.38
@@ -15502,7 +15721,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkv6faf7503d",
+   "id": "ev_mw6dxtzw35fa6b30",
    "conversation_id": "p1-kz-006",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -15510,7 +15729,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.746Z",
+   "created_at": "2026-11-07T12:34:15.452Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -15766,8 +15985,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:40",
+       "offset_label": "03:40",
+       "offset_seconds": 220,
+       "speaker": "client",
+       "quote": "Дайын болды. Рақмет!"
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "04:15",
        "offset_label": "04:15",
        "offset_seconds": 255,
@@ -15776,8 +16004,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Дайын болды. Рақмет!»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -15879,14 +16107,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -15937,7 +16165,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.746Z",
+     "at": "2026-11-07T12:34:15.452Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -15945,7 +16173,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvbe278adff",
+   "id": "ev_mw6dxu02859458fe",
    "conversation_id": "p1-kz-007",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -15953,7 +16181,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.751Z",
+   "created_at": "2026-11-07T12:34:15.458Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -16195,13 +16423,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "01:55",
+       "offset_label": "01:55",
+       "offset_seconds": 115,
+       "speaker": "client",
+       "quote": "Түсіндім."
+      },
+      {
        "line": 12,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "02:15",
        "offset_label": "02:15",
        "offset_seconds": 135,
@@ -16209,13 +16446,10 @@
        "quote": "Сау болыңыз!"
       }
      ],
-     "checked_range": [
-      12,
-      12
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #12 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Түсіндім.»), оператор попрощался (#12) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -16223,9 +16457,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 7.69,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -16266,10 +16500,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 92.31,
-   "total_str": "92.31",
+   "total": 100,
+   "total_str": "100.00",
    "calculated": true,
-   "original_total": 92.31,
+   "original_total": 100,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -16289,10 +16523,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -16307,14 +16541,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -16356,8 +16590,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -16365,15 +16599,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.751Z",
+     "at": "2026-11-07T12:34:15.458Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 92.31
+     "total_after": 100
     }
    ]
   },
   {
-   "id": "ev_mw6dlkvc5b4b7444",
+   "id": "ev_mw6dxu0272a10ffb",
    "conversation_id": "p1-kz-008",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -16381,7 +16615,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.752Z",
+   "created_at": "2026-11-07T12:34:15.458Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -16426,13 +16660,22 @@
      "criterion_id": "c02",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 5,
+       "why": "Клиент уже указал сайт: 'Freedom Finance Global сайты'.",
+       "timestamp": "00:32",
+       "offset_label": "00:32",
+       "offset_seconds": 32,
+       "speaker": "client",
+       "quote": "Freedom Finance Global сайты. Операторға қосыңызшы."
+      },
+      {
        "line": 10,
-       "why": "оператор задаёт уточняющий вопрос",
+       "why": "Оператор переспросил: 'Қай сайтқа кірдіңіз?', хотя информация была доступна в истории чата.",
        "timestamp": "01:24",
        "offset_label": "01:24",
        "offset_seconds": 84,
@@ -16440,20 +16683,23 @@
        "quote": "Сәлем. Қай сайтқа кірдіңіз?"
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (02: уточнение/использование известных деталей)",
-     "explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-     "confidence": 0.4,
-     "source": "rule",
+     "checked_range": [
+      5,
+      10
+     ],
+     "rule_applied": "02: Выявление потребности (не переспрашивать известное)",
+     "explanation": "Оператор переспросил клиента о сайте, который тот уже четко указал в сообщении боту, что является нарушением правила выявления потребности.",
+     "confidence": 0.7,
+     "source": "ai",
      "code": "02",
      "title": "Выявление потребности",
      "section": "A",
      "answer_type": "yes_no_na",
      "weight": 15,
      "scored": true,
-     "points": 15,
+     "points": 0,
      "effective_weight": 18.75,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "7e679fdc90058c73"
     },
     {
@@ -16712,17 +16958,17 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 70,
-   "total_str": "70.00",
+   "total": 51.25,
+   "total_str": "51.25",
    "calculated": true,
-   "original_total": 70,
+   "original_total": 51.25,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
-     "points": 15,
+     "points": 0,
      "weight": 25,
-     "total": 60,
-     "total_str": "60.00",
+     "total": 0,
+     "total_str": "0.00",
      "calculated": true
     },
     "B": {
@@ -16748,7 +16994,7 @@
     "criteria": [],
     "evidence": []
    },
-   "min_confidence": 0.4,
+   "min_confidence": 0.55,
    "needs_review": true,
    "operator_participated": true,
    "cost_usd": 0,
@@ -16786,10 +17032,11 @@
     "routing": [
      {
       "criterion_id": "c02",
-      "source": "rule",
+      "source": "ai",
       "model_label": "Нет",
       "rule_label": "Да",
-      "agree": false
+      "agree": false,
+      "note": "model_no_overrides_rule_yes"
      },
      {
       "criterion_id": "c03",
@@ -16811,15 +17058,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.752Z",
+     "at": "2026-11-07T12:34:15.458Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 70
+     "total_after": 51.25
     }
    ]
   },
   {
-   "id": "ev_mw6dlkvc1d660218",
+   "id": "ev_mw6dxu02aac428ed",
    "conversation_id": "p1-kz-009",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -16827,7 +17074,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.752Z",
+   "created_at": "2026-11-07T12:34:15.458Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -17092,8 +17339,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 19,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "05:04",
+       "offset_label": "05:04",
+       "offset_seconds": 304,
+       "speaker": "client",
+       "quote": "Түсіндім. Рақмет!"
+      },
+      {
        "line": 20,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "05:21",
        "offset_label": "05:21",
        "offset_seconds": 321,
@@ -17102,8 +17358,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #20 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#19: «Түсіндім. Рақмет!»), оператор попрощался (#20) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -17232,14 +17488,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -17290,7 +17546,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.752Z",
+     "at": "2026-11-07T12:34:15.458Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -17298,7 +17554,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvgb90aa1cf",
+   "id": "ev_mw6dxu0a32221241",
    "conversation_id": "p1-kz-010",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -17306,7 +17562,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.756Z",
+   "created_at": "2026-11-07T12:34:15.466Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -17548,13 +17804,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:06",
+       "offset_label": "03:06",
+       "offset_seconds": 186,
+       "speaker": "client",
+       "quote": "Өшірдім, рақмет."
+      },
+      {
        "line": 12,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "03:55",
        "offset_label": "03:55",
        "offset_seconds": 235,
@@ -17562,13 +17827,10 @@
        "quote": "Сау болыңыз!"
       }
      ],
-     "checked_range": [
-      12,
-      12
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #12 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Өшірдім, рақмет.»), оператор попрощался (#12) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -17576,9 +17838,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 7.69,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -17628,10 +17890,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 92.31,
-   "total_str": "92.31",
+   "total": 100,
+   "total_str": "100.00",
    "calculated": true,
-   "original_total": 92.31,
+   "original_total": 100,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -17651,10 +17913,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -17718,8 +17980,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -17727,15 +17989,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.756Z",
+     "at": "2026-11-07T12:34:15.466Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 92.31
+     "total_after": 100
     }
    ]
   },
   {
-   "id": "ev_mw6dlkvhf8e9f325",
+   "id": "ev_mw6dxu0a0917011a",
    "conversation_id": "p1-kz-011",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -17743,7 +18005,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.757Z",
+   "created_at": "2026-11-07T12:34:15.466Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -18112,14 +18374,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -18170,7 +18432,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.757Z",
+     "at": "2026-11-07T12:34:15.466Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -18178,7 +18440,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvh0135ff9a",
+   "id": "ev_mw6dxu0bbed000dd",
    "conversation_id": "p1-kz-012",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -18186,7 +18448,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.757Z",
+   "created_at": "2026-11-07T12:34:15.467Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -18519,14 +18781,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -18577,7 +18839,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.757Z",
+     "at": "2026-11-07T12:34:15.467Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 87.5
@@ -18585,7 +18847,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvmc739c718",
+   "id": "ev_mw6dxu0i5e7e2be6",
    "conversation_id": "p1-kz-013",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -18593,7 +18855,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.762Z",
+   "created_at": "2026-11-07T12:34:15.474Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -19026,7 +19288,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.762Z",
+     "at": "2026-11-07T12:34:15.474Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 76.92
@@ -19034,7 +19296,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvm0445df84",
+   "id": "ev_mw6dxu0i71dce8e4",
    "conversation_id": "p1-kz-014",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -19042,7 +19304,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.762Z",
+   "created_at": "2026-11-07T12:34:15.474Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -19284,13 +19546,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "02:08",
+       "offset_label": "02:08",
+       "offset_seconds": 128,
+       "speaker": "client",
+       "quote": "Жақсы, рақмет."
+      },
+      {
        "line": 12,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "02:34",
        "offset_label": "02:34",
        "offset_seconds": 154,
@@ -19298,13 +19569,10 @@
        "quote": "Сау болыңыз!"
       }
      ],
-     "checked_range": [
-      12,
-      12
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #12 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Жақсы, рақмет.»), оператор попрощался (#12) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -19312,9 +19580,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 7.69,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -19364,10 +19632,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 92.31,
-   "total_str": "92.31",
+   "total": 100,
+   "total_str": "100.00",
    "calculated": true,
-   "original_total": 92.31,
+   "original_total": 100,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -19387,10 +19655,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -19454,8 +19722,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -19463,15 +19731,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.762Z",
+     "at": "2026-11-07T12:34:15.474Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 92.31
+     "total_after": 100
     }
    ]
   },
   {
-   "id": "ev_mw6dlkvmdfec405d",
+   "id": "ev_mw6dxu0j24b7c0b9",
    "conversation_id": "p1-kz-015",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -19479,7 +19747,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.762Z",
+   "created_at": "2026-11-07T12:34:15.475Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -19724,13 +19992,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "вопрос клиента перед завершением",
+       "timestamp": "03:21",
+       "offset_label": "03:21",
+       "offset_seconds": 201,
+       "speaker": "client",
+       "quote": "Ал себебі қандай?"
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание без ответа на этот вопрос",
        "timestamp": "04:06",
        "offset_label": "04:06",
        "offset_seconds": 246,
@@ -19738,10 +20015,13 @@
        "quote": "Оны тексеруге жіберемін. Сау болыңыз."
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "checked_range": [
+      13,
+      14
+     ],
+     "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
+     "explanation": "07: клиент задал вопрос (#13), а последняя реплика оператора #14 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -19749,9 +20029,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 5,
+     "points": 0,
      "effective_weight": 5.88,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -19794,10 +20074,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 64.71,
-   "total_str": "64.71",
+   "total": 58.82,
+   "total_str": "58.82",
    "calculated": true,
-   "original_total": 64.71,
+   "original_total": 58.82,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -19817,10 +20097,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 35,
+     "points": 30,
      "weight": 35,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 85.71,
+     "total_str": "85.71",
      "calculated": true
     }
    },
@@ -19845,14 +20125,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -19894,8 +20174,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Да",
-      "rule_label": "Да",
-      "agree": true
+      "rule_label": "Нет",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -19903,15 +20183,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.762Z",
+     "at": "2026-11-07T12:34:15.475Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 64.71
+     "total_after": 58.82
     }
    ]
   },
   {
-   "id": "ev_mw6dlkvr9a92183b",
+   "id": "ev_mw6dxu0pca430aeb",
    "conversation_id": "p1-en-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -19919,7 +20199,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.767Z",
+   "created_at": "2026-11-07T12:34:15.481Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -20175,8 +20455,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "01:28",
+       "offset_label": "01:28",
+       "offset_seconds": 88,
+       "speaker": "client",
+       "quote": "Right, I thought I'd just have to wait. Thanks."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "02:04",
        "offset_label": "02:04",
        "offset_seconds": 124,
@@ -20185,8 +20474,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Right, I thought I'd just have to wait. »), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -20279,14 +20568,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -20337,7 +20626,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.767Z",
+     "at": "2026-11-07T12:34:15.481Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -20345,7 +20634,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvr7cdd5cee",
+   "id": "ev_mw6dxu0qa3559cde",
    "conversation_id": "p1-en-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -20353,7 +20642,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.767Z",
+   "created_at": "2026-11-07T12:34:15.482Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -20588,8 +20877,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "02:13",
+       "offset_label": "02:13",
+       "offset_seconds": 133,
+       "speaker": "client",
+       "quote": "I'm on a laptop. The web version works. Thanks."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "02:34",
        "offset_label": "02:34",
        "offset_seconds": 154,
@@ -20598,8 +20896,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «I'm on a laptop. The web version works. »), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -20701,14 +20999,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -20759,7 +21057,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.767Z",
+     "at": "2026-11-07T12:34:15.482Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -20767,7 +21065,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvrfdc4f427",
+   "id": "ev_mw6dxu0qec6f294b",
    "conversation_id": "p1-en-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -20775,7 +21073,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.767Z",
+   "created_at": "2026-11-07T12:34:15.482Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -21010,8 +21308,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "02:56",
+       "offset_label": "02:56",
+       "offset_seconds": 176,
+       "speaker": "client",
+       "quote": "Found it."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "03:39",
        "offset_label": "03:39",
        "offset_seconds": 219,
@@ -21020,8 +21327,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Found it.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -21114,14 +21421,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -21172,7 +21479,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.767Z",
+     "at": "2026-11-07T12:34:15.482Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -21180,7 +21487,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvw7f7a05a7",
+   "id": "ev_mw6dxu0wba154de7",
    "conversation_id": "p1-en-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -21188,7 +21495,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.772Z",
+   "created_at": "2026-11-07T12:34:15.488Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -21453,8 +21760,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:39",
+       "offset_label": "03:39",
+       "offset_seconds": 219,
+       "speaker": "client",
+       "quote": "That worked. Thanks!"
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "04:21",
        "offset_label": "04:21",
        "offset_seconds": 261,
@@ -21463,8 +21779,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «That worked. Thanks!»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -21557,14 +21873,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -21615,7 +21931,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.772Z",
+     "at": "2026-11-07T12:34:15.488Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -21623,7 +21939,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvw48389fee",
+   "id": "ev_mw6dxu0w908a9526",
    "conversation_id": "p1-en-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -21631,7 +21947,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.772Z",
+   "created_at": "2026-11-07T12:34:15.488Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -21878,8 +22194,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 13,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "05:02",
+       "offset_label": "05:02",
+       "offset_seconds": 302,
+       "speaker": "client",
+       "quote": "Got them, thanks."
+      },
+      {
        "line": 14,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "05:51",
        "offset_label": "05:51",
        "offset_seconds": 351,
@@ -21888,8 +22213,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #14 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#13: «Got them, thanks.»), оператор попрощался (#14) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -21982,14 +22307,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -22040,7 +22365,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.772Z",
+     "at": "2026-11-07T12:34:15.488Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 93.08
@@ -22048,7 +22373,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkvw39f1b9ab",
+   "id": "ev_mw6dxu0w1e62d9fe",
    "conversation_id": "p1-en-006",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -22056,7 +22381,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.772Z",
+   "created_at": "2026-11-07T12:34:15.488Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -22443,14 +22768,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -22501,7 +22826,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.772Z",
+     "at": "2026-11-07T12:34:15.488Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 94.71
@@ -22509,7 +22834,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkw07def57d8",
+   "id": "ev_mw6dxu1138e83fe1",
    "conversation_id": "p1-en-007",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -22517,7 +22842,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.776Z",
+   "created_at": "2026-11-07T12:34:15.493Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -22765,13 +23090,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "yes",
+     "answer": "no",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "вопрос клиента перед завершением",
+       "timestamp": "01:55",
+       "offset_label": "01:55",
+       "offset_seconds": 115,
+       "speaker": "client",
+       "quote": "Okay, I found it. Can I submit the withdrawal right after this?"
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание без ответа на этот вопрос",
        "timestamp": "02:15",
        "offset_label": "02:15",
        "offset_seconds": 135,
@@ -22779,10 +23113,13 @@
        "quote": "That's where the profile request is. Thanks for contacting us. Bye."
       }
      ],
-     "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-     "confidence": 0.8,
+     "checked_range": [
+      11,
+      12
+     ],
+     "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
+     "explanation": "07: клиент задал вопрос (#11), а последняя реплика оператора #12 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -22790,9 +23127,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 5,
+     "points": 0,
      "effective_weight": 7.69,
-     "answer_label": "Да",
+     "answer_label": "Нет",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -22842,10 +23179,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 84.62,
-   "total_str": "84.62",
+   "total": 76.92,
+   "total_str": "76.92",
    "calculated": true,
-   "original_total": 84.62,
+   "original_total": 76.92,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -22865,10 +23202,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 35,
+     "points": 30,
      "weight": 35,
-     "total": 100,
-     "total_str": "100.00",
+     "total": 85.71,
+     "total_str": "85.71",
      "calculated": true
     }
    },
@@ -22932,8 +23269,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Да",
-      "rule_label": "Да",
-      "agree": true
+      "rule_label": "Нет",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -22941,15 +23278,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.776Z",
+     "at": "2026-11-07T12:34:15.493Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 84.62
+     "total_after": 76.92
     }
    ]
   },
   {
-   "id": "ev_mw6dlkw0206550f8",
+   "id": "ev_mw6dxu118976cdfb",
    "conversation_id": "p1-en-008",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -22957,7 +23294,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.776Z",
+   "created_at": "2026-11-07T12:34:15.493Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -23363,7 +23700,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.776Z",
+     "at": "2026-11-07T12:34:15.493Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 85.38
@@ -23371,7 +23708,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkw09fd1c1aa",
+   "id": "ev_mw6dxu11f3425ef3",
    "conversation_id": "p1-en-009",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -23379,7 +23716,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.776Z",
+   "created_at": "2026-11-07T12:34:15.493Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -23767,7 +24104,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.776Z",
+     "at": "2026-11-07T12:34:15.493Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -23775,7 +24112,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkw50835de1c",
+   "id": "ev_mw6dxu169a384e3a",
    "conversation_id": "p1-en-010",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -23783,7 +24120,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.781Z",
+   "created_at": "2026-11-07T12:34:15.498Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -24018,8 +24355,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:06",
+       "offset_label": "03:06",
+       "offset_seconds": 186,
+       "speaker": "client",
+       "quote": "Understood, thanks."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "03:55",
        "offset_label": "03:55",
        "offset_seconds": 235,
@@ -24028,8 +24374,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «Understood, thanks.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -24180,7 +24526,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.781Z",
+     "at": "2026-11-07T12:34:15.498Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -24188,7 +24534,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkw5308782eb",
+   "id": "ev_mw6dxu174dd1eece",
    "conversation_id": "p1-en-011",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -24196,7 +24542,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.781Z",
+   "created_at": "2026-11-07T12:34:15.499Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -24565,14 +24911,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 1,
+   "latency_ms": 2,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 1,
+    "latency_ms": 2,
     "cache": {
      "hits": [
       "c01",
@@ -24623,7 +24969,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.781Z",
+     "at": "2026-11-07T12:34:15.499Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -24631,7 +24977,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkw58ca227b7",
+   "id": "ev_mw6dxu176f1357e6",
    "conversation_id": "p1-en-012",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -24639,7 +24985,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.781Z",
+   "created_at": "2026-11-07T12:34:15.499Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -24883,8 +25229,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 11,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "03:08",
+       "offset_label": "03:08",
+       "offset_seconds": 188,
+       "speaker": "client",
+       "quote": "That's the page I was after. Thanks."
+      },
+      {
        "line": 12,
-       "why": "прощание + итог/предложение помощи",
+       "why": "прощание оператора",
        "timestamp": "03:27",
        "offset_label": "03:27",
        "offset_seconds": 207,
@@ -24893,8 +25248,8 @@
       }
      ],
      "checked_range": null,
-     "rule_applied": "маршрут: детерминированная проверка (07: прощание + итог)",
-     "explanation": "07: последняя реплика оператора #12 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#11: «That's the page I was after. Thanks.»), оператор попрощался (#12) → предварительно Да.",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -25054,7 +25409,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.781Z",
+     "at": "2026-11-07T12:34:15.499Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -25062,7 +25417,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkw901aeebca",
+   "id": "ev_mw6dxu1b8dc5e874",
    "conversation_id": "p1-en-013",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -25070,7 +25425,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.785Z",
+   "created_at": "2026-11-07T12:34:15.503Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -25503,7 +25858,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.785Z",
+     "at": "2026-11-07T12:34:15.503Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 61.54
@@ -25511,7 +25866,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkwa5ed49748",
+   "id": "ev_mw6dxu1b057e414b",
    "conversation_id": "p1-en-014",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -25519,7 +25874,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.786Z",
+   "created_at": "2026-11-07T12:34:15.503Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -25778,8 +26133,17 @@
      "flag_types": [],
      "evidence": [
       {
+       "line": 14,
+       "why": "вопрос клиента перед завершением",
+       "timestamp": "04:04",
+       "offset_label": "04:04",
+       "offset_seconds": 244,
+       "speaker": "client",
+       "quote": "Will I hear back here?"
+      },
+      {
        "line": 15,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание без ответа на этот вопрос",
        "timestamp": "04:42",
        "offset_label": "04:42",
        "offset_seconds": 282,
@@ -25788,11 +26152,11 @@
       }
      ],
      "checked_range": [
-      15,
+      14,
       15
      ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #15 («Goodbye.») — только прощание без итога/предложения помощи → предварительно Нет.",
+     "rule_applied": "маршрут: детерминированная проверка (07: прощание при открытом вопросе)",
+     "explanation": "07: клиент задал вопрос (#14), а последняя реплика оператора #15 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
      "confidence": 0.8,
      "source": "rule",
      "code": "07",
@@ -25955,7 +26319,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.786Z",
+     "at": "2026-11-07T12:34:15.503Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 30.59
@@ -25963,7 +26327,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkwafa3f632d",
+   "id": "ev_mw6dxu1b59b962ad",
    "conversation_id": "p1-en-015",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -25971,7 +26335,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.786Z",
+   "created_at": "2026-11-07T12:34:15.503Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -26401,7 +26765,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.786Z",
+     "at": "2026-11-07T12:34:15.503Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 70
@@ -26409,7 +26773,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkwg2f9eef83",
+   "id": "ev_mw6dxu1ie5471cee",
    "conversation_id": "p4-ru-003",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -26417,7 +26781,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.792Z",
+   "created_at": "2026-11-07T12:34:15.510Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -26865,7 +27229,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.792Z",
+     "at": "2026-11-07T12:34:15.510Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 78.95
@@ -26873,7 +27237,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkwgb6cf7e89",
+   "id": "ev_mw6dxu1j6f5176f4",
    "conversation_id": "p4-ru-002",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -26881,7 +27245,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.792Z",
+   "created_at": "2026-11-07T12:34:15.511Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -27141,13 +27505,22 @@
      "criterion_id": "c07",
      "applicable": true,
      "na_reason": null,
-     "answer": "no",
+     "answer": "yes",
      "scale_value": null,
      "flag_types": [],
      "evidence": [
       {
+       "line": 70,
+       "why": "клиент подтвердил, что вопрос решён",
+       "timestamp": "2026-11-03T14:00:04.4057532+00:00",
+       "offset_label": "10:44",
+       "offset_seconds": 644.384,
+       "speaker": "client",
+       "quote": "Мхм, всё хорошо. Я понял спасибо."
+      },
+      {
        "line": 71,
-       "why": "только прощание без итога/предложения помощи",
+       "why": "прощание оператора",
        "timestamp": "2026-11-03T14:00:07.9868790+00:00",
        "offset_label": "10:48",
        "offset_seconds": 647.965,
@@ -27155,13 +27528,10 @@
        "quote": "Благодарю вас за уделенное время всего хорошего до свидания."
       }
      ],
-     "checked_range": [
-      71,
-      73
-     ],
-     "rule_applied": "маршрут: детерминированная проверка (07: завершение неполное)",
-     "explanation": "07: последняя реплика оператора #71 («Благодарю вас за уделенное время всего хорошего до свидания.») — только прощание без итога/предложения помощи → предварительно Нет.",
-     "confidence": 0.8,
+     "checked_range": null,
+     "rule_applied": "маршрут: детерминированная проверка (07: решение подтверждено + прощание)",
+     "explanation": "07: клиент подтвердил решение (#70: «Мхм, всё хорошо. Я понял спасибо.»), оператор попрощался (#71) → предварительно Да.",
+     "confidence": 0.55,
      "source": "rule",
      "code": "07",
      "title": "Завершение",
@@ -27169,9 +27539,9 @@
      "answer_type": "yes_no_na",
      "weight": 5,
      "scored": true,
-     "points": 0,
+     "points": 5,
      "effective_weight": 7.69,
-     "answer_label": "Нет",
+     "answer_label": "Да",
      "criterion_hash": "0e9f42668c3cc2d3"
     },
     {
@@ -27221,10 +27591,10 @@
      "criterion_hash": "21c0b02f40fa9c03"
     }
    ],
-   "total": 76.92,
-   "total_str": "76.92",
+   "total": 84.62,
+   "total_str": "84.62",
    "calculated": true,
-   "original_total": 76.92,
+   "original_total": 84.62,
    "section_totals": {
     "A": {
      "title": "Начало и понимание запроса",
@@ -27244,10 +27614,10 @@
     },
     "C": {
      "title": "Ведение и завершение диалога",
-     "points": 30,
+     "points": 35,
      "weight": 35,
-     "total": 85.71,
-     "total_str": "85.71",
+     "total": 100,
+     "total_str": "100.00",
      "calculated": true
     }
    },
@@ -27311,8 +27681,8 @@
       "criterion_id": "c07",
       "source": "rule",
       "model_label": "Нет",
-      "rule_label": "Нет",
-      "agree": true
+      "rule_label": "Да",
+      "agree": false
      }
     ],
     "examples_used": 0
@@ -27320,15 +27690,15 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.792Z",
+     "at": "2026-11-07T12:34:15.511Z",
      "action": "evaluated",
      "by": "ai",
-     "total_after": 76.92
+     "total_after": 84.62
     }
    ]
   },
   {
-   "id": "ev_mw6dlkwh178e1175",
+   "id": "ev_mw6dxu1j8ad07552",
    "conversation_id": "p4-ru-001",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -27336,7 +27706,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.793Z",
+   "created_at": "2026-11-07T12:34:15.511Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -27711,14 +28081,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 1,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 1,
     "cache": {
      "hits": [
       "c01",
@@ -27769,7 +28139,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.793Z",
+     "at": "2026-11-07T12:34:15.511Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 100
@@ -27777,7 +28147,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkwm6046297b",
+   "id": "ev_mw6dxu1pe6f983fc",
    "conversation_id": "p4-ru-005",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -27785,7 +28155,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.798Z",
+   "created_at": "2026-11-07T12:34:15.517Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -28172,14 +28542,14 @@
    "operator_participated": true,
    "cost_usd": 0,
    "cost_note": "0 ₸ — результат из кэша",
-   "latency_ms": 2,
+   "latency_ms": 3,
    "trace": {
     "prompt_version": "judge-v1.0",
     "provider": "alem",
     "model": "qwen3-8",
     "calls": [],
     "cost_usd": 0,
-    "latency_ms": 2,
+    "latency_ms": 3,
     "cache": {
      "hits": [
       "c01",
@@ -28230,7 +28600,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.798Z",
+     "at": "2026-11-07T12:34:15.517Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 74
@@ -28238,7 +28608,7 @@
    ]
   },
   {
-   "id": "ev_mw6dlkwm9390f1f6",
+   "id": "ev_mw6dxu1pb3141cf0",
    "conversation_id": "p4-ru-004",
    "group_id": "DEV",
    "checklist_id": "freedom-chat-quality",
@@ -28246,7 +28616,7 @@
    "prompt_version": "judge-v1.0",
    "provider": "alem",
    "model": "qwen3-8",
-   "created_at": "2026-11-07T12:24:43.798Z",
+   "created_at": "2026-11-07T12:34:15.517Z",
    "status": "final",
    "mode": "stored",
    "results": [
@@ -28670,7 +29040,7 @@
    "scoring_errors": [],
    "history": [
     {
-     "at": "2026-11-07T12:24:43.798Z",
+     "at": "2026-11-07T12:34:15.517Z",
      "action": "evaluated",
      "by": "ai",
      "total_after": 87.33

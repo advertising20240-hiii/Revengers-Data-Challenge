@@ -8,6 +8,8 @@ export const NO_OPERATOR_REASON = 'Оператор не участвовал в
 
 const SENTENCE_RE = /[^.!?…]+[.!?…]*/gu;
 const QUESTION_RE = /\?/u;
+// client confirms the issue is resolved (RU / KZ / EN)
+const CLIENT_CONFIRM_RE = /(спасибо|благодарю|понятно|понял|поняла|ясно|разобрал|получилось|нашёл|нашел|нашла|то,? что (я )?хотел|рақмет|рахмет|түсіндім|түсінікті|таптым|thank|thanks|got it|understood|that helps|found it|perfect)/iu;
 
 function opLines(conv) { return conv.lines.filter((l) => l.speaker === 'operator'); }
 function clientLines(conv) { return conv.lines.filter((l) => l.speaker === 'client'); }
@@ -190,6 +192,16 @@ export function hintFor(conv, criterion) {
       const clientAfter = lo.client_lines_after || [];
       const dropped = f.end_event?.type === 'client_left' || (f.client_left_lines || []).length > 0;
       const openQ = clientAfter.some((n) => QUESTION_RE.test(conv.lines[n - 1]?.text || ''));
+      // closing context: the client's last message before the operator's final line
+      const prevClient = conv.lines.slice(0, lo.line - 1).reverse().find((l) => l.speaker === 'client');
+      const prevQ = !!prevClient && QUESTION_RE.test(prevClient.text);
+      const clientConfirmed = !!prevClient && !prevQ && CLIENT_CONFIRM_RE.test(prevClient.text);
+      if (lo.farewell && prevQ && !openQ && !lo.offer_help) {
+        return H({ applicable: true, answer: 'no' }, 0.65, [{ line: prevClient.n, why: 'вопрос клиента перед завершением' }, { line: lo.line, why: 'прощание без ответа на этот вопрос' }], '07: прощание при открытом вопросе', `07: клиент задал вопрос (#${prevClient.n}), а последняя реплика оператора #${lo.line} завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос)`, [prevClient.n, conv.lines.length]);
+      }
+      if (lo.farewell && clientConfirmed && !openQ) {
+        return H({ applicable: true, answer: 'yes' }, 0.75, [{ line: prevClient.n, why: 'клиент подтвердил, что вопрос решён' }, { line: lo.line, why: 'прощание оператора' }], '07: решение подтверждено + прощание', `07: клиент подтвердил решение (#${prevClient.n}: «${prevClient.text.slice(0, 40)}»), оператор попрощался (#${lo.line}) → предварительно Да`);
+      }
       if (lo.farewell && (lo.offer_help || sentences.length >= 2) && !openQ) {
         return H({ applicable: true, answer: 'yes' }, 0.75, [{ line: lo.line, why: 'прощание + итог/предложение помощи' }], '07: прощание + итог', `07: последняя реплика оператора #${lo.line} содержит прощание и ${lo.offer_help ? 'предложение помощи' : 'ещё одно предложение (итог/подтверждение)'} → предварительно Да`);
       }

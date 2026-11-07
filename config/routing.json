@@ -1,5 +1,5 @@
 {
-  "_comment": "Per-criterion decision source chosen by measured accuracy on the TUNE split (45 dialogs) of the human-labelled DEV set; holdout (20) is reported separately in reports/calibration.md. Applies only while the criterion definition is unchanged; new or edited criteria are always judged by the model.",
+  "_comment": "Per-criterion decision source chosen by measured accuracy on the TUNE split (45 dialogs) of the human-labelled DEV set; holdout (20) is reported separately in reports/calibration.md. llm = model label; rule = deterministic check (model label kept as second opinion); rule+model_no = deterministic check, but a model «Нет» overrides a rule «Да». Applies only while the criterion definition is unchanged; new or edited criteria are always judged by the model.",
   "model": "qwen3-8",
   "measured_at": "2026-11-07",
   "criteria": [
@@ -11,7 +11,7 @@
     {
       "code": "02",
       "definition": "Да — оператор учёл известные детали и уточнил недостающее до ответа. N/A — данных для ответа хватало с самого начала.",
-      "source": "rule"
+      "source": "rule+model_no"
     },
     {
       "code": "03",

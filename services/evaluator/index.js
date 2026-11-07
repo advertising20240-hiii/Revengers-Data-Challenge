@@ -328,8 +328,15 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
     trace.routing = [];
     for (const c of criteria) {
       const cur = out[c.id];
-      if (!cur || cur.source === 'rule' && !String(cur.rule_applied || '').startsWith('fallback:') || routeFor(c) !== 'rule') continue;
+      const route = routeFor(c);
+      if (!cur || cur.source === 'rule' && !String(cur.rule_applied || '').startsWith('fallback:') || !route.startsWith('rule')) continue;
       const h = heuristicResult(conv, c);
+      // "rule+model_no": the model's «Нет» (a concrete miss it found) overrides the rule's «Да»
+      if (route === 'rule+model_no' && cur.answer === 'no' && h.answer === 'yes' && cur.source === 'ai') {
+        trace.routing.push({ criterion_id: c.id, source: 'ai', model_label: ruLabel(cur), rule_label: ruLabel(h), agree: false, note: 'model_no_overrides_rule_yes' });
+        out[c.id] = { ...cur, confidence: Math.min(cur.confidence ?? 0.7, 0.7) };
+        continue;
+      }
       const agree = ruLabel(h) === ruLabel(cur);
       out[c.id] = { ...h, source: 'rule', rule_applied: `маршрут: детерминированная проверка (${h.rule_applied})`, confidence: agree ? Math.max(h.confidence, 0.8) : Math.min(h.confidence, 0.55), second_opinion: { source: 'ai', model, label: ruLabel(cur), explanation: cur.explanation } };
       trace.routing.push({ criterion_id: c.id, source: 'rule', model_label: ruLabel(cur), rule_label: ruLabel(h), agree });

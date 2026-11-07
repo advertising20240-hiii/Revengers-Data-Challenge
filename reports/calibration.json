@@ -1,5 +1,5 @@
 {
- "created_at": "2026-11-07T12:23:56.738Z",
+ "created_at": "2026-11-07T12:34:05.961Z",
  "model": "qwen3-8",
  "provider": "alem",
  "verifier_model": null,
@@ -168,15 +168,15 @@
    "title": "Выявление потребности",
    "kind": "binary",
    "n": 65,
-   "accuracy": 0.831,
+   "accuracy": 0.892,
    "accuracy_ci": [
-    0.722,
-    0.903
+    0.794,
+    0.947
    ],
-   "kappa": 0.637,
+   "kappa": 0.773,
    "kappa_ci": [
-    0.451,
-    0.805
+    0.611,
+    0.912
    ],
    "confusion": {
     "labels": [
@@ -186,9 +186,9 @@
     ],
     "matrix": [
      [
-      0,
+      4,
       3,
-      4
+      0
      ],
      [
       0,
@@ -206,11 +206,11 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.8
+     "accuracy": 0.886
     },
     "KZ": {
      "n": 15,
-     "accuracy": 0.867
+     "accuracy": 0.933
     },
     "EN": {
      "n": 15,
@@ -219,25 +219,25 @@
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.8,
-    "kappa": 0.604
+    "accuracy": 0.867,
+    "kappa": 0.742
    },
    "holdout": {
     "n": 20,
-    "accuracy": 0.9,
+    "accuracy": 0.95,
     "accuracy_ci": [
-     0.699,
-     0.972
+     0.764,
+     0.991
     ],
-    "kappa": 0.722,
+    "kappa": 0.864,
     "kappa_ci": [
-     0.298,
+     0.437,
      1
     ],
     "by_language": {
      "RU": {
       "n": 10,
-      "accuracy": 0.9
+      "accuracy": 1
      },
      "KZ": {
       "n": 5,
@@ -650,15 +650,15 @@
    "title": "Завершение",
    "kind": "binary",
    "n": 65,
-   "accuracy": 0.831,
+   "accuracy": 0.938,
    "accuracy_ci": [
-    0.722,
-    0.903
+    0.852,
+    0.976
    ],
-   "kappa": 0.589,
+   "kappa": 0.819,
    "kappa_ci": [
-    0.36,
-    0.764
+    0.67,
+    0.942
    ],
    "confusion": {
     "labels": [
@@ -668,9 +668,9 @@
     ],
     "matrix": [
      [
-      11,
+      14,
       0,
-      5
+      2
      ],
      [
       0,
@@ -678,9 +678,9 @@
       0
      ],
      [
-      7,
       2,
-      34
+      2,
+      39
      ]
     ],
     "note": "строки — эталон (человек), столбцы — модель"
@@ -688,11 +688,11 @@
    "by_language": {
     "RU": {
      "n": 35,
-     "accuracy": 0.8
+     "accuracy": 0.886
     },
     "KZ": {
      "n": 15,
-     "accuracy": 0.733
+     "accuracy": 1
     },
     "EN": {
      "n": 15,
@@ -701,19 +701,19 @@
    },
    "tune": {
     "n": 45,
-    "accuracy": 0.8,
-    "kappa": 0.519
+    "accuracy": 0.933,
+    "kappa": 0.76
    },
    "holdout": {
     "n": 20,
-    "accuracy": 0.9,
+    "accuracy": 0.95,
     "accuracy_ci": [
-     0.699,
-     0.972
+     0.764,
+     0.991
     ],
-    "kappa": 0.73,
+    "kappa": 0.913,
     "kappa_ci": [
-     0.381,
+     0.706,
      1
     ],
     "by_language": {
@@ -723,7 +723,7 @@
      },
      "KZ": {
       "n": 5,
-      "accuracy": 0.8
+      "accuracy": 1
      },
      "EN": {
       "n": 5,
@@ -815,10 +815,10 @@
  ],
  "totals": {
   "n": 65,
-  "exact_match_rate": 0.462,
-  "mae": 8.31,
-  "within_5pts": 0.492,
-  "all_labels_match": 28,
+  "exact_match_rate": 0.523,
+  "mae": 6.41,
+  "within_5pts": 0.554,
+  "all_labels_match": 32,
   "engine_consistent_when_labels_match": true
  },
  "gross": {
@@ -866,19 +866,6 @@
    "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary)."
   },
   {
-   "conversation_id": "p1-ru-003",
-   "criterion_id": "c07",
-   "language": "RU",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #15 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-   "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary)."
-  },
-  {
    "conversation_id": "p1-ru-005",
    "criterion_id": "c06",
    "language": "RU",
@@ -920,19 +907,6 @@
    "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
   },
   {
-   "conversation_id": "p1-ru-007",
-   "criterion_id": "c07",
-   "language": "RU",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #13 содержит прощание и ещё одно предложение (итог/подтверждение) → предварительно Да.",
-   "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
-  },
-  {
    "conversation_id": "p1-ru-009",
    "criterion_id": "c07",
    "language": "RU",
@@ -960,19 +934,6 @@
   },
   {
    "conversation_id": "p1-ru-014",
-   "criterion_id": "c02",
-   "language": "RU",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-   "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N."
-  },
-  {
-   "conversation_id": "p1-ru-014",
    "criterion_id": "c06",
    "language": "RU",
    "ai": 10,
@@ -985,6 +946,19 @@
    "confidence": 1,
    "ai_explanation": "Диалог проходил ясно и связно, задержек в ответах оператора не было, клиенту не пришлось переспрашивать из-за неясности формулировок.",
    "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-015",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 0.55,
+   "ai_explanation": "07: клиент задал вопрос (#11), а последняя реплика оператора #12 завершает диалог прощанием → предварительно Нет (проверьте, закрыт ли вопрос).",
+   "note": ""
   },
   {
    "conversation_id": "p1-ru-016",
@@ -1069,19 +1043,6 @@
    "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N."
   },
   {
-   "conversation_id": "p1-ru-024",
-   "criterion_id": "c07",
-   "language": "RU",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #14 («Хорошего дня!») — только прощание без итога/предложения помощи → предварительно Нет.",
-   "note": ""
-  },
-  {
    "conversation_id": "p1-ru-025",
    "criterion_id": "c04",
    "language": "RU",
@@ -1093,19 +1054,6 @@
    "confidence": 0.95,
    "ai_explanation": "Клиент не сформулировал конкретный вопрос до подключения оператора (реплики #1, #5, #7 содержат только просьбу о соединении). Оператор корректно инициировала диалог, представившись и спросив о сути об",
    "note": "Client left before stating a request (#11): 04 N/A (exact checklist condition), 07 N/A (chat broke off), 03 N/A. Demo example for N/A."
-  },
-  {
-   "conversation_id": "p1-ru-026",
-   "criterion_id": "c02",
-   "language": "RU",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-   "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
   },
   {
    "conversation_id": "p1-ru-026",
@@ -1136,19 +1084,6 @@
    "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
   },
   {
-   "conversation_id": "p1-ru-029",
-   "criterion_id": "c02",
-   "language": "RU",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-   "note": "GROSS: insult 'Вы вообще читать умеете?' (#10). Answer itself correct (#12). Complaint #13 ignored -> 05=N; 'До свидания.' alone -> 07=N."
-  },
-  {
    "conversation_id": "p1-kz-003",
    "criterion_id": "c02",
    "language": "KZ",
@@ -1175,19 +1110,6 @@
    "note": "ID (#13) before case escalation; empathy #11."
   },
   {
-   "conversation_id": "p1-kz-004",
-   "criterion_id": "c07",
-   "language": "KZ",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #14 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-   "note": "Both path and retry-timing answered."
-  },
-  {
    "conversation_id": "p1-kz-005",
    "criterion_id": "c06",
    "language": "KZ",
@@ -1199,45 +1121,6 @@
    "confidence": 1,
    "ai_explanation": "Между репликами 10 и 12 была пауза более 90 секунд (91 с), оператор не предупредил клиента об ожидании, что является одним заметным сбоем в ведении диалога.",
    "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N."
-  },
-  {
-   "conversation_id": "p1-kz-007",
-   "criterion_id": "c07",
-   "language": "KZ",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #12 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-   "note": ""
-  },
-  {
-   "conversation_id": "p1-kz-008",
-   "criterion_id": "c02",
-   "language": "KZ",
-   "ai": "Y",
-   "human": "N",
-   "accepted": [
-    "N"
-   ],
-   "confidence": 0.4,
-   "ai_explanation": "02: первая реплика оператора содержит вопрос; проверьте, не переспрашивает ли он то, что клиент уже сообщил (строки клиента до #10).",
-   "note": "'Сәлем. Қай сайтқа кірдіңіз?' — no name, re-asks known info; no operator closing at all (chat ends on client #13)."
-  },
-  {
-   "conversation_id": "p1-kz-010",
-   "criterion_id": "c07",
-   "language": "KZ",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #12 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-   "note": ""
   },
   {
    "conversation_id": "p1-kz-012",
@@ -1264,19 +1147,6 @@
    "confidence": 0.7,
    "ai_explanation": "Основной вопрос о поиске закрыт, но существенный вопрос о том, как совершить первую покупку (учитывая, что клиент новичок), остался открытым. Оператор предложил платную консультацию, что не является к",
    "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14)."
-  },
-  {
-   "conversation_id": "p1-kz-014",
-   "criterion_id": "c07",
-   "language": "KZ",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #12 («Сау болыңыз!») — только прощание без итога/предложения помощи → предварительно Нет.",
-   "note": ""
   },
   {
    "conversation_id": "p1-kz-015",
@@ -1521,19 +1391,6 @@
    "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
   },
   {
-   "conversation_id": "p4-ru-002",
-   "criterion_id": "c07",
-   "language": "RU",
-   "ai": "N",
-   "human": "Y",
-   "accepted": [
-    "Y"
-   ],
-   "confidence": 0.8,
-   "ai_explanation": "07: последняя реплика оператора #71 («Благодарю вас за уделенное время всего хорошего до свидания.») — только прощание без итога/предложения помощи → предварительно Нет.",
-   "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
-  },
-  {
    "conversation_id": "p4-ru-001",
    "criterion_id": "c04",
    "language": "RU",
@@ -1592,18 +1449,18 @@
   "total_usd": 0,
   "per_dialog_usd": 0,
   "cost_note": "0 ₸ — бесплатный API alem.plus (qwen3-8)",
-  "calls": 6,
+  "calls": 0,
   "by_role": {
    "judge": {
-    "calls": 3,
-    "input_tokens": 9564,
-    "output_tokens": 1495,
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
     "cost_usd": 0
    },
    "repair": {
-    "calls": 2,
-    "input_tokens": 6458,
-    "output_tokens": 664,
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
     "cost_usd": 0
    },
    "verifier": {
@@ -1613,9 +1470,9 @@
     "cost_usd": 0
    },
    "kz": {
-    "calls": 1,
-    "input_tokens": 3786,
-    "output_tokens": 4000,
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
     "cost_usd": 0
    },
    "rule": {
@@ -1625,11 +1482,11 @@
     "cost_usd": 0
    }
   },
-  "seconds_total": 30.4,
-  "seconds_per_dialog": 0.7,
-  "cache_hits": 515,
-  "cache_misses": 5,
-  "repairs": 2,
+  "seconds_total": 0.3,
+  "seconds_per_dialog": 0,
+  "cache_hits": 520,
+  "cache_misses": 0,
+  "repairs": 0,
   "fallbacks": 0,
   "verifier_changes": 0,
   "kz_disagreements": 0
@@ -1638,19 +1495,19 @@
   "RU": {
    "dialogs": 35,
    "labels": 280,
-   "accuracy": 0.886,
+   "accuracy": 0.907,
    "accuracy_ci": [
-    0.843,
-    0.918
+    0.867,
+    0.936
    ]
   },
   "KZ": {
    "dialogs": 15,
    "labels": 120,
-   "accuracy": 0.892,
+   "accuracy": 0.933,
    "accuracy_ci": [
-    0.823,
-    0.936
+    0.874,
+    0.966
    ]
   },
   "EN": {
