@@ -123,6 +123,7 @@ async function once({ system, user, schema, model, signal, timeoutMs, maxTokens,
   const mode = support.get(model) || (schema ? (process.env.CQA_ALEM_JSON_MODE || 'json_object') : 'text');
   const body = { model, max_tokens: maxTokens, messages: [{ role: 'system', content: system }, { role: 'user', content: user }] };
   // The gateway caches identical requests; a retry must not receive the same (failed) cached answer.
+  if (process.env.CQA_ALEM_NO_CACHE === '1') body.cache = { 'no-cache': true }; // honest re-measurement (test-retest)
   if (_retry) { body.cache = { 'no-cache': true }; body.messages[0].content += `
 
 (попытка ${_retry + 1})`; }

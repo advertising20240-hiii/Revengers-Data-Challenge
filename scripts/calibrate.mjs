@@ -390,10 +390,17 @@ if (args.compare && !args.ids && compareModel) {
   };
 }
 
+// A cache-only report keeps the latest live test-retest / injection measurement (with its source run) instead of dropping it.
+const liveRuns = loadRuns().filter((o) => o.provider !== 'offline' && o.provider !== 'heuristic').sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)));
+const lastRetest = liveRuns.find((o) => (o.retest?.n || 0) > 0);
+const lastInjection = liveRuns.find((o) => o.injection_regression && !o.injection_regression.error);
+const retestOut = retest.n > 0 ? retest : (lastRetest ? { ...lastRetest.retest, source: `reports/runs/${lastRetest.file}`, measured_at: lastRetest.created_at } : retest);
+const injectionOut = injection || (lastInjection ? { ...lastInjection.injection_regression, source: `reports/runs/${lastInjection.file}`, measured_at: lastInjection.created_at } : null);
 const report = {
   created_at: new Date().toISOString(), model, provider: providerName, verifier_model: verifierModel, prompt_version: evaluator.PROMPT_VERSION, policy_hash: evaluator.POLICY_HASH, checklist_version: checklist.version,
+
   split, n: okRuns.length, failed: runs.filter((r) => r.error && !r.retest).map((r) => ({ id: r.id, error: r.error })), split_used: args.ids ? 'ids' : args.split,
-  criteria: critReport, totals, gross: grossReport, retest, disagreements, cost, by_language: langSummary, injection_regression: injection, learning_loop: null,
+  criteria: critReport, totals, gross: grossReport, retest: retestOut, disagreements, cost, by_language: langSummary, injection_regression: injectionOut, learning_loop: null,
   targets: { binary_accuracy: 0.92, scale_within_one_step: 0.9, scale_exact: 0.7, kappa: 0.61, gross_recall_insult_bypass: 1, retest_identical: 0.95 },
   comparison,
   runs: loadRuns().map((o) => ({ file: `reports/runs/${o.file}`, provider: o.provider, model: o.model, created_at: o.created_at, n: o.n, split_used: o.split_used, calls: o.cost?.calls ?? null, cache_hits: o.cost?.cache_hits ?? null, cache_misses: o.cost?.cache_misses ?? null, retest_n: o.retest?.n ?? 0, injection_checked: !!o.injection_regression })),

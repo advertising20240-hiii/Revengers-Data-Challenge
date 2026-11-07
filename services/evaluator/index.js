@@ -65,7 +65,7 @@ export function providerInfo(opts = {}) {
   return {
     provider, model, verifier_model, kz_model: kzModelFor(provider), available: !!st.available, reason: st.reason, roles: st.roles, quota: st.quota && Object.keys(st.quota).length ? st.quota : undefined,
     local: LOCAL_PROVIDERS.includes(provider), cloud_allowed: cloudAllowed(), prompt_version: PROMPT_VERSION, policy_hash: POLICY_HASH,
-    cost_note: provider === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model || 'модель не задана'})` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
+    cost_note: provider === 'offline' ? `0 ₸ — сохранённые результаты модели ${model}, модель не вызывается` : provider === 'alem' ? `0 ₸ — бесплатный API alem.plus (${model || 'модель не задана'})` : LOCAL_PROVIDERS.includes(provider) ? `0 ₸ — ${provider === 'heuristic' ? 'детерминированные правила без модели' : `локальная модель ${model} на ${HARDWARE}`}` : 'облачная модель, цена по прайс-листу',
   };
 }
 

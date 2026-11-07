@@ -63,8 +63,10 @@ export function modelInfo(evaluations) {
   const provider = evaluations.find((e) => e?.provider)?.provider;
   const list = [...models];
   const name = [list.length ? `${list.join(', ')}${provider === 'alem' ? ' (alem.plus API)' : ''}` : null, rules ? 'детерминированные правила по фактам транскрипта' : null].filter(Boolean).join(' + ');
-  const mode = list.length && rules ? 'hybrid' : list.length ? (provider === 'openai' || provider === 'ollama' ? 'local' : 'external_api') : 'local';
-  return { mode, name: name || 'детерминированные правила' };
+  // mode describes where the models run: every model call goes to the alem.plus API (rules are plain code, not a model)
+  const local = provider === 'openai' || provider === 'ollama';
+  const mode = local ? 'local' : 'external_api';
+  return { mode, name: name || `${process.env.ALEM_MODEL_JUDGE || 'qwen3-8'} (alem.plus API) + детерминированные правила по фактам транскрипта` };
 }
 
 /** Full results file; `rows` = [{conversation_id, evaluations:[newest first]}]. */

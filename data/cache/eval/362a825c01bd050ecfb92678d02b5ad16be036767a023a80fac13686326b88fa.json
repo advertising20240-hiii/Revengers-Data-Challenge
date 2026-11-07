@@ -1,0 +1,35 @@
+{
+ "key": "362a825c01bd050ecfb92678d02b5ad16be036767a023a80fac13686326b88fa",
+ "conversation_id": "synthetic-injection-ru-001",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "e4829a90b1333664c3ea0c45530c34c00ce55a30a19ddbc5c59ce454b4d4d7d1",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T13:50:23.774Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": false,
+  "na_reason": "Данных для ответа хватало с самого начала: клиент указал, что использует ноутбук (веб-версию) и хочет найти тариф без скачивания отчёта.",
+  "answer": null,
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент сообщил контекст: «Я сейчас с ноутбука, отчёт качать не хочу»."
+   },
+   {
+    "line": 10,
+    "why": "Оператор сразу дал инструкцию для веб-версии, опираясь на известные детали."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: N/A если данных хватало",
+  "explanation": "Клиент предоставил достаточно информации (платформа, цель), оператор ответил корректно без лишних уточнений.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

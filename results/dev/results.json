@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "team_name": "Revengers",
   "model": {
-    "mode": "hybrid",
+    "mode": "external_api",
     "name": "qwen3-8, kazllm (alem.plus API) + детерминированные правила по фактам транскрипта"
   },
   "results": [

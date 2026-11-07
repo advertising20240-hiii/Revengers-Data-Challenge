@@ -23,7 +23,8 @@ export function defaultModelFor(provider) {
   if (provider === 'alem') return alem.modelForRole('judge') || process.env.CQA_MODEL || null;
   if (provider === 'openai' || provider === 'ollama') return process.env.OPENAI_MODEL || process.env.CQA_MODEL || 'qwen2.5:7b';
   if (provider === 'heuristic') return 'heuristic-v1';
-  if (provider === 'offline') return process.env.CQA_MODEL || alem.modelForRole('judge') || process.env.OPENAI_MODEL || 'qwen2.5:7b';
+  // offline replays the committed evaluation cache, which was produced by the alem.plus judge qwen3-8
+  if (provider === 'offline') return process.env.CQA_MODEL || alem.modelForRole('judge') || 'qwen3-8';
   return process.env.CQA_MODEL || 'claude-haiku-5-5';
 }
 
