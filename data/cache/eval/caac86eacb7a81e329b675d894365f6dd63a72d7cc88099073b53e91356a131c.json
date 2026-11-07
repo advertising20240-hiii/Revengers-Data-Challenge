@@ -1,0 +1,38 @@
+{
+ "key": "caac86eacb7a81e329b675d894365f6dd63a72d7cc88099073b53e91356a131c",
+ "conversation_id": "p1-en-013",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:11.264Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ответ оператора ясен и лаконичен."
+   },
+   {
+    "line": 12,
+    "why": "Реплика оператора понятна, хотя и неуместна по содержанию."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Реплики оператора ясны, связны, нет противоречий или необходимости переспрашивать. Паузы не превышают допустимых норм.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

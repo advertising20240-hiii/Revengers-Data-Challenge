@@ -23,7 +23,7 @@ export function getConfig(env = process.env, overrides = {}) {
     fetchTimeoutMs: num(env.CQA_FETCH_TIMEOUT_MS, 30000),
     dataDir: env.CQA_DATA_DIR || join(ROOT, 'data'),
     devFile: join(ROOT, 'data', 'dev', 'DEV.json'),
-    seedDir: join(ROOT, 'data', 'seed'),
+    seedDir: env.CQA_SEED_DIR || join(ROOT, 'data', 'seed'),
     publicDir: join(ROOT, 'public'),
     packagesDir: join(ROOT, 'packages'),
     configDir: join(ROOT, 'config'),

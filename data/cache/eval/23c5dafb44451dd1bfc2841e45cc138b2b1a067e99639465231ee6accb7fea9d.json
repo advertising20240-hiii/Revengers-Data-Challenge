@@ -1,0 +1,38 @@
+{
+ "key": "23c5dafb44451dd1bfc2841e45cc138b2b1a067e99639465231ee6accb7fea9d",
+ "conversation_id": "p4-ru-005",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:19:19.484Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 74,
+    "why": "Системное сообщение: 'Клиент завершил разговор'."
+   },
+   {
+    "line": 75,
+    "why": "Последняя реплика оператора: 'Да, в конце разговора присниматься не.' — не содержит прощания или итога."
+   }
+  ],
+  "checked_range": [
+   72,
+   75
+  ],
+  "rule_applied": "07: завершение",
+  "explanation": "Клиент завершил разговор, не дав оператору возможности корректно попрощаться и подвести итог. Последняя реплика оператора не содержит прощания.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

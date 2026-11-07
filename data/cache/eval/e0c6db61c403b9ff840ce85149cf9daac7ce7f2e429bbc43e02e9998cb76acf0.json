@@ -1,0 +1,31 @@
+{
+ "key": "e0c6db61c403b9ff840ce85149cf9daac7ce7f2e429bbc43e02e9998cb76acf0",
+ "conversation_id": "p1-ru-016",
+ "criterion_id": "c01",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:30.615Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор поздоровался ('Здравствуйте') и представился ('меня зовут Антон') в первой реплике."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "01: приветствие+имя в первой реплике",
+  "explanation": "Первая реплика оператора содержит приветствие на языке клиента и его имя, что соответствует требованию критерия.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,34 @@
+{
+ "key": "c3fbe95c5a97eba364242eaabc227db4045e6b4840c2dcce2ec32fac94c6d30a",
+ "conversation_id": "p1-en-009",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "df2642a72e4675a4b481e491de447184ae5be36aec9f38c9d951e09276e7ce50",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:23:34.212Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Последняя реплика оператора содержит только инструкцию, без прощания или подтверждения завершения диалога."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "07: Завершение",
+  "explanation": "Последняя реплика оператора не содержит прощания или итогового подтверждения, хотя клиент уже поблагодарил и диалог фактически завершён.",
+  "confidence": 0.7,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

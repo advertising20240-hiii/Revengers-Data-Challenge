@@ -1,0 +1,31 @@
+{
+ "key": "379858df6c4b9190cd1a1436f490875c2b2fcb6492e7bd8a331cd7bfc936e45b",
+ "conversation_id": "p1-en-008",
+ "criterion_id": "c01",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:12.559Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Первая реплика оператора содержит приветствие 'Hi' и представление 'I'm Sofia'."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "01: приветствие+имя в первой реплике",
+  "explanation": "Оператор поздоровался на языке клиента (EN) и представился именем в первой реплике.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

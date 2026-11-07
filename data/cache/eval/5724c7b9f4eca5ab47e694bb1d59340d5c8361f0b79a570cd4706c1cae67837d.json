@@ -1,0 +1,38 @@
+{
+ "key": "5724c7b9f4eca5ab47e694bb1d59340d5c8361f0b79a570cd4706c1cae67837d",
+ "conversation_id": "p1-ru-022",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:54.340Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 0,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Реплика бессвязна с контекстом запроса клиента."
+   },
+   {
+    "line": 12,
+    "why": "Реплика противоречит логике диалога и нормам работы."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом",
+  "explanation": "Ход диалога непонятен из-за бессвязных и противоречивых реплик оператора, которые не имеют отношения к запросу клиента.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

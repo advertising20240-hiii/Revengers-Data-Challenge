@@ -1,0 +1,38 @@
+{
+ "key": "112c80163897890462de40e8ae53f81a193d111cc0c588b6ef62aad2b947c35e",
+ "conversation_id": "p1-kz-001",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:15:33.321Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент сообщил, что находится на компьютере ('Мен компьютердемін')."
+   },
+   {
+    "line": 10,
+    "why": "Оператор учёл это, указав путь в веб-версии ('Веб-нұсқада...')."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: учёт известных деталей",
+  "explanation": "Оператор явно опирался на известную деталь (клиент на компьютере), предоставив инструкцию для веб-интерфейса, не переспрашивая лишнего.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

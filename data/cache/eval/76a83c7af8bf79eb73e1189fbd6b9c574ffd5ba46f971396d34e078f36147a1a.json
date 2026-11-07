@@ -1,0 +1,31 @@
+{
+ "key": "76a83c7af8bf79eb73e1189fbd6b9c574ffd5ba46f971396d34e078f36147a1a",
+ "conversation_id": "p4-ru-001",
+ "criterion_id": "c01",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:52.373Z",
+ "result": {
+  "criterion_id": "c01",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Оператор поздоровался ('Здравствуйте') и представился ('меня зовут [Имя скрыто]')."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "01: приветствие+имя в первой реплике",
+  "explanation": "В первой реплике оператора присутствуют оба обязательных элемента: приветствие на языке клиента и представление с именем.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,42 @@
+{
+ "key": "1a57f89c54fd85e04dfa27934f3c0bea22748d29eb708a2c4822b9a846b73164",
+ "conversation_id": "p1-kz-002",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:15:32.900Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор указал путь в меню."
+   },
+   {
+    "line": 12,
+    "why": "Оператор объяснил процесс выбора валюты и использования реквизитов."
+   },
+   {
+    "line": 13,
+    "why": "Клиент подтвердил, что нашёл нужное."
+   }
+  ],
+  "checked_range": [
+   10,
+   13
+  ],
+  "rule_applied": "04: Корректная и полная консультация",
+  "explanation": "Все существенные вопросы клиента (где найти реквизиты, как получить их в нужной валюте) были закрыты, клиент подтвердил решение проблемы.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

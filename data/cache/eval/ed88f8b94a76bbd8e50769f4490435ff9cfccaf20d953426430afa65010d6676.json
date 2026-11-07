@@ -1,0 +1,38 @@
+{
+ "key": "ed88f8b94a76bbd8e50769f4490435ff9cfccaf20d953426430afa65010d6676",
+ "conversation_id": "p1-kz-015",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:17:13.480Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Клиент задал прямой вопрос о причине ограничения ('Ал себебі қандай?')."
+   },
+   {
+    "line": 14,
+    "why": "Оператор не ответил на вопрос, а лишь сообщил об эскалации ('Оны тексеруге жіберемін')."
+   }
+  ],
+  "checked_range": [
+   13,
+   14
+  ],
+  "rule_applied": "04: Корректная и полная консультация",
+  "explanation": "Основной вопрос клиента о причине блокировки остался без ответа. Оператор предложил эскалацию, что является корректным следующим шагом, но часть запроса (получение информации) осталась открытой в текущем диалоге. Казахскоязычная модель (kazllm) оценила иначе: 20 — требуется проверка.",
+  "confidence": 0.7,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

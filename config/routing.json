@@ -1,0 +1,47 @@
+{
+  "_comment": "Per-criterion decision source chosen by measured accuracy on the TUNE split (45 dialogs) of the human-labelled DEV set; holdout (20) is reported separately in reports/calibration.md. Applies only while the criterion definition is unchanged; new or edited criteria are always judged by the model.",
+  "model": "qwen3-8",
+  "measured_at": "2026-11-07",
+  "criteria": [
+    {
+      "code": "01",
+      "definition": "Да — оператор поздоровался на языке клиента и представился в первом ответе.",
+      "source": "llm"
+    },
+    {
+      "code": "02",
+      "definition": "Да — оператор учёл известные детали и уточнил недостающее до ответа. N/A — данных для ответа хватало с самого начала.",
+      "source": "rule"
+    },
+    {
+      "code": "03",
+      "definition": "Да — проверка личности подтверждена до раскрытия данных или защищённого действия. N/A — запрос не требовал идентификации.",
+      "source": "rule"
+    },
+    {
+      "code": "04",
+      "definition": "Оцените ответ или следующий шаг по шкале. N/A — чат закончился до того, как клиент сформулировал запрос.",
+      "source": "llm"
+    },
+    {
+      "code": "05",
+      "definition": "Да — оператор вежлив и, если клиент выразил недовольство или описал неудобство, отреагировал на конкретную проблему.",
+      "source": "llm"
+    },
+    {
+      "code": "06",
+      "definition": "Оцените ясность, порядок ответов и предупреждение об ожидании по шкале.",
+      "source": "llm"
+    },
+    {
+      "code": "07",
+      "definition": "Да — оператор подвёл итог или предложил дальнейшую помощь и попрощался. N/A — чат оборвался до возможности его завершить.",
+      "source": "rule"
+    },
+    {
+      "code": "08",
+      "definition": "Да — выявлено оскорбление клиента, предложение платной услуги в обход компании или раскрытие конфиденциальной информации. Нет — ни одно из трёх не выявлено.",
+      "source": "llm"
+    }
+  ]
+}

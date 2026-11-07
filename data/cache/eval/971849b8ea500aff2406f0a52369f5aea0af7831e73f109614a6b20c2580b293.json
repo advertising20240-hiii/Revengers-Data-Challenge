@@ -1,0 +1,35 @@
+{
+ "key": "971849b8ea500aff2406f0a52369f5aea0af7831e73f109614a6b20c2580b293",
+ "conversation_id": "p1-ru-019",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:44.476Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Ясная и связная реплика."
+   },
+   {
+    "line": 12,
+    "why": "Чёткая инструкция."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "06: управление диалогом",
+  "explanation": "Ответы ясные, логичные, клиент не переспрашивал, пауз в середине диалога не было.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

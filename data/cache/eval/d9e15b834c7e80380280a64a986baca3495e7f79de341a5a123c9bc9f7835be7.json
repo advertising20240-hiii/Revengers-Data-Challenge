@@ -1,0 +1,38 @@
+{
+ "key": "d9e15b834c7e80380280a64a986baca3495e7f79de341a5a123c9bc9f7835be7",
+ "conversation_id": "p1-en-014",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:35.494Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент уже сообщил суть проблемы: 'withdrawals are blocked'."
+   },
+   {
+    "line": 11,
+    "why": "Оператор сразу раскрыл данные счёта, не уточнив детали и не проведя идентификацию, что является нарушением процедуры."
+   }
+  ],
+  "checked_range": [
+   1,
+   11
+  ],
+  "rule_applied": "02: Выявление потребности",
+  "explanation": "Оператор не уточнил недостающее и не провёл идентификацию, сразу перейдя к раскрытию данных, что является ошибкой в выявлении потребности и безопасности.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

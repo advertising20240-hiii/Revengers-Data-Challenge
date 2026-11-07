@@ -1,0 +1,31 @@
+{
+ "key": "12361cf0cef7e7348567b521a1ed5cb218eb8d6e6e51d9e6172b8a89530a5e98",
+ "conversation_id": "p1-ru-010",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:01.204Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Оператор уточнил, где клиент смотрит портфель (приложение или веб), что было необходимо для диагностики."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: выявление потребности",
+  "explanation": "Оператор задал уместный уточняющий вопрос о платформе просмотра, чтобы корректно помочь с поиском позиции.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

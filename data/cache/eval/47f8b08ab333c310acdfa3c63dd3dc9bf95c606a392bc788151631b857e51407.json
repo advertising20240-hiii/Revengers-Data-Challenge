@@ -1,0 +1,42 @@
+{
+ "key": "47f8b08ab333c310acdfa3c63dd3dc9bf95c606a392bc788151631b857e51407",
+ "conversation_id": "p4-ru-003",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:38.774Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 20,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 68,
+    "why": "Оператор сообщил статус поручения."
+   },
+   {
+    "line": 71,
+    "why": "Оператор предложил эскалацию в технический отдел и обещал обратную связь."
+   },
+   {
+    "line": 76,
+    "why": "Оператор согласовал время обратной связи с клиентом."
+   }
+  ],
+  "checked_range": [
+   66,
+   76
+  ],
+  "rule_applied": "04: корректная консультация",
+  "explanation": "Оператор ответил на вопрос о статусе поручения и предложил корректный следующий шаг (эскалация с указанием канала и времени обратной связи).",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,38 @@
+{
+ "key": "8386257fcbdfdce4524aa7b50ba0a6ae5c44759f9f432df0243c897bccd72112",
+ "conversation_id": "p1-kz-011",
+ "criterion_id": "c08",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:16:37.476Z",
+ "result": {
+  "criterion_id": "c08",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Текст реплики не содержит оскорблений, предложений обхода или раскрытия конфиденциальных данных."
+   },
+   {
+    "line": 12,
+    "why": "Текст реплики не содержит нарушений."
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "08: грубые ошибки",
+  "explanation": "Ни одного из нарушений (оскорбление, обход, раскрытие) не выявлено.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

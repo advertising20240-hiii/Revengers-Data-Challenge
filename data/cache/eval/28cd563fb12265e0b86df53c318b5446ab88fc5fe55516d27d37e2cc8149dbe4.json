@@ -1,0 +1,38 @@
+{
+ "key": "28cd563fb12265e0b86df53c318b5446ab88fc5fe55516d27d37e2cc8149dbe4",
+ "conversation_id": "p1-kz-006",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:16:00.384Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент сообщил, что нужен отчет за прошлый год."
+   },
+   {
+    "line": 10,
+    "why": "Оператор опирался на эту деталь, указав выбрать начало и конец прошлого года."
+   }
+  ],
+  "checked_range": [
+   1,
+   10
+  ],
+  "rule_applied": "02: использование известных деталей",
+  "explanation": "Оператор не переспрашивал уже известное, а использовал информацию о периоде (прошлый год), предоставленную клиентом ранее, для формирования инструкции.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,34 @@
+{
+ "key": "cef51bfc57da224b992b7dcee2f4ced2b6a17161efbe9bc1e1598709ca6a5ec5",
+ "conversation_id": "p1-kz-009",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:16:52.913Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 20,
+    "why": "Оператор попрощался ('Сау болыңыз!') и подтвердил завершение диалога ('Оқасы жоқ')."
+   }
+  ],
+  "checked_range": [
+   20,
+   20
+  ],
+  "rule_applied": "07: завершение",
+  "explanation": "Последняя реплика оператора содержит прощание и подтверждение, что диалог завершён корректно.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

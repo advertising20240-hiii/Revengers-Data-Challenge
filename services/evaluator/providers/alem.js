@@ -8,7 +8,8 @@ export const name = 'alem';
 
 const support = new Map();   // model -> 'json_schema' | 'json_object' | 'text'
 const temperatureOk = new Map(); // model -> boolean
-const quota = new Map();     // model -> { remaining, limit, exhausted_until }
+const quota = new Map();
+const thinkingKwargsOk = new Map(); // model -> false if the endpoint rejects chat_template_kwargs     // model -> { remaining, limit, exhausted_until }
 
 const ROLES = ['JUDGE', 'VERIFIER', 'VERIFIER_ALT', 'KZ', 'FALLBACK', 'EMBED', 'RERANK'];
 
@@ -87,29 +88,48 @@ export function traceToLangfuse(event) {
   return true;
 }
 
+const SHARED = '__shared';
+const RESERVE = Number(process.env.CQA_ALEM_RESERVE ?? NaN); // requests kept in reserve (default: 20 % of the limit)
+
 function quotaExhausted(model) {
-  const q = quota.get(model);
-  if (!q) return false;
-  if (q.exhausted_until && q.exhausted_until > Date.now()) return true;
-  if (q.limit && q.remaining != null && q.remaining <= q.limit * 0.2) return true; // stop at >= 80 % used
+  for (const k of [model, SHARED]) {
+    const q = quota.get(k);
+    if (!q) continue;
+    if (q.exhausted_until && q.exhausted_until > Date.now()) return true;
+    const floor = Number.isNaN(RESERVE) ? (q.limit ? q.limit * 0.2 : 0) : RESERVE;
+    if (q.remaining != null && q.remaining <= floor) return true; // keep a reserve for the control set and the live demo
+  }
   return false;
 }
 
+/** Reads rate-limit headers in any vendor naming (e.g. x-ratelimit-remaining-requests, x-ratelimit-<scope>-remaining-requests). */
 function readQuota(model, headers) {
-  const get = (k) => headers.get(k);
-  const remaining = Number(get('x-ratelimit-remaining-requests') ?? get('x-ratelimit-remaining') ?? NaN);
-  const limit = Number(get('x-ratelimit-limit-requests') ?? get('x-ratelimit-limit') ?? NaN);
-  if (!Number.isNaN(remaining) || !Number.isNaN(limit)) {
-    const q = quota.get(model) || {};
-    quota.set(model, { ...q, remaining: Number.isNaN(remaining) ? q.remaining : remaining, limit: Number.isNaN(limit) ? q.limit : limit });
+  let remaining = NaN, limit = NaN, scoped = false;
+  for (const [k, v] of headers) {
+    const m = /^x-ratelimit-(?:(.+?)-)?(remaining|limit)(?:-requests)?$/i.exec(k);
+    if (!m || /tokens/i.test(k)) continue;
+    if (m[2].toLowerCase() === 'remaining') remaining = Number(v); else limit = Number(v);
+    if (m[1]) scoped = true; // scoped quota (per team/account) is shared by all models and keys
+  }
+  if (Number.isNaN(remaining) && Number.isNaN(limit)) return;
+  for (const key of scoped ? [model, SHARED] : [model]) {
+    const q = quota.get(key) || {};
+    quota.set(key, { ...q, remaining: Number.isNaN(remaining) ? q.remaining : remaining, limit: Number.isNaN(limit) ? q.limit : limit });
   }
 }
 
-async function once({ system, user, schema, model, signal, timeoutMs, maxTokens, role }, _c) {
+async function once({ system, user, schema, model, signal, timeoutMs, maxTokens, role, _retry = 0 }, _c) {
   const c = endpointForModel(model, role);
-  const mode = support.get(model) || (schema ? 'json_schema' : 'text');
+  const mode = support.get(model) || (schema ? (process.env.CQA_ALEM_JSON_MODE || 'json_object') : 'text');
   const body = { model, max_tokens: maxTokens, messages: [{ role: 'system', content: system }, { role: 'user', content: user }] };
+  // The gateway caches identical requests; a retry must not receive the same (failed) cached answer.
+  if (_retry) { body.cache = { 'no-cache': true }; body.messages[0].content += `
+
+(попытка ${_retry + 1})`; }
   if (temperatureOk.get(model) !== false) body.temperature = 0;
+  // Hybrid-reasoning models (Qwen3 family) otherwise spend the whole token budget thinking and return no answer.
+  if (/qwen/i.test(model) && process.env.CQA_ALEM_THINKING !== '1' && thinkingKwargsOk.get(model) !== false) body.chat_template_kwargs = { enable_thinking: false };
+  if (/gpt-oss/i.test(model)) body.reasoning_effort = process.env.CQA_ALEM_REASONING_EFFORT || 'low';
   if (schema && mode === 'json_schema') body.response_format = { type: 'json_schema', json_schema: { name: 'cqa_result', schema, strict: false } };
   else if (schema && mode === 'json_object') body.response_format = { type: 'json_object' };
   const ctl = new AbortController();
@@ -148,7 +168,15 @@ export async function complete(req, _cfg = {}, ctx = {}) {
       const j = await once({ ...req, model, timeoutMs, maxTokens }, c);
       const text = j.choices?.[0]?.message?.content ?? '';
       const u = j.usage || {};
-      if (req.schema && !support.has(model)) support.set(model, support.get(model) || 'json_schema');
+      if (process.env.CQA_DEBUG_DIR) { try { (await import('node:fs')).writeFileSync(`${process.env.CQA_DEBUG_DIR}/ok-${req.role || 'judge'}-${Date.now()}.txt`, String(text)); } catch { /* debug only */ } }
+      if (req.schema && extractJson(text) == null) {
+        // empty or non-JSON answer: step down the structured-output mode once, then give up to the validator
+        const cur = support.get(model) || process.env.CQA_ALEM_JSON_MODE || 'json_object';
+        const next = cur === 'json_schema' ? 'json_object' : cur === 'json_object' ? 'text' : null;
+        if (process.env.CQA_DEBUG_DIR) { try { (await import('node:fs')).writeFileSync(`${process.env.CQA_DEBUG_DIR}/alem-${Date.now()}.json`, JSON.stringify(j, null, 1)); } catch { /* debug only */ } }
+        if (next && !req._downgraded) { support.set(model, next); req = { ...req, _downgraded: true, _retry: (req._retry || 0) + 1 }; continue; }
+      }
+      if (req.schema && !support.has(model)) support.set(model, support.get(model) || process.env.CQA_ALEM_JSON_MODE || 'json_object');
       traceToLangfuse({ name: `cqa-${req.role || 'judge'}`, model, input_tokens: u.prompt_tokens || 0, output_tokens: u.completion_tokens || 0, started_at: new Date(started).toISOString(), metadata: { conversation_id: ctx.conversationId, criteria: (ctx.criteria || []).map((x) => x.id) } });
       return {
         text,
@@ -165,8 +193,9 @@ export async function complete(req, _cfg = {}, ctx = {}) {
       const b = String(e.body || e.message);
       // negotiate structured output / temperature support once per model
       if (e.status === 400 && /temperature/i.test(b) && temperatureOk.get(model) !== false) { temperatureOk.set(model, false); continue; }
+      if (e.status === 400 && /chat_template_kwargs|enable_thinking/i.test(b) && thinkingKwargsOk.get(model) !== false) { thinkingKwargsOk.set(model, false); continue; }
       if (e.status === 400 && req.schema && /response_format|json_schema|schema/i.test(b)) {
-        const cur = support.get(model) || 'json_schema';
+        const cur = support.get(model) || process.env.CQA_ALEM_JSON_MODE || 'json_object';
         if (cur === 'json_schema') { support.set(model, 'json_object'); continue; }
         if (cur === 'json_object') { support.set(model, 'text'); continue; }
       }

@@ -1,0 +1,34 @@
+{
+ "key": "9d57fe37c3c64384e6b744f26cc0bc1d05a4b460fc784066fdf6b9dfafdd3fe3",
+ "conversation_id": "p1-ru-022",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:54.340Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Оператор предложил перевести деньги на личную карту, что является попыткой выполнения финансового действия/обхода системы без идентификации."
+   }
+  ],
+  "checked_range": [
+   10,
+   10
+  ],
+  "rule_applied": "03: Идентификация",
+  "explanation": "Оператор предложил действие, связанное с движением средств (хоть и незаконное), без проведения идентификации клиента. Это нарушает требование безопасности.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

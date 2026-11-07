@@ -1,0 +1,2687 @@
+{
+ "created_at": "2026-11-07T12:21:18.401Z",
+ "model": "qwen3-8",
+ "provider": "alem",
+ "verifier_model": null,
+ "prompt_version": "judge-v1.0",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "checklist_version": 1,
+ "split": {
+  "tune": [
+   "p1-en-001",
+   "p1-en-002",
+   "p1-en-003",
+   "p1-en-004",
+   "p1-en-005",
+   "p1-en-006",
+   "p1-en-009",
+   "p1-en-010",
+   "p1-en-013",
+   "p1-en-015",
+   "p1-kz-001",
+   "p1-kz-002",
+   "p1-kz-004",
+   "p1-kz-006",
+   "p1-kz-007",
+   "p1-kz-008",
+   "p1-kz-009",
+   "p1-kz-012",
+   "p1-kz-014",
+   "p1-kz-015",
+   "p1-ru-001",
+   "p1-ru-003",
+   "p1-ru-005",
+   "p1-ru-006",
+   "p1-ru-008",
+   "p1-ru-009",
+   "p1-ru-010",
+   "p1-ru-011",
+   "p1-ru-012",
+   "p1-ru-013",
+   "p1-ru-014",
+   "p1-ru-016",
+   "p1-ru-017",
+   "p1-ru-018",
+   "p1-ru-019",
+   "p1-ru-020",
+   "p1-ru-021",
+   "p1-ru-023",
+   "p1-ru-024",
+   "p1-ru-025",
+   "p1-ru-029",
+   "p4-ru-002",
+   "p4-ru-003",
+   "p4-ru-004",
+   "p4-ru-005"
+  ],
+  "holdout": [
+   "p1-en-007",
+   "p1-en-008",
+   "p1-en-011",
+   "p1-en-012",
+   "p1-en-014",
+   "p1-kz-003",
+   "p1-kz-005",
+   "p1-kz-010",
+   "p1-kz-011",
+   "p1-kz-013",
+   "p1-ru-002",
+   "p1-ru-004",
+   "p1-ru-007",
+   "p1-ru-015",
+   "p1-ru-022",
+   "p1-ru-026",
+   "p1-ru-027",
+   "p1-ru-028",
+   "p1-ru-030",
+   "p4-ru-001"
+  ],
+  "seed": 20261107
+ },
+ "n": 65,
+ "failed": [],
+ "split_used": "all",
+ "criteria": [
+  {
+   "criterion_id": "c01",
+   "code": "01",
+   "title": "Установление контакта",
+   "kind": "binary",
+   "n": 65,
+   "accuracy": 0.985,
+   "accuracy_ci": [
+    0.918,
+    0.997
+   ],
+   "kappa": 0.881,
+   "kappa_ci": [
+    0.488,
+    1
+   ],
+   "confusion": {
+    "labels": [
+     "N",
+     "Y"
+    ],
+    "matrix": [
+     [
+      4,
+      0
+     ],
+     [
+      1,
+      60
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.971
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 1
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 1
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.978,
+    "kappa": 0.877
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 1,
+    "accuracy_ci": [
+     0.839,
+     1
+    ],
+    "kappa": 1,
+    "kappa_ci": [
+     1,
+     1
+    ],
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 1
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 1
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 1
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c02",
+   "code": "02",
+   "title": "Выявление потребности",
+   "kind": "binary",
+   "n": 65,
+   "accuracy": 0.462,
+   "accuracy_ci": [
+    0.346,
+    0.581
+   ],
+   "kappa": 0.185,
+   "kappa_ci": [
+    0.093,
+    0.288
+   ],
+   "confusion": {
+    "labels": [
+     "N",
+     "NA",
+     "Y"
+    ],
+    "matrix": [
+     [
+      7,
+      0,
+      0
+     ],
+     [
+      8,
+      0,
+      33
+     ],
+     [
+      0,
+      0,
+      17
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.6
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 0.333
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 0.267
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.467,
+    "kappa": 0.225
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 0.45,
+    "accuracy_ci": [
+     0.258,
+     0.658
+    ],
+    "kappa": 0.104,
+    "kappa_ci": [
+     0.016,
+     0.239
+    ],
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 0.6
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 0.2
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 0.4
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c03",
+   "code": "03",
+   "title": "Идентификация",
+   "kind": "binary",
+   "n": 65,
+   "accuracy": 0.169,
+   "accuracy_ci": [
+    0.097,
+    0.278
+   ],
+   "kappa": 0.099,
+   "kappa_ci": [
+    0.034,
+    0.167
+   ],
+   "confusion": {
+    "labels": [
+     "N",
+     "NA",
+     "Y"
+    ],
+    "matrix": [
+     [
+      4,
+      0,
+      0
+     ],
+     [
+      53,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      6
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.171
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 0.133
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 0.2
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.2,
+    "kappa": 0.121
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 0.1,
+    "accuracy_ci": [
+     0.028,
+     0.301
+    ],
+    "kappa": 0.053,
+    "kappa_ci": [
+     0,
+     0.16
+    ],
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 0
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 0.2
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 0.2
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c04",
+   "code": "04",
+   "title": "Корректная и полная консультация",
+   "kind": "scale",
+   "n": 65,
+   "accuracy": 0.846,
+   "accuracy_ci": [
+    0.739,
+    0.914
+   ],
+   "within_one_step": 0.954,
+   "kappa": 0.415,
+   "kappa_ci": [
+    0.187,
+    0.608
+   ],
+   "confusion": {
+    "labels": [
+     "0",
+     "5",
+     "10",
+     "15",
+     "20",
+     "NA"
+    ],
+    "matrix": [
+     [
+      2,
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      3,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      2,
+      6,
+      0
+     ],
+     [
+      0,
+      0,
+      2,
+      4,
+      41,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.886
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 0.8
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 0.8
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.867,
+    "kappa": 0.381
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 0.8,
+    "accuracy_ci": [
+     0.584,
+     0.919
+    ],
+    "kappa": 0.45,
+    "kappa_ci": [
+     0.095,
+     0.74
+    ],
+    "within_one_step": 0.95,
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 0.9
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 0.8
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 0.6
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c05",
+   "code": "05",
+   "title": "Эмпатия и клиентоориентированность",
+   "kind": "binary",
+   "n": 65,
+   "accuracy": 0.969,
+   "accuracy_ci": [
+    0.895,
+    0.992
+   ],
+   "kappa": 0.625,
+   "kappa_ci": [
+    0.228,
+    0.891
+   ],
+   "confusion": {
+    "labels": [
+     "N",
+     "Y"
+    ],
+    "matrix": [
+     [
+      5,
+      4
+     ],
+     [
+      1,
+      55
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.971
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 0.933
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 1
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.978,
+    "kappa": 0.552
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 0.95,
+    "accuracy_ci": [
+     0.764,
+     0.991
+    ],
+    "kappa": 0.773,
+    "kappa_ci": [
+     0,
+     1
+    ],
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 0.9
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 1
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 1
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c06",
+   "code": "06",
+   "title": "Управление диалогом, скорость и грамотность",
+   "kind": "scale",
+   "n": 65,
+   "accuracy": 0.754,
+   "accuracy_ci": [
+    0.637,
+    0.842
+   ],
+   "within_one_step": 0.985,
+   "kappa": 0.234,
+   "kappa_ci": [
+    0.07,
+    0.398
+   ],
+   "confusion": {
+    "labels": [
+     "0",
+     "4",
+     "7",
+     "10"
+    ],
+    "matrix": [
+     [
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      1,
+      6,
+      2
+     ],
+     [
+      0,
+      1,
+      2,
+      7
+     ],
+     [
+      0,
+      0,
+      5,
+      39
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.771
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 0.8
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 0.667
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.778,
+    "kappa": 0.266
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 0.7,
+    "accuracy_ci": [
+     0.481,
+     0.855
+    ],
+    "kappa": 0.167,
+    "kappa_ci": [
+     -0.176,
+     0.47
+    ],
+    "within_one_step": 0.95,
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 0.8
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 0.6
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 0.6
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c07",
+   "code": "07",
+   "title": "Завершение",
+   "kind": "binary",
+   "n": 65,
+   "accuracy": 0.8,
+   "accuracy_ci": [
+    0.687,
+    0.879
+   ],
+   "kappa": 0.493,
+   "kappa_ci": [
+    0.288,
+    0.673
+   ],
+   "confusion": {
+    "labels": [
+     "N",
+     "NA",
+     "Y"
+    ],
+    "matrix": [
+     [
+      12,
+      0,
+      4
+     ],
+     [
+      4,
+      2,
+      0
+     ],
+     [
+      9,
+      0,
+      34
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.771
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 0.667
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 1
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.778,
+    "kappa": 0.477
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 0.85,
+    "accuracy_ci": [
+     0.64,
+     0.948
+    ],
+    "kappa": 0.528,
+    "kappa_ci": [
+     0.184,
+     0.857
+    ],
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 0.9
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 0.6
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 1
+     }
+    }
+   }
+  },
+  {
+   "criterion_id": "c08",
+   "code": "08",
+   "title": "Грубые ошибки",
+   "kind": "binary",
+   "n": 65,
+   "accuracy": 0.985,
+   "accuracy_ci": [
+    0.918,
+    0.997
+   ],
+   "kappa": 0.932,
+   "kappa_ci": [
+    0.745,
+    1
+   ],
+   "confusion": {
+    "labels": [
+     "N",
+     "Y"
+    ],
+    "matrix": [
+     [
+      56,
+      1
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "note": "строки — эталон (человек), столбцы — модель"
+   },
+   "by_language": {
+    "RU": {
+     "n": 35,
+     "accuracy": 0.971
+    },
+    "KZ": {
+     "n": 15,
+     "accuracy": 1
+    },
+    "EN": {
+     "n": 15,
+     "accuracy": 1
+    }
+   },
+   "tune": {
+    "n": 45,
+    "accuracy": 0.978,
+    "kappa": 0.897
+   },
+   "holdout": {
+    "n": 20,
+    "accuracy": 1,
+    "accuracy_ci": [
+     0.839,
+     1
+    ],
+    "kappa": 1,
+    "kappa_ci": [
+     1,
+     1
+    ],
+    "by_language": {
+     "RU": {
+      "n": 10,
+      "accuracy": 1
+     },
+     "KZ": {
+      "n": 5,
+      "accuracy": 1
+     },
+     "EN": {
+      "n": 5,
+      "accuracy": 1
+     }
+    }
+   }
+  }
+ ],
+ "totals": {
+  "n": 65,
+  "exact_match_rate": 0.031,
+  "mae": 17.8,
+  "within_5pts": 0.138,
+  "all_labels_match": 1,
+  "engine_consistent_when_labels_match": true
+ },
+ "gross": {
+  "recall": 1,
+  "precision": 0.889,
+  "tp": 8,
+  "fp": 1,
+  "fn": 0,
+  "by_type": {
+   "insult": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0
+   },
+   "bypass": {
+    "tp": 4,
+    "fp": 0,
+    "fn": 0
+   },
+   "disclosure": {
+    "tp": 3,
+    "fp": 1,
+    "fn": 0
+   }
+  }
+ },
+ "retest": {
+  "n": 0,
+  "identical_label_rate": null
+ },
+ "disagreements": [
+  {
+   "conversation_id": "p1-ru-001",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор учёл информацию клиента о том, что тот находится на ноутбуке, и дал соответствующую инструкцию для веб-интерфейса, не переспрашивая лишнего.",
+   "note": "Ideal chat. Client already said web/laptop (#5) -> 02 N/A; navigation question -> 03 N/A; closing = acknowledgment + farewell (#12)."
+  },
+  {
+   "conversation_id": "p1-ru-001",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл персональные данные счёта (тариф) без подтверждения личности, что является нарушением требования идентификации.",
+   "note": "Ideal chat. Client already said web/laptop (#5) -> 02 N/A; navigation question -> 03 N/A; closing = acknowledgment + farewell (#12)."
+  },
+  {
+   "conversation_id": "p1-ru-002",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA",
+    "NA",
+    "Y"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался изменения тарифа на его конкретном счёте, что требует идентификации для раскрытия данных. Оператор не провёл идентификацию и не раскрыл данные, но и не отказался от проверки, ос",
+   "note": "Operator correctly refuses account check without ID (#12,#15) and discloses nothing -> 03 N/A (policy; YES also acceptable, same total). Empathy line #10."
+  },
+  {
+   "conversation_id": "p1-ru-003",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предоставил инструкции по доступу к персональным данным клиента (название тарифа в кабинете) без проведения процедуры идентификации, что является нарушением требования о проверке личности пер",
+   "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary)."
+  },
+  {
+   "conversation_id": "p1-ru-003",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 10,
+   "human": 7,
+   "accepted": [
+    7,
+    7,
+    4
+   ],
+   "confidence": 1,
+   "ai_explanation": "Ответы оператора ясные, логичные, клиенту не приходилось переспрашивать из-за непонимания формулировок. Пауз с нарушением регламента не выявлено.",
+   "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary)."
+  },
+  {
+   "conversation_id": "p1-ru-003",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "Y",
+   "human": "N",
+   "accepted": [
+    "N"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит прощание и итог/подтверждение решения.",
+   "note": "Commission question (#1,#10,#14) never answered; #15 repeats tariff location instead -> 04=10, 06=7 (ignored question), 07=N (farewell while question open, no summary)."
+  },
+  {
+   "conversation_id": "p1-ru-004",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался действий с конкретным счётом (получение реквизитов для пополнения), что требует идентификации. В транскрипте отсутствует событие подтверждения личности до раскрытия информации/и",
+   "note": "Need confirmed ('верно?') + currency handled. 02 N/A also acceptable."
+  },
+  {
+   "conversation_id": "p1-ru-005",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA",
+    "NA",
+    "Y"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Оператор не учёл известные детали (способ перевода) и не уточнил недостающее, а сразу дал общий ответ о невозможности назвать комиссию, что является пропуском этапа выявления потребности.",
+   "note": "#12 is garbled ('Там же где перевод, не в отчете, сверху вниз в меню'); client must re-ask (#13) -> 06=4; apology #14 keeps 05=Y; summary+farewell #16."
+  },
+  {
+   "conversation_id": "p1-ru-005",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Клиент запросил реквизиты для перевода (строка 11), что является персональной информацией счёта. Оператор предоставил инструкцию по их поиску (строка 12) без предварительного подтверждения личности кл",
+   "note": "#12 is garbled ('Там же где перевод, не в отчете, сверху вниз в меню'); client must re-ask (#13) -> 06=4; apology #14 keeps 05=Y; summary+farewell #16."
+  },
+  {
+   "conversation_id": "p1-ru-005",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 7,
+   "human": 4,
+   "accepted": [
+    4
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Была одна заметная пауза (91 сек) в середине чата без предупреждения об ожидании, что соответствует оценке 7. Клиенту не пришлось переспрашивать из-за формулировок, но пауза была заметной.",
+   "note": "#12 is garbled ('Там же где перевод, не в отчете, сверху вниз в меню'); client must re-ask (#13) -> 06=4; apology #14 keeps 05=Y; summary+farewell #16."
+  },
+  {
+   "conversation_id": "p1-ru-007",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.8,
+   "ai_explanation": "Оператор не отреагировал на явный запрос клиента о подключении (строка 5) и не уточнил детали, сразу перейдя к инструкции, что свидетельствует о пропуске этапа выявления/подтверждения потребности в да",
+   "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
+  },
+  {
+   "conversation_id": "p1-ru-007",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил/обещал защищённое действие (изменение данных) без подтверждения личности, что является нарушением.",
+   "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
+  },
+  {
+   "conversation_id": "p1-ru-007",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 10,
+   "human": 7,
+   "accepted": [
+    7,
+    7,
+    4
+   ],
+   "confidence": 1,
+   "ai_explanation": "Ответы оператора ясные и связные, клиент не вынужден был переспрашивать из-за непонимания формулировок, паузы в середине диалога не превышали допустимых норм или были объявлены (в данном случае пауза ",
+   "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
+  },
+  {
+   "conversation_id": "p1-ru-007",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "Y",
+   "human": "N",
+   "accepted": [
+    "N"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит прощание и краткий итог/подтверждение предоставленной информации.",
+   "note": "Path given (#11) but explicit question 'when can I retry withdrawal' (#5,#12) dismissed (#13) -> 04=10; 07=N (farewell with open question)."
+  },
+  {
+   "conversation_id": "p1-ru-008",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Оператор корректно использовал информацию, предоставленную клиентом ранее, и не задавал лишних уточняющих вопросов, так как контекст был ясен.",
+   "note": "Process question, no account data -> 03 N/A."
+  },
+  {
+   "conversation_id": "p1-ru-008",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предоставил инструкцию по статусу конкретного поручения на вывод средств (защищённое действие/данные счёта) без предшествующего подтверждения личности клиента.",
+   "note": "Process question, no account data -> 03 N/A."
+  },
+  {
+   "conversation_id": "p1-ru-010",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 7,
+   "human": 10,
+   "accepted": [
+    10
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Ответы ясные и связные, но были заметные паузы более 90 секунд в середине чата без объявления ожидания, что снижает оценку до 7.",
+   "note": "Long multi-question chat handled fully; ID before escalation."
+  },
+  {
+   "conversation_id": "p1-ru-011",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Клиент уже сообщил суть запроса (отчёт брокера за прошлый год) в диалоге с ботом. Оператор корректно использовал эту информацию, не переспрашивая, и дал инструкцию.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-011",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос касался данных конкретного счёта (отчёт брокера), что требует идентификации. Событие подтверждения личности отсутствует, а оператор предоставил инструкцию по доступу к данным счёта, что квалифи",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-012",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор явно опирался на известные детали запроса клиента (язык формы 1042-S) и дал прямой ответ без лишних уточнений.",
+   "note": "Connection lost (#12) right after client's 'это всё' -> 07 N/A (policy). 04: 'на английском' implicitly answers 'есть ли на русском' (15 acceptable)."
+  },
+  {
+   "conversation_id": "p1-ru-012",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Согласно правилу 03, если оператор раскрывает данные конкретного счёта или выполняет действие, связанное с ним, требуется подтверждение личности. В данном случае оператор предоставил информацию о форм",
+   "note": "Connection lost (#12) right after client's 'это всё' -> 07 N/A (policy). 04: 'на английском' implicitly answers 'есть ли на русском' (15 acceptable)."
+  },
+  {
+   "conversation_id": "p1-ru-013",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Клиент уже указал суть запроса (отчётность компании), оператор корректно использовал эту информацию, не переспрашивая и не давая нерелевантную инструкцию по личному счёту.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-013",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Событие подтверждения личности отсутствует в транскрипте. Запрос клиента касался общей отчётности компании, что обычно не требует идентификации, но поскольку N/A не допускается в формате ответа для да",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-014",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался доступа к личному кабинету (счёту). Оператор предоставил инструкцию по входу в систему (tradernet.global) без подтверждения личности клиента, что является нарушением требования ",
+   "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-014",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 10,
+   "human": 7,
+   "accepted": [
+    7,
+    7,
+    4
+   ],
+   "confidence": 1,
+   "ai_explanation": "Диалог проходил ясно и связно, задержек в ответах оператора не было, клиенту не пришлось переспрашивать из-за неясности формулировок.",
+   "note": "#10 'Привет, где именно ищете?' — no name, re-asks what client stated in #5 -> 01=N, 02=N; answer correct #12; 'Хорошего дня.' has no summary/offer -> 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-015",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор учёл известные детали из сообщения клиента и ответил по существу, не переспрашивая.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-015",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл данные о статусе логина (связанного с закрытым счётом клиента) без проведения процедуры идентификации, что является нарушением требования к проверке личности перед раскрытием данных.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-016",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался доступа к личному кабинету (защищённое действие/данные счёта). Оператор предоставил инструкцию по восстановлению доступа (строка 10) без предшествующего подтверждения личности, ",
+   "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
+  },
+  {
+   "conversation_id": "p1-ru-016",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 20,
+   "human": 15,
+   "accepted": [
+    15,
+    15,
+    10
+   ],
+   "confidence": 1,
+   "ai_explanation": "Основной вопрос клиента о том, где находится вход в личный кабинет, был решён корректно и полностью.",
+   "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
+  },
+  {
+   "conversation_id": "p1-ru-016",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 7,
+   "human": 4,
+   "accepted": [
+    4
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Один заметный сбой: оператор не уточнил платформу, что потребовало от клиента дополнительного уточнения, но диалог продолжился логично.",
+   "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
+  },
+  {
+   "conversation_id": "p1-ru-016",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор попрощался, но не подвёл итог и не предложил дальнейшую помощь, что не соответствует полному завершению диалога.",
+   "note": "Instruction without asking where the client is (#10), second guess #12, correct only at #14 -> 02=N, 04=15, 06=4."
+  },
+  {
+   "conversation_id": "p1-ru-017",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил действие (инструктировал по покупке), но событие подтверждения личности отсутствует, что является нарушением.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-018",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Оператор раскрыл данные о конкретной заявке клиента без проведения процедуры подтверждения личности, что является нарушением.",
+   "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-018",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 7,
+   "human": 0,
+   "accepted": [
+    0,
+    0,
+    4
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Диалог был понятен, но допущен один заметный сбой (неверное утверждение без данных), из-за которого клиенту пришлось реагировать.",
+   "note": "Confident unfounded claim (#10) then 'Тогда не знаю' (#12), chat closed on client (#13): 04=0, 05=N, 06=0 (contradictory), 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-019",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Событие подтверждения личности отсутствует в транскрипте, а оператор предоставил консультацию, связанную с конкретными инструментами клиента, без предварительной верификации, что соответствует критери",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-020",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор учёл известные детали клиента и уточнил контекст (статус приказа) до предоставления инструкции.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-020",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил действие/дал инструкцию по конкретному счёту (настройка приказа) без подтверждения личности, что является нарушением требования идентификации.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-021",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор явно опирался на известные детали запроса (желание простого объяснения) и ответил без лишних уточнений, так как суть вопроса была ясна.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-021",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.5,
+   "ai_explanation": "",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-022",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Оператор предложил действие, связанное с движением средств (хоть и незаконное), без проведения идентификации клиента. Это нарушает требование безопасности.",
+   "note": "GROSS: 'Скиньте деньги мне на карту' (#10) + 'через компанию оформлять не надо' (#12) = paid service bypassing the company. 04=0, 05=N, 07=N (closed without farewell)."
+  },
+  {
+   "conversation_id": "p1-ru-023",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Данных для ответа хватало с самого начала (вопрос о навигации), оператор корректно ответил без лишних уточнений.",
+   "note": "GROSS: asks for personal number for a paid private consultation (#12). Score can still be 100 — gross errors are tracked separately (demo point)."
+  },
+  {
+   "conversation_id": "p1-ru-023",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предложил платную услугу (частную консультацию), что требует идентификации клиента, однако событие подтверждения личности отсутствует, а действие (предложение услуги) было совершено без прове",
+   "note": "GROSS: asks for personal number for a paid private consultation (#12). Score can still be 100 — gross errors are tracked separately (demo point)."
+  },
+  {
+   "conversation_id": "p1-ru-024",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор явно опирался на детали, предоставленные клиентом (наличие средств на D-счете), чтобы дать точный ответ, не переспрашивая лишнего.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-024",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл данные конкретного счёта клиента (статус средств на D-счёте) в реплике #10, при этом в транскрипте отсутствует системное подтверждение личности или верификация (ФИО/ИИН/код) до этого ",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-024",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит только прощание. По правилам, для оценки 'Да' необходимо наличие прощания И итога/предложения дальнейшей помощи/подтверждения решения. Здесь этого нет.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-025",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.5,
+   "ai_explanation": "",
+   "note": "Client left before stating a request (#11): 04 N/A (exact checklist condition), 07 N/A (chat broke off), 03 N/A. Demo example for N/A."
+  },
+  {
+   "conversation_id": "p1-ru-025",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 20,
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.35,
+   "ai_explanation": "Консервативная оценка по фактам транскрипта (ответ модели не прошёл проверку: 04: scale_value null не входит в шаги шкалы [0, 5, 10, 15, 20]). 04: после последней реплики оператора вопросов клиента не",
+   "note": "Client left before stating a request (#11): 04 N/A (exact checklist condition), 07 N/A (chat broke off), 03 N/A. Demo example for N/A."
+  },
+  {
+   "conversation_id": "p1-ru-026",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Клиент запросил реквизиты для пополнения счёта, что является раскрытием данных конкретного счёта. В транскрипте отсутствует системное подтверждение личности, и оператор не запросил её перед ответом, ч",
+   "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
+  },
+  {
+   "conversation_id": "p1-ru-026",
+   "criterion_id": "c05",
+   "language": "RU",
+   "ai": "Y",
+   "human": "N",
+   "accepted": [
+    "N"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор сохранял вежливый тон, грубости или игнорирования жалобы не выявлено.",
+   "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
+  },
+  {
+   "conversation_id": "p1-ru-026",
+   "criterion_id": "c06",
+   "language": "RU",
+   "ai": 10,
+   "human": 4,
+   "accepted": [
+    4,
+    4,
+    0
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Ответы оператора ясны и связны, задержек в середине диалога не было, клиент не переспрашивал из-за неясности формулировок (переспрос был связан с содержанием, а не с грамматикой/порядком).",
+   "note": "'Чем могу помочь?' ignores stated request; 'Всё есть в приложении' is no answer; chat closed on client."
+  },
+  {
+   "conversation_id": "p1-ru-027",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор учёл известные детали (клиент в приложении) и дал корректную инструкцию без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-027",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предоставил информацию о тарифе клиента (данные счёта) на строке 15, однако в транскрипте отсутствует событие подтверждения личности, что является нарушением требования идентификации до раскр",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-ru-028",
+   "criterion_id": "c02",
+   "language": "RU",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор учёл известные детали запроса клиента и не переспрашивал очевидное, а сразу приступил к проверке пути.",
+   "note": "Explicit wait warning (#10) and thanks for waiting (#12) -> 06=10 despite 2-min gap. Demo example for 'предупреждение об ожидании'."
+  },
+  {
+   "conversation_id": "p1-ru-028",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил/обещал защищённое действие (изменение данных) без подтверждения личности, что является нарушением.",
+   "note": "Explicit wait warning (#10) and thanks for waiting (#12) -> 06=10 despite 2-min gap. Demo example for 'предупреждение об ожидании'."
+  },
+  {
+   "conversation_id": "p1-ru-029",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предоставил доступ к личному кабинету (инструкция по входу) без подтверждения личности клиента, что является нарушением требования идентификации перед раскрытием данных или выполнением защищё",
+   "note": "GROSS: insult 'Вы вообще читать умеете?' (#10). Answer itself correct (#12). Complaint #13 ignored -> 05=N; 'До свидания.' alone -> 07=N."
+  },
+  {
+   "conversation_id": "p1-ru-030",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался конкретного документа по счёту, что требует идентификации перед раскрытием или действиями. Оператор не провёл проверку личности (событие подтверждения отсутствует), но дал инстр",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-001",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор явно опирался на известную деталь (клиент на компьютере), предоставив инструкцию для веб-интерфейса, не переспрашивая лишнего.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-001",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался его текущего тарифа (данные конкретного счёта). Оператор предоставил инструкцию по его поиску без предварительного подтверждения личности, что является нарушением требования иде",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-002",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор не уточнил валюту перевода в первом ответе, из-за чего клиенту пришлось дополнительно сообщить, что ему нужны реквизиты в тенге. Это считается пропуском необходимого уточнения. Казахскоязычна",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-002",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл данные конкретного счёта (реквизиты для перевода) без подтверждения личности, что является нарушением требования идентификации.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-003",
+   "criterion_id": "c06",
+   "language": "KZ",
+   "ai": 7,
+   "human": 10,
+   "accepted": [
+    10
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Наблюдается одна заметная пауза более 90 секунд без предупреждения ('Сейчас проверю' и т.п.), что снижает оценку до 7 баллов, хотя диалог в целом был связным.",
+   "note": "ID (#13) before case escalation; empathy #11."
+  },
+  {
+   "conversation_id": "p1-kz-004",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Клиент уже сформулировал проблему (нужно обновить анкету для вывода средств) и спросил, как это сделать. Оператор корректно использовал эти данные, не переспрашивая очевидное, и дал инструкцию.",
+   "note": "Both path and retry-timing answered."
+  },
+  {
+   "conversation_id": "p1-kz-004",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил/обещал защищённое действие (изменение данных) без подтверждения личности, что является нарушением.",
+   "note": "Both path and retry-timing answered."
+  },
+  {
+   "conversation_id": "p1-kz-004",
+   "criterion_id": "c07",
+   "language": "KZ",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит только прощание. По правилам, для оценки 'Да' необходимо наличие прощания И итога/предложения помощи/подтверждения решения. Здесь этого нет.",
+   "note": "Both path and retry-timing answered."
+  },
+  {
+   "conversation_id": "p1-kz-005",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA",
+    "NA",
+    "N"
+   ],
+   "confidence": 0.8,
+   "ai_explanation": "Клиент уже сформулировал запрос (обновление данных), оператор не переспрашивал очевидное, а сразу дал инструкцию, опираясь на известные детали. Казахскоязычная модель (kazllm) оценила иначе: no — треб",
+   "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N."
+  },
+  {
+   "conversation_id": "p1-kz-005",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил/обещал защищённое действие (изменение данных) без подтверждения личности, что является нарушением.",
+   "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N."
+  },
+  {
+   "conversation_id": "p1-kz-005",
+   "criterion_id": "c06",
+   "language": "KZ",
+   "ai": 7,
+   "human": 4,
+   "accepted": [
+    4
+   ],
+   "confidence": 1,
+   "ai_explanation": "Между репликами 10 и 12 была пауза более 90 секунд (91 с), оператор не предупредил клиента об ожидании, что является одним заметным сбоем в ведении диалога.",
+   "note": "Vague 'Профильге кіріңіз' (#10) -> client re-asks (#11) -> exact path (#12); 'Жақсы.' is no farewell -> 07=N."
+  },
+  {
+   "conversation_id": "p1-kz-006",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор не переспрашивал уже известное, а использовал информацию о периоде (прошлый год), предоставленную клиентом ранее, для формирования инструкции.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-006",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался получения отчёта по его брокерскому счёту. Оператор предоставил инструкцию по выполнению этого действия (получение данных счёта) без проведения процедуры идентификации личности,",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-007",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор корректно использовал информацию, предоставленную клиентом ранее, и не задавал лишних уточняющих вопросов, так как данных для ответа хватало.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-007",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл данные о состоянии логина клиента (статус в системе) без проведения процедуры идентификации, что нарушает требование о проверке личности перед раскрытием данных счёта.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-007",
+   "criterion_id": "c07",
+   "language": "KZ",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит только прощание. По правилам, для оценки 'Да' необходимо наличие итога, предложения помощи или подтверждения решения в дополнение к прощанию.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-008",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл информацию о том, как получить доступ к личному счёту клиента (trade account), не проведя проверку личности, что является нарушением требования идентификации перед раскрытием данных и",
+   "note": "'Сәлем. Қай сайтқа кірдіңіз?' — no name, re-asks known info; no operator closing at all (chat ends on client #13)."
+  },
+  {
+   "conversation_id": "p1-kz-009",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.5,
+   "ai_explanation": "",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-010",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Клиент уже предоставил все необходимые детали (название параметра и суть запроса), оператор корректно использовал их для ответа, не переспрашивая.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-010",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил действие, связанное с конкретным счётом (изменение параметров заявки), не проведя идентификацию клиента, что является нарушением правила.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-010",
+   "criterion_id": "c07",
+   "language": "KZ",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит только прощание, но отсутствует итог, предложение помощи или подтверждение решения, что не соответствует полному критерию завершения.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-011",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.8,
+   "ai_explanation": "Клиент предоставил достаточную информацию для ответа, оператор корректно использовал эти данные, не переспрашивая очевидное. Казахскоязычная модель (kazllm) оценила иначе: no — требуется проверка.",
+   "note": "Connection lost (#14) -> 07 N/A."
+  },
+  {
+   "conversation_id": "p1-kz-011",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл данные, специфичные для счёта клиента (статус/ограничения по использованию средств на D-шоте), не выполнив процедуру идентификации (отсутствие системного подтверждения или проверки в ",
+   "note": "Connection lost (#14) -> 07 N/A."
+  },
+  {
+   "conversation_id": "p1-kz-011",
+   "criterion_id": "c07",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор не попрощался и не предложил дальнейшую помощь в последней реплике перед обрывом связи, что соответствует критерию 'Нет' (отсутствие прощания).",
+   "note": "Connection lost (#14) -> 07 N/A."
+  },
+  {
+   "conversation_id": "p1-kz-012",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор обещает проверить конкретный отклонённый заказ клиента (защищённое действие), однако в диалоге отсутствует событие подтверждения личности, что является нарушением порядка идентификации.",
+   "note": "Correct next step given even though client postponed."
+  },
+  {
+   "conversation_id": "p1-kz-012",
+   "criterion_id": "c04",
+   "language": "KZ",
+   "ai": 10,
+   "human": 20,
+   "accepted": [
+    20
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Основной вопрос (почему заявка отклонена) не решён, так как клиент не предоставил необходимые данные. Оператор корректно определил следующий шаг, но существенный вопрос остался открытым до завершения ",
+   "note": "Correct next step given even though client postponed."
+  },
+  {
+   "conversation_id": "p1-kz-013",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.6,
+   "ai_explanation": "Оператор учёл запрос клиента и дал инструкцию. Хотя клиент упомянул, что новичок, оператор не уточнил детали, но и не переспрашивал уже известное. В контексте чата с ботом, где клиент уже получил базо",
+   "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14)."
+  },
+  {
+   "conversation_id": "p1-kz-013",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор обещает предоставить платную консультацию по личному номеру телефона, что является защищённым действием/раскрытием информации, требующим предварительной идентификации клиента. В транскрипте н",
+   "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14)."
+  },
+  {
+   "conversation_id": "p1-kz-013",
+   "criterion_id": "c04",
+   "language": "KZ",
+   "ai": 10,
+   "human": 20,
+   "accepted": [
+    20
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Основной вопрос о поиске закрыт, но существенный вопрос о том, как совершить первую покупку (учитывая, что клиент новичок), остался открытым. Оператор предложил платную консультацию, что не является к",
+   "note": "GROSS: paid private advice for personal number (#12); operator closed chat without farewell (#14)."
+  },
+  {
+   "conversation_id": "p1-kz-014",
+   "criterion_id": "c02",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Данных для ответа хватало с самого начала (вопрос был конкретным), оператор корректно ответил без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-014",
+   "criterion_id": "c03",
+   "language": "KZ",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предоставил информацию о конкретном документе клиента (1042-S), что требует идентификации, однако событие подтверждения личности в транскрипте отсутствует.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-014",
+   "criterion_id": "c07",
+   "language": "KZ",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Последняя реплика оператора содержит только прощание, не подводя итог и не предлагая дальнейшую помощь, что соответствует критерию 'Нет'.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-kz-015",
+   "criterion_id": "c04",
+   "language": "KZ",
+   "ai": 10,
+   "human": 5,
+   "accepted": [
+    5,
+    5,
+    0
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Основной вопрос клиента о причине блокировки остался без ответа. Оператор предложил эскалацию, что является корректным следующим шагом, но часть запроса (получение информации) осталась открытой в теку",
+   "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12)."
+  },
+  {
+   "conversation_id": "p1-kz-015",
+   "criterion_id": "c05",
+   "language": "KZ",
+   "ai": "Y",
+   "human": "N",
+   "accepted": [
+    "N"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор сохранял вежливый тон и реагировал на реплики клиента, грубости или игнорирования не выявлено.",
+   "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12)."
+  },
+  {
+   "conversation_id": "p1-kz-015",
+   "criterion_id": "c06",
+   "language": "KZ",
+   "ai": 10,
+   "human": 4,
+   "accepted": [
+    4,
+    4,
+    7
+   ],
+   "confidence": 1,
+   "ai_explanation": "Ответы оператора ясны, порядок диалога логичен, задержек без предупреждения в середине чата не зафиксировано.",
+   "note": "Mirror of p1-ru-009: restriction disclosed (#10) without ID, client objects (#11), dismissed (#12)."
+  },
+  {
+   "conversation_id": "p1-en-001",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор использовал известные детали из диалога с ботом и клиентом для формирования ответа, не переспрашивая очевидное.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-001",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл данные о состоянии логина клиента (связанного с закрытым счётом) без проведения процедуры идентификации, что является нарушением требования к проверке личности перед раскрытием данных",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-002",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Оператор учёл ситуацию клиента (путаница с вкладками/сайтом) и предложил конкретные варианты входа, что позволило клиенту выбрать подходящий.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-002",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор предоставил инструкции по доступу к личному кабинету (защищённое действие/раскрытие данных счёта) без события подтверждения личности, которое должно предшествовать такому действию.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-003",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Клиент уже сообщил, что использует сайт, и оператор корректно использовал эту информацию, не переспрашивая.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-003",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос касался данных конкретного счёта (тарифный план), что требует идентификации. Событие подтверждения личности отсутствует, поэтому ответ «Нет».",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-004",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Данных для ответа хватало с самого начала (клиент четко сформулировал запрос в бота), оператор корректно ответил без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-004",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос клиента касался получения данных счёта (отчёт брокера), что требует идентификации. В транскрипте отсутствует событие подтверждения личности, а оператор предоставил инструкцию по доступу к данны",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-005",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Данных для ответа хватало с самого начала (клиент четко сформулировал запрос о деталях перевода), оператор корректно ответил без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-005",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл информацию о данных для перевода (Add Funds) без подтверждения личности клиента, что является нарушением требования идентификации перед раскрытием данных счёта.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-005",
+   "criterion_id": "c06",
+   "language": "EN",
+   "ai": 7,
+   "human": 10,
+   "accepted": [
+    10
+   ],
+   "confidence": 1,
+   "ai_explanation": "Между репликами #10 и #12 была пауза более 90 секунд, оператор не предупредил клиента об ожидании, что является одним заметным сбоем в ведении диалога.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-010",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Клиент сформулировал запрос, оператор ответил по существу, используя известные детали, без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-010",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл информацию о возможностях конкретного счёта клиента (D account) без проведения процедуры идентификации, что является нарушением правила.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-011",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор корректно ответил на сформулированную потребность клиента без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-011",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор раскрыл информацию о конкретном документе клиента (форме 1042-S) без проведения процедуры идентификации личности, которая отсутствовала в транскрипте.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-012",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Оператор корректно интерпретировал запрос клиента (поиск корпоративных отчетов, а не личных) и дал точную инструкцию без лишних уточнений.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-012",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Запрос касался общей навигации по сайту, данные счёта не раскрывались, идентификация не требовалась. В соответствии с требованием формата (yes/no), ответ 'no' отражает отсутствие события подтверждения",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-006",
+   "criterion_id": "c06",
+   "language": "EN",
+   "ai": 7,
+   "human": 10,
+   "accepted": [
+    10
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Ответы ясные и связные, но была пауза более 90 секунд (109 с) между репликами #23 и #26 без объявления ожидания, что является одним заметным сбоем.",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-007",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Оператор не уточнил недостающую информацию (срок ожидания) и не ответил на явный вопрос клиента о времени повторной попытки, сразу перейдя к инструкции.",
+   "note": "Mirror of p1-ru-007: retry question (#5,#11) ignored at #12."
+  },
+  {
+   "conversation_id": "p1-en-007",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор выполнил/обещал защищённое действие (изменение данных профиля) без подтверждения личности, что является нарушением.",
+   "note": "Mirror of p1-ru-007: retry question (#5,#11) ignored at #12."
+  },
+  {
+   "conversation_id": "p1-en-007",
+   "criterion_id": "c06",
+   "language": "EN",
+   "ai": 10,
+   "human": 7,
+   "accepted": [
+    7,
+    7,
+    4
+   ],
+   "confidence": 1,
+   "ai_explanation": "Ответы ясные и связные, задержек в середине диалога не было, клиент не переспрашивал из-за непонимания формулировок.",
+   "note": "Mirror of p1-ru-007: retry question (#5,#11) ignored at #12."
+  },
+  {
+   "conversation_id": "p1-en-008",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор консультирует по настройкам маржинальной торговли конкретного счёта клиента, что является защищённым контекстом, требующим подтверждения личности. В транскрипте нет события «Личность клиента ",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-008",
+   "criterion_id": "c04",
+   "language": "EN",
+   "ai": 15,
+   "human": 20,
+   "accepted": [
+    20
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Основной вопрос (как найти акцию и настроить ордер) решён, но пропущена второстепенная деталь: оператор не ответил на вопрос клиента о влиянии настройки на уже имеющуюся позицию, а лишь указал, что эт",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-008",
+   "criterion_id": "c06",
+   "language": "EN",
+   "ai": 7,
+   "human": 10,
+   "accepted": [
+    10
+   ],
+   "confidence": 0.8,
+   "ai_explanation": "Ответы ясные и связные, клиент не переспрашивал. Паузы между репликами клиента и оператора не превышают порог, требующий предупреждения (максимальная пауза от клиента до ответа оператора ~47 сек).",
+   "note": ""
+  },
+  {
+   "conversation_id": "p1-en-009",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "Y",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 1,
+   "ai_explanation": "Данных для ответа хватало с самого начала, оператор корректно использовал известные детали запроса клиента.",
+   "note": "Connection lost -> 07 N/A."
+  },
+  {
+   "conversation_id": "p1-en-013",
+   "criterion_id": "c02",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Оператор не уточнил детали запроса (какие облигации, что именно не найдено), а сразу дал общую инструкцию, игнорируя контекст, что клиент новичок в этом разделе.",
+   "note": "GROSS: paid private advice (#12); agent closed chat (#14)."
+  },
+  {
+   "conversation_id": "p1-en-013",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор инициирует предложение платной услуги (bypass), что требует идентификации или является грубым нарушением, но событие подтверждения личности отсутствует, а раскрытие данных счёта не происходил",
+   "note": "GROSS: paid private advice (#12); agent closed chat (#14)."
+  },
+  {
+   "conversation_id": "p1-en-013",
+   "criterion_id": "c04",
+   "language": "EN",
+   "ai": 15,
+   "human": 20,
+   "accepted": [
+    20
+   ],
+   "confidence": 0.8,
+   "ai_explanation": "Основной вопрос клиента (как найти облигации) был решён, но оператор проигнорировал отказ клиента от платных услуг и предложил неуместную услугу, что является пропущенной второстепенной деталью в конт",
+   "note": "GROSS: paid private advice (#12); agent closed chat (#14)."
+  },
+  {
+   "conversation_id": "p1-en-014",
+   "criterion_id": "c04",
+   "language": "EN",
+   "ai": 10,
+   "human": 5,
+   "accepted": [
+    5,
+    5,
+    0
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Основной вопрос (причина блокировки) передан на эскалацию, но существенный вопрос клиента о канале обратной связи остался без ответа.",
+   "note": "Restriction disclosed (#11) with no ID; 'We can skip that' (#13); 'Will I hear back here?' (#14) unanswered; 'Goodbye.' only."
+  },
+  {
+   "conversation_id": "p1-en-015",
+   "criterion_id": "c03",
+   "language": "EN",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор помог клиенту восстановить доступ к личному кабинету (логин), что является защищённым действием, связанным с конкретным счётом. В транскрипте отсутствует системное подтверждение личности или ",
+   "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only."
+  },
+  {
+   "conversation_id": "p1-en-015",
+   "criterion_id": "c06",
+   "language": "EN",
+   "ai": 7,
+   "human": 4,
+   "accepted": [
+    4
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Один заметный сбой: оператор дал некорректную/неясную инструкцию в начале, из-за чего клиенту пришлось переспрашивать, но диалог продолжился и был понятен.",
+   "note": "No greeting/name (#10), blind instruction, correct only at #12, 'Bye.' only."
+  },
+  {
+   "conversation_id": "p4-ru-003",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Оператор раскрыл информацию о наличии счёта до успешного завершения идентификации (SMS-код), что нарушает порядок проверки личности.",
+   "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76)."
+  },
+  {
+   "conversation_id": "p4-ru-003",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y",
+    "Y",
+    "NA"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Оператор не попрощался и не подвёл итог перед тем, как клиент завершил разговор.",
+   "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76)."
+  },
+  {
+   "conversation_id": "p4-ru-003",
+   "criterion_id": "c08",
+   "language": "RU",
+   "ai": "Y",
+   "human": "N",
+   "accepted": [
+    "N"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Выявлено раскрытие конфиденциальной информации (данные счёта) до завершения идентификации.",
+   "note": "Masked name ([Имя скрыто]) counts as introduction. ID via FIO+IIN+SMS (#40-65) before order status (#66). Initial misunderstanding (#27) -> 06=7. Closing done before client hangs up (#76)."
+  },
+  {
+   "conversation_id": "p4-ru-002",
+   "criterion_id": "c01",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "В первой реплике оператора отсутствует приветствие на языке клиента, хотя представление по имени присутствует. По правилу 01 это оценивается как 'Нет'.",
+   "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
+  },
+  {
+   "conversation_id": "p4-ru-002",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Последняя реплика оператора содержит прощание, но отсутствует обязательный элемент: итог, предложение помощи или подтверждение решения. По правилу 07 это оценивается как 'Нет'.",
+   "note": "Callback. ID (#12-15) before consult/transfer. Lines #20-58 are operator<->trader consultation while client on hold (context, not client-facing). Commission info from trader (#42-44) never relayed -> 04=15. Hold warned (#15) but ~7 min -> 06=7."
+  },
+  {
+   "conversation_id": "p4-ru-001",
+   "criterion_id": "c03",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA"
+   ],
+   "confidence": 0.7,
+   "ai_explanation": "Оператор обсуждает доступ к брокерскому счёту клиента и действия по нему (защитное действие), однако в транскрипте отсутствует событие подтверждения личности (системное или в звонке).",
+   "note": "General question about what support does; correct boundaries explained (#26-31) but no concrete next step (how to get advice) -> 04=15. Client's hurt feelings (#41-42) acknowledged only partly (#43). Client hung up mid-sentence -> 07 N/A."
+  },
+  {
+   "conversation_id": "p4-ru-001",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 20,
+   "human": 15,
+   "accepted": [
+    15,
+    15,
+    10
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Оператор корректно ответил на основной вопрос клиента о роли поддержки, разъяснив разницу между технической помощью и инвестиционными консультациями, что закрыло суть запроса.",
+   "note": "General question about what support does; correct boundaries explained (#26-31) but no concrete next step (how to get advice) -> 04=15. Client's hurt feelings (#41-42) acknowledged only partly (#43). Client hung up mid-sentence -> 07 N/A."
+  },
+  {
+   "conversation_id": "p4-ru-005",
+   "criterion_id": "c04",
+   "language": "RU",
+   "ai": 15,
+   "human": 20,
+   "accepted": [
+    20
+   ],
+   "confidence": 0.85,
+   "ai_explanation": "Основные вопросы клиента (как удалить счёт, как правильно заполнить данные при повторной регистрации) решены. Пропущена второстепенная деталь: оператор не дал точного времени готовности счёта к удален",
+   "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20."
+  },
+  {
+   "conversation_id": "p4-ru-005",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "Y",
+   "accepted": [
+    "Y"
+   ],
+   "confidence": 0.9,
+   "ai_explanation": "Клиент завершил разговор, не дав оператору возможности корректно попрощаться и подвести итог. Последняя реплика оператора не содержит прощания.",
+   "note": "#17 'Компания fernetbark и операции Здравствуйте' — no recognizable name (ASR-garbled) -> 01=N (YES acceptable if judged as ASR artifact). Account looked up by phone only, deletion promised, no formal ID -> 03=N (N/A acceptable). Clear plan + document advice -> 04=20."
+  },
+  {
+   "conversation_id": "p4-ru-004",
+   "criterion_id": "c07",
+   "language": "RU",
+   "ai": "N",
+   "human": "NA",
+   "accepted": [
+    "NA",
+    "NA",
+    "Y"
+   ],
+   "confidence": 0.95,
+   "ai_explanation": "Последняя реплика оператора (линия 115) содержит открытый вопрос, но не содержит прощания или подтверждения решения. Клиент завершил разговор (линия 114) до того, как оператор мог корректно завершить ",
+   "note": "ID via address+SMS (#38-79) before order info (#90). OTC-only answer + email/phone alternative -> 04=15 (client's 'can't call each time' only partly addressed). 'я не пытаюсь с вами спорить' / 'дадите шанс досказать' + ignoring that client is at work -> 05=N (YES acceptable). Client hung up before closing; operator's offer (#115) after hang-up -> 07 N/A."
+  }
+ ],
+ "cost": {
+  "total_usd": 0,
+  "per_dialog_usd": 0,
+  "cost_note": "0 ₸ — бесплатный API alem.plus (qwen3-8)",
+  "calls": 138,
+  "by_role": {
+   "judge": {
+    "calls": 64,
+    "input_tokens": 312569,
+    "output_tokens": 107184,
+    "cost_usd": 0
+   },
+   "repair": {
+    "calls": 59,
+    "input_tokens": 292192,
+    "output_tokens": 42467,
+    "cost_usd": 0
+   },
+   "verifier": {
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": 0
+   },
+   "kz": {
+    "calls": 15,
+    "input_tokens": 83970,
+    "output_tokens": 15843,
+    "cost_usd": 0
+   },
+   "rule": {
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": 0
+   }
+  },
+  "seconds_total": 545.3,
+  "seconds_per_dialog": 21.8,
+  "cache_hits": 8,
+  "cache_misses": 512,
+  "repairs": 59,
+  "fallbacks": 5,
+  "verifier_changes": 0,
+  "kz_disagreements": 9
+ },
+ "by_language": {
+  "RU": {
+   "dialogs": 35,
+   "labels": 280,
+   "accuracy": 0.764,
+   "accuracy_ci": [
+    0.711,
+    0.81
+   ]
+  },
+  "KZ": {
+   "dialogs": 15,
+   "labels": 120,
+   "accuracy": 0.708,
+   "accuracy_ci": [
+    0.622,
+    0.782
+   ]
+  },
+  "EN": {
+   "dialogs": 15,
+   "labels": 120,
+   "accuracy": 0.742,
+   "accuracy_ci": [
+    0.657,
+    0.812
+   ]
+  }
+ },
+ "injection_regression": null,
+ "learning_loop": null,
+ "targets": {
+  "binary_accuracy": 0.92,
+  "scale_within_one_step": 0.9,
+  "scale_exact": 0.7,
+  "kappa": 0.61,
+  "gross_recall_insult_bypass": 1,
+  "retest_identical": 0.95
+ }
+}

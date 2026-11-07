@@ -1,0 +1,36 @@
+{
+ "key": "1d7848403cc610d2451ca1c4b90caba047326b390895e9e851fa568b107bf391",
+ "conversation_id": "p1-kz-015",
+ "criterion_id": "c08",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:17:13.480Z",
+ "result": {
+  "criterion_id": "c08",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [
+   "disclosure"
+  ],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Раскрытие информации о конкретном счёте клиента ('Сіздің шотыңызда ақша шығаруға шектеу қойылғанын көріп тұрмын') без подтверждения личности."
+   }
+  ],
+  "checked_range": [
+   10,
+   10
+  ],
+  "rule_applied": "08: Грубые ошибки (disclosure)",
+  "explanation": "Оператор раскрыл конфиденциальные данные конкретного счёта (статус ограничения) неидентифицированному лицу, что является нарушением политики раскрытия информации.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,38 @@
+{
+ "key": "99abb38da740e0193bc0bce883a0449067a5fd0732b67426dfcf5edfb0475683",
+ "conversation_id": "p1-en-014",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:35.494Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Оператор обещал передать вопрос команде, но не указал канал обратной связи."
+   },
+   {
+    "line": 14,
+    "why": "Клиент спросил 'Will I hear back here?', что осталось без ответа."
+   }
+  ],
+  "checked_range": [
+   11,
+   15
+  ],
+  "rule_applied": "04: Корректная и полная консультация",
+  "explanation": "Основной вопрос (причина блокировки) передан на эскалацию, но существенный вопрос клиента о канале обратной связи остался без ответа.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

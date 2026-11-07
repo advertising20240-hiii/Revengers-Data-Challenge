@@ -1,0 +1,38 @@
+{
+ "key": "d7858264e735f8393a98a382b17425ac5777af285a1a57372c87b4b9837b34b3",
+ "conversation_id": "p1-kz-010",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:16:35.642Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент указал конкретный параметр 'Использовать маржу' и спросил, можно ли его убрать."
+   },
+   {
+    "line": 10,
+    "why": "Оператор опирался на эту деталь, дав инструкцию именно по этому параметру."
+   }
+  ],
+  "checked_range": [
+   1,
+   10
+  ],
+  "rule_applied": "02: выявление потребности",
+  "explanation": "Клиент уже предоставил все необходимые детали (название параметра и суть запроса), оператор корректно использовал их для ответа, не переспрашивая.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

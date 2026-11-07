@@ -1,0 +1,38 @@
+{
+ "key": "37da1d2fde09d03f14e0f4363b38867b084bf56aff373ae5dd12f7bf7eae687f",
+ "conversation_id": "p1-en-013",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:11.264Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 1,
+    "why": "Клиент уже указал, что ищет облигации в приложении."
+   },
+   {
+    "line": 10,
+    "why": "Оператор дал общую инструкцию без уточнения, какие именно облигации или что именно вызвало затруднение, хотя клиент упомянул, что не пользовался разделом ранее."
+   }
+  ],
+  "checked_range": [
+   1,
+   10
+  ],
+  "rule_applied": "02: Выявление потребности",
+  "explanation": "Оператор не уточнил детали запроса (какие облигации, что именно не найдено), а сразу дал общую инструкцию, игнорируя контекст, что клиент новичок в этом разделе.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

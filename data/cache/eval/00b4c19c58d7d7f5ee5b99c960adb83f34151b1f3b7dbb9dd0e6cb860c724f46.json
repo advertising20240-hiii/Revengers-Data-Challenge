@@ -1,0 +1,38 @@
+{
+ "key": "00b4c19c58d7d7f5ee5b99c960adb83f34151b1f3b7dbb9dd0e6cb860c724f46",
+ "conversation_id": "p1-en-015",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:28.802Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 7,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Инструкция 'Open settings' была неясной/некорректной для контекста сайта, что привело к переспросу клиента."
+   },
+   {
+    "line": 11,
+    "why": "Клиенту пришлось уточнить: 'Settings where?'"
+   }
+  ],
+  "checked_range": [
+   10,
+   12
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Один заметный сбой: оператор дал некорректную/неясную инструкцию в начале, из-за чего клиенту пришлось переспрашивать, но диалог продолжился и был понятен.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,38 @@
+{
+ "key": "841a5d5b4b206099f183dd2a5298f04850904cf012b4fd553d1fb7f2ccd5bbe4",
+ "conversation_id": "p4-ru-002",
+ "criterion_id": "c06",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:19:01.453Z",
+ "result": {
+  "criterion_id": "c06",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 10,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 15,
+    "why": "Оператор предупредил об ожидании: 'Сейчас прошу вас ожидать на линии'."
+   },
+   {
+    "line": 60,
+    "why": "Оператор вернул клиента в диалог после удержания: 'благодарю вас за ожидание'."
+   }
+  ],
+  "checked_range": [
+   1,
+   73
+  ],
+  "rule_applied": "06: Управление диалогом, скорость и грамотность",
+  "explanation": "Диалог был ясным и связным. Длительное удержание (hold) было объявлено оператором до начала и подтверждено после. Клиенту не приходилось переспрашивать из-за непонимания.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

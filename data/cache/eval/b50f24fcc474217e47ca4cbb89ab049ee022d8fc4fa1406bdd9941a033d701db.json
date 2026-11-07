@@ -1,0 +1,38 @@
+{
+ "key": "b50f24fcc474217e47ca4cbb89ab049ee022d8fc4fa1406bdd9941a033d701db",
+ "conversation_id": "p4-ru-002",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:19:01.453Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 13,
+    "why": "Клиент предоставил персональные данные (скрыты в транскрипте, но факт передачи есть)."
+   },
+   {
+    "line": 15,
+    "why": "Оператор подтвердил данные ('Да, всё верно') и только после этого инициировал консультацию/удержание для проверки счёта."
+   }
+  ],
+  "checked_range": [
+   12,
+   15
+  ],
+  "rule_applied": "03: Идентификация",
+  "explanation": "Оператор запросил и подтвердил данные клиента (ФИО, адрес) до раскрытия информации о статусе сделки и эскалации. Идентификация выполнена корректно.",
+  "confidence": 0.85,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

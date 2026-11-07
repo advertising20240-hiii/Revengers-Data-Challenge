@@ -1,0 +1,42 @@
+{
+ "key": "da0450e46e255a39daf6ab97c9d94352aa05f20b41c12e0cd13a31f8b946e03e",
+ "conversation_id": "p1-ru-010",
+ "criterion_id": "c08",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:01.204Z",
+ "result": {
+  "criterion_id": "c08",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 11,
+    "why": "Оператор вежливо поздоровался и уточнил детали, оскорблений нет"
+   },
+   {
+    "line": 16,
+    "why": "Оператор корректно передал вопрос специалистам, без предложений обхода или раскрытия данных"
+   },
+   {
+    "line": 32,
+    "why": "Оператор вежливо попрощался, грубых ошибок не выявлено"
+   }
+  ],
+  "checked_range": [
+   11,
+   32
+  ],
+  "rule_applied": "08: Грубые ошибки (insult, bypass, disclosure)",
+  "explanation": "В репликах оператора (строки 11-32) отсутствуют оскорбления, предложения платных услуг в обход компании или раскрытие конфиденциальной информации. Нарушений не выявлено.",
+  "confidence": 0.7,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -13,6 +13,19 @@ import { isRuleCriterion, applyRule, noOperatorResult, heuristicResult, hintFor 
 import { normalizeResult, validateResult, autoFix } from './validator.js';
 import { resolveProvider, providerStatus, defaultProviderName, defaultModelFor, defaultVerifierFor, kzModelFor, cloudAllowed, LOCAL_PROVIDERS } from './providers/index.js';
 import { probe as probeOpenAI } from './providers/openai.js';
+import { readFileSync, existsSync } from 'node:fs';
+
+// Per-criterion decision source measured on the tune split (config/routing.json). A criterion routed to "rule"
+// takes the deterministic result; the model's label is kept as a second opinion and a disagreement lowers confidence.
+const ROUTING_FILE = new URL('../../config/routing.json', import.meta.url);
+let routing = null;
+function routeFor(c) {
+  if (process.env.CQA_ROUTING === 'off') return 'llm';
+  if (routing === null) { try { routing = existsSync(ROUTING_FILE) ? JSON.parse(readFileSync(ROUTING_FILE, 'utf8')) : { criteria: [] }; } catch { routing = { criteria: [] }; } }
+  const e = (routing.criteria || []).find((x) => x.code === c.code && x.definition === c.definition);
+  return e?.source || 'llm';
+}
+const ruLabel = (r) => (!r ? '—' : r.applicable === false ? 'N/A' : r.scale_value != null ? String(r.scale_value) : r.answer === 'yes' ? 'Да' : r.answer === 'no' ? 'Нет' : '—');
 
 export const PROMPT_VERSION = PV;
 export { POLICY_HASH, cacheStats };
@@ -114,7 +127,7 @@ async function judgeBatch({ conv, checklist, criteria, prov, model, cfg, example
     return out;
   };
 
-  const first = await callWithRetry(prov, { system, user, schema, model, role: 'judge', maxTokens: 4000 }, cfg, ctx, signal);
+  const first = await callWithRetry(prov, { system, user, schema, model, role: 'judge', maxTokens: 6000 }, cfg, ctx, signal);
   calls.push(callRecord('judge', model, first));
   let raws = parse(first);
   let repaired = false;
@@ -135,7 +148,7 @@ async function judgeBatch({ conv, checklist, criteria, prov, model, cfg, example
     const repairUser = `${user}\n\nВаш предыдущий ответ не прошёл проверку. Нарушения:\n${list}\n\nИсправьте ТОЛЬКО критерии ${pending.map((p) => p.c.id).join(', ')} с учётом нарушений и верните JSON по той же схеме (только эти критерии).`;
     issues.push(...pending.flatMap((p) => p.violations));
     try {
-      const second = await callWithRetry(prov, { system, user: repairUser, schema: judgeSchema(pending.map((p) => p.c)), model, role: 'judge', maxTokens: 3000 }, cfg, ctx, signal);
+      const second = await callWithRetry(prov, { system, user: repairUser, schema: judgeSchema(pending.map((p) => p.c)), model, role: 'judge', maxTokens: 6000 }, cfg, ctx, signal);
       calls.push(callRecord('repair', model, second));
       raws = parse(second);
     } catch (e) {
@@ -259,7 +272,7 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
     } else if (providerName === 'offline') {
       await prov.mod.complete({ model }, cfg, { conversationId: conv.conversation_id, criteria: misses });
     } else {
-      const batchSize = opts.batchSize ?? (LOCAL_PROVIDERS.includes(providerName) && providerName !== 'fake' ? JUDGE_BATCH_LOCAL : 0);
+      const batchSize = opts.batchSize ?? (providerName === 'alem' ? Number(process.env.CQA_JUDGE_BATCH_ALEM || 0) : (LOCAL_PROVIDERS.includes(providerName) && providerName !== 'fake' ? JUDGE_BATCH_LOCAL : 0));
       const batches = chunk(misses, batchSize);
       const batchResults = await Promise.all(batches.map((b) => judgeBatch({ conv, checklist, criteria: b, prov, model, cfg, examples: opts.examples, signal: opts.signal })));
       for (const br of batchResults) {
@@ -270,7 +283,10 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
       }
       // 4. verifier over model-judged results (not over fallbacks)
       if (verify && judged.length) {
-        const toVerify = judged.filter((r) => r.source === 'ai');
+        // verifier mode: all | low (only uncertain results — saves quota) | off
+        const vMode = opts.verifyMode || process.env.CQA_VERIFY || (providerName === 'alem' ? 'low' : 'all');
+        const vThreshold = Number(process.env.CQA_VERIFY_THRESHOLD || 0.75);
+        const toVerify = vMode === 'off' ? [] : judged.filter((r) => r.source === 'ai' && (vMode === 'all' || (r.confidence ?? 0) < vThreshold));
         if (toVerify.length) {
           try {
             const v = await verifyBatch({ conv, criteria: misses.filter((c) => toVerify.some((r) => r.criterion_id === c.id)), results: toVerify, prov, verifierModel, cfg, signal: opts.signal });
@@ -298,6 +314,7 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
       r.source = r.source === 'rule' ? 'rule' : 'ai';
       out[c.id] = r;
       const vc = trace.verifier_changes.find((x) => x.criterion_id === c.id) || null;
+      if (String(r.rule_applied || '').startsWith('fallback:')) continue; // never cache a fallback: retry the model next time
       cachePut(key, { key, conversation_id: conv.conversation_id, criterion_id: c.id, provider: providerName, model, prompt_version: PROMPT_VERSION, prompt_hash: promptHash, policy_hash: POLICY_HASH, created_at: now, result: r, verifier_change: vc });
     }
   }
@@ -306,6 +323,18 @@ export async function evaluateConversation(conv, checklist, opts = {}) {
   trace.cost_usd = Math.round(trace.calls.reduce((s, c) => s + (c.cost_usd || 0), 0) * 1e6) / 1e6;
   trace.latency_ms = Date.now() - started;
   trace.cost_note = llmCriteria.length ? costNote(providerName, model, trace.latency_ms / 1000) : '0 ₸ — результат из кэша';
+  // measured routing: deterministic result where it is more accurate; model label kept as a second opinion
+  if (!['heuristic', 'fake'].includes(providerName) && operatorLines > 0) {
+    trace.routing = [];
+    for (const c of criteria) {
+      const cur = out[c.id];
+      if (!cur || cur.source === 'rule' && !String(cur.rule_applied || '').startsWith('fallback:') || routeFor(c) !== 'rule') continue;
+      const h = heuristicResult(conv, c);
+      const agree = ruLabel(h) === ruLabel(cur);
+      out[c.id] = { ...h, source: 'rule', rule_applied: `маршрут: детерминированная проверка (${h.rule_applied})`, confidence: agree ? Math.max(h.confidence, 0.8) : Math.min(h.confidence, 0.55), second_opinion: { source: 'ai', model, label: ruLabel(cur), explanation: cur.explanation } };
+      trace.routing.push({ criterion_id: c.id, source: 'rule', model_label: ruLabel(cur), rule_label: ruLabel(h), agree });
+    }
+  }
   // flag criteria are never N/A
   for (const c of criteria) if (isFlag(c) && out[c.id] && !out[c.id].applicable && operatorLines > 0) { out[c.id] = { ...out[c.id], applicable: true, na_reason: null, answer: 'no', flag_types: [], checked_range: out[c.id].checked_range || [1, conv.lines.length] }; }
   return { results: criteria.map((c) => out[c.id]), trace };

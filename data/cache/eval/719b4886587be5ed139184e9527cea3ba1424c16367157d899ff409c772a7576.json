@@ -1,0 +1,35 @@
+{
+ "key": "719b4886587be5ed139184e9527cea3ba1424c16367157d899ff409c772a7576",
+ "conversation_id": "p1-ru-020",
+ "criterion_id": "c04",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:13:55.775Z",
+ "result": {
+  "criterion_id": "c04",
+  "applicable": true,
+  "na_reason": null,
+  "answer": null,
+  "scale_value": 15,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Основной вопрос о снятии галочки решён."
+   },
+   {
+    "line": 12,
+    "why": "На вопрос о влиянии на уже купленное дан ответ, но без конкретного следующего шага (например, ссылки на справку или эскалации)."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "04: корректная консультация",
+  "explanation": "Основной вопрос клиента решён, однако на дополнительный вопрос о влиянии на открытую позицию дан общий ответ без указания конкретного действия или канала для решения этой части.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

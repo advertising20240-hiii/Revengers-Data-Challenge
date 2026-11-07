@@ -1,0 +1,38 @@
+{
+ "key": "1dcbb09c20d67a9fb4499098f3fae0691cba4202994070828be2d2a11cd18591",
+ "conversation_id": "p4-ru-003",
+ "criterion_id": "c03",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:38.774Z",
+ "result": {
+  "criterion_id": "c03",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 49,
+    "why": "Оператор раскрыл данные ('вижу ваш брокерский счет') до завершения процедуры идентификации."
+   },
+   {
+    "line": 65,
+    "why": "Идентификация подтверждена только после раскрытия данных."
+   }
+  ],
+  "checked_range": [
+   40,
+   65
+  ],
+  "rule_applied": "03: идентификация до раскрытия",
+  "explanation": "Оператор раскрыл информацию о наличии счёта до успешного завершения идентификации (SMS-код), что нарушает порядок проверки личности.",
+  "confidence": 0.95,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

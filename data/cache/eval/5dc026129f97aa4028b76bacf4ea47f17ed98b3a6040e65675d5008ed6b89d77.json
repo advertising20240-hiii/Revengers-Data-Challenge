@@ -1,0 +1,34 @@
+{
+ "key": "5dc026129f97aa4028b76bacf4ea47f17ed98b3a6040e65675d5008ed6b89d77",
+ "conversation_id": "p4-ru-002",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:19:01.453Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 12,
+    "why": "Оператор уточнил данные для идентификации ('подскажите, пожалуйста, ещё раз ваш ин полное имя и адрес'), что было необходимо для эскалации."
+   }
+  ],
+  "checked_range": [
+   1,
+   73
+  ],
+  "rule_applied": "02: Выявление потребности",
+  "explanation": "Оператор корректно уточнил недостающие данные (ФИО, адрес) перед выполнением защищённого действия (соединение с трейдером/проверка счёта), не переспрашивая уже известное.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

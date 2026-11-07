@@ -1,0 +1,34 @@
+{
+ "key": "acf6bca683fa46049ac8139e3172e1c1ec1c1e36524d7852666bd65f78d0b4a2",
+ "conversation_id": "p1-kz-002",
+ "criterion_id": "c07",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:15:32.900Z",
+ "result": {
+  "criterion_id": "c07",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 14,
+    "why": "Оператор попрощался ('Күніңіз сәтті өтсін!') после подтверждения решения клиентом."
+   }
+  ],
+  "checked_range": [
+   14,
+   14
+  ],
+  "rule_applied": "07: Завершение",
+  "explanation": "Последняя реплика оператора содержит прощание и происходит после того, как клиент подтвердил, что нашёл нужное, что соответствует корректному завершению диалога.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

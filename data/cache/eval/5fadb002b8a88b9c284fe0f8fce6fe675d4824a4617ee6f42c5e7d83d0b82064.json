@@ -1,0 +1,38 @@
+{
+ "key": "5fadb002b8a88b9c284fe0f8fce6fe675d4824a4617ee6f42c5e7d83d0b82064",
+ "conversation_id": "p1-ru-005",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:12:45.740Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "no",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 5,
+    "why": "Клиент уже указал способ пополнения: 'По реквизитам из отделения'."
+   },
+   {
+    "line": 10,
+    "why": "Оператор не уточнил детали, а сразу ответил, что не может назвать комиссию без условий банка, не используя известную информацию о способе перевода."
+   }
+  ],
+  "checked_range": [
+   5,
+   10
+  ],
+  "rule_applied": "02: Выявление потребности",
+  "explanation": "Оператор не учёл известные детали (способ перевода) и не уточнил недостающее, а сразу дал общий ответ о невозможности назвать комиссию, что является пропуском этапа выявления потребности.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

@@ -1,0 +1,39 @@
+{
+ "key": "429e091f43727f8d44a76eafd74ba7a20c4f3fb9af2c106d88c16187f40b8904",
+ "conversation_id": "p4-ru-001",
+ "criterion_id": "c02",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:18:52.373Z",
+ "result": {
+  "criterion_id": "c02",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 20,
+    "why": "Клиент сообщает контекст: работала в Костанае, портфель небольшой."
+   },
+   {
+    "line": 23,
+    "why": "Клиент уточняет, что теперь обращаться только к оператору."
+   },
+   {
+    "line": 26,
+    "why": "Оператор опирается на этот контекст, объясняя разницу между техподдержкой и персональным менеджером."
+   }
+  ],
+  "checked_range": null,
+  "rule_applied": "02: выявление потребности",
+  "explanation": "Оператор учёл известные детали из речи клиента (смена брокера, размер портфеля) и дал ответ, основанный на этом контексте, без лишних переспросов.",
+  "confidence": 0.9,
+  "source": "ai"
+ },
+ "verifier_change": null
+}

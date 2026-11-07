@@ -1,0 +1,38 @@
+{
+ "key": "f39ad5d20c58b344e26512ea43d65619069ddbc49fc1e050785625bd797d3206",
+ "conversation_id": "p1-kz-005",
+ "criterion_id": "c05",
+ "provider": "alem",
+ "model": "qwen3-8",
+ "prompt_version": "judge-v1.0",
+ "prompt_hash": "5cbafaf74b00e094b8fec5c04c8dda452b558285e77dd277315be0aef03d6d56",
+ "policy_hash": "58e275567951169e5d902e867c00c7b0c8dbd32426f25ca1fe03df4502ec0b75",
+ "created_at": "2026-11-07T12:15:54.522Z",
+ "result": {
+  "criterion_id": "c05",
+  "applicable": true,
+  "na_reason": null,
+  "answer": "yes",
+  "scale_value": null,
+  "flag_types": [],
+  "evidence": [
+   {
+    "line": 10,
+    "why": "Вежливое приветствие."
+   },
+   {
+    "line": 12,
+    "why": "Вежливое уточнение и помощь."
+   }
+  ],
+  "checked_range": [
+   10,
+   14
+  ],
+  "rule_applied": "05: Эмпатия и клиентоориентированность",
+  "explanation": "Оператор был вежлив, не было жалоб или недовольства со стороны клиента, требующих специальной реакции.",
+  "confidence": 1,
+  "source": "ai"
+ },
+ "verifier_change": null
+}
