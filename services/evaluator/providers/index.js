@@ -4,11 +4,8 @@ import * as anthropic from './anthropic.js';
 import * as openai from './openai.js';
 import * as offline from './offline.js';
 import * as alem from './alem.js';
-import { gemini, nvidia } from './compat.js';
 
-export const PROVIDERS = { alem, anthropic, openai, ollama: openai, offline, gemini, nvidia };
-/** External free-tier / credit APIs behind a hard spending guard (providers/compat.js). */
-export const GUARDED_PROVIDERS = ['gemini', 'nvidia'];
+export const PROVIDERS = { alem, anthropic, openai, ollama: openai, offline };
 export const LOCAL_PROVIDERS = ['alem', 'openai', 'ollama', 'offline', 'heuristic', 'fake']; // zero per-call cost
 export const CLOUD_PROVIDERS = ['anthropic'];
 
@@ -26,7 +23,6 @@ export function defaultModelFor(provider) {
   if (provider === 'alem') return alem.modelForRole('judge') || process.env.CQA_MODEL || null;
   if (provider === 'openai' || provider === 'ollama') return process.env.OPENAI_MODEL || process.env.CQA_MODEL || 'qwen2.5:7b';
   if (provider === 'heuristic') return 'heuristic-v1';
-  if (provider === 'gemini' || provider === 'nvidia') return PROVIDERS[provider].config().model;
   // offline replays the committed evaluation cache, which was produced by the alem.plus judge qwen3-8
   if (provider === 'offline') return process.env.CQA_MODEL || alem.modelForRole('judge') || 'qwen3-8';
   return process.env.CQA_MODEL || 'claude-haiku-5-5';
@@ -36,7 +32,7 @@ export function defaultVerifierFor(provider, model) {
   if (process.env.CQA_VERIFIER_MODEL != null) return process.env.CQA_VERIFIER_MODEL || null;
   if (provider === 'alem') return alem.modelForRole('verifier') || null;
   if (provider === 'openai' || provider === 'ollama') return model; // same local model audits itself (different prompt)
-  if (provider === 'heuristic' || provider === 'offline' || provider === 'gemini' || provider === 'nvidia') return null;
+  if (provider === 'heuristic' || provider === 'offline') return null;
   return 'claude-haiku-5-5';
 }
 

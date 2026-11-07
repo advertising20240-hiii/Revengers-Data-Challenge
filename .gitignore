@@ -21,4 +21,3 @@ reports/jury/*.png
 Thumbs.db
 data/db.bak-*/
 dist/static/
-data/budget/
