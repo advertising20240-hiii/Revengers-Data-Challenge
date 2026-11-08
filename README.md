@@ -191,7 +191,7 @@ npm run calibrate -- --provider alem --split all --no-verify --cache-only   # п
 | Файл | Набор | Состояние |
 |---|---|---|
 | [results/dev/results.json](results/dev/results.json) | DEV — 60 чатов + 5 звонков, 65 записей, все `ok` | в репозитории, формат проверен, 65 итогов пересчитаны независимо |
-| `results/prod/results.json` | контрольный набор — ровно 10 чатов | создаётся 8 ноября по [docs/CONTROL_DAY.md](docs/CONTROL_DAY.md) |
+| [results/prod/results.json](results/prod/results.json) | контрольный набор `FBroker` — 10 чатов | в репозитории: 10 записей, все `ok`, чек-лист v1, формат проверен (8 ноября, 11:10) |
 
 ```bash
 npm run export:results -- --group DEV --out results/dev/results.json                          # DEV
