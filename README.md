@@ -99,6 +99,8 @@ npm start              # → http://localhost:8080
 
 **Демо без установки** — `npm run build:static` собирает `dist/static/index.html`: весь интерфейс со снимком данных DEV в одном файле, только для просмотра. Публикация на бесплатных GitHub Pages — workflow `.github/workflows/pages.yml`, шаги — [docs/DEPLOY.md](docs/DEPLOY.md).
 
+**Живая ссылка на время защиты** — туннель (Cloudflare, при закрытом порте 7844 — SSH-туннель через 443) к `npm start` на ноутбуке; по ссылке **только просмотр**, изменения возможны лишь на самом ноутбуке ([docs/DEPLOY.md](docs/DEPLOY.md), раздел 4).
+
 ## Как пользоваться
 
 | Шаг | Где | Что сделать |
