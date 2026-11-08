@@ -247,9 +247,12 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
   });
 
   // ---------- request handling ----------
-  // A request that arrives through a public tunnel (Cloudflare adds cf-connecting-ip / cf-ray) is view-only unless
+  // A request that arrives through a public tunnel (Cloudflare, Pinggy, any reverse proxy) is view-only unless
   // CQA_PUBLIC_WRITE=1: anyone with the link can browse, but checklists, appeals and evaluations change only on the laptop.
-  const viaTunnel = (req) => !!(req.headers['cf-connecting-ip'] || req.headers['cf-ray']);
+  // any tunnel or reverse proxy: Cloudflare headers, X-Forwarded-*/Forwarded, or a Host that is not this machine
+  const LOCAL_HOST = /^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/i;
+  const viaTunnel = (req) => !!(req.headers['cf-connecting-ip'] || req.headers['cf-ray'] || req.headers['x-forwarded-for'] || req.headers['x-forwarded-host'] || req.headers.forwarded)
+    || (req.headers.host != null && !LOCAL_HOST.test(String(req.headers.host)));
   const publicReadOnly = (req) => viaTunnel(req) && process.env.CQA_PUBLIC_WRITE !== '1';
 
   async function handle(req, res) {

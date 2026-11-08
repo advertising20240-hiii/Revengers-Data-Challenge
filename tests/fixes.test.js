@@ -267,3 +267,14 @@ test('public tunnel: requests with Cloudflare headers are view-only unless CQA_P
     assert.notEqual(allowed.status, 403);
   } finally { delete process.env.CQA_PUBLIC_WRITE; }
 });
+
+test('public tunnel: any forwarded request or foreign Host is view-only', async () => {
+  const viaProxy = await fetch(`${base}/api/datasets/fetch`, { method: 'POST', headers: { 'x-forwarded-for': '198.51.100.4', 'Content-Type': 'application/json' }, body: JSON.stringify({ group_id: 'X' }) });
+  assert.equal(viaProxy.status, 403);
+  const { request } = await import('node:http');
+  const status = await new Promise((resolve, reject) => {
+    const r = request(`${base}/api/datasets/fetch`, { method: 'POST', headers: { Host: 'demo.a.pinggy.link', 'Content-Type': 'application/json' } }, (res) => { res.resume(); resolve(res.statusCode); });
+    r.on('error', reject); r.end(JSON.stringify({ group_id: 'X' }));
+  });
+  assert.equal(status, 403);
+});
