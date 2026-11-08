@@ -493,5 +493,7 @@
   "dialogs.results_json": "results.json",
   "dialogs.results_json_hint": "Результаты набора в формате организаторов (JSON 1.0) — файл проверяется перед выдачей",
   "dialogs.results_ok": "results.json ✓ {n}",
-  "dialogs.results_bad": "results.json ⚠ {n}"
+  "dialogs.results_bad": "results.json ⚠ {n}",
+  "health.public_view": "Публичная ссылка — только просмотр.",
+  "health.public_view_hint": "Все оценки, доказательства и калибровка доступны; оценка, апелляции и изменения чек-листа — на ноутбуке команды."
 }

@@ -250,3 +250,20 @@ test('spec 02: evaluate accepts checklist_version and group_id-scoped ids', asyn
   const job = (await api(`/api/jobs/${r.body.job_id}`)).body;
   assert.equal(job.results[0].group_id, 'DUP');
 });
+
+test('public tunnel: requests with Cloudflare headers are view-only unless CQA_PUBLIC_WRITE=1', async () => {
+  const cf = { 'cf-connecting-ip': '203.0.113.7', 'Content-Type': 'application/json' };
+  const health = await (await fetch(`${base}/api/health`, { headers: cf })).json();
+  assert.equal(health.public_view, true);
+  assert.equal((await api('/api/health')).body.public_view, false, 'local requests are not public');
+  const blocked = await fetch(`${base}/api/datasets/fetch`, { method: 'POST', headers: cf, body: JSON.stringify({ group_id: 'X' }) });
+  assert.equal(blocked.status, 403);
+  assert.match((await blocked.json()).error || '', /только для просмотра/);
+  const read = await fetch(`${base}/api/conversations`, { headers: cf });
+  assert.equal(read.status, 200, 'reads stay open');
+  process.env.CQA_PUBLIC_WRITE = '1';
+  try {
+    const allowed = await fetch(`${base}/api/datasets/fetch`, { method: 'POST', headers: cf, body: JSON.stringify({ group_id: 'X' }) });
+    assert.notEqual(allowed.status, 403);
+  } finally { delete process.env.CQA_PUBLIC_WRITE; }
+});

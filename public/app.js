@@ -77,6 +77,9 @@ function updateHealth() {
     bannerBox.append(h('div', { class: 'banner warn', role: 'status' },
       h('strong', null, t('health.unavailable', { reason: providerReason() || '—' })), h('span', null, t('health.unavailable_hint'))));
   }
+  if (hd && hd.public_view) {
+    bannerBox.append(h('div', { class: 'banner info', role: 'status' }, h('strong', null, t('health.public_view')), h('span', null, t('health.public_view_hint'))));
+  }
   if (state.offline) {
     bannerBox.append(h('div', { class: 'banner danger', role: 'alert' }, h('strong', null, t('health.offline')), h('span', null, t('health.offline_hint'))));
   }

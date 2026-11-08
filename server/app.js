@@ -37,9 +37,9 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
   const bool = (v) => v === '1' || v === 'true';
 
   // ---------- health / groups / datasets ----------
-  router.get('/api/health', () => {
+  router.get('/api/health', ({ req }) => {
     const p = engine.providerInfo();
-    return { ok: true, version: VERSION, provider: p, offline: !p.available || p.provider === 'offline', groups: data.groups(), counts: { conversations: db.conversations.size, evaluations: db.evaluations.find((e) => e.mode === 'stored').length, appeals_open: db.appeals.find((a) => a.status === 'open').length, checklists: db.checklists.size }, concurrency: config.concurrency, data_url_configured: !!config.dataUrl };
+    return { ok: true, public_view: publicReadOnly(req), version: VERSION, provider: p, offline: !p.available || p.provider === 'offline', groups: data.groups(), counts: { conversations: db.conversations.size, evaluations: db.evaluations.find((e) => e.mode === 'stored').length, appeals_open: db.appeals.find((a) => a.status === 'open').length, checklists: db.checklists.size }, concurrency: config.concurrency, data_url_configured: !!config.dataUrl };
   });
   router.get('/api/groups', () => data.groups());
   router.post('/api/datasets/fetch', async ({ body }) => data.fetchGroup(String(body.group_id ?? '').trim(), { url: body.url ? String(body.url) : null }));
@@ -247,6 +247,11 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
   });
 
   // ---------- request handling ----------
+  // A request that arrives through a public tunnel (Cloudflare adds cf-connecting-ip / cf-ray) is view-only unless
+  // CQA_PUBLIC_WRITE=1: anyone with the link can browse, but checklists, appeals and evaluations change only on the laptop.
+  const viaTunnel = (req) => !!(req.headers['cf-connecting-ip'] || req.headers['cf-ray']);
+  const publicReadOnly = (req) => viaTunnel(req) && process.env.CQA_PUBLIC_WRITE !== '1';
+
   async function handle(req, res) {
     setCors(res);
     const url = new URL(req.url, 'http://localhost');
@@ -255,6 +260,7 @@ export async function createApp({ evaluator = undefined, dataDir = undefined, co
       if (url.pathname.startsWith('/api/')) {
         const m = router.match(req.method, url.pathname);
         if (!m) throw new HttpError(404, `Unknown API route ${req.method} ${url.pathname}`);
+        if (req.method !== 'GET' && req.method !== 'HEAD' && publicReadOnly(req)) throw new HttpError(403, 'Публичная ссылка открыта только для просмотра. Оценка, апелляции и изменения чек-листа выполняются на ноутбуке команды.');
         const body = ['POST', 'PUT'].includes(req.method) ? await readJsonBody(req, config.bodyLimit) : {};
         const out = await m.handler({ params: m.params, url, body, req, res });
         if (res.writableEnded || out === null) return;

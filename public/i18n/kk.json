@@ -493,5 +493,7 @@
   "dialogs.results_json": "results.json",
   "dialogs.results_json_hint": "Жиынның нәтижелері ұйымдастырушылар форматында (JSON 1.0) — файл берілер алдында тексеріледі",
   "dialogs.results_ok": "results.json ✓ {n}",
-  "dialogs.results_bad": "results.json ⚠ {n}"
+  "dialogs.results_bad": "results.json ⚠ {n}",
+  "health.public_view": "Жария сілтеме — тек қарауға арналған.",
+  "health.public_view_hint": "Барлық бағалар, дәлелдер мен калибрлеу қолжетімді; бағалау, апелляция және чек-листті өзгерту — команданың ноутбугында."
 }

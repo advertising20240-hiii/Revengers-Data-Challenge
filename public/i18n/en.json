@@ -493,5 +493,7 @@
   "dialogs.results_json": "results.json",
   "dialogs.results_json_hint": "Results of the set in the organizers' format (JSON 1.0), validated before download",
   "dialogs.results_ok": "results.json ✓ {n}",
-  "dialogs.results_bad": "results.json ⚠ {n}"
+  "dialogs.results_bad": "results.json ⚠ {n}",
+  "health.public_view": "Public link — view only.",
+  "health.public_view_hint": "All evaluations, evidence and calibration are available; evaluation, appeals and checklist changes run on the team laptop."
 }
